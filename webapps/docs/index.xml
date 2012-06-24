@@ -63,37 +63,28 @@
 <li><a href="manager-howto.html"><strong>매니저</strong></a> -
     아파치 톰캣이 실행되는 동안 웹앱 배포, 삭제, 재배포하기 위한 <strong>매니저</strong>의 동작법.</li>
 <li><a href="realm-howto.html"><strong>렐름(Realm)과 접근 제어</strong></a>
-    - Description of how to configure <em>Realms</em> (databases of users,
-    passwords, and their associated roles) for use in web applications that
-    utilize <em>Container Managed Security</em>.</li>
+    - <em>컨테이너 관리 보안</em>을 이용하는 웹 애플리케이션에서 사용할 렐름(사용자, 비밀번호, 
+    관련된 역할의 데이터베이스)을 설정하는 방법을 설명.</li>
 <li><a href="security-manager-howto.html"><strong>보안 관리자</strong></a>
-    - Configuring and using a 자바 보안 관리자 to
-    support fine-grained control over the behavior of your web applications.
-    </li>
-<li><a href="jndi-resources-howto.html"><strong>JNDI Resources</strong></a>
-    - Configuring standard and custom resources in the JNDI naming context
-    that is provided to each web application.</li>
+    - 웹 애플리케이션의 동작을 세세하게 제어하는 자바 보안 관리자를 설정하고 사용하는 방법.</li>
+<li><a href="jndi-resources-howto.html"><strong>JNDI 자원(Resources)</strong></a>
+    - 각 웹 애플리케이션별로 제공되는 JNDI 네이밍 컨텍스트에서 표준과 사용자 자원을 설정하는 법.</li>
 <li><a href="jndi-datasource-examples-howto.html">
-    <strong>JDBC DataSource</strong></a>
-    - Configuring a JNDI DataSoure with a DB connection pool.
-    Examples for many popular databases.</li>
-<li><a href="class-loader-howto.html"><strong>Classloading</strong></a>
-    - Information about class loading in 아파치 톰캣, including where to place
-    your application classes so that they are visible.</li>
-<li><a href="jasper-howto.html"><strong>JSPs</strong></a>
-    - Information about Jasper configuration, as well as the JSP compiler
-    usage.</li>
+    <strong>JDBC 데이터소스</strong></a>
+    - DB 커넥션 풀과 JNDI 데이터소스 설정하기.
+    많은 인기있는 데이터베이스에 대한 예제.</li>
+<li><a href="class-loader-howto.html"><strong>클래스로딩</strong></a>
+    - 아파치 톰캣에서 클래스 로딩에 대한 정보, 애플리케이션 클래스들이 어디에 위치해야 인식하는지를 포함.</li>
+<li><a href="jasper-howto.html"><strong>JSP</strong></a>
+    - JSP 컴파일러 사용법과 자스퍼 설정에 대한 정보.</li>
 <li><a href="ssl-howto.html"><strong>SSL</strong></a> -
-    Installing and
-    configuring SSL support so that your 아파치 톰캣 will serve requests using
-    the <code>https</code> protocol.</li>
+    <code>https</code> 프로토콜을 사용하는 요청을 처리하기 위해 SSL 지원을 설치하고 설정하기.</li>
 <li><a href="ssi-howto.html"><strong>SSI</strong></a> -
-    Using Server Side Includes in 아파치 톰캣.</li>
+    아파치 톰캣에서 서버측 인클루드 사용하기.</li>
 <li><a href="cgi-howto.html"><strong>CGI</strong></a> -
-    Using CGIs with 아파치 톰캣.</li>
-<li><a href="proxy-howto.html"><strong>Proxy Support</strong></a> -
-    Configuring 아파치 톰캣 to run behind a proxy server (or a web server
-    functioning as a proxy server).</li>
+    아파치 톰캣에서 CGI 사용하기.</li>
+<li><a href="proxy-howto.html"><strong>프록시 지원</strong></a> -
+    프록시 서버 (또는 프록시 서버 기능을 하는 웹 서버) 뒤에서 실행하는 아파치 톰캣 설정하기.</li>
 <li><a href="mbeans-descriptor-howto.html"><strong>MBean Descriptor</strong></a> -
     Configuring MBean descriptors files for custom components.</li>
 <li><a href="default-servlet.html"><strong>Default Servlet</strong></a> -

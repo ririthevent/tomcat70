@@ -33,10 +33,10 @@
 
 <section name="Introduction">
 
-<p>이 페이지는 <strong>아파치 톰캣 </strong> 서블릿/JSP 컨테이너에 대한 문서 번들의 최상위 엔트리 지점입니다. 
+<p>이 페이지는 <strong>아파치 톰캣</strong> 서블릿/JSP 컨테이너에 대한 문서 번들의 최상위 엔트리 지점입니다. 
 아파치 톰캣 버전 7.0은 <a href="http://www.jcp.org"> 자바 커뮤니티 프로세스</a>에서 나온 
 서블릿 3.0 및 JSP(JavaServer Pages) 2.2
-<a href="http://wiki.apache.org/tomcat/Specifications"> 사양</a>을 구현했고,
+<a href="http://wiki.apache.org/tomcat/Specifications">사양</a>을 구현했고,
 웹 응용 프로그램 및 웹 서비스의 개발 및 배포를 위한 유용한 플랫폼으로 만드는 많은 추가 기능을 
 제공합니다. </p>
 
@@ -46,7 +46,7 @@
 </section>
 
 
-<section name="아파치 톰캣 User Guide">
+<section name="Apache Tomcat User Guide">
 
 <p>다음 문서는 아파치 톰캣 7을 다운로드하고 설치하고, 많은 아파치 톰캣 기능을 사용하는 데 
 도움이 될 것입니다</p>
@@ -85,41 +85,40 @@
     아파치 톰캣에서 CGI 사용하기.</li>
 <li><a href="proxy-howto.html"><strong>프록시 지원</strong></a> -
     프록시 서버 (또는 프록시 서버 기능을 하는 웹 서버) 뒤에서 실행하는 아파치 톰캣 설정하기.</li>
-<li><a href="mbeans-descriptor-howto.html"><strong>MBean Descriptor</strong></a> -
-    Configuring MBean descriptors files for custom components.</li>
-<li><a href="default-servlet.html"><strong>Default Servlet</strong></a> -
-    Configuring the default servlet and customizing directory listings.</li>
-<li><a href="cluster-howto.html"><strong>아파치 톰캣 Clustering</strong></a> -
-    Enable session replication in a 아파치 톰캣 environment.</li>
-<li><a href="balancer-howto.html"><strong>Balancer</strong></a> -
-    Configuring, using, and extending the load balancer application.</li>
-<li><a href="connectors.html"><strong>Connectors</strong></a> -
-    Connectors available in 아파치 톰캣, and native web server integration.</li>
-<li><a href="monitoring.html"><strong>Monitoring and Management</strong></a> -
-    Enabling JMX Remote support, and using tools to monitor and manage 아파치 톰캣.</li>
-<li><a href="logging.html"><strong>Logging</strong></a> -
-    Configuring logging in 아파치 톰캣.</li>
-<li><a href="apr.html"><strong>Apache Portable Runtime</strong></a> -
-    Using APR to provide superior performance, scalability and better
-    integration with native server technologies.</li>
-<li><a href="virtual-hosting-howto.html"><strong>Virtual Hosting</strong></a> -
-    Configuring virtual hosting in 아파치 톰캣.</li>
-<li><a href="aio.html"><strong>Advanced IO</strong></a> -
-    Extensions available over regular, blocking IO.</li>
-<li><a href="extras.html"><strong>Additional Components</strong></a> -
-    Obtaining additional, optional components.</li>
-<li><a href="maven-jars.html"><strong>Using Tomcat libraries with Maven</strong></a> -
-    Obtaining Tomcat jars through Maven.</li>
-<li><a href="security-howto.html"><strong>Security Considerations</strong></a> -
-    Options to consider when securing an 아파치 톰캣 installation.</li>
-<li><a href="windows-service-howto.html"><strong>Windows Service</strong></a> -
-    Running Tomcat as a service on Microsoft Windows.</li>
-<li><a href="windows-auth-howto.html"><strong>Windows Authentication</strong></a> -
-    Configuring Tomcat to use integrated Windows authentication.</li>
-<li><a href="jdbc-pool.html"><strong>High Concurrency JDBC Pool</strong></a> -
-    Configuring Tomcat to use an alternative JDBC pool.</li>
-<li><a href="web-socket-howto.html"><strong>WebSocket support</strong></a> -
-    Developing WebSocket applications for 아파치 톰캣.</li>
+<li><a href="mbeans-descriptor-howto.html"><strong>MBean 설명자</strong></a> -
+    사용자 정의 구성 요소에 대한 MBean 설명자 파일을 설정하기.</li>
+<li><a href="default-servlet.html"><strong>기본 서블릿</strong></a> -
+    기본 서블릿 및 디렉토리 목록 사용자 정의 설정하기.</li>
+<li><a href="cluster-howto.html"><strong>아파치 톰캣 클러스터링</strong></a> -
+    아파치 톰캣 환경에서 세션 복제를 활성화.</li>
+<li><a href="balancer-howto.html"><strong>밸런서</strong></a> -
+    로드 밸런서 애플리케이션을 설정, 사용, 확장하기.</li>
+<li><a href="connectors.html"><strong>커넥터</strong></a> -
+    아파치 톰캣에서 가능한 커넥터와 네이티브 웹 서버 통합.</li>
+<li><a href="monitoring.html"><strong>모니터링과 관리</strong></a> -
+    JMX 원격 지원을 활성화하고, 아파치 톰캣을 모니터링하고 관리하는 도구 사용하기.</li>
+<li><a href="logging.html"><strong>로깅</strong></a> -
+    아파치 톰캣에서 로깅 구성.</li>
+<li><a href="apr.html"><strong>아파치 포터블 런타임</strong></a> -
+    뛰어난 ​​성능, 확장성 및 네이티브 서버 기술로 더 나은 통합을 제공하기 위해 APR 사용하기.</li>
+<li><a href="virtual-hosting-howto.html"><strong>가상 호스팅</strong></a> -
+    아파치 톰캣에서 가상 호스팅 설정하기.</li>
+<li><a href="aio.html"><strong>고급 IO</strong></a> -
+    정규, 블로킹 IO 위에서 가능한 확장.</li>
+<li><a href="extras.html"><strong>추가 구성 요소</strong></a> -
+    추가, 옵션 구성 요소를 구하기.</li>
+<li><a href="maven-jars.html"><strong>메이븐으로 톰캣 라이브러리를 사용</strong></a> -
+    메이븐을 통해서 톰캣 jar 구하기.</li>
+<li><a href="security-howto.html"><strong>보안 고려 사항</strong></a> -
+    아파치 톰캣 설치를 안전하게 할 때 고려해야 할 옵션..</li>
+<li><a href="windows-service-howto.html"><strong>윈도우 서비스</strong></a> -
+    마이크로소프트 윈도우의 서비스로 톰캣을 실행.</li>
+<li><a href="windows-auth-howto.html"><strong>윈도우 인증</strong></a> -
+    통합된 윈도우 인증을 사용하도록 구성하기.</li>
+<li><a href="jdbc-pool.html"><strong>높은 동시성 JDBC 풀</strong></a> -
+    대안 JDBC 풀을 사용하도록 톰캣을 구성하기.</li>
+<li><a href="web-socket-howto.html"><strong>웹소켓 지원</strong></a> -
+    아파치 톰캣을 위한 웹소켓 애플리케이션을 개발하기.</li>
 
 </ol>
 

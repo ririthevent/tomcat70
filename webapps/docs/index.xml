@@ -127,65 +127,60 @@
 
 <section name="Reference">
 
-<p>The following documents are aimed at <em>System Administrators</em> who
-are responsible for installing, configuring, and operating an 아파치 톰캣 server.
-</p>
+<p>다음 문서는 설치, 구성, 그리고 아파치 톰캣 서버 운영을 담당하는 <em>시스템 관리자</em>를 
+대상으로 하고 있습니다.</p>
 <ul>
-<li><a href="RELEASE-NOTES.txt"><strong>Release notes</strong></a>
-    - Known issues in this 아파치 톰캣 release.
+<li><a href="RELEASE-NOTES.txt"><strong>릴리스 노트</strong></a>
+    - 이 아파치 톰캣 릴리스의 알려진 문제.
     </li>
-<li><a href="config/index.html"><strong>아파치 톰캣 Server Configuration Reference</strong></a>
-    - Reference manual that documents all available elements and attributes
-      that may be placed into the 아파치 톰캣 <code>conf/server.xml</code> file.
+<li><a href="config/index.html"><strong>아파치 톰캣 서버 설정 참고</strong></a>
+    - 아파치 톰캣 <code>conf/server.xml</code> 파일에 추가할 수 있는 모든 요소와 속성을 
+    설명하는 참고 매뉴얼.
     </li>
-<li><a href="http://tomcat.apache.org/connectors-doc/index.html"><strong>JK Documentation</strong></a>
-    - Complete documentation and HOWTOs on the JK native webserver connector,
-      used to interface 아파치 톰캣 with servers like Apache HTTPd, IIS
-      and others.</li>
-<li>Servlet 3.0
+<li><a href="http://tomcat.apache.org/connectors-doc/index.html"><strong>JK 문서</strong></a>
+    - , 아파치 HTTPd, IIS 등의 다른 서버들과 아파치 톰캣의 인터페이스에 사용되는, 
+    JK 네이티브 웹서버 커넥터에 대한 완벽한 문서와 HOWTO 가이드. </li>
+<li>서블릿 3.0
     <a href="http://jcp.org/aboutJava/communityprocess/final/jsr315/index.html">
-    <strong>Specification</strong></a> and
+    <strong>사양</strong></a>과
     <a href="http://docs.oracle.com/javaee/6/api/index.html?javax/servlet/package-summary.html">
-    <strong>Javadoc</strong></a>
+    <strong>자바독</strong></a>
     </li>
 <li><a href="http://jcp.org/aboutJava/communityprocess/mrel/jsr245/index.html">
-    <strong>JSP 2.2 and EL 2.2 Specifications</strong></a>,
+    <strong>JSP 2.2와 EL 2.2 사양</strong></a>,
     <a href="http://docs.oracle.com/javaee/6/api/index.html?javax/servlet/jsp/package-summary.html">
-    <strong>JSP 2.2 Javadoc (note it is labelled as JSP 2.1)</strong></a>,
+    <strong>JSP 2.2 자바독 (JSP 2.1로 표기되어 있음)</strong></a>,
     <a href="http://docs.oracle.com/javaee/6/api/index.html?javax/el/package-summary.html">
-    <strong>EL 2.2 Javadoc</strong></a>
+    <strong>EL 2.2 자바독</strong></a>
     </li>
 </ul>
 
 </section>
 
 
-<section name="아파치 톰캣 Developers">
+<section name="Apache Tomcat Developers">
 
-<p>The following documents are for Java developers who wish to contribute to
-the development of the <em>아파치 톰캣</em> project.</p>
+<p>
+다음 문서는 <em>아파치 톰캣</em> 프로젝트의 개발에 기여하기 원하는 자바 개발자를 위한 것입니다.</p>
 <ul>
-<li><a href="building.html"><strong>Building from Source</strong></a> -
-    Details the steps necessary to download 아파치 톰캣 source code (and the
-    other packages that it depends on), and build a binary distribution from
-    those sources.
+<li><a href="building.html"><strong>소스에서 빌드하기</strong></a> -
+    아파치 톰캣 소스 코드(그리고 다른 의존하는 패키지들)를 다운로드하는데 필요한 단계들과 
+    그 소스로부터 바이너리 배포판을 빌드하는데 필요한 세부 사항.
     </li>
-<li><a href="changelog.html"><strong>Changelog</strong></a> - Details the
-    changes made to 아파치 톰캣.
+<li><a href="changelog.html"><strong>변경로그</strong></a> - 
+    아파치 톰캣에 적용한 변경 세부 사항.
     </li>
-<li><a href="http://wiki.apache.org/tomcat/TomcatVersions"><strong>Status</strong></a> -
-    아파치 톰캣 development status.
+<li><a href="http://wiki.apache.org/tomcat/TomcatVersions"><strong>상태</strong></a> -
+    아파치 톰캣 개발 상태.
     </li>
-<li><a href="developers.html"><strong>Developers</strong></a> - List of active
-    아파치 톰캣 contributors.
+<li><a href="developers.html"><strong>개발자</strong></a> - 액티브 아파치 톰캣 기여자 목록.
     </li>
-<li><a href="funcspecs/index.html"><strong>Functional Specifications</strong></a>
-    - Requirements specifications for features of the <em>Catalina</em> servlet
-    container portion of 아파치 톰캣.</li>
-<li><a href="api/index.html"><strong>Javadocs</strong></a>
-    - Javadoc API documentation for 아파치 톰캣's internals.</li>
-<li><a href="architecture/index.html"><strong>아파치 톰캣 Architecture</strong></a>
-    - Documentation of the 아파치 톰캣 Server Architecture.</li>
+<li><a href="funcspecs/index.html"><strong>기능 사양</strong></a>
+    - 아파치 톰캣의 <em>카탈리나</em> 서블릿 컨테이너 부분의 기능에 대한 요구 사양.</li>
+<li><a href="api/index.html"><strong>자바독</strong></a>
+    - 아파치 톰캣 내부의 자바독 API 문서.</li>
+<li><a href="architecture/index.html"><strong>아파치 톰캣 아키텍처</strong></a>
+    - 아파치 톰캣 서버 아키텍처에 대한 문서.</li>
 </ul>
 
 </section>

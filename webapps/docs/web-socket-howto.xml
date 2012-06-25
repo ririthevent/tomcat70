@@ -51,16 +51,14 @@
    <a href="api/index.html?org/apache/catalina/websocket/WebSocketServlet.html">
    <code>WebSocketServlet</code></a> 클래스에서 시작하세요.</p>
 
-<p>There are also several example applications that demonstrate how the
-   WebSocket API can be used. You'll need to look at both the client side <a
+<p>또한, WebSocket API를 사용하는 여러 예제 어플리케이션들이 있습니다. 예제들은 클라이언트인 <a
    href="http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/websocket/">
-   html</a> and the server side <a
+   html</a>과 서버쪽 코드<a
    href="http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/WEB-INF/classes/websocket/">
-   code</a>.</p>
+   code</a> 양쪽을 보셔야합니다.</p>
 
-<p>Do keep in mind that the API is fluid and is likely to change, possibly
-   significantly, between point releases. The documentation will be updated once
-   the API is considered stable (unlikely to be until JSR 356 is complete).</p>
+<p>API는 유동적이며 포인트 릴리즈 사이에 크게 변경될 수 있다는 것을 명심하세요. 
+   문서는 안정화를 고려하여 한번 업데이트 될것입니다.(JSR 356이 완료되기 전에 될 가능성이 있음).</p>
 </section>
 
 

@@ -23,8 +23,8 @@
   &project;
 
   <properties>
-    <author email="remm@apache.org">Remy Maucherat</author>
-    <title>Tomcat Setup</title>
+    <author email="remm@apache.org">레미 모체랏</author>
+    <title>톰캣 설치</title>
   </properties>
 
 <body>
@@ -35,78 +35,67 @@
 
   <section name="Introduction">
     <p>
-      This document introduces several ways to set up Tomcat for running
-      on different platforms.  Please note that some advanced setup issues
-      are not covered here: the full distribution (ZIP file or tarball)
-      includes a file called
-      RUNNING.txt which discusses these issues.  We encourage you to refer
-      to it if the information below does not answer some of your questions.
+    이 문서는 서로 다른 플랫폼에서 실행을 위해 톰캣을 설정하는 몇 가지 방법을 소개합니다. 
+    일부 고급 설치 이슈는 여기에 포함되지 않으니 양해해 주시기 바랍니다. 
+    전체 배포판 (ZIP 파일이나 타르볼)은  RUNNING.txt라는 파일이 포함되어 있는 
+    이러한 이슈에 대해 설명합니다. 우리는 아래의 정보가 귀하의 질문에 어떤 답도 되지 
+    않는다면 당신이 그것을 참조하시기 바랍니다.
     </p>
   </section>
 
   <section name="Windows">
 
     <p>
-      Installing Tomcat on Windows can be done easily using the Windows
-      installer. Its interface and functionality is similar to other wizard
-      based installers, with only a few items of interest.
+      윈도우에서 윈도우 인스톨러를 사용하여 쉽게 톰캣을 설치할 수 있습니다. 
+      그것의 인터페이스와 기능은 관심이 있는 몇 항목으로 다른 마법사 기반의 설치와 
+      비슷합니다.
     </p>
 
     <p>
       <ul>
-        <li><strong>Installation as a service</strong>: Tomcat will be
-            installed as a Windows service no matter what setting is selected.
-            Using the checkbox on the component page sets the service as "auto"
-            startup, so that Tomcat is automatically started when Windows
-            starts. For optimal security, the service should be run as a
-            separate user, with reduced permissions (see the Windows Services
-            administration tool and its documentation).</li>
-        <li><strong>Java location</strong>: The installer will provide a default
-            JRE to use to run the service. The installer uses the registry to
-            determine the base path of a Java 6 or later JRE, including the JRE
-            installed as part of the full JDK. When running on a 64-bit
-            operating system, the installer will first look for a 64-bit JRE and
-            only look for a 32-bit JRE if a 64-bit JRE is not found. It is not
-            mandatory to use the default JRE detected by the installer. Any
-            installed Java 6 or later JRE (32-bit or 64-bit) may be used.</li>
-        <li><strong>Tray icon</strong>: When Tomcat is run as a service, there
-            will not be any tray icon present when Tomcat is running. Note that
-            when choosing to run Tomcat at the end of installation, the tray
-            icon will be used even if Tomcat was installed as a service.</li>
-        <li>Refer to the
-            <a href="windows-service-howto.html">Windows Service HOW-TO</a>
-            for information on how to manage Tomcat as a Windows service.
+        <li><strong>서비스로 설치</strong>: 톰캣이 선택되는 설정에 상관없이 
+            윈도우 서비스로 설치됩니다. 구성 요소 페이지에서 확인란을 사용하면 윈도우를 시작할 때 
+            톰캣이 자동으로 시작되도록, "자동"시작으로 서비스를 설정합니다. 최적의 보안을 위해 
+            서비스 축소 권한 (Windows 서비스 관리 도구 및 설명서를 참조)과 함께 별도의 사용자로 
+            실행해야 합니다.</li>
+        <li><strong>자바 위치</strong>: 
+            설치 프로그램이 서비스를 실행하는 데 사용하는 기본 JRE를 제공합니다. 설치 프로그램은 
+            전체 JDK의 일부로 설치된 JRE를 포함한 자바6 이상 JRE의 기본 경로를 결정하기 위해 
+            레지스트리를 사용합니다. 64비트 운영체제에서 실행하면 설치 관리자는 먼저 64비트 
+            JRE를 찾고 64비트 JRE가 발견되지 않은 경우에만 32
+            비트 JRE를 찾습니다. 설치 프로그램에 의해 발견된 기본 JRE 사용이 강제적인 것은 아닙니다. 
+            설치된 자바6 또는 JRE (32비트 또는 64비트)를 사용할 수 있습니다.</li>
+        <li><strong>트레이 아이콘</strong>: 톰캣이 실행될 때 톰캣이 서비스로 실행하게 된다면 
+            어떤 트레이 아이콘도 없을 것입니다. 톰캣이 서비스로 설치되어 있어도, 설치 마지막에 
+            톰캣을 실행하도록 선택하면 트레이 아이콘도 사용됩니다.</li>
+        <li>윈도우 서비스로 Tomcat을 관리하는 방법에 대한 정보가 필요하다면 
+            <a href="windows-service-howto.html">윈도우 서비스 HOW-TO</a>를 참조하세요.
             </li>
       </ul>
     </p>
 
-    <p>The installer will create shortcuts allowing starting and configuring
-       Tomcat. It is important to note that the Tomcat administration web
-       application can only be used when Tomcat is running.</p>
+    <p>인스톨러는 톰캣의 시작 및 설정 바로가기를 만듭니다. 중요한 것은 톰캣이 실행되어야만 톰캣 
+       관리 웹 응용 프로그램을 사용할 수 있다는 것입니다.</p>
 
   </section>
 
   <section name="Unix daemon">
 
-    <p>Tomcat can be run as a daemon using the jsvc tool from the
-       commons-daemon project. Source tarballs for jsvc are included with the
-       Tomcat binaries, and need to be compiled. Building jsvc requires
-       a C ANSI compiler (such as GCC), GNU Autoconf, and a JDK.</p>
+    <p>톰캣은 common-demon 프로젝트에서 jsvc 도구를 사용하여 데몬을 실행할 수 있습니다. 
+       jsvc의 소스 타르볼은 톰캣 바이너리와 함께 제공되고 컴파일이 필요합니다. 
+       만드는 jsvc는 C ANSI 컴파일러 (예 : GCC 등), GNU의 Autoconf, 그리고 
+       JDK가 필요합니다. </p>
 
-    <p>Before running the script, the <code>JAVA_HOME</code> environment
-       variable should be set to the base path of the JDK. Alternately, when
-       calling the <code>./configure</code> script, the path of the JDK may
-       be specified using the <code>--with-java</code> parameter, such as
-       <code>./configure --with-java=/usr/java</code>.</p>
+    <p>스크립트를 실행하기 전에 <code>JAVA_HOME</code> 환경 변수가 JDK의 기본 경로로 
+       설정되어야 합니다. 또는, <code>./configure</code> 스크립트를 호출하면 
+       --with-java 매개변수로 JDK의 경로를 지정해서 사용할 수 있습니다. 예를 들면 
+       <code>./configure --with-java=/usr/java</code> 같이 사용합니다.</p>
 
-    <p>Using the following commands should result in a compiled jsvc binary,
-       located in the <code>$CATALINA_HOME/bin</code> folder. This assumes
-       that GNU TAR is used, and that <code>CATALINA_HOME</code> is an
-       environment variable pointing to the base path of the Tomcat
-       installation.</p>
+    <p><code>$CATALINA_HOME/bin</code> 폴더에 있는 컴파일된 jsvc 바이너리 명령을 
+       사용하면 결과가 나옵니다. 이것은 GNU TAR를 사용하는 <code>CATALINA_HOME</code>은 
+       톰캣 설치의 기본 경로를 가리키는 환경 변수입니다.</p>
 
-    <p>Please note that you should use the GNU make (gmake) instead of
-       the native BSD make on FreeBSD systems.</p>
+    <p>FreeBSD 시스템의 기본 BSD make 대신 GNU make(gmake)를 사용해야 합니다.</p>
 
 <source>
     cd $CATALINA_HOME/bin
@@ -118,7 +107,7 @@
     cd ../..
 </source>
 
-    <p>Tomcat can then be run as a daemon using the following commands.</p>
+    <p>톰캣은 다음 명령을 사용하여 데몬으로 실행할 수 있습니다.</p>
 
 <source>
     cd $CATALINA_HOME
@@ -126,35 +115,32 @@
         -outfile ./logs/catalina.out -errfile ./logs/catalina.err \
         org.apache.catalina.startup.Bootstrap
 </source>
+ 
+ 
 
-    <p>You may also need to specify <code>-jvm server</code> if the JVM defaults
-       to using a server VM rather than a client VM. This has been observed on
-       OSX.</p>
+    <p>JVM의 기본 값은 서버 VM이 아닌 클라이언트 VM을 사용하는 경우에도 지정 
+       <code>-jvm server</code>로 할 수 있습니다. 이것은 OSX에서 보여졌습니다.</p>
 
-    <p>jsvc has other useful parameters, such as <code>-user</code> which
-       causes it to switch to another user after the daemon initialization is
-       complete. This allows, for example, running Tomcat as a non privileged
-       user while still being able to use privileged ports. Note that if you
-       use this option and start Tomcat as root, you&apos;ll need to disable the
-       <code>org.apache.catalina.security.SecurityListener</code> check that
-       prevents Tomcat starting when running as root.</p>
+    <p>jsvc 같은 사용자 데몬 초기화가 완료된 후 다른 사용자로 전환하는 원인이 기타 
+       유용한 매개 변수를 갖습니다. jsvc은 다른 유용한 매개 변수를 가지고 같은 사용자 
+       데몬 초기화가 완료된 후 jsvc는  다른 사용자로 전환됩니다. 예를 들면, 특권 포트를 
+       사용할 수 있는 반면 특권 사용자로 톰캣을 실행. 이 옵션을 사용하여 루트로 Tomcat을 시작하면, 
+       당신은 루트로 실행했을 때 시작 Tomcat을 방지 
+       <code>org.apache.catalina.security.SecurityListener</code> 체크를 해제해야 합니다.</p>
 
-    <p><code>jsvc --help</code> will return the full jsvc usage
-       information. In particular, the <code>-debug</code> option is useful
-       to debug issues running jsvc.</p>
+    <p><code>jsvc --help</code>는 전체 jsvc 사용 정보를 반환합니다. 특히, 
+       <code>-debug</code> 옵션은 jsvc 실행 이슈를 디버깅하는데 유용합니다.</p>
 
-    <p>The file <code>
-       $CATALINA_HOME/bin/commons-daemon-1.0.x-native-src/unix/native/Tomcat5.sh
-       </code> can be used as a template for starting Tomcat automatically at
-       boot time from <code>/etc/init.d</code>. The file is currently setup for
-       running Tomcat 5.5.x, so it will be necessary to edit it a little.</p>
+    <p><code>$CATALINA_HOME/bin/commons-daemon-1.0.x-native-src/unix/native/Tomcat5.sh
+       </code>파일은 시작을 위한 템플릿으로 사용할 수 있습니다. 톰캣은 자동으로 
+       <code>/etc/init.d</code>에서 부팅시간을 가진다. 파일은 현재 톰캣은 5.5.x 실행하기 
+       위한 설정이며, 그래서 약간의 편집이 필요합니다.</p>
 
-    <p>Note that the Commons-Daemon JAR file must be on your runtime classpath
-       to run Tomcat in this manner.  The Commons-Daemon JAR file is in the
-       Class-Path entry of the bootstrap.jar manifest, but if you get a
-       ClassNotFoundException or a NoClassDefFoundError for a Commons-Daemon
-       class, add the Commons-Daemon JAR to the -cp argument when launching
-       jsvc.</p>
+    <p>Commons-Daemon JAR 파일이 런타임에 이러한 방식으로 Tomcat을 실행하는 클래스패스에 
+       있어야 합니다. Commons-Daemon JAR 파일은 bootstrap.jar 매니페스트의 클래스패스 
+       항목에 있지만 Commons-Daemon 클래스에 대한 ClassNotFoundException 또는 
+       NoClassDefFoundError를 얻을 경우, jsvc를 시작할 때 -cp 인수로 
+       Commons-Daemon JAR를 추가합니다.</p>
 
   </section>
 

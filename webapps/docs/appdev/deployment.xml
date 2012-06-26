@@ -113,55 +113,51 @@
 
 <section name="공유 라이브러리 파일">
 
-<p> 대부분의 서블릿 컨네이너와 마찬가지로, Tomcat also supports mechanisms to install
-library JAR files (or unpacked classes) once, and make them visible to all
-installed web applications (without having to be included inside the web
-application itself.  The details of how Tomcat locates and shares such
-classes are described in the
-<a href="../class-loader-howto.html">Class Loader HOW-TO</a> documentation.
-The location commonly used within a Tomcat installation for shared code is
-<strong>$CATALINA_HOME/lib</strong>. JAR files placed here are visible both to
-web applications and internal Tomcat code. This is a good place to put JDBC
-drivers that are required for both your application or internal Tomcat use
-(such as for a JDBCRealm).</p>
+<p> 대부분의 서블릿 컨네이너와 마찬가지로, 톰캣 또한 한번 
+    JAR 파일 라이브러리(압축이 풀린 클래스) 설치, 그들을 모든 
+    설치된 웹 어플리케이션에서 볼 수 있도록 하는(웹 어플리케이션 자체내에 포함되어 있지 않아도 됩니다.) 
+    매커니즘을 제공하고 있습니다. 톰캣이 어떻게 그런 클래스들을 위치시키고 
+    공유하는지에 대한 설명은 <a href="../class-loader-howto.html">Class Loader HOW-TO</a>에 자세하게 
+    나와있습니다. 위치는 일반적으로 톰캣 설치에 사용된 
+    공유코드 <strong>$CATALINA_HOME/lib</strong>이내로 사용됩니다.
+    JAR 파일은 웹 어플리케이션과 톰캣 내부코드 둘이 볼 수 
+    있는 위치에 있습니다. 여기는 당신의 웹 어플리케이션이나 
+    톰캣 내부 두 곳에서 필요한 JDBC 드라이버를 놓기에 좋은 
+    장소입니다,(JDBCRealm 같은).</p>
 
-<p>Out of the box, a standard Tomcat installation includes a variety
-of pre-installed shared library files, including:</p>
+<p> 상자 밖에서, 표준 톰캣 설치는 다양한, 
+    이전에 설치되어 공유되는 라이브러리 파일들을 포함하고 있습니다. 
+    포함되는 것 들 입니다:</p>
 <ul>
-<li>The <em>Servlet 3.0</em> and <em>JSP 2.1</em> APIs that are fundamental
-    to writing servlets and JavaServer Pages.<br/><br/></li>
-<li>An <em>XML Parser</em> compliant with the JAXP (version 1.2) APIs, so
-    your application can perform DOM-based or SAX-based processing of
-    XML documents.<br/><br/></li>
+<li><em>Servlet 3.0</em>과 <em>JSP 2.1</em> API는 기본적으로 
+    서블릿과 자바서버 페이지를 작성하는데 기초가 됩니다. <br/><br/></li>
+<li><em>XML 파서</em>는 JAXP(1.2 버전) API와 호환됩니다. 즉 당신의 어플리케이션은
+    DOM에 기초하거나 SAX에 기초한 XML 문서 처리를 수행할 수 있습니다.<br/><br/></li>
 </ul>
 
 </section>
 
 
-<section name="Web Application Deployment Descriptor">
+<section name="웹 어플리케이션 배포 서술자">
 
-<p>As mentioned above, the <code>/WEB-INF/web.xml</code> file contains the
-Web Application Deployment Descriptor for your application.  As the filename
-extension implies, this file is an XML document, and defines everything about
-your application that a server needs to know (except the <em>context path</em>,
-which is assigned by the system administrator when the application is
-deployed).</p>
+<p> 위에서 언급한, <code>/WEB-INF/web.xml</code> 파일은 당신의 어플리케이션을 
+    위한 웹 어플리케이션 배포 서술자를 포함하고 있습니다.  파일 확장자에서 
+    알 수 있듯이, 이 파일은 XML문서이며, 당신의 어플리케이션에 대해 
+    서버가 알아야 할 모든 것이 정의되어 있습니다. (<em>context path</em> 예외,
+    그것은 시스템 관리자가 배포할 때 정의합니다.).</p>
 
-<p>The complete syntax and semantics for the deployment descriptor is defined
-in Chapter 13 of the Servlet API Specification, version 2.3.  Over time, it
-is expected that development tools will be provided that create and edit the
-deployment descriptor for you.  In the meantime, to provide a starting point,
-a <a href="web.xml.txt" target="_new">basic web.xml file</a>
-is provided.  This file includes comments that describe the purpose of each
-included element.</p>
+<p> 배포 기술자의 완벽한 문법과 의미는 서블릿 API 버전 2.3 정의서의 
+    챕터13에 정의되어 있습니다. 시간이 프르면, 개발툴이 당신을 위해서 
+    배포 서술자를 생성하고 편집하는 기능을 제공할 것이라고 예상이 됩니다.그동안은, 출발 지점을 제공하기 위해,
+    <a href="web.xml.txt" target="_new">basic web.xml 파일</a>가 제공됩니다.
+    이 파일은 각각의 요소들의 목적을 설명하는 주석을 포함하고 있습니다.</p>
 
-<p><strong>NOTE</strong> - The Servlet Specification includes a Document
-Type Descriptor (DTD) for the web application deployment descriptor, and
-Tomcat enforces the rules defined here when processing your application's
-<code>/WEB-INF/web.xml</code> file.  In particular, you <strong>must</strong>
-enter your descriptor elements (such as <code>&lt;filter&gt;</code>,
-<code>&lt;servlet&gt;</code>, and <code>&lt;servlet-mapping&gt;</code> in
-the order defined by the DTD (see Section 13.3).</p>
+<p> <strong>NOTE</strong> - 서블릿 명세서는 웹 어플리케이션 배포 서술자와 
+    톰캣이 당신의 어플리케이션의 <code>/WEB-INF/web.xml</code> 파일을 
+    처리할 때 시행할 정책을 위한 문서 타입 서술자(Document Type Descriptor, DTD)를 
+    포함하고 있습니다.  특별한 경우, 당신은 배포자 요소(<code>&lt;필터&gt;</code>,
+    <code>&lt;서블릿&gt;</code>, and <code>&lt;서블릿-매핑&gt;</code> 같은 것들)을 
+    DTD에 정의된 순서대로(구문 13.3을 보세요.) 입력해야만 합니다.</p>
 
 </section>
 
@@ -178,21 +174,20 @@ information on the Context element.</p>
 </section>
 
 
-<section name="Deployment With Tomcat">
+<section name="톰캣과 함께 배포">
 
     <blockquote><em>
-    <p>The description below uses the variable name $CATALINA_BASE to refer the
-    base directory against which most relative paths are resolved. If you have
-    not configured Tomcat for multiple instances by setting a CATALINA_BASE
-    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
-    the directory into which you have installed Tomcat.</p>
+    <p> 아래의 설명에 사용된 변수 이름 $CATALINA_BASE는 
+        대부분의 상대경로가 해결되는 데 대한 기본 디렉토리를
+        참조합니다. 만약 여러개의 톰캣을 위해 CATALINA_BASE 디렉토리를 
+        설정을 구성한 적이 없다면, $CATALINA_BASE의 값은 당신이 톰캣을 
+        설치했던 디렉도리로 설정이 될 것 입니다.</p>
     </em></blockquote>
 
-<p>In order to be executed, a web application must be deployed on
-a servlet container.  This is true even during development.
-We will describe using Tomcat to provide the execution environment.
-A web application can be deployed in Tomcat by one of the following
-approaches:</p>
+<p> 실행하기 위해서, 웹 어플리케이션은 
+    서블릿 컨테이너에 배포되어야만 합니다.  개발되는 동안에도 마찬가지 입니다.
+    우리는 톰캣을 이용하여 개발 환경을 제공하는 것을 설명할 것 입니다.
+    웹 어플리케이션은 다음 방법 중 하나를 통해 톰캣에서 배포될 수 있습니다.:</p>
 <ul>
 <li><em>Copy unpacked directory hierarchy into a subdirectory in directory
     <code>$CATALINA_BASE/webapps/</code></em>.  Tomcat will assign a

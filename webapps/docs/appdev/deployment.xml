@@ -23,105 +23,97 @@
   &project;
 
   <properties>
-    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
-    <title>Deployment</title>
+    <author email="craigmcc@apache.org">크레이그 R. 맥클라나한</author>
+    <title>배포</title>
   </properties>
 
 <body>
 
-<section name="Table of Contents">
+<section name="컨텐트 테이블">
 <toc/>
 </section>
 
-<section name="Background">
+<section name="배경">
 
-<p>Before describing how to organize your source code directories,
-it is useful to examine the runtime organization of a web application.
-Prior to the Servlet API Specification, version 2.2, there was little
-consistency between server platforms.  However, servers that conform
-to the 2.2 (or later) specification are required to accept a
-<em>Web Application Archive</em> in a standard format, which is discussed
-further below.</p>
+<p> 소스 코드 디렉토리를 어떻게 구조화시키는지 설명하기 전에, 
+    웹 어플리케이션의 실행 구조를 검사하는 것은 매우 유용합니다.
+    서블릿 버전 2.2 이전의 API 명세서에서는, 서버 플랫폼 간의 
+    작은 일관성이 있었습니다. 그러나, 2.2(그 이후)를 따르는 
+    명세서에서는 아래에 설명되어 있는 
+    표준 형식의 <em>웹 어플리케이션 파일 목록</em>에 동의하는 
+    것을 요구하고 있습니다.</p>
 
-<p>A web application is defined as a hierarchy of directories and files
-in a standard layout.  Such a hierarchy can be accessed in its "unpacked"
-form, where each directory and file exists in the filesystem separately,
-or in a "packed" form known as a Web ARchive, or WAR file.  The former format
-is more useful during development, while the latter is used when you
-distribute your application to be installed.</p>
+<p> 웹 어플리케이션은 표준 형식에 맞춰진 디렉토리및 파일의 계층 구조로 정의됩니다.
+    이러한 계층구조는 파일시스템에 따로 따로 정의된 파일이나 디렉토리 같은 '압축'되지 
+    않은 것이나, 웹 압축파일이나 WAR 파일같은 알려진 "압축"에 접근할 수 있습니다.
+    The former format
+    이전 형식은 개발할 때 좀 더 유리하며, 반면에 후자의 것은 
+    당신의 어플리케이션을 설치하도록 하기 위해 배포할 때 유리합니다.
+    </p>
 
-<p>The top-level directory of your web application hierarchy is also the
-<em>document root</em> of your application.  Here, you will place the HTML
-files and JSP pages that comprise your application's user interface.  When the
-system administrator deploys your application into a particular server, he
-or she assigns a <em>context path</em> to your application (a later section
-of this manual describes deployment on Tomcat).  Thus, if the
-system administrator assigns your application to the context path
-<code>/catalog</code>, then a request URI referring to
-<code>/catalog/index.html</code> will retrieve the <code>index.html</code>
-file from your document root.</p>
+<p> 당신의 웹 어플리케이션 계층에서 상위의 디렉토리는 웹 어플리케이션의 
+    <em>document root</em>가 됩니다. 당신은 웹 어플리케이션의 유저 인터페이스를 
+    구성하는 HTML 파일이나 JSP 파일을 넣게 될 것 입니다.  당신의 웹 어플리케이션 계층에서 상위의 디렉토리는 웹 어플리케이션의 
+    <em>document root</em>가 됩니다. 당신은 웹 어플리케이션의 유저 인터페이스를 
+    구성하는 HTML 파일이나 JSP 파일을 넣게 될 것 입니다.  시스템 관리자가 당신의 
+    어플리케이션을 특별한 서버에 배포한다면, 그나 그들은 당신의 
+    <em>context path</em>을 할당하게 됩니다.(다음 문단에서 톰캣에 배포하기 위한 메뉴얼이 정의되어 있습니다).   
+    그러므로, 만약 시스템 관리자가 당신의 어플리케이션은 context path<code>/catalog</code>에 할당한다면, 
+    <code>/catalog/index.html</code>를 참조한 요청 URI는
+    document root에 있는 <code>index.html</code> 파일을 검색할 것 입니다..</p>
 
 </section>
 
 
-<section name="Standard Directory Layout">
+<section name="표준 디렉토리 형식">
 
-<p>To facilitate creation of a Web Application Archive file in the required
-format, it is convenient to arrange the "executable" files of your web
-application (that is, the files that Tomcat actually uses when executing
-your app) in the same organization as required by the WAR format itself.
-To do this, you will end up with the following contents in your
-application's "document root" directory:</p>
+<p> 필요한 형식의 웹 응용 프로그램 압축파일을 생성하는 것을 촉진시키기 위해서는 
+    웹 어플리케이션의 "실행가능한" 파일을 준비하는 것이 편리합니다. (그것은 톰켓이 당신의 어플리케이션을 
+    실행시킬 때 실제로 사용하는 파일입니다.) 같은 조직화가 WAR 포멧 자체를 위해서 요구됩니다.
+    이렇게 하기 위해서는, 당신은 아래의 설명을 당신의 어플리케이션의 "Document root"에 끝내야 합니다.</p>
 <ul>
-<li><strong>*.html, *.jsp, etc.</strong> - The HTML and JSP pages, along
-    with other files that must be visible to the client browser (such as
-    JavaScript, stylesheet files, and images) for your application.
-    In larger applications you may choose to divide these files into
-    a subdirectory hierarchy, but for smaller apps, it is generally
-    much simpler to maintain only a single directory for these files.
+<li><strong>*.html, *.jsp, etc.</strong> - HTML, JSP 그 외 
+    파일(자바 스크립트, 스타일 시트 파일, 이미지)들은 당신의 
+    어플리케이션을 위해 사용자의 브라우저에 반드시 보여져야 합니다.
+    커다란 어플리케이션에서는 하위 디렉토리 구조에 그 파일들을 나누는 것을 선택할 수 있지만, 
+    작은 앱에서는 주로 그 파일들을 하나의 디렉토리로 유지시키는 것이 훨씬 간단합니다.
     <br/><br/></li>
-<li><strong>/WEB-INF/web.xml</strong> - The <em>Web Application Deployment
-    Descriptor</em> for your application.  This is an XML file describing
-    the servlets and other components that make up your application,
-    along with any initialization parameters and container-managed
-    security constraints that you want the server to enforce for you.
-    This file is discussed in more detail in the following subsection.
+<li><strong>/WEB-INF/web.xml</strong> -  당신의 어플리케이션의 
+    <em>웹 어플리케이션 배포 서술자</em>입니다.  이 XML파일은 당신 어플리케이션을 구성하는 
+    서블릿과 다른 컴포넌트들과 당신의 서버에서 시행되기를 원하는 컨테이너 관리 보안 제약을 구성하고 있습니다..
+    이 파일에 대해서 자세한 설명은 아래의 문단에서 설명하고 있습니다.
     <br/><br/></li>
-<li><strong>/WEB-INF/classes/</strong> - This directory contains any Java
-    class files (and associated resources) required for your application,
-    including both servlet and non-servlet classes, that are not combined
-    into JAR files.  If your classes are organized into Java packages,
-    you must reflect this in the directory hierarchy under
-    <code>/WEB-INF/classes/</code>.  For example, a Java class named
-    <code>com.mycompany.mypackage.MyServlet</code>
-    would need to be stored in a file named
-    <code>/WEB-INF/classes/com/mycompany/mypackage/MyServlet.class</code>.
+<li><strong>/WEB-INF/classes/</strong> - 이 디렉토리는 당신의 어플리케이션에서 요구하는, 
+    서블릿이나 서블리이 아닌, jar파일에 결합되어있지 않은 
+    자바클래스 파일(또는 관계되어 있는 자원)을 포함하고 있습니다.  
+    If your classes are organized into Java packages,
+    만약 당신의 클래스들이 자바 패키지로 조직되어 있다면, 반드시 <code>/WEB-INF/classes/</code>아래의 
+    디렉토리 구조에 이것을 반영해야 합니다.  예를 들어, <code>com.mycompany.mypackage.MyServlet</code>으로 
+    이름이 지어진 자바 클래스는 <code>/WEB-INF/classes/com/mycompany/mypackage/MyServlet.class</code>와 같은 
+    파일이름으로 저장되어져야 합니다.
     <br/><br/></li>
-<li><strong>/WEB-INF/lib/</strong> - This directory contains JAR files that
-    contain Java class files (and associated resources) required for your
-    application, such as third party class libraries or JDBC drivers.</li>
+<li><strong>/WEB-INF/lib/</strong> - 이 디렉토리는 당신 어플리케이션에서 필요한, 서드 파티 클래스 라이브러리나 ]
+    JDBC 드라이버 같은 자바 클래스 파일(또는 관련된 자원)을 
+    가지고 있는 JAR 파일을 포함합니다.</li>
 </ul>
 
-<p>When you install an application into Tomcat (or any other
-2.2/2.3-compatible server), the classes in the <code>WEB-INF/classes/</code>
-directory, as well as all classes in JAR files found in the
-<code>WEB-INF/lib/</code> directory, are made visible to other classes
-within your particular web application.  Thus, if
-you include all of the required library classes in one of these places (be
-sure to check licenses for redistribution rights for any third party libraries
-you utilize), you will simplify the installation of your web application --
-no adjustment to the system class path (or installation of global library
-files in your server) will be necessary.</p>
+<p> 톰캣(또는 다른 2.2/2.3 호환 서버) 안에 어플리케이션을 설치할 때, 클래스들은 <code>WEB-INF/classes/</code> 디렉토리 안에 
+    있습니다. 뿐만 아니라 특정 웹 어플리케이션에서 다른 클래스에게 표시되는, JAR 파일안의 
+    모든 클래스들은 <code>WEB-INF/lib/</code>에서 찾을 수 있습니다. 그러므로, 만약 당신이 이러한 위치중의 하나의 라이브러리 
+    클래스를 모두 포함하는 경우, 
+    (재배포 권리를 위해 당신이 활용했던 다른 서드 파티 라이브러리의 라이센스들을 체크해야 합니다.), 당신은 간단하게 
+    웹 어플리케이션의 설치를 간단히 힐 수 있습니다. --
+    시스템 클래스 패스 조정(또는 서버에 있는 전역 라이브러리 설치)이 필요없을 겁니다..</p>
 
-<p>Much of this information was extracted from Chapter 9 of the Servlet
-API Specification, version 2.3, which you should consult for more details.</p>
+<p> 여기의 대부분의 정보는 서블릿 버전 2.3 API 명세서에서 추출하였습니다. 
+    더 많은 정보를 원하시면 그것을 보셔야 합니다.</p>
 
 </section>
 
 
-<section name="Shared Library Files">
+<section name="공유 라이브러리 파일">
 
-<p>Like most servlet containers, Tomcat also supports mechanisms to install
+<p> 대부분의 서블릿 컨네이너와 마찬가지로, Tomcat also supports mechanisms to install
 library JAR files (or unpacked classes) once, and make them visible to all
 installed web applications (without having to be included inside the web
 application itself.  The details of how Tomcat locates and shares such

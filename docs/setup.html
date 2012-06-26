@@ -6,65 +6,58 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 26 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 설치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Windows">Windows</a></li><li><a href="#Unix_daemon">Unix daemon</a></li></ul>
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 27 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 설치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#Windows">Windows</a></li><li><a href="#Unix_daemon">Unix daemon</a></li></ul>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
     <p>
-    이 문서는 서로 다른 플랫폼에서 실행을 위해 톰캣을 설정하는 몇 가지 방법을 소개합니다. 
-    일부 고급 설치 이슈는 여기에 포함되지 않으니 양해해 주시기 바랍니다. 
-    전체 배포판 (ZIP 파일이나 타르볼)은  RUNNING.txt라는 파일이 포함되어 있는 
-    이러한 이슈에 대해 설명합니다. 우리는 아래의 정보가 귀하의 질문에 어떤 답도 되지 
-    않는다면 당신이 그것을 참조하시기 바랍니다.
+      이 문서는 다른 플랫폼에서 Tomcat을 실행하기 위해 설정하는 몇 가지 방법을 소개합니다.
+	  일부 고급 설정 문제는 여기에 포함되지 않으므로 주의 : 전체 배포(ZIP 파일 또는 타볼 (tarball))에는 이러한 문제에 대해 설명하는
+	  RUNNING.txt라는 파일이 포함되어 있습니다. 우리는 아래의 정보가 귀하의 질문에 어떤 대답도 되지 않는다면 당신이 그것을 참조하기를 바랍니다.
     </p>
   </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Windows"><strong>Windows</strong></a></font></td></tr><tr><td><blockquote>
 
     <p>
-      윈도우에서 윈도우 인스톨러를 사용하여 쉽게 톰캣을 설치할 수 있습니다. 
-      그것의 인터페이스와 기능은 관심이 있는 몇 항목으로 다른 마법사 기반의 설치와 
-      비슷합니다.
+      윈도우에서 톰캣 설치는 윈도우 인스톨러(Windows installer)를 사용하여 쉽게 수행할 수 있습니다. 
+	  그것의 인터페이스와 기능은 관심있는 몇 항목으로 다른 마법사 기반 설치와 비슷합니다.
     </p>
 
     <p>
       <ul>
-        <li><strong>서비스로 설치</strong>: 톰캣이 선택되는 설정에 상관없이 
-            윈도우 서비스로 설치됩니다. 구성 요소 페이지에서 확인란을 사용하면 윈도우를 시작할 때 
-            톰캣이 자동으로 시작되도록, "자동"시작으로 서비스를 설정합니다. 최적의 보안을 위해 
-            서비스 축소 권한 (Windows 서비스 관리 도구 및 설명서를 참조)과 함께 별도의 사용자로 
-            실행해야 합니다.</li>
-        <li><strong>자바 위치</strong>: 
-            설치 프로그램이 서비스를 실행하는 데 사용하는 기본 JRE를 제공합니다. 설치 프로그램은 
-            전체 JDK의 일부로 설치된 JRE를 포함한 자바6 이상 JRE의 기본 경로를 결정하기 위해 
-            레지스트리를 사용합니다. 64비트 운영체제에서 실행하면 설치 관리자는 먼저 64비트 
-            JRE를 찾고 64비트 JRE가 발견되지 않은 경우에만 32
-            비트 JRE를 찾습니다. 설치 프로그램에 의해 발견된 기본 JRE 사용이 강제적인 것은 아닙니다. 
-            설치된 자바6 또는 JRE (32비트 또는 64비트)를 사용할 수 있습니다.</li>
-        <li><strong>트레이 아이콘</strong>: 톰캣이 실행될 때 톰캣이 서비스로 실행하게 된다면 
-            어떤 트레이 아이콘도 없을 것입니다. 톰캣이 서비스로 설치되어 있어도, 설치 마지막에 
-            톰캣을 실행하도록 선택하면 트레이 아이콘도 사용됩니다.</li>
-        <li>윈도우 서비스로 Tomcat을 관리하는 방법에 대한 정보가 필요하다면 
-            <a href="windows-service-howto.html">윈도우 서비스 HOW-TO</a>를 참조하세요.
-            </li>
+        <li><strong>서비스 설치</strong>: 
+		    톰캣은 선택되는 설정에 상관없이 Windows 서비스로 설치될 것입니다.
+            구성 요소 페이지에서 확인란을 사용하면 Windows를 시작할 때 톰캣이 자동으로 시작되도록, "자동"시작으로 서비스를 설정합니다.
+			최적의 보안을 위해 서비스 축소 권한 (Windows 서비스 관리 도구 및 설명서를 참조)과 함께 별도의 사용자로 실행해야합니다.
+		</li>
+        <li><strong>자바 위치</strong>: 인스톨러(installer)가 서비스를 실행하는 데 사용하는 기본 JRE를 제공할 것입니다. 
+			인스톨러(installer)는 전체 JDK의 일부로 설치된 JRE를 포함한 자바 6 이상 JRE의 기본 경로를 결정하기 위해 레지스트리를 사용합니다.
+			64 비트 운영 체제에서 실행하면 인스톨러(installer)는 먼저 64 비트 JRE를 찾고 64 비트 JRE가 발견되지 않은 경우에만 32 비트 JRE를 찾습니다. 
+			이것은 인스톨러(installer)에 의해 감지된 기본 JRE를 사용해야만 한다는 것은 아닙니다. 설치된 자바 6 이상 JRE (32 비트 또는 64 비트)를 사용할 수 있습니다.
+		</li>
+        <li><strong>Tray icon</strong>: 톰캣을 서비스로 실행할 때, 톰캣이 실행되면 현재 어떤 트레이 아이콘이 없을 것입니다. 
+			톰캣이 서비스로 설치되어 있는 경우 설치 종료 시에 톰캣을 실행하도록 선택하면 트레이 아이콘도 사용됩니다.</li>
+        <li>윈도우 서비스로서 톰캣을 관리하는 방법에 대한 자세한 내용은 <a href="windows-service-howto.html">윈도우 서비스를 참조하는 방법</a>를 참조하십시오.</li>            
       </ul>
     </p>
 
-    <p>인스톨러는 톰캣의 시작 및 설정 바로가기를 만듭니다. 중요한 것은 톰캣이 실행되어야만 톰캣 
-       관리 웹 응용 프로그램을 사용할 수 있다는 것입니다.</p>
+    <p>인스톨러(installer)는 Tomcat을 시작 및 구성을 할 수 있도록 바로 가기를 만듭니다. 
+	    그것은 톰캣이 실행되면 톰캣 관리 웹 응용 프로그램에서만 사용할 수 있다는 것이 중요합니다.
+	</p>
 
   </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Unix daemon"><!--()--></a><a name="Unix_daemon"><strong>Unix daemon</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>톰캣은 common-demon 프로젝트에서 jsvc 도구를 사용하여 데몬을 실행할 수 있습니다. 
-       jsvc의 소스 타르볼은 톰캣 바이너리와 함께 제공되고 컴파일이 필요합니다. 
-       만드는 jsvc는 C ANSI 컴파일러 (예 : GCC 등), GNU의 Autoconf, 그리고 
-       JDK가 필요합니다. </p>
+    <p>톰캣은 커먼즈-데몬 프로젝트에서 jsvc 도구를 사용하여 데몬으로 실행할 수 있습니다. 
+	   jsvc의 소스 tarballs는 톰캣 바이너리와 함께 제공하며 컴파일해야 합니다. 
+	   빌딩 jsvc는 C ANSI 컴파일러 (예 : GCC 등), GNU의 Autoconf, 그리고 JDK가 필요합니다.
+	</p>
 
-    <p>스크립트를 실행하기 전에 <code>JAVA_HOME</code> 환경 변수가 JDK의 기본 경로로 
-       설정되어야 합니다. 또는, <code>./configure</code> 스크립트를 호출하면 
-       --with-java 매개변수로 JDK의 경로를 지정해서 사용할 수 있습니다. 예를 들면 
-       <code>./configure --with-java=/usr/java</code> 같이 사용합니다.</p>
+    <p>스크립트를 실행하기 전에 <code> JAVA_HOME </code>이 환경 변수가 JDK의 기본 경로로서 설정되어야합니다.
+	   반면, <code>./configure</code> 스크립트를 호출했을 때, JDK의 경로가 <code>./configure --with-java=/usr/java</code>와 같은 
+	   <code>--with-java</code> 매개 변수를 사용하여 지정할 수 있습니다
+	</p>
 
-    <p><code>$CATALINA_HOME/bin</code> 폴더에 있는 컴파일된 jsvc 바이너리 명령을 
-       사용하면 결과가 나옵니다. 이것은 GNU TAR를 사용하는 <code>CATALINA_HOME</code>은 
-       톰캣 설치의 기본 경로를 가리키는 환경 변수입니다.</p>
+    <p>다음 명령을 사용하면 <code>$CATALINA_HOME/bin</code> 폴더에 컴파일된 jsvc 바이너리가 생겨난다.
+	   이 사용되고 있는 GNU TAR와 <code>CATALINA_HOME</code>는 톰캣 설치의 기본 경로를 가리키는 환경 변수입니다.
+	</p>
 
     <p>FreeBSD 시스템의 기본 BSD make 대신 GNU make(gmake)를 사용해야 합니다.</p>
 
@@ -86,32 +79,26 @@
         -outfile ./logs/catalina.out -errfile ./logs/catalina.err \
         org.apache.catalina.startup.Bootstrap
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
- 
- 
 
-    <p>JVM의 기본 값은 서버 VM이 아닌 클라이언트 VM을 사용하는 경우에도 지정 
-       <code>-jvm server</code>로 할 수 있습니다. 이것은 OSX에서 보여졌습니다.</p>
+    <p>당신은 또한 JVM의 기본값들을 서버 VM이 아닌 클라이언트 VM을 사용하는 경우 BB를 지정해야 할 수도 있습니다. 이것은 OSX에서 감시합니다.</p>
 
-    <p>jsvc 같은 사용자 데몬 초기화가 완료된 후 다른 사용자로 전환하는 원인이 기타 
-       유용한 매개 변수를 갖습니다. jsvc은 다른 유용한 매개 변수를 가지고 같은 사용자 
-       데몬 초기화가 완료된 후 jsvc는  다른 사용자로 전환됩니다. 예를 들면, 특권 포트를 
-       사용할 수 있는 반면 특권 사용자로 톰캣을 실행. 이 옵션을 사용하여 루트로 Tomcat을 시작하면, 
-       당신은 루트로 실행했을 때 시작 Tomcat을 방지 
-       <code>org.apache.catalina.security.SecurityListener</code> 체크를 해제해야 합니다.</p>
+    <p>jsvc는 데몬 초기화가 완료된 후 그것이 다른 사용자로 전환하는 원인이 같은 <code>-user</code>와 같은 다른 유용한 매개 변수를 갖습니다.
+	   예를 들어,이것은 여전히 특권 포트를 사용할 수있는 상태가 아닌 특권 사용자로서 Tomcat을 실행하실 수 있습니다. 
+	   이 옵션을 사용하여 루트로서 Tomcat을 시작하면, 당신이 루트로서 실행할 때 시작하는 Tomcat을 방지할 수 있도록 
+	   <code>org.apache.catalina.security.SecurityListener</code> 체크를 해제해야합니다.</p>
 
-    <p><code>jsvc --help</code>는 전체 jsvc 사용 정보를 반환합니다. 특히, 
-       <code>-debug</code> 옵션은 jsvc 실행 이슈를 디버깅하는데 유용합니다.</p>
+    <p><code>jsvc --help</code>는 전체 jsvc 사용 정보를 반환합니다. 
+		특히, <code>-debug</code> 옵션은 jsvc를 실행하는 문제를 디버깅하는 데 유용합니다.</p>
 
-    <p><code>$CATALINA_HOME/bin/commons-daemon-1.0.x-native-src/unix/native/Tomcat5.sh
-       </code>파일은 시작을 위한 템플릿으로 사용할 수 있습니다. 톰캣은 자동으로 
-       <code>/etc/init.d</code>에서 부팅시간을 가진다. 파일은 현재 톰캣은 5.5.x 실행하기 
-       위한 설정이며, 그래서 약간의 편집이 필요합니다.</p>
+    <p>파일은 <code>$CATALINA_HOME/bin/commons-daemon-1.0.x-native-src/unix/native/Tomcat5.sh</code>가 
+	   <code>/etc/init.d</code>에서 부팅할 때 자동으로 Tomcat을 시작하기 위한 템플릿으로 사용할 수 있습니다.
+	   파일은 현재 톰캣 5.5.x 실행하기 위한 설정이며, 그것은 약간의 편집이 필요합니다.</p>
 
-    <p>Commons-Daemon JAR 파일이 런타임에 이러한 방식으로 Tomcat을 실행하는 클래스패스에 
-       있어야 합니다. Commons-Daemon JAR 파일은 bootstrap.jar 매니페스트의 클래스패스 
-       항목에 있지만 Commons-Daemon 클래스에 대한 ClassNotFoundException 또는 
-       NoClassDefFoundError를 얻을 경우, jsvc를 시작할 때 -cp 인수로 
-       Commons-Daemon JAR를 추가합니다.</p>
+    <p>커먼즈-데몬 JAR 파일이 이러한 방식으로 Tomcat을 실행하기 위해서는 클래스 경로에 런타임이 있어야합니다.  
+	   커먼즈-데몬 JAR 파일은 bootstrap.jar 매니 페스트의 클래스 경로 항목에 있지만 
+	   커먼즈-데몬 클래스에 대한 ClassNotFoundException 또는 NoClassDefFoundError를 얻을 경우,
+	   jsvc을 출시할 때 -CP 요소로 커먼즈-데몬 JAR를 추가합니다.
+	</p>
 
   </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>
         Copyright &copy; 1999-2012, Apache Software Foundation

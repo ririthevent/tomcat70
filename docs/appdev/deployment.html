@@ -1,4 +1,4 @@
-<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Application Developer's Guide (7.0.28-dev) - Deployment</title><meta name="author" content="Craig R. McClanahan"><style type="text/css" media="print">
+<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Application Developer's Guide (7.0.28-dev) - 배포</title><meta name="author" content="크레이그 R. 맥클라나한"><style type="text/css" media="print">
             .noPrint {display: none;}
             td#mainBody {width: 100%;}
         </style><style type="text/css">
@@ -6,205 +6,191 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="../images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 26 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li></ul><p><strong>Contents</strong></p><ul><li><a href="index.html">Contents</a></li><li><a href="introduction.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="deployment.html">Deployment</a></li><li><a href="source.html">Source Code</a></li><li><a href="processes.html">Processes</a></li><li><a href="sample/">Example App</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Deployment</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#Background">Background</a></li><li><a href="#Standard_Directory_Layout">Standard Directory Layout</a></li><li><a href="#Shared_Library_Files">Shared Library Files</a></li><li><a href="#Web_Application_Deployment_Descriptor">Web Application Deployment Descriptor</a></li><li><a href="#Tomcat_Context_Descriptor">Tomcat Context Descriptor</a></li><li><a href="#Deployment_With_Tomcat">Deployment With Tomcat</a></li></ul>
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Background"><strong>Background</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 27 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li></ul><p><strong>Contents</strong></p><ul><li><a href="index.html">Contents</a></li><li><a href="introduction.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="deployment.html">Deployment</a></li><li><a href="source.html">Source Code</a></li><li><a href="processes.html">Processes</a></li><li><a href="sample/">Example App</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>배포</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%90%ED%8A%B8 %ED%85%8C%EC%9D%B4%EB%B8%94"><!--()--></a><a name="%EC%BB%A8%ED%85%90%ED%8A%B8_%ED%85%8C%EC%9D%B4%EB%B8%94"><strong>컨텐트 테이블</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EB%B0%B0%EA%B2%BD">배경</a></li><li><a href="#%ED%91%9C%EC%A4%80_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC_%ED%98%95%EC%8B%9D">표준 디렉토리 형식</a></li><li><a href="#%EA%B3%B5%EC%9C%A0_%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC_%ED%8C%8C%EC%9D%BC">공유 라이브러리 파일</a></li><li><a href="#%EC%9B%B9_%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EB%B0%B0%ED%8F%AC_%EC%84%9C%EC%88%A0%EC%9E%90">웹 어플리케이션 배포 서술자</a></li><li><a href="#%ED%86%B0%EC%BA%A3_%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8_%EB%B0%B0%ED%8F%AC%EC%9E%90">톰캣 컨텍스트 배포자</a></li><li><a href="#%ED%86%B0%EC%BA%A3%EA%B3%BC_%ED%95%A8%EA%BB%98_%EB%B0%B0%ED%8F%AC">톰캣과 함께 배포</a></li></ul>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%B0%B0%EA%B2%BD"><strong>배경</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>Before describing how to organize your source code directories,
-it is useful to examine the runtime organization of a web application.
-Prior to the Servlet API Specification, version 2.2, there was little
-consistency between server platforms.  However, servers that conform
-to the 2.2 (or later) specification are required to accept a
-<em>Web Application Archive</em> in a standard format, which is discussed
-further below.</p>
+<p> 소스 코드 디렉토리를 어떻게 구조화시키는지 설명하기 전에, 
+    웹 어플리케이션의 실행 구조를 검사하는 것은 매우 유용합니다.
+    서블릿 버전 2.2 이전의 API 명세서에서는, 서버 플랫폼 간의 
+    작은 일관성이 있었습니다. 그러나, 2.2(그 이후)를 따르는 
+    명세서에서는 아래에 설명되어 있는 
+    표준 형식의 <em>웹 어플리케이션 파일 목록</em>에 동의하는 
+    것을 요구하고 있습니다.</p>
 
-<p>A web application is defined as a hierarchy of directories and files
-in a standard layout.  Such a hierarchy can be accessed in its "unpacked"
-form, where each directory and file exists in the filesystem separately,
-or in a "packed" form known as a Web ARchive, or WAR file.  The former format
-is more useful during development, while the latter is used when you
-distribute your application to be installed.</p>
+<p> 웹 어플리케이션은 표준 형식에 맞춰진 디렉토리및 파일의 계층 구조로 정의됩니다.
+    이러한 계층구조는 파일시스템에 따로 따로 정의된 파일이나 디렉토리 같은 '압축'되지 
+    않은 것이나, 웹 압축파일이나 WAR 파일같은 알려진 "압축"에 접근할 수 있습니다.
+    The former format
+    이전 형식은 개발할 때 좀 더 유리하며, 반면에 후자의 것은 
+    당신의 어플리케이션을 설치하도록 하기 위해 배포할 때 유리합니다.
+    </p>
 
-<p>The top-level directory of your web application hierarchy is also the
-<em>document root</em> of your application.  Here, you will place the HTML
-files and JSP pages that comprise your application's user interface.  When the
-system administrator deploys your application into a particular server, he
-or she assigns a <em>context path</em> to your application (a later section
-of this manual describes deployment on Tomcat).  Thus, if the
-system administrator assigns your application to the context path
-<code>/catalog</code>, then a request URI referring to
-<code>/catalog/index.html</code> will retrieve the <code>index.html</code>
-file from your document root.</p>
+<p> 당신의 웹 어플리케이션 계층에서 상위의 디렉토리는 웹 어플리케이션의 
+    <em>document root</em>가 됩니다. 당신은 웹 어플리케이션의 유저 인터페이스를 
+    구성하는 HTML 파일이나 JSP 파일을 넣게 될 것 입니다.  당신의 웹 어플리케이션 계층에서 상위의 디렉토리는 웹 어플리케이션의 
+    <em>document root</em>가 됩니다. 당신은 웹 어플리케이션의 유저 인터페이스를 
+    구성하는 HTML 파일이나 JSP 파일을 넣게 될 것 입니다.  시스템 관리자가 당신의 
+    어플리케이션을 특별한 서버에 배포한다면, 그나 그들은 당신의 
+    <em>context path</em>을 할당하게 됩니다.(다음 문단에서 톰캣에 배포하기 위한 메뉴얼이 정의되어 있습니다).   
+    그러므로, 만약 시스템 관리자가 당신의 어플리케이션은 context path<code>/catalog</code>에 할당한다면, 
+    <code>/catalog/index.html</code>를 참조한 요청 URI는
+    document root에 있는 <code>index.html</code> 파일을 검색할 것 입니다..</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Standard Directory Layout"><!--()--></a><a name="Standard_Directory_Layout"><strong>Standard Directory Layout</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%ED%91%9C%EC%A4%80 %EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC %ED%98%95%EC%8B%9D"><!--()--></a><a name="%ED%91%9C%EC%A4%80_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC_%ED%98%95%EC%8B%9D"><strong>표준 디렉토리 형식</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>To facilitate creation of a Web Application Archive file in the required
-format, it is convenient to arrange the "executable" files of your web
-application (that is, the files that Tomcat actually uses when executing
-your app) in the same organization as required by the WAR format itself.
-To do this, you will end up with the following contents in your
-application's "document root" directory:</p>
+<p> 필요한 형식의 웹 응용 프로그램 압축파일을 생성하는 것을 촉진시키기 위해서는 
+    웹 어플리케이션의 "실행가능한" 파일을 준비하는 것이 편리합니다. (그것은 톰켓이 당신의 어플리케이션을 
+    실행시킬 때 실제로 사용하는 파일입니다.) 같은 조직화가 WAR 포멧 자체를 위해서 요구됩니다.
+    이렇게 하기 위해서는, 당신은 아래의 설명을 당신의 어플리케이션의 "Document root"에 끝내야 합니다.</p>
 <ul>
-<li><strong>*.html, *.jsp, etc.</strong> - The HTML and JSP pages, along
-    with other files that must be visible to the client browser (such as
-    JavaScript, stylesheet files, and images) for your application.
-    In larger applications you may choose to divide these files into
-    a subdirectory hierarchy, but for smaller apps, it is generally
-    much simpler to maintain only a single directory for these files.
+<li><strong>*.html, *.jsp, etc.</strong> - HTML, JSP 그 외 
+    파일(자바 스크립트, 스타일 시트 파일, 이미지)들은 당신의 
+    어플리케이션을 위해 사용자의 브라우저에 반드시 보여져야 합니다.
+    커다란 어플리케이션에서는 하위 디렉토리 구조에 그 파일들을 나누는 것을 선택할 수 있지만, 
+    작은 앱에서는 주로 그 파일들을 하나의 디렉토리로 유지시키는 것이 훨씬 간단합니다.
     <br><br></li>
-<li><strong>/WEB-INF/web.xml</strong> - The <em>Web Application Deployment
-    Descriptor</em> for your application.  This is an XML file describing
-    the servlets and other components that make up your application,
-    along with any initialization parameters and container-managed
-    security constraints that you want the server to enforce for you.
-    This file is discussed in more detail in the following subsection.
+<li><strong>/WEB-INF/web.xml</strong> -  당신의 어플리케이션의 
+    <em>웹 어플리케이션 배포 서술자</em>입니다.  이 XML파일은 당신 어플리케이션을 구성하는 
+    서블릿과 다른 컴포넌트들과 당신의 서버에서 시행되기를 원하는 컨테이너 관리 보안 제약을 구성하고 있습니다..
+    이 파일에 대해서 자세한 설명은 아래의 문단에서 설명하고 있습니다.
     <br><br></li>
-<li><strong>/WEB-INF/classes/</strong> - This directory contains any Java
-    class files (and associated resources) required for your application,
-    including both servlet and non-servlet classes, that are not combined
-    into JAR files.  If your classes are organized into Java packages,
-    you must reflect this in the directory hierarchy under
-    <code>/WEB-INF/classes/</code>.  For example, a Java class named
-    <code>com.mycompany.mypackage.MyServlet</code>
-    would need to be stored in a file named
-    <code>/WEB-INF/classes/com/mycompany/mypackage/MyServlet.class</code>.
+<li><strong>/WEB-INF/classes/</strong> - 이 디렉토리는 당신의 어플리케이션에서 요구하는, 
+    서블릿이나 서블리이 아닌, jar파일에 결합되어있지 않은 
+    자바클래스 파일(또는 관계되어 있는 자원)을 포함하고 있습니다.  
+    If your classes are organized into Java packages,
+    만약 당신의 클래스들이 자바 패키지로 조직되어 있다면, 반드시 <code>/WEB-INF/classes/</code>아래의 
+    디렉토리 구조에 이것을 반영해야 합니다.  예를 들어, <code>com.mycompany.mypackage.MyServlet</code>으로 
+    이름이 지어진 자바 클래스는 <code>/WEB-INF/classes/com/mycompany/mypackage/MyServlet.class</code>와 같은 
+    파일이름으로 저장되어져야 합니다.
     <br><br></li>
-<li><strong>/WEB-INF/lib/</strong> - This directory contains JAR files that
-    contain Java class files (and associated resources) required for your
-    application, such as third party class libraries or JDBC drivers.</li>
+<li><strong>/WEB-INF/lib/</strong> - 이 디렉토리는 당신 어플리케이션에서 필요한, 서드 파티 클래스 라이브러리나 ]
+    JDBC 드라이버 같은 자바 클래스 파일(또는 관련된 자원)을 
+    가지고 있는 JAR 파일을 포함합니다.</li>
 </ul>
 
-<p>When you install an application into Tomcat (or any other
-2.2/2.3-compatible server), the classes in the <code>WEB-INF/classes/</code>
-directory, as well as all classes in JAR files found in the
-<code>WEB-INF/lib/</code> directory, are made visible to other classes
-within your particular web application.  Thus, if
-you include all of the required library classes in one of these places (be
-sure to check licenses for redistribution rights for any third party libraries
-you utilize), you will simplify the installation of your web application --
-no adjustment to the system class path (or installation of global library
-files in your server) will be necessary.</p>
+<p> 톰캣(또는 다른 2.2/2.3 호환 서버) 안에 어플리케이션을 설치할 때, 클래스들은 <code>WEB-INF/classes/</code> 디렉토리 안에 
+    있습니다. 뿐만 아니라 특정 웹 어플리케이션에서 다른 클래스에게 표시되는, JAR 파일안의 
+    모든 클래스들은 <code>WEB-INF/lib/</code>에서 찾을 수 있습니다. 그러므로, 만약 당신이 이러한 위치중의 하나의 라이브러리 
+    클래스를 모두 포함하는 경우, 
+    (재배포 권리를 위해 당신이 활용했던 다른 서드 파티 라이브러리의 라이센스들을 체크해야 합니다.), 당신은 간단하게 
+    웹 어플리케이션의 설치를 간단히 힐 수 있습니다. --
+    시스템 클래스 패스 조정(또는 서버에 있는 전역 라이브러리 설치)이 필요없을 겁니다..</p>
 
-<p>Much of this information was extracted from Chapter 9 of the Servlet
-API Specification, version 2.3, which you should consult for more details.</p>
+<p> 여기의 대부분의 정보는 서블릿 버전 2.3 API 명세서에서 추출하였습니다. 
+    더 많은 정보를 원하시면 그것을 보셔야 합니다.</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Shared Library Files"><!--()--></a><a name="Shared_Library_Files"><strong>Shared Library Files</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EA%B3%B5%EC%9C%A0 %EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC %ED%8C%8C%EC%9D%BC"><!--()--></a><a name="%EA%B3%B5%EC%9C%A0_%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC_%ED%8C%8C%EC%9D%BC"><strong>공유 라이브러리 파일</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>Like most servlet containers, Tomcat also supports mechanisms to install
-library JAR files (or unpacked classes) once, and make them visible to all
-installed web applications (without having to be included inside the web
-application itself.  The details of how Tomcat locates and shares such
-classes are described in the
-<a href="../class-loader-howto.html">Class Loader HOW-TO</a> documentation.
-The location commonly used within a Tomcat installation for shared code is
-<strong>$CATALINA_HOME/lib</strong>. JAR files placed here are visible both to
-web applications and internal Tomcat code. This is a good place to put JDBC
-drivers that are required for both your application or internal Tomcat use
-(such as for a JDBCRealm).</p>
+<p> 대부분의 서블릿 컨네이너와 마찬가지로, 톰캣 또한 한번 
+    JAR 파일 라이브러리(압축이 풀린 클래스) 설치, 그들을 모든 
+    설치된 웹 어플리케이션에서 볼 수 있도록 하는(웹 어플리케이션 자체내에 포함되어 있지 않아도 됩니다.) 
+    매커니즘을 제공하고 있습니다. 톰캣이 어떻게 그런 클래스들을 위치시키고 
+    공유하는지에 대한 설명은 <a href="../class-loader-howto.html">Class Loader HOW-TO</a>에 자세하게 
+    나와있습니다. 위치는 일반적으로 톰캣 설치에 사용된 
+    공유코드 <strong>$CATALINA_HOME/lib</strong>이내로 사용됩니다.
+    JAR 파일은 웹 어플리케이션과 톰캣 내부코드 둘이 볼 수 
+    있는 위치에 있습니다. 여기는 당신의 웹 어플리케이션이나 
+    톰캣 내부 두 곳에서 필요한 JDBC 드라이버를 놓기에 좋은 
+    장소입니다,(JDBCRealm 같은).</p>
 
-<p>Out of the box, a standard Tomcat installation includes a variety
-of pre-installed shared library files, including:</p>
+<p> 상자 밖에서, 표준 톰캣 설치는 다양한, 
+    이전에 설치되어 공유되는 라이브러리 파일들을 포함하고 있습니다. 
+    포함되는 것 들 입니다:</p>
 <ul>
-<li>The <em>Servlet 3.0</em> and <em>JSP 2.1</em> APIs that are fundamental
-    to writing servlets and JavaServer Pages.<br><br></li>
-<li>An <em>XML Parser</em> compliant with the JAXP (version 1.2) APIs, so
-    your application can perform DOM-based or SAX-based processing of
-    XML documents.<br><br></li>
+<li><em>Servlet 3.0</em>과 <em>JSP 2.1</em> API는 기본적으로 
+    서블릿과 자바서버 페이지를 작성하는데 기초가 됩니다. <br><br></li>
+<li><em>XML 파서</em>는 JAXP(1.2 버전) API와 호환됩니다. 즉 당신의 어플리케이션은
+    DOM에 기초하거나 SAX에 기초한 XML 문서 처리를 수행할 수 있습니다.<br><br></li>
 </ul>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Web Application Deployment Descriptor"><!--()--></a><a name="Web_Application_Deployment_Descriptor"><strong>Web Application Deployment Descriptor</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%9B%B9 %EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98 %EB%B0%B0%ED%8F%AC %EC%84%9C%EC%88%A0%EC%9E%90"><!--()--></a><a name="%EC%9B%B9_%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EB%B0%B0%ED%8F%AC_%EC%84%9C%EC%88%A0%EC%9E%90"><strong>웹 어플리케이션 배포 서술자</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>As mentioned above, the <code>/WEB-INF/web.xml</code> file contains the
-Web Application Deployment Descriptor for your application.  As the filename
-extension implies, this file is an XML document, and defines everything about
-your application that a server needs to know (except the <em>context path</em>,
-which is assigned by the system administrator when the application is
-deployed).</p>
+<p> 위에서 언급한, <code>/WEB-INF/web.xml</code> 파일은 당신의 어플리케이션을 
+    위한 웹 어플리케이션 배포 서술자를 포함하고 있습니다.  파일 확장자에서 
+    알 수 있듯이, 이 파일은 XML문서이며, 당신의 어플리케이션에 대해 
+    서버가 알아야 할 모든 것이 정의되어 있습니다. (<em>context path</em> 예외,
+    그것은 시스템 관리자가 배포할 때 정의합니다.).</p>
 
-<p>The complete syntax and semantics for the deployment descriptor is defined
-in Chapter 13 of the Servlet API Specification, version 2.3.  Over time, it
-is expected that development tools will be provided that create and edit the
-deployment descriptor for you.  In the meantime, to provide a starting point,
-a <a href="web.xml.txt">basic web.xml file</a>
-is provided.  This file includes comments that describe the purpose of each
-included element.</p>
+<p> 배포 기술자의 완벽한 문법과 의미는 서블릿 API 버전 2.3 정의서의 
+    챕터13에 정의되어 있습니다. 시간이 프르면, 개발툴이 당신을 위해서 
+    배포 서술자를 생성하고 편집하는 기능을 제공할 것이라고 예상이 됩니다.그동안은, 출발 지점을 제공하기 위해,
+    <a href="web.xml.txt">basic web.xml 파일</a>가 제공됩니다.
+    이 파일은 각각의 요소들의 목적을 설명하는 주석을 포함하고 있습니다.</p>
 
-<p><strong>NOTE</strong> - The Servlet Specification includes a Document
-Type Descriptor (DTD) for the web application deployment descriptor, and
-Tomcat enforces the rules defined here when processing your application's
-<code>/WEB-INF/web.xml</code> file.  In particular, you <strong>must</strong>
-enter your descriptor elements (such as <code>&lt;filter&gt;</code>,
-<code>&lt;servlet&gt;</code>, and <code>&lt;servlet-mapping&gt;</code> in
-the order defined by the DTD (see Section 13.3).</p>
+<p> <strong>NOTE</strong> - 서블릿 명세서는 웹 어플리케이션 배포 서술자와 
+    톰캣이 당신의 어플리케이션의 <code>/WEB-INF/web.xml</code> 파일을 
+    처리할 때 시행할 정책을 위한 문서 타입 서술자(Document Type Descriptor, DTD)를 
+    포함하고 있습니다.  특별한 경우, 당신은 배포자 요소(<code>&lt;필터&gt;</code>,
+    <code>&lt;서블릿&gt;</code>, and <code>&lt;서블릿-매핑&gt;</code> 같은 것들)을 
+    DTD에 정의된 순서대로(구문 13.3을 보세요.) 입력해야만 합니다.</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Tomcat Context Descriptor"><!--()--></a><a name="Tomcat_Context_Descriptor"><strong>Tomcat Context Descriptor</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%ED%86%B0%EC%BA%A3 %EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8 %EB%B0%B0%ED%8F%AC%EC%9E%90"><!--()--></a><a name="%ED%86%B0%EC%BA%A3_%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8_%EB%B0%B0%ED%8F%AC%EC%9E%90"><strong>톰캣 컨텍스트 배포자</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>A /META-INF/context.xml file can be used to define Tomcat specific
-configuration options, such as loggers, data sources, session manager
-configuration and more. This XML file must contain one Context element, which
-will be considered as if it was the child of the Host element corresponding
-to the Host to which the  The Tomcat configuration documentation contains
-information on the Context element.</p>
+<p> /META-INF/context.xml 파일은 톰캣의 로거, 
+    데이터 소스, 세션 매니저 설정 등의 구체적인 환경설정을 
+    정의하는데 새용될 수 잇습니다. 이 XML 파일은 반드시 Context 요소를
+    포함해야 합니다. 컨택스트 요소는 마치 
+    그것이 호스트에 해당하는 호스트 요소의 자식인것 처럼 간주됩니다.</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Deployment With Tomcat"><!--()--></a><a name="Deployment_With_Tomcat"><strong>Deployment With Tomcat</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%ED%86%B0%EC%BA%A3%EA%B3%BC %ED%95%A8%EA%BB%98 %EB%B0%B0%ED%8F%AC"><!--()--></a><a name="%ED%86%B0%EC%BA%A3%EA%B3%BC_%ED%95%A8%EA%BB%98_%EB%B0%B0%ED%8F%AC"><strong>톰캣과 함께 배포</strong></a></font></td></tr><tr><td><blockquote>
 
     <blockquote><em>
-    <p>The description below uses the variable name $CATALINA_BASE to refer the
-    base directory against which most relative paths are resolved. If you have
-    not configured Tomcat for multiple instances by setting a CATALINA_BASE
-    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
-    the directory into which you have installed Tomcat.</p>
+    <p> 아래의 설명에 사용된 변수 이름 $CATALINA_BASE는 
+        대부분의 상대경로가 해결되는 데 대한 기본 디렉토리를
+        참조합니다. 만약 여러개의 톰캣을 위해 CATALINA_BASE 디렉토리를 
+        설정을 구성한 적이 없다면, $CATALINA_BASE의 값은 당신이 톰캣을 
+        설치했던 디렉도리로 설정이 될 것 입니다.</p>
     </em></blockquote>
 
-<p>In order to be executed, a web application must be deployed on
-a servlet container.  This is true even during development.
-We will describe using Tomcat to provide the execution environment.
-A web application can be deployed in Tomcat by one of the following
-approaches:</p>
+<p> 실행하기 위해서, 웹 어플리케이션은 
+    서블릿 컨테이너에 배포되어야만 합니다.  개발되는 동안에도 마찬가지 입니다.
+    우리는 톰캣을 이용하여 개발 환경을 제공하는 것을 설명할 것 입니다.
+    웹 어플리케이션은 다음 방법 중 하나를 통해 톰캣에서 배포될 수 있습니다.:</p>
 <ul>
-<li><em>Copy unpacked directory hierarchy into a subdirectory in directory
-    <code>$CATALINA_BASE/webapps/</code></em>.  Tomcat will assign a
-    context path to your application based on the subdirectory name you
-    choose.  We will use this technique in the <code>build.xml</code>
-    file that we construct, because it is the quickest and easiest approach
-    during development.  Be sure to restart Tomcat after installing or
-    updating your application.
+<li><em>압축이 풀린 디렉토리 계층을 <code>$CATALINA_BASE/webapps/</code>안의 
+    하위 디렉토리로 복사합니다. </em>
+    톰캣은 당신이 선택한 하위 디렉토리 네임을 기초로 하여 컨텍스트 경로를 결정합니다.  
+    우리는 이 기술을, 우리가 만든 <code>build.xml</code>에서 사용합니다. 
+    개발할 때 빠르고 쉬운  방법이기 때문입니다. 반드시 당신의 어플리케이션을 
+    설치하거나 업데이트 한 후에 톰캣을 재시작해주세요.
     <br><br></li>
-<li><em>Copy the web application archive file into directory
-    <code>$CATALINA_BASE/webapps/</code></em>.  When Tomcat is started, it will
-    automatically expand the web application archive file into its unpacked
-    form, and execute the application that way.  This approach would typically
-    be used to install an additional application, provided by a third party
-    vendor or by your internal development staff, into an existing
-    Tomcat installation.  <strong>NOTE</strong> - If you use this approach,
-    and wish to update your application later, you must both replace the
-    web application archive file <strong>AND</strong> delete the expanded
-    directory that Tomcat created, and then restart Tomcat, in order to reflect
-    your changes.
+<li><em>웹 어플리케이션 압축 파일을 <code>$CATALINA_BASE/webapps/</code>안에 
+    복사합니다.</em>.  톰캣이 시작될 때, 그것은 자동으로 압축되지 않은 폼이 
+    웹 어플리케이션 압축파일로 확장하며, 그러한 방법으로 어플리케이션을 실행합니다.  
+    톰캣이 시작될 때, 그것은 자동으로 압축되지 않은 폼이 웹 어플리케이션 압축파일로 확장하며, 
+    그러한 방법으로 어플리케이션을 실행합니다. 이 방법은 일반적으로 서드 파티 
+    벤더나 당신의 내부 개발진이 이미 톰캣에 설치되어 존재하는 
+    어플리케이션에 추가기능을 설치할 때 사용됩니다.  
+    <strong>NOTE</strong> - 만약 이방법을 사용할 때나 당신의 어플리케이션을 
+    나중에 업데이트 시키고 싶을 때, 당신은 반드시 웹 어플리케이션 압축 파일을 
+    재위치 시키며, <strong>그리고</strong> 톰캣이 생성한 추가 디렉토리를 삭제합니다. 
+    그리고 나서 변경사항을 반영시키기 위해 톰캣을 재시작 합니다. 
     <br><br></li>
-<li><em>Use the Tomcat "Manager" web application to deploy and undeploy
-    web applications</em>.  Tomcat includes a web application, deployed
-    by default on context path <code>/manager</code>, that allows you to
-    deploy and undeploy applications on a running Tomcat server without
-    restarting it.  See the administrator documentation (TODO: hyperlink)
-    for more information on using the Manager web application.<br><br></li>
-<li><em>Use "Manager" Ant Tasks In Your Build Script</em>.  Tomcat
-    includes a set of custom task definitions for the <code>Ant</code>
-    build tool that allow you to automate the execution of commands to the
-    "Manager" web application.  These tasks are used in the Tomcat deployer.
+<li><em>웹 어플리케이션을 배포하거나 배포시키지 않을 때 톰캣 "매니저" 웹 어플리케이션을 사용합니다.</em>
+    톰캣에는 기본적으로 컨텍스트 경로가 <code>/manager</code>인, 톰캣 서버가 
+    작동하고 있을 도중 어플리케이션을 배포하거나 배포시키지 않을 때에 재시작 없이도 
+    가능하게 만들어주는 웹 어플리케이션이 배포되어있습니다. 매니저 웹 어플리케이션을 
+    활용하는 것에 대해 더 많은 정보가 필요하다면, 
+    관리자 문서를 참조하세요. (TODO: hyperlink) <br><br></li>
+<li><em>당신의 빌드 스크립트에 "매니저"의 앤트 작업을 사용하세요.</em>.  
+    톰캣은 당신이 자동으로 "매니저" 웹 어플리케이션의 명령을 
+    자동으로 실행시킬수 있도록 허용해주는 <code>Ant</code> 빌드 툴을 
+    위한 커스텀 작업 정의의 집합을 포함하고 있습니다.
+    그러한 작업들은 톰캣 배포자에서 사용되고 있습니다.
     <br><br></li>
-<li><em>Use the Tomcat Deployer</em>.  Tomcat includes a packaged tool
-    bundling the Ant tasks, and can be used to automatically precompile JSPs
-    which are part of the web application before deployment to the server.
+<li><em>톰캣 배포자를 사용하세요</em>. 톰캣은 앤트 작업 빌드하기, 
+    서버에 배포되기 전 어플리케이션의 일부분이 되는 JSP를 
+    프리컴파일 할 수 있는 패키지 툴을 포함하고 있습니다.
     <br><br></li>
 </ul>
 
-<p>Deploying your app on other servlet containers will be specific to each
-container, but all containers compatible with the Servlet API Specification
-(version 2.2 or later) are required to accept a web application archive file.
-Note that other containers are <strong>NOT</strong> required to accept an
-unpacked directory structure (as Tomcat does), or to provide mechanisms for
-shared library files, but these features are commonly available.</p>
+<p> 당신의 어플리케이션을 다른 서블릿 컨테이너에 배포하는 것은 
+    각각 컨테이너의 특성에 따라야 합니다. 하지만 서블릿 API 명세서(2.2 버전이거나 그 이후)에 
+    호환이 되어 있는 모든 컨테이너들은 웹 어플리케이션 압축 파일을 적용하는 것을 필요로 합니다.
+    Note 다른 컨테이너들은 압축되지 않은 디렉토리 구조를 적용하는 
+    것을 요구하지 <string>않거나</string>(톰캣이 그러합니다.), 공유 라이브러리 파일에 
+    대한 매커니즘을 제공하지만, 이러한 기능은 일반적으로 가능합니다.</p>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>
         Copyright &copy; 1999-2012, Apache Software Foundation

@@ -50,11 +50,10 @@
   <section name="Comet support">
 
   <p>
-    Comet support allows a servlet to process IO asynchronously, receiving
-    events when data is available for reading on the connection (rather than
-    always using a blocking read), and writing data back on connections
-    asynchronously (most likely responding to some event raised from some
-    other source).
+    Comet 지원은 서블릿에서 비동기적으로 IO 처리를 가능하게 하고, 연결된 상태에서 
+  데이터를 읽기가 가능한 경우에 (블로킹 읽기를 항상 사용하는 대신에)이벤트를 
+    받고, 비동기적으로 연결 상에서 데이터를 써서 보낼 수 있게 합니다(대부분 어떤 
+    다른 소스에서 발생한 어떤 이벤트에 응답하는 형태).
   </p>
 
   <subsection name="CometEvent">

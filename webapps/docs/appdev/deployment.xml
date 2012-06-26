@@ -162,14 +162,13 @@
 </section>
 
 
-<section name="Tomcat Context Descriptor">
+<section name="톰캣 컨텍스트 배포자">
 
-<p>A /META-INF/context.xml file can be used to define Tomcat specific
-configuration options, such as loggers, data sources, session manager
-configuration and more. This XML file must contain one Context element, which
-will be considered as if it was the child of the Host element corresponding
-to the Host to which the  The Tomcat configuration documentation contains
-information on the Context element.</p>
+<p> /META-INF/context.xml 파일은 톰캣의 로거, 
+    데이터 소스, 세션 매니저 설정 등의 구체적인 환경설정을 
+    정의하는데 새용될 수 잇습니다. 이 XML 파일은 반드시 Context 요소를
+    포함해야 합니다. 컨택스트 요소는 마치 
+    그것이 호스트에 해당하는 호스트 요소의 자식인것 처럼 간주됩니다.</p>
 
 </section>
 

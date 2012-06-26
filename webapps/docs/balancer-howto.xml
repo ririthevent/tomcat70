@@ -23,30 +23,29 @@
     &project;
 
     <properties>
-        <author email="yoavs@apache.org">Yoav Shapira</author>
-        <author>Remy Maucherat</author>
-        <author>Andy Oliver</author>
+        <author email="yoavs@apache.org">요압 샤피라</author>
+        <author>레미 모체랏</author>
+        <author>앤디 올리버</author>
         <title>Load Balancer HOW-TO</title>
     </properties>
 
 <body>
 
-<section name="Table of Contents">
+<section name="차례">
 <toc/>
 </section>
 
-<section name="Using the JK 1.2.x native connector">
+<section name="JK 1.2.x 네이티브 커넥터 사용하기">
 
-Please refer to the JK 1.2.x documentation.
+JK 1.2.x 설명서를 참조하십시오.
 
 </section>
 
-<section name="Using Apache HTTP Server 2.x with mod_proxy">
+<section name="mod_proxy와 아파치 HTTP 서버 2.x 사용하기">
 
-Please refer to the mod_proxy documentation for Apache HTTP Server 2.2. This supports either
-HTTP or AJP load balancing. This new version of mod_proxy is also usable with
-Apache HTTP Server 2.0, but mod_proxy will have to be compiled separately using the code
-from Apache HTTP Server 2.2.
+아파치 HTTP 서버 2.2에 대해 mod_proxy 설명서를 참조하십시오. 
+이것은 HTTP 또는 AJP로드 밸런싱 중 하나를 지원합니다. mod_proxy의 새로운 버전은 아파치 HTTP 서버 2.0을 사용할 수 있지만
+mod_proxy에서 아파치 HTTP 서버 2.2는 코드를 사용하여 별도로 컴파일해야 합니다.
 
 </section>
 

@@ -23,57 +23,56 @@
     &project;
 
   <properties>
-    <title>Apache Portable Runtime (APR) based Native library for Tomcat</title>
-    <author>Remy Maucherat</author>
+    <title>아파치 포터블 런타임 (APR) 톰캣 기반 기본 라이브러리</title>
+    <author>레미 모체랏</author>
   </properties>
 
 <body>
 
-<section name="Table of Contents">
+<section name="차례">
 <toc/>
 </section>
 
-  <section name="Introduction">
+  <section name="소개">
 
   <p>
-      Tomcat can use the <a href="http://apr.apache.org/">Apache Portable Runtime</a> to
-      provide superior scalability, performance, and better integration with native server
-      technologies. The Apache Portable Runtime is a highly portable library that is at
-      the heart of Apache HTTP Server 2.x. APR has many uses, including access to advanced IO
-      functionality (such as sendfile, epoll and OpenSSL), OS level functionality (random number
-      generation, system status, etc), and native process handling (shared memory, NT
-      pipes and Unix sockets).
+      톰캣은 뛰어난 확장성, 성능 및 기본 서버 기술로 더 나은 통합을 제공하기 위해 
+	  <a href="http://apr.apache.org/">Apache Portable Runtime</a>를 사용할 수 있습니다. 
+	  아파치 포터블 런타임은 아파치 HTTP 서버 2.x.의 핵심이며 휴대용 라이브러리입니다. 
+	  이런 APR은 고급 IO 기능(예:sendfile, epoll and OpenSSL 등)에 대한 접근을 포함하여
+	  OS 수준의 기능 (난수 생성, 시스템 상태), 그리고 기본 프로세스 처리(공유 메모리, NT 파이프와 유닉스 소켓) 
+	  등 많은 용도로	사용되고 있습니다.
   </p>
 
   <p>
-      These features allows making Tomcat a general purpose webserver, will enable much better
-      integration with other native web technologies, and overall make Java much more viable as
-      a full fledged webserver platform rather than simply a backend focused technology.
+      이러한 기능은 일반적인 목적의 웹 서버를 톰캣을 이용하도록 하며,
+	  다른 기본 웹 기술과 훨씬 더 통합을 가능하게 하고, 전반적인 자바가 단순히 백엔드에 주력한 기술보다 
+      전체 본격적인 웹서버 플랫폼으로 훨씬 더 성공할 수 있도록 만들어 줍니다.
   </p>
 
   </section>
 
-  <section name="Installation">
+  <section name="설치">
 
     <p>
-      APR support requires three main native components to be installed:
+      설치하기 위해서는 APR을 지원하는 세가지 주요 기본 요소가 필요:
       <ul>
-        <li>APR library</li>
-        <li>JNI wrappers for APR used by Tomcat (libtcnative)</li>
+        <li>APR 라이브러리</li>
+        <li>톰캣(libtcnative)에 의해 사용될 APR을 위한 JNI wrappers</li>
         <li>OpenSSL libraries</li>
       </ul>
     </p>
 
-    <subsection name="Windows">
+    <subsection name="windows">
 
     <p>
-      Windows binaries are provided for tcnative-1, which is a statically compiled .dll which includes
-      OpenSSL and APR. It can be downloaded from <a href="http://tomcat.apache.org/download-native.cgi">here</a>
-      as 32bit or AMD x86-64 binaries.
-      In security conscious production environments, it is recommended to use separate shared dlls
-      for OpenSSL, APR, and libtcnative-1, and update them as needed according to security bulletins.
-      Windows OpenSSL binaries are linked from the <a href="http://www.openssl.org">Official OpenSSL
-      website</a> (see related/binaries).
+      윈도우 바이너리는 tcnative-1을 위해, OpenSSL과 APR을 포함하는 정적으로 컴파일된 .dll이 제공됩니다. 
+	  그것은 32 비트 또는 AMD X86-64 바이너리로서 
+	  <a href="http://tomcat.apache.org/download-native.cgi">여기</a>에서 다운로드할 수 있습니다.
+	  보안에 민감한 생산 환경에서는, 그것은 openssl, APR, 그리고 libtcnative-1에 대해 
+	  별도의 공유 DLL을 사용하고 보안 공지에 따라 필요한 것들을 업데이트하는 것이 좋습니다.
+      윈도우 OpenSSL 바이너리는 <a href="http://www.openssl.org">공식적인 OpenSSL 웹사이트</a>
+	  (관련된 참조/바이너리)에 링크되어 있습니다.
     </p>
 
     </subsection>
@@ -81,25 +80,23 @@
     <subsection name="Linux">
 
     <p>
-      Most Linux distributions will ship packages for APR and OpenSSL. The JNI wrapper (libtcnative) will
-      then have to be compiled. It depends on APR, OpenSSL, and the Java headers.
+      대부분의 리눅스 배포판은 APR과 OpenSSL을 위한 패키지를 출시할 것입니다. 
+	  JNI wrapper(libtcnative)는 컴파일해야 합니다.그것은 APR,OpenSSL,그리고 자바 헤더에 따라 달라집니다.
     </p>
 
     <p>
-      Requirements:
+      요구 사항:
       <ul>
-        <li>APR 1.2+ development headers (libapr1-dev package)</li>
-        <li>OpenSSL 0.9.7+ development headers (libssl-dev package)</li>
-        <li>JNI headers from Java compatible JDK 1.4+</li>
-        <li>GNU development environment (gcc, make)</li>
+        <li>APR 1.2+ 개발 헤더 (libapr1-dev 패키지)</li>
+        <li>OpenSSL 0.9.7+ 개발 헤더 (libssl-dev 패키지)</li>
+        <li>자바 호환 JDK 1.4 이상 JNI 헤더</li>
+        <li>GNU 개발 환경 (gcc, 확인)</li>
       </ul>
     </p>
 
     <p>
-      The wrapper library sources are located in the Tomcat binary bundle, in the
-      <code>bin/tomcat-native.tar.gz</code> archive.
-      Once the build environment is installed and the source archive is extracted, the wrapper library
-      can be compiled using (from the folder containing the configure script):
+      wrapper 라이브러리 소스가 <code>bin/tomcat-native.tar.gz</code>아카이브 톰캣 바이너리 번들에 있습니다.
+      빌드 환경이 설치되고 소스 아카이브가 압축되면 wrapper 라이브러리는 (configure 스크립트가 들어있는 폴더에서)를 사용하여 컴파일 할 수 있음 :
       <source>./configure &amp;&amp; make &amp;&amp; make install</source>
     </p>
 
@@ -107,59 +104,49 @@
 
   </section>
 
-  <section name="APR Components">
+  <section name="APR 요소">
 
   <p>
-    Once the libraries are properly installed and available to Java (if loading fails, the library path
-    will be displayed), the Tomcat connectors will automatically use APR. Configuration of the connectors
-    is similar to the regular connectors, but have a few extra attributes which are used to configure
-    APR components. Note that the defaults should be well tuned for most use cases, and additional
-    tweaking shouldn't be required.
+    라이브러리가 제대로 설치(로딩이 실패하는 경우 라이브러리 경로가 표시됨) 및 자바에서 사용할 수 있으려면, 톰켓 커넥터가 자동으로 APR을 사용할 수 있어야 합니다. 
+	커넥터의 구성은 일반 커넥터와 비슷하지만 APR 구성 요소를 구성하는 데 사용되는 몇 가지 추가 속성이 있습니다. 
+	기본값은 사용 상황에 따라 잘 조정하도록 주의해야 하고, 추가적인 수정이 필요하지 않아야 합니다.
   </p>
 
   <p>
-    When APR is enabled, the following features are also enabled in Tomcat:
+    APR이 활성화된 경우 다음과 같은 기능도 톰캣에 사용할 수 있음 :
     <ul>
-      <li>Secure session ID generation by default on all platforms (platforms other than Linux required
-          random number generation using a configured entropy)</li>
-      <li>OS level statistics on memory usage and CPU usage by the Tomcat process are displayed by
-          the status servlet</li>
+      <li>모든 플랫폼에서 기본적으로 안전한 세션 ID 생성 (구성 엔트로피를 사용하여 리눅스에 필요한 난수 생성 이외의 플렛폼)</li>
+      <li>톰캣 프로세스에 의한 메모리 사용량과 CPU 사용량에 대한 OS 수준 통계는 상태 서블릿에 의해 표시</li>
     </ul>
   </p>
 
   </section>
 
-  <section name="APR Lifecycle Listener Configuration">
+  <section name="APR 수명주기 리스너 구성">
     <subsection name="AprLifecycleListener">
     <attribute name="SSLEngine" required="false">
     <p>
-      Name of the SSLEngine to use. off: Do not use SSL, on: Use SSL but no specific ENGINE.
-      The default value is <b>on</b>.
-      This initializes the native SSL engine, then enable the use of this engine in the connector
-      using the <code>SSLEnabled</code> attribute. Example:
+      SSLEngine을 사용하기 위해 지정합니다. off : SSL을 사용하지 마십시오, on : 특정 엔진이 아닌 SSL을 사용하십시오. 기본값은 <b>on</b>입니다.
+      이것은 <code>SSLEnabled</code> 속성을 사용하여 커넥터에서 엔진의 사용을 활성화 후, 
+	  네이티브 SSL 엔진을 초기화합니다. 예 :
       <source>
 &lt;Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" /&gt;
       </source>
     </p>
-    <p>See the <a href="http://www.openssl.org">Official OpenSSL
-       website</a> for more details on SSL hardware engines and manufacturers.
+    <p>
+		SSL 하드웨어 엔진과 제조 업체에 대한 자세한 내용은 <a href="http://www.openssl.org">공식적인 openSSL 웹사이트</a>를 참조하십시오.
     </p>
     </attribute>
     </subsection>
   </section>
 
-  <section name="APR Connectors Configuration">
+  <section name="APR 커넥터 구성">
 
     <subsection name="HTTP/HTTPS">
 
-      <p>For HTTP configuration, see the <a href="config/http.html">HTTP</a>
-      connector configuration documentation.</p>
-
-      <p>For HTTPS configuration, see the
-      <a href="config/http.html#SSL%20Support">HTTPS</a> connector configuration
-      documentation.</p>
-
-      <p>An example SSL Connector declaration is:
+      <p>HTTP 구성의 경우, <a href="config/http.html">HTTP</a>에 커넥터 구성 설명서를 참조하십시오.</p>
+      <p>HTTPS를 구성 내용, <a href="config/http.html#SSL%20Support"> HTTPS </a>에 커넥터 구성 설명서를 참조하십시오.</p>
+      <p>예를 들어, SSL 커넥터 선언은 다음과 같음 :
       <source>
       &lt;Connector port="443" maxHttpHeaderSize="8192"
                  maxThreads="150"
@@ -174,8 +161,7 @@
 
     <subsection name="AJP">
 
-      <p>For AJP configuration, see the <a href="config/ajp.html">AJP</a>
-      connector configuration documentation.</p>
+      <p>AJP 구성 내용, <a href="config/ajp.html"> AJP </a>에 커넥터 구성 설명서를 참조하십시오.</p>
 
     </subsection>
 

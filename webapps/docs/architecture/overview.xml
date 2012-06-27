@@ -33,6 +33,7 @@
 <section name="Overview">
 <p>
 This page provides an overview of the Tomcat server architecture.
+</p><p>
 이 페이지는 Tomcat 서버 아키텍처의 개요를 제공합니다.
 </p>
 </section>
@@ -63,6 +64,7 @@ Engine.  The Service element is rarely customized by users, as the default
 implementation is simple and sufficient:
 <a href="../api/org/apache/catalina/Service.html">Service interface</a>.
 </p>
+<p>
 <a href="../config/service.html">서비스</a>는 서버와 정확히 하나의 엔진에 연줄이 하나 이상의 커넥터 안에 사는 중간 구성 요소입니다
 <a href="../api/org/apache/catalina/Service.html">서비스 인터페이스</a> : 
 기본 구현이 간단하고 충분로서 서비스 요소는 거의, 사용자에 의해 정의되지 않습니다.
@@ -172,6 +174,7 @@ of this specification, and has remained rigorous in adhering to the
 specification.  At the same time, significant attention has been paid
 to Tomcat's performance and it is now on par with other servlet containers,
 including commercial ones.
+</p><p>
 톰캣은 서블릿 스펙의 신속하고 효율적인 구현이 될 수 있도록 설계되었습니다.
 Tomcat은 이 사양의 레퍼런스 구현 등에 대해 규격 준수에 엄격하게 남아있다.
 동시에, 상당한 성능을 톰캣으로로 돈 그것은 상업적인 것들을 포함한 
@@ -184,6 +187,7 @@ JMX.  In addition, the Manager and Admin webapps have been greatly
 enhanced and improved.  Manageability is a primary area of concern
 for us as the product matures and the specification becomes more
 stable.
+</p><p>
 톰캣의 최근 릴리스에서는 대부분 톰캣 5 시작한다.
 우리는 톰캣보다 측면 JMX를 통해 관리를 만들기 위해 노력을 시작했습니다.
 또한, 관리자와 관리 webapps는 크게 향상 및 개선되었습니다.

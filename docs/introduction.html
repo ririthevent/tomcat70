@@ -1,4 +1,4 @@
-<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 (7.0.28-dev) - Introduction</title><meta name="author" content="Craig R. McClanahan"><style type="text/css" media="print">
+<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 (7.0.28-dev) - Introduction</title><meta name="author" content="Robert Slifka"><style type="text/css" media="print">
             .noPrint {display: none;}
             td#mainBody {width: 100%;}
         </style><style type="text/css">
@@ -6,29 +6,106 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 28 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Introduction</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Overview"><strong>Overview</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 28 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Introduction</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Terminology">Terminology</a></li><li><a href="#Directories_and_Files">Directories and Files</a></li><li><a href="#Configuring_Tomcat">Configuring Tomcat</a></li><li><a href="#Where_to_Go_for_Help">Where to Go for Help</a></li></ul>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>축하합니다! 당신은 서블릿과 JSP 페이지를 사용하여 웹 응용 프로그램을 빌드하는 방법을 알아보려로 결정하였다(혹은 말했었다.), 그리고 학습과 개발에 사용할 the Tomcat 서버를 선택했습니다. 그런데 이제는 어떻게 해야합니까?
+<p>For administrators and web developers alike, there are some important bits
+of information you should familiarize yourself with before starting out. This
+document serves as a brief introduction to some of the concepts and
+terminology behind the Tomcat container. As well, where to go when you need
+help.</p>
 
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Terminology"><strong>Terminology</strong></a></font></td></tr><tr><td><blockquote>
+
+<p>In the course of reading these documents, you will run across a number of
+terms; some specific to Tomcat, and others defined by the
+<a href="http://wiki.apache.org/tomcat/Specifications">Servlet and
+JSP specifications</a>.</p>
+
+<ul>
+<li><strong>Context</strong> - In a nutshell, a Context is a
+    web application.</li>
+<li><strong>Term2</strong> - This is it.</li>
+<li><strong>Term3</strong> - This is it!</li>
+</ul>
+
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Directories and Files"><!--()--></a><a name="Directories_and_Files"><strong>Directories and Files</strong></a></font></td></tr><tr><td><blockquote>
+
+<p>Throughout the docs, you'll notice there are numerous references to
+<strong>$CATALINA_HOME</strong>. This represents the root of your Tomcat
+installation. When we say, "This information can be found in your
+$CATALINA_HOME/README.txt file" we mean to look at the README.txt file at the
+root of your Tomcat install. Optionally, Tomcat may be configured for multiple
+instances by defining <strong>$CATALINA_BASE</strong> for each instance. If
+multiple instances are not configured, <strong>$CATALINA_BASE</strong> is the
+same as <strong>$CATALINA_HOME</strong>.</p>
+
+<p>These are some of the key tomcat directories:</p>
+
+<ul>
+<li><strong>/bin</strong> - Startup, shutdown, and other scripts. The
+    <code>*.sh</code> files (for Unix systems) are functional duplicates of
+    the <code>*.bat</code> files (for Windows systems).  Since the Win32
+    command-line lacks certain functionality, there are some additional
+    files in here.</li>
+<li><strong>/conf</strong> - Configuration files and related DTDs.  The most
+    important file in here is server.xml.  It is the main configuration file
+    for the container.</li>
+<li><strong>/logs</strong> - Log files are here by default.</li>
+<li><strong>/webapps</strong> - This is where your webapps go.</li>
+</ul>
+
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Configuring Tomcat"><!--()--></a><a name="Configuring_Tomcat"><strong>Configuring Tomcat</strong></a></font></td></tr><tr><td><blockquote>
+
+<p>This section will acquaint you with the basic information used during
+the configuration of the container.</p>
+
+<p>All of the information in the configuration files is read at startup,
+meaning that any change to the files necessitates a restart of the container.
 </p>
 
-<p>이 매뉴얼은 개발 환경을 설정하여 소스 코드를 구성하고 빌드하고 응용 프로그램을 테스트하기 위해 Tomcat을 사용하는 기본 단계를 포함하고있는 입문서입니다. 이문서의 아키텍처 또는 웹 응용 프로그램 개발을위한 권장되는 코딩 관행을 논의하거나 언급한 개발 도구 운영에 대한 심도있는 지침을 제공하지 않습니다. 추가 정보의 출처에 대한 참조는 다음 하위 섹션에 포함되어 있습니다.</p>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Where to Go for Help"><!--()--></a><a name="Where_to_Go_for_Help"><strong>Where to Go for Help</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>본 설명서의 논의들은 응용 프로그램을 개발하고 디버깅하는 명령줄 도구와 함께 텍스트 편집기를 사용하고 개발자를 대상으로합니다. 따라서 권고 사항은 매우 일반적입니다 -하지만 당신은 쉽게  Windows 기반이나 유닉스 기반 개발 환경에서 그들을 적용할 수 있어야합니다. 당신은 대화형 개발 환경 (IDE) 도구를 이용하는 경우 특정 환경의 세부 여기로 주어진 조언을 적응해야합니다.</p>
+<p>While we've done our best to ensure that these documents are clearly
+written and easy to understand, we may have missed something.  Provided
+below are various web sites and mailing lists in case you get stuck.</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Links"><strong>Links</strong></a></font></td></tr><tr><td><blockquote>
+<p>As Tomcat 7 is a new release of Tomcat, keep in mind that some of the
+issues and solutions vary between the major versions of Tomcat (6.x versus
+7.x).  As you search around the web, there will be some documentation that
+is not relevant to Tomcat 7, but 6.x, 5.x or earlier versions.  Doing 3.x
+or 4.x things to 7 will probably not work in most cases as the server.xml
+files are very different.</p>
 
-<p>다음 링크는 톰캣에 웹 어플 리케이션 개발에 유용 온라인 정보, 문서 및 소프트웨어의 선택된 소스에 대한 액세스를 제공합니다.</p>
 <ul>
-<li><a href="http://java.sun.com/products/jsp/">http://java.sun.com/products/jsp/</a> -
-    <i>JavaServer Pages (JSP) Specification, Version 2.0</i>. JavaServer 페이지 (JSP) 기술의 표준 구현에서 제공하는 프로그래밍 환경에 대해 설명합니다.서블릿 API 사양 (아래 참조)와 함께 이 문서는 휴대용 API 페이지가 포함하도록 허용되는 사항을 설명합니다. 스크립트 (6 장), 태그 확장자 (7 장), 그리고 포장 JSP 페이지 (별첨)에 대한 특정 정보가 유용합니다.Javadoc의 API 문서는 사양에 포함되어 있으며 theTomcat 다운로드와 함께합니다.<br><br></li>
-<li><a href="http://java.sun.com/products/servlet/download.html">http://java.sun.com/products/servlet/download.html</a> -
-    <i>Servlet API Specification, Version 3.0</i>.이 규격에 부합하는 모든 서블릿 컨테이너에서 제공되어야 프로그래밍 환경에 대해 설명합니다. 특히, 당신이 웹 애플 리케이션 디렉토리 구조와 배치 파일 (9 장) 서블릿 (제 11 장)에 매핑 요청 URI의 방식을 이해하기 위해이 문서가 필요합니다, 컨테이너 보안 (12 장), 그리고 일의 문법 <code> 관리 &gt; web.xml </code>와 웹 응용 프로그램 배포 설명자 (제 13).Javadoc의 API 문서는 사양에 포함하고, Tomcat은 다운로드와 함께합니다.<br><br></li>
-<li><a href="http://java.sun.com/j2ee/blueprints/">http://java.sun.com/j2ee/blueprints/</a> -
-    <i>Sun BluePrints (tm) Design Guidelines for J2EE</i>.  종합적인 조언과 서블릿과 JSP 페이지를 포함하는 Java2 Enterprise Edition을 (J2EE) 플랫폼을위한 애플 리케이션 디자인에 관한 예가 나와 있습니다. 응용 프로그램이 다른 J2EE 플랫폼 구성 요소를 요구하지 않는 경우에도 서블릿과 JSP로 디자인에 관한 장들은 유용합니다.
-    <br><br></li>
-<li><b>TODO</b> --여기에 더 많은 항목을 추가하십시오!</li>
+<li>Current document - most documents will list potential hangups. Be sure
+    to fully read the relevant documentation as it will save you much time
+    and effort. There's nothing like scouring the web only to find out that
+    the answer was right in front of you all along!</li>
+<li><a href="http://wiki.apache.org/tomcat/FAQ">Tomcat FAQ</a></li>
+<li><a href="http://wiki.apache.org/tomcat/">Tomcat WIKI</a></li>
+<li>Tomcat FAQ at <a href="http://www.jguru.com/faq/home.jsp?topic=Tomcat">jGuru</a></li>
+<li>Tomcat mailing list archives - numerous sites archive the Tomcat mailing
+    lists. Since the links change over time, clicking here will search
+    <a href="http://www.google.com/search?q=tomcat+mailing+list+archives">Google</a>.
+    </li>
+<li>The TOMCAT-USER mailing list, which you can subscribe to
+    <a href="http://tomcat.apache.org/lists.html">here</a>. If you don't
+    get a reply, then there's a good chance that your question was probably
+    answered in the list archives or one of the FAQs.  Although questions
+    about web application development in general are sometimes asked and
+    answered, please focus your questions on Tomcat-specific issues.</li>
+<li>The TOMCAT-DEV mailing list, which you can subscribe to
+    <a href="http://tomcat.apache.org/lists.html">here</a>.  This list is
+    <strong>reserved</strong> for discussions about the development of Tomcat
+    itself.  Questions about Tomcat configuration, and the problems you run
+    into while developing and running applications, will normally be more
+    appropriate on the TOMCAT-USER list instead.</li>
 </ul>
+
+<p>And, if you think something should be in the docs, by all means let us know
+on the TOMCAT-DEV list.</p>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>
         Copyright &copy; 1999-2012, Apache Software Foundation

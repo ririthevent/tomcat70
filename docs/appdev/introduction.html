@@ -8,62 +8,26 @@
       The Apache Tomcat Servlet/JSP Container
     " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jun 28 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li></ul><p><strong>Contents</strong></p><ul><li><a href="index.html">Contents</a></li><li><a href="introduction.html">Introduction</a></li><li><a href="installation.html">Installation</a></li><li><a href="deployment.html">Deployment</a></li><li><a href="source.html">Source Code</a></li><li><a href="processes.html">Processes</a></li><li><a href="sample/">Example App</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Introduction</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Overview"><strong>Overview</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>Congratulations!  You've decided to (or been told to) learn how to
-build web applications using servlets and JSP pages, and picked the
-Tomcat server to use for your learning and development.  But now what
-do you do?</p>
+<p>축하합니다! 당신은 서블릿과 JSP 페이지를 사용하여 웹 응용 프로그램을 빌드하는 방법을 알아보려로 결정하였다(혹은 말했었다.), 그리고 학습과 개발에 사용할 the Tomcat 서버를 선택했습니다. 그런데 이제는 어떻게 해야합니까?
 
-<p>This manual is a primer covering the basic steps of using Tomcat to
-set up a development environment, organize your source code, and then
-build and test your application.  It does not discuss architectures or
-recommended coding practices for web application development,
-or provide in depth instructions on operating the development
-tools that are discussed.  References to sources of additional information
-are included in the following subsections.</p>
+</p>
 
-<p>The discussion in this manual is aimed at developers who will be using
-a text editor along with command line tools to develop and debug their
-applications.  As such, the recommendations are fairly generic -- but you
-should easily be able to apply them in either a Windows-based or Unix-based
-development environment.  If you are utilizing an Interactive Development
-Environment (IDE) tool, you will need to adapt the advice given here to
-the details of your particular environment.</p>
+<p>이 매뉴얼은 개발 환경을 설정하여 소스 코드를 구성하고 빌드하고 응용 프로그램을 테스트하기 위해 Tomcat을 사용하는 기본 단계를 포함하고있는 입문서입니다. 이문서의 아키텍처 또는 웹 응용 프로그램 개발을위한 권장되는 코딩 관행을 논의하거나 언급한 개발 도구 운영에 대한 심도있는 지침을 제공하지 않습니다. 추가 정보의 출처에 대한 참조는 다음 하위 섹션에 포함되어 있습니다.</p>
+
+<p>본 설명서의 논의들은 응용 프로그램을 개발하고 디버깅하는 명령줄 도구와 함께 텍스트 편집기를 사용하고 개발자를 대상으로합니다. 따라서 권고 사항은 매우 일반적입니다 -하지만 당신은 쉽게  Windows 기반이나 유닉스 기반 개발 환경에서 그들을 적용할 수 있어야합니다. 당신은 대화형 개발 환경 (IDE) 도구를 이용하는 경우 특정 환경의 세부 여기로 주어진 조언을 적응해야합니다.</p>
 
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Links"><strong>Links</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>The following links provide access to selected sources of online
-information, documentation, and software that is useful in developing
-web applications with Tomcat.</p>
+<p>다음 링크는 톰캣에 웹 어플 리케이션 개발에 유용 온라인 정보, 문서 및 소프트웨어의 선택된 소스에 대한 액세스를 제공합니다.</p>
 <ul>
 <li><a href="http://java.sun.com/products/jsp/">http://java.sun.com/products/jsp/</a> -
-    <i>JavaServer Pages (JSP) Specification, Version 2.0</i>.  Describes
-    the programming environment provided by standard implementations
-    of the JavaServer Pages (JSP) technology.  In conjunction with
-    the Servlet API Specification (see below), this document describes
-    what a portable API page is allowed to contain.  Specific
-    information on scripting (Chapter 6), tag extensions (Chapter 7),
-    and packaging JSP pages (Appendix A) is useful.  The Javadoc
-    API Documentation is included in the specification, and with the
-    Tomcat download.<br><br></li>
+    <i>JavaServer Pages (JSP) Specification, Version 2.0</i>. JavaServer 페이지 (JSP) 기술의 표준 구현에서 제공하는 프로그래밍 환경에 대해 설명합니다.서블릿 API 사양 (아래 참조)와 함께 이 문서는 휴대용 API 페이지가 포함하도록 허용되는 사항을 설명합니다. 스크립트 (6 장), 태그 확장자 (7 장), 그리고 포장 JSP 페이지 (별첨)에 대한 특정 정보가 유용합니다.Javadoc의 API 문서는 사양에 포함되어 있으며 theTomcat 다운로드와 함께합니다.<br><br></li>
 <li><a href="http://java.sun.com/products/servlet/download.html">http://java.sun.com/products/servlet/download.html</a> -
-    <i>Servlet API Specification, Version 3.0</i>.  Describes the
-    programming environment that must be provided by all servlet
-    containers conforming to this specification.  In particular, you
-    will need this document to understand the web application
-    directory structure and deployment file (Chapter 9), methods of
-    mapping request URIs to servlets (Chapter 11), container managed
-    security (Chapter 12), and the syntax of the <code>web.xml</code>
-    Web Application Deployment Descriptor (Chapter 13).  The Javadoc
-    API Documentation is included in the specification, and with the
-    Tomcat download.<br><br></li>
+    <i>Servlet API Specification, Version 3.0</i>.이 규격에 부합하는 모든 서블릿 컨테이너에서 제공되어야 프로그래밍 환경에 대해 설명합니다. 특히, 당신이 웹 애플 리케이션 디렉토리 구조와 배치 파일 (9 장) 서블릿 (제 11 장)에 매핑 요청 URI의 방식을 이해하기 위해이 문서가 필요합니다, 컨테이너 보안 (12 장), 그리고 일의 문법 <code> 관리 &gt; web.xml </code>와 웹 응용 프로그램 배포 설명자 (제 13).Javadoc의 API 문서는 사양에 포함하고, Tomcat은 다운로드와 함께합니다.<br><br></li>
 <li><a href="http://java.sun.com/j2ee/blueprints/">http://java.sun.com/j2ee/blueprints/</a> -
-    <i>Sun BluePrints (tm) Design Guidelines for J2EE</i>.  Comprehensive
-    advice and examples on application design for the Java2 Enterprise
-    Edition (J2EE) platform, which includes servlets and JSP pages.  The
-    chapters on servlet and JSP design are useful even when your application
-    does not require other J2EE platform components.
+    <i>Sun BluePrints (tm) Design Guidelines for J2EE</i>.  종합적인 조언과 서블릿과 JSP 페이지를 포함하는 Java2 Enterprise Edition을 (J2EE) 플랫폼을위한 애플 리케이션 디자인에 관한 예가 나와 있습니다. 응용 프로그램이 다른 J2EE 플랫폼 구성 요소를 요구하지 않는 경우에도 서블릿과 JSP로 디자인에 관한 장들은 유용합니다.
     <br><br></li>
-<li><b>TODO</b> -- Add more entries here!</li>
+<li><b>TODO</b> --여기에 더 많은 항목을 추가하십시오!</li>
 </ul>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>

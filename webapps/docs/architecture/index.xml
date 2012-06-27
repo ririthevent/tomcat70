@@ -35,6 +35,9 @@
 <p>This section of the Tomcat documentation attempts to explain
 the architecture and design of the Tomcat server.  It includes significant
 contributions from several tomcat developers:
+Tomcat은 설명서의이 섹션은 아키텍처와 Tomcat 서버의 디자인을 설명하려고 시도합니다.
+그것은 여러 톰캣 개발자로부터 상당한 기여를 포함합니다/
+
 </p>
 <ul>
 <li>Yoav Shapira
@@ -50,7 +53,9 @@ contributions from several tomcat developers:
 
 <section name="Table of Contents">
 
-<p>The information presented is divided into the following sections:</p>
+<p>The information presented is divided into the following sections:
+정보는 다음 섹션으로 나누어서 제공합니다:
+</p>
 <ul>
 <li><a href="overview.html"><strong>Overview</strong></a> -
     An overview of the Tomcat server architecture with key terms
@@ -60,6 +65,14 @@ contributions from several tomcat developers:
     server starts up.</li>
 <li><a href="requestProcess.html"><strong>Request Process Flow</strong></a> -
     A detailed description of how Tomcat handles a request.</li>
+</ul>
+<ul>
+<li><a href="overview.html"><strong>Overview</strong></a> -
+    Tomcat 서버 아키텍처의 개요, 주요 용어와 개념.</li>
+<li><a href="startup.html"><strong>Server Startup</strong></a> -
+   Tomcat 서버가 시동 방법 시퀀스 다이어그램과 자세한 설명.</li>
+<li><a href="requestProcess.html"><strong>Request Process Flow</strong></a> -
+    톰캣의 요청을 처리하는 방법에 대한 자세한 설명.</li>
 </ul>
 
 </section>

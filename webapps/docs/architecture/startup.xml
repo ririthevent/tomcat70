@@ -24,7 +24,7 @@
 
   <properties>
     <author email="yoavs@apache.org">Yoav Shapira</author>
-    <title>Startup</title>
+    <title>시작</title>
   </properties>
 
 <body>
@@ -35,16 +35,22 @@
 <p>
 This page describes how the Tomcat server starts up.  There are several
 different ways to start tomcat, including:
+이 페이지는 Tomcat 서버가 시작하는 방법에 대해 설명합니다. 
+Tomcat을 시작하는 몇가지 방법이 있습니다 
 <ul>
   <li>From the command line.</li>
+  <li>명령줄에서 시작합니다.</li>
   <li>From a Java program as an embedded server.</li>
+  <li>임베디드 서버에서 자바서버로 시작합니다.</li>
   <li>Automatically as a Windows service.</li>
+  <li>Windows 서비스로 시작합니다.</li>
 </ul>
 </p>
 
 <subsection name="description">
 <p>
 A text description of the startup procedure is available
+시작 프로 시저의 텍스트 설명을 사용할 수 있습니다
 <a href="startup/serverStartup.txt">here.</a>
 </p>
 </subsection>
@@ -52,6 +58,7 @@ A text description of the startup procedure is available
 <subsection name="diagram">
 <p>
 A UML sequence diagram of the startup procedure is available
+시동 절차의 UML 시퀀스 다이어그램을 사용할 수 있습니다
 <a href="startup/serverStartup.pdf">here.</a>
 </p>
 </subsection>
@@ -62,6 +69,9 @@ The startup process can be customized in many ways, both
 by modifying Tomcat code and by implementing your own
 LifecycleListeners which are then registered in the server.xml
 configuration file.
+시작 프로세스는  Tomcat code를 수정하여 자신만의  구성 파일을
+구현하여 두 다음 server.xml에 등록되어 LifecycleListeners
+ 여러 방법으로 사용자 정의할 수있다.
 </p>
 
 </subsection>

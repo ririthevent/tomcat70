@@ -32,35 +32,20 @@
 
 <section name="Catalina Functional Specifications">
 
-<p>This documentation area includes <em>functional specifications</em> for
-many features supported by the <strong>Catalina</strong> servlet container
-portion of Tomcat.  In most cases, these features are not documented in the
-underlying Servlet or JSP specifications, so a definition of the expected
-correct behavior is important both to implementors of those features, and to
-test writers trying to decide what to test.</p>
+<p>이 문서 영역은 톰캣의 <em>Catalina</em> 서블릿 컨테이너 부분에서 지원하는 여러 기능에 대한 <em>functional specificationg</em>을 포함합니다. 대부분의 경우 이러한 기능이 기본 서블릿이나 JSP 명세에 문서화되지 않은, 예상 올바른 행동의 정의는 이러한 기능 사용자에 모두 중요하므로, 테스트할지 결정하려고 작가를 테스트하기.</p>
 
-<p>The functional specifications are divided into the following categories
-in the menu (to the left):</p>
+<p>기능적 사양은 메뉴 (왼쪽)에 다음과 같은 범주로 나누어집니다 :</p>
 <ul>
-<li><em>Administrative Apps</em> - Overall requirements for supporting an
-    ability to configure and operate a Tomcat installation through tools,
-    as well as detailed requirements for the tools themselves.</li>
-<li><em>Internal Servlets</em> - Requirements for Catalina features that are
-    implemented as internal, container-managed, servlets.</li>
-<li><em>Realm Implementations</em> - Requirements for the implementations of
-    the <code>org.apache.catalina.Realm</code> interface (providing access to
-    collections of users, passwords and roles) that are included in the
-    standard Tomcat distribution.</li>
+<li><em> 사용 관리 애플 리케이션 </em> - 툴을 통해 Tomcat은 설치뿐만 아니라, 
+자신의 툴에 대한 자세한 요구 사항을 구성하고 운영하는 능력을 지원하기위한 전반적 요구 사항.</li>
+<li><em> 사용 내부 서블릿 </em> - 내부, 컨테이너 - 관리, 서블릿으로 구현됩니다 Catalina 기능에 대한 요구 사항.</li>
+<li><em> 사용 영역 구현은 </ em> -<code> org.apache.catalina.Realm </ code>을 인터페이스의 구현을위한 요구 사항 (사용자, 암호 및 역할의 컬렉션에 대한 액세스를 제공하는) 그는 표준 톰캣배포에 포함됩니다.</li>
 </ul>
 
-<p><em>NOTE</em> - In some cases, the contents of these functional specs has
-been "reverse engineered" from existing implementations.  This exercise is
-still useful, because it provides an introduction to <strong>what</strong>
-Catalina does, without being as concerned with <strong>how</strong> this is
-accomplished.</p>
+<p><em>NOTE</em> - 어떤 경우에는 이러한 기능 사양의 내용이 기존 구현에서 "엔지니어링 리버스 '이었습니다. 이 운동은 <strong>왜</strong> Catalina 에 소개가 제공되어야하는지, 확실한 <strong>방법</strong>없이 성취 할 수 없기 때문입니다. </p>
 
-<p><strong>TODO</strong> - Obviously, this area has a long ways to go before
-it is complete.  Contributions are welcome!</p>
+<p><strong>TODO</strong> - 물론,이 분야 전에 갈 길이 방법을 가지고
+ 그것이 완료되었습니다. 기부금은 환영!</p>
 
 </section>
 

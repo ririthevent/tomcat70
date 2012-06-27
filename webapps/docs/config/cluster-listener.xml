@@ -35,19 +35,21 @@
 
 <section name="Introduction">
   <p>
-	<code> org.apache.catalina.ha.ClusterListener </code>°¡ ±âº» Å¬·¡½º
-	´ç½ÅÀÇ µè°íÀÖ´Â ¸Þ½ÃÁö´Â <code> Cluster </code> ¸¦ ÅëÇØ¼­ ¹Þ°í ÀÖ½À´Ï´Ù.
+	<code> org.apache.catalina.ha.ClusterListener </code>ê°€ ê¸°ë³¸ í´ëž˜ìŠ¤
+	ë‹¹ì‹ ì˜ ë“£ê³ ìžˆëŠ” ë©”ì‹œì§€ëŠ” <code> Cluster </code> ë¥¼ í†µí•´ì„œ ë°›ê³  ìžˆìŠµë‹ˆë‹¤.
   </p>
 
 </section>
 <section name="org.apache.catalina.ha.session.ClusterSessionListener">
   <p>
-   DeltaManagerÀ» »ç¿ëÇÒ ¶§, ¸Þ½ÃÁö´Â Å¬·¯½ºÅÍ °´Ã¼¿¡ ÀÇÇØ ¼ö½ÅµÇ¸çÀÌ ¸®½º³Ê¸¦ ÅëÇØ °ü¸®ÀÚ¿¡°Ô Àü´ÞµË´Ï´Ù.
+   DeltaManagerì„ ì‚¬ìš©í•  ë•Œ, ë©”ì‹œì§€ëŠ” í´ëŸ¬ìŠ¤í„° ê°ì²´ì— ì˜í•´ ìˆ˜ì‹ ë˜ë©°ì´ ë¦¬ìŠ¤ë„ˆë¥¼ í†µí•´ ê´€ë¦¬ìžì—ê²Œ ì „ë‹¬ë©ë‹ˆë‹¤.
    </p>
 </section>
 <section name="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener">
   <p>
-  ¼¼¼Ç IDÀÇ º¯°æÀ» À§ÇØ ´ë±âÇÕ´Ï´Ù.´ç½ÅÀÇ ¼¼¼Ç ID´Â º¯°æÇÒ  <code> jvmRoute </ code> ¼Ó¼º°ú ÇÔ²² mod_jk¸¦ »ç¿ëÇÏ´Â °æ¿ì ÇØ´ç ¸®½º³Ê¿¡¸¸ »ç¿ëµË´Ï´Ù.º¯È­ÀÇ °æ¿ì, <code> JvmRouteBinderValve </ code>°¡ ¼¼¼ÇÀÇ º¯È­¸¦ ¾Ë¸®°ÔµÇ¸ç ±×°ÍÀÌ ¸®½º³Ê¿¡ ÀÇÇØ Æ÷ÂøµÈ´Ù.
+  ì„¸ì…˜ IDì˜ ë³€ê²½ì„ ìœ„í•´ ëŒ€ê¸°í•©ë‹ˆë‹¤.ë‹¹ì‹ ì˜ ì„¸ì…˜ IDëŠ” ë³€ê²½í•   <code>jvmRoute</code> 
+  ì†ì„±ê³¼ í•¨ê»˜ mod_jkë¥¼ ì‚¬ìš©í•˜ëŠ” ê²½ìš° í•´ë‹¹ ë¦¬ìŠ¤ë„ˆì—ë§Œ ì‚¬ìš©ë©ë‹ˆë‹¤.ë³€í™”ì˜ ê²½ìš°, 
+  <code>JvmRouteBinderValve</code>ê°€ ì„¸ì…˜ì˜ ë³€í™”ë¥¼ ì•Œë¦¬ê²Œ ë˜ë©° ê·¸ê²ƒì´ ë¦¬ìŠ¤ë„ˆì— ì˜í•´ í¬ì°©ëœë‹¤.
    </p>
 </section>
 

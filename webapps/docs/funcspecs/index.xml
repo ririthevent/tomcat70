@@ -32,20 +32,20 @@
 
 <section name="Catalina Functional Specifications">
 
-<p>ÀÌ ¹®¼­ ¿µ¿ªÀº ÅèÄ¹ÀÇ <em>Catalina</em> ¼­ºí¸´ ÄÁÅ×ÀÌ³Ê ºÎºÐ¿¡¼­ Áö¿øÇÏ´Â ¿©·¯ ±â´É¿¡ ´ëÇÑ <em>functional specificationg</em>À» Æ÷ÇÔÇÕ´Ï´Ù. ´ëºÎºÐÀÇ °æ¿ì ÀÌ·¯ÇÑ ±â´ÉÀÌ ±âº» ¼­ºí¸´ÀÌ³ª JSP ¸í¼¼¿¡ ¹®¼­È­µÇÁö ¾ÊÀº, ¿¹»ó ¿Ã¹Ù¸¥ Çàµ¿ÀÇ Á¤ÀÇ´Â ÀÌ·¯ÇÑ ±â´É »ç¿ëÀÚ¿¡ ¸ðµÎ Áß¿äÇÏ¹Ç·Î, Å×½ºÆ®ÇÒÁö °áÁ¤ÇÏ·Á°í ÀÛ°¡¸¦ Å×½ºÆ®ÇÏ±â.</p>
+<p>ì´ ë¬¸ì„œ ì˜ì—­ì€ í†°ìº£ì˜ <em>Catalina</em> ì„œë¸”ë¦¿ ì»¨í…Œì´ë„ˆ ë¶€ë¶„ì—ì„œ ì§€ì›í•˜ëŠ” ì—¬ëŸ¬ ê¸°ëŠ¥ì— ëŒ€í•œ <em>functional specificationg</em>ì„ í¬í•¨í•©ë‹ˆë‹¤. ëŒ€ë¶€ë¶„ì˜ ê²½ìš° ì´ëŸ¬í•œ ê¸°ëŠ¥ì´ ê¸°ë³¸ ì„œë¸”ë¦¿ì´ë‚˜ JSP ëª…ì„¸ì— ë¬¸ì„œí™”ë˜ì§€ ì•Šì€, ì˜ˆìƒ ì˜¬ë°”ë¥¸ í–‰ë™ì˜ ì •ì˜ëŠ” ì´ëŸ¬í•œ ê¸°ëŠ¥ ì‚¬ìš©ìžì— ëª¨ë‘ ì¤‘ìš”í•˜ë¯€ë¡œ, í…ŒìŠ¤íŠ¸í• ì§€ ê²°ì •í•˜ë ¤ê³  ìž‘ê°€ë¥¼ í…ŒìŠ¤íŠ¸í•˜ê¸°.</p>
 
-<p>±â´ÉÀû »ç¾çÀº ¸Þ´º (¿ÞÂÊ)¿¡ ´ÙÀ½°ú °°Àº ¹üÁÖ·Î ³ª´©¾îÁý´Ï´Ù :</p>
+<p>ê¸°ëŠ¥ì  ì‚¬ì–‘ì€ ë©”ë‰´ (ì™¼ìª½)ì— ë‹¤ìŒê³¼ ê°™ì€ ë²”ì£¼ë¡œ ë‚˜ëˆ„ì–´ì§‘ë‹ˆë‹¤ :</p>
 <ul>
-<li><em> »ç¿ë °ü¸® ¾ÖÇÃ ¸®ÄÉÀÌ¼Ç </em> - ÅøÀ» ÅëÇØ TomcatÀº ¼³Ä¡»Ó¸¸ ¾Æ´Ï¶ó, 
-ÀÚ½ÅÀÇ Åø¿¡ ´ëÇÑ ÀÚ¼¼ÇÑ ¿ä±¸ »çÇ×À» ±¸¼ºÇÏ°í ¿î¿µÇÏ´Â ´É·ÂÀ» Áö¿øÇÏ±âÀ§ÇÑ Àü¹ÝÀû ¿ä±¸ »çÇ×.</li>
-<li><em> »ç¿ë ³»ºÎ ¼­ºí¸´ </em> - ³»ºÎ, ÄÁÅ×ÀÌ³Ê - °ü¸®, ¼­ºí¸´À¸·Î ±¸ÇöµË´Ï´Ù Catalina ±â´É¿¡ ´ëÇÑ ¿ä±¸ »çÇ×.</li>
-<li><em> »ç¿ë ¿µ¿ª ±¸ÇöÀº </ em> -<code> org.apache.catalina.Realm </ code>À» ÀÎÅÍÆäÀÌ½ºÀÇ ±¸ÇöÀ»À§ÇÑ ¿ä±¸ »çÇ× (»ç¿ëÀÚ, ¾ÏÈ£ ¹× ¿ªÇÒÀÇ ÄÃ·º¼Ç¿¡ ´ëÇÑ ¾×¼¼½º¸¦ Á¦°øÇÏ´Â) ±×´Â Ç¥ÁØ ÅèÄ¹¹èÆ÷¿¡ Æ÷ÇÔµË´Ï´Ù.</li>
+<li><em> ì‚¬ìš© ê´€ë¦¬ ì• í”Œ ë¦¬ì¼€ì´ì…˜ </em> - íˆ´ì„ í†µí•´ Tomcatì€ ì„¤ì¹˜ë¿ë§Œ ì•„ë‹ˆë¼, 
+ìžì‹ ì˜ íˆ´ì— ëŒ€í•œ ìžì„¸í•œ ìš”êµ¬ ì‚¬í•­ì„ êµ¬ì„±í•˜ê³  ìš´ì˜í•˜ëŠ” ëŠ¥ë ¥ì„ ì§€ì›í•˜ê¸°ìœ„í•œ ì „ë°˜ì  ìš”êµ¬ ì‚¬í•­.</li>
+<li><em> ì‚¬ìš© ë‚´ë¶€ ì„œë¸”ë¦¿ </em> - ë‚´ë¶€, ì»¨í…Œì´ë„ˆ - ê´€ë¦¬, ì„œë¸”ë¦¿ìœ¼ë¡œ êµ¬í˜„ë©ë‹ˆë‹¤ Catalina ê¸°ëŠ¥ì— ëŒ€í•œ ìš”êµ¬ ì‚¬í•­.</li>
+<li><em> ì‚¬ìš© ì˜ì—­ êµ¬í˜„ì€ </em> -<code> org.apache.catalina.Realm </code>ì„ ì¸í„°íŽ˜ì´ìŠ¤ì˜ êµ¬í˜„ì„ ìœ„í•œ ìš”êµ¬ ì‚¬í•­ (ì‚¬ìš©ìž, ì•”í˜¸ ë° ì—­í• ì˜ ì»¬ë ‰ì…˜ì— ëŒ€í•œ ì•¡ì„¸ìŠ¤ë¥¼ ì œê³µí•˜ëŠ”) ê·¸ëŠ” í‘œì¤€ í†°ìº£ë°°í¬ì— í¬í•¨ë©ë‹ˆë‹¤.</li>
 </ul>
 
-<p><em>NOTE</em> - ¾î¶² °æ¿ì¿¡´Â ÀÌ·¯ÇÑ ±â´É »ç¾çÀÇ ³»¿ëÀÌ ±âÁ¸ ±¸Çö¿¡¼­ "¿£Áö´Ï¾î¸µ ¸®¹ö½º 'ÀÌ¾ú½À´Ï´Ù. ÀÌ ¿îµ¿Àº <strong>¿Ö</strong> Catalina ¿¡ ¼Ò°³°¡ Á¦°øµÇ¾î¾ßÇÏ´ÂÁö, È®½ÇÇÑ <strong>¹æ¹ý</strong>¾øÀÌ ¼ºÃë ÇÒ ¼ö ¾ø±â ¶§¹®ÀÔ´Ï´Ù. </p>
+<p><em>NOTE</em> - ì–´ë–¤ ê²½ìš°ì—ëŠ” ì´ëŸ¬í•œ ê¸°ëŠ¥ ì‚¬ì–‘ì˜ ë‚´ìš©ì´ ê¸°ì¡´ êµ¬í˜„ì—ì„œ "ì—”ì§€ë‹ˆì–´ë§ ë¦¬ë²„ìŠ¤ 'ì´ì—ˆìŠµë‹ˆë‹¤. ì´ ìš´ë™ì€ <strong>ì™œ</strong> Catalina ì— ì†Œê°œê°€ ì œê³µë˜ì–´ì•¼í•˜ëŠ”ì§€, í™•ì‹¤í•œ <strong>ë°©ë²•</strong>ì—†ì´ ì„±ì·¨ í•  ìˆ˜ ì—†ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤. </p>
 
-<p><strong>TODO</strong> - ¹°·Ð,ÀÌ ºÐ¾ß Àü¿¡ °¥ ±æÀÌ ¹æ¹ýÀ» °¡Áö°í
- ±×°ÍÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ±âºÎ±ÝÀº È¯¿µ!</p>
+<p><strong>TODO</strong> - ë¬¼ë¡ ,ì´ ë¶„ì•¼ ì „ì— ê°ˆ ê¸¸ì´ ë°©ë²•ì„ ê°€ì§€ê³ 
+ ê·¸ê²ƒì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê¸°ë¶€ê¸ˆì€ í™˜ì˜!</p>
 
 </section>
 

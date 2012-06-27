@@ -24,7 +24,7 @@
 
   <properties>
     <author email="yoavs@apache.org">Yoav Shapira</author>
-    <title>Request Process Flow</title>
+    <title>프로세스 흐름 요청</title>
   </properties>
 
 <body>
@@ -37,6 +37,8 @@ This page describes the process used by Tomcat to handle
 an incoming request.  This process is largely defined by
 the Servlet Specification, which outlines the order
 of events that must take place.
+이 페이지는 들어오는 요청을 처리하기 위해 톰캣에서 사용하는 프로세스를 설명합니다.
+이 과정은 대체로 사건의 순서를 설명 서블릿 사양에 의해 정의합니다.
 </p>
 
 <subsection name="description">
@@ -48,6 +50,7 @@ TODO
 <subsection name="diagram">
 <p>
 A UML sequence diagram of the request process is available
+요청 프로세스의 UML 시퀀스 다이어그램은 여기를 참조하십시오.
 <a href="requestProcess/requestProcess.pdf">here.</a>
 </p>
 </subsection>
@@ -58,6 +61,8 @@ The Servlet Specification provides many opportunities for
 listening in (using Listeners) or modifying (using Filters)
 the request handling process even before the request arrives
 at the servlet that will handle it.
+서블릿 사양은 요청이 처리한다는 서블릿에 도착하기 전에 요청 처리 과정을 듣고 
+(청취자를 사용하여) 또는 (필터를 사용하여) 수정하기 위한 많은 기회를 제공합니다.
 </p>
 
 </subsection>

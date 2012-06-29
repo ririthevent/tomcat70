@@ -36,6 +36,8 @@
 <section name="Introduction">
 
 <p>
+아파치 톰캣 소스의 빌드는 매우 쉬우며, 톰캣에 기여하는 시작점이다. 아래에 톰캣 소스를 빌드하는
+방법을 소개하고 있다. 
 Building Apache Tomcat from source is very easy, and is the first step to contributing to
 Tomcat. The following is a step by step guide.
 </p>

@@ -23,7 +23,7 @@
     &project;
 
   <properties>
-    <title>Additional Components</title>
+    <title>부가 컴포넌트</title>
     <author>Remy Maucherat</author>
   </properties>
 
@@ -33,11 +33,10 @@
 <toc/>
 </section>
 
-  <section name="Introduction">
+  <section name="소개">
   <p>
-    A number of additional components may be used with Apache Tomcat. These
-    components may be built by users should they need them or they can be
-    downloaded from one of the mirrors.
+    몇몇 부가 컴포넌트는 아파치 톰캣과 함께 사용되었을 것이다. 
+    이 컴포넌트들은 필요한 사용자들에 의해 빌트 되었거나 미러 중 하나로부터 다운로드 될 수 있다.
   </p>
 
   </section>

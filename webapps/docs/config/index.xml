@@ -39,6 +39,14 @@ attempt to describe which configuration directives should be used to perform
 specific tasks - for that, see the various <em>HOW-TO</em> documents on the
 main index page.</p>
 
+이 매뉴얼은 conf 파일 / 서버에 포함될 수있는 설정 지시어에 대한 모든 참조 
+정보가 포함되어 있습니다.
+
+XML 파일 톰캣 7 서블릿 / JSP 컨테이너의 동작을 구성합니다.
+
+그것은 설정 지시자는 특정 작업을 수행하는 데 사용해야하는 묘사하려고 시도하지 않습니다.
+그것에 대해, 기본 색인 페이지에 문서 실용 여러가지를 참조하십시오.
+
 <p>Tomcat configuration files are formatted as schemaless XML; elements and
 attributes are case-sensitive. Apache Ant-style variable substitution
 is supported; a system property with the name <code>propname</code> may be
@@ -46,10 +54,25 @@ used in a configuration file using the syntax <code>${propname}</code>. All
 system properties are available including those set using the <code>-D</code>
 syntax, those automatically made available by the JVM and those configured in
 the <code>$CATALINA_BASE/conf/catalina.properties</code> file.
+
+요소와, 톰캣 구성 파일은 schemaless XML로 포맷됩니다
+속성은 대소문자를 구분합니다.
+
+아파치 개미 스타일 변수 치환이 지원되며 이름 propname있는 시스템 속성 구문은 
+{propname}을 사용하여 구성 파일에 사용할 수 있습니다.
+
+모든 시스템 속성은 그-D 구문을 사용하여 세트, ​​자동으로 JVM에 의해 제공 분들과 
+$ CATALINA_BASE / conf의 / catalina.properties 파일에 구성된 이들.를 포함하여 사용할 수 있습니다.
+
+
 </p>
 
 <p>The configuration element descriptions are organized into the following
 major categories:</p>
+
+구성 요소 설명은 다음으로 구성됩니다
+주요 카테고리 :
+
 <ul>
 <li><strong>Top Level Elements</strong> - <code>&lt;Server&gt;</code> is the
     root element of the entire configuration file, while
@@ -67,10 +90,26 @@ major categories:</p>
     nested inside the element for a Container.  Some elements can be nested
     inside any Container, while others can only be nested inside a
     Context.</li>
+
+<li>최상위 요소 - <code>Service</code>는 엔진과 연결된 커넥터의 그룹을 나타냅니다 동안 
+<code>Server</code>를 전체 구성 파일의 루트 요소를 포함하게 됩니다.</li>
+
+<li>커넥터 - 요청을 보내는 (그리고 응답을받는로부터) 특정 서비스 외부 클라이언트 간의 인터페이스를 나타냅니다.</li>
+
+<li>용기는 - 누구의 기능 들어오는 요청을 처리하는 구성 요소를 대표하고, 해당 답변을 만듭니다.
+엔진 서비스에 대한 모든 요청을 처리, 호스트는 특정 가상 호스트에 대한 모든 요청을 처리하고,
+컨텍스트는 특정 웹 응용 프로그램에 대한 요청을 모두 처리합니다.</li>
+
+<li>중첩된 구성 요소 -이 컨테이너 요소 안에 중첩될 수 있습니다 요소를 나타냅니다. 
+다른에만 컨텍스트 내부에 중첩될 수있는 반면 일부 요소 또는 계열사는 컨테이너 
+내부에 중첩될 수 있습니다.</li>
 </ul>
 
 <p>For each element, the corresponding documentation follows this general
 outline:</p>
+
+각 요소의 경우 해당 문서는 아래와 같은 일반적 사항을 따르게 됩니다.
+개요 :
 <ul>
 <li><strong>Introduction</strong> - Overall description of this particular
     component.  There will be a corresponding Java <em>interface</em> (in
@@ -87,6 +126,18 @@ outline:</p>
 <li><strong>Special Features</strong> - Describes the configuration of a large
     variety of special features (specific to each element type) that are
     supported by the standard implementation of this interface.</li>
+
+소개 -이 특정 구성 요소의 전체 설명입니다.
+하나 이상의 표준 구현으로 구현됩니다 상응하는 자바 인터페이스 (org.apache.catalina 패키지)에 있을 것입니다.
+
+속성 -이 요소에 대해 합법적인 속성의 집합.
+일반적으로, 이것은 모두 해당 자바 인터페이스의 구현, 그리고이 인터페이스를 구현하는 
+특정 Java 클래스에만 해당하는 표준 구현 속성에서 지원하는 일반적인 특성으로 세분화됩니다.
+
+필수 속성의 이름은 굵게 표시됩니다.
+중첩된 구성 요소 - 법적으로이 요소 내에 중첩될 수 있습니다 중첩된 구성 요소의 열거합니다. 
+특징 -이 인터페이스의 기본 구현에서 지원하는 특별한 기능 (각 요소 유형에 맞는)의 수많은 
+종류의 구성에 대해 설명합니다.
 </ul>
 
 </section>

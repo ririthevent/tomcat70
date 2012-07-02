@@ -7,6 +7,13 @@
   (the "License"); you may not use this file except in compliance with
   the License.  You may obtain a copy of the License at
 
+  하나 이상의 참여자 라이센스 계약하에 아파치 소프트웨어 재단 (ASF)에 허가. 
+  저작권 소유권에 관한 자세한 정보는이 작품은 함께 배포 공지 사항 파일을 참조하십시오.
+  ASF는 버전 2.0 ("라이센스")
+  아파치 라이선스하에 귀하에게이 파일을 라이센스;
+  당신이 라이선스 준수를 제외하고이 파일을 사용할 수 없습니다.
+  당신의 라이센스의 복사본을받을 수 있습니다
+
       http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
@@ -14,6 +21,13 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+
+  해당 법률에 의해 요구 또는 서면으로 동의하지 않는 한, 소프트웨어 라이센스에 
+  따라 배포는 "있는 그대로"에 분산되어 모든 종류의 명시적 또는 암시하거나 
+  보증 또는 조건없이. 허가서를 따르는 권한과 한계를 규제하는 특정 언어에 
+  대한 라이센스를 참조하십시오.
+
+
 -->
 <!DOCTYPE document [
   <!ENTITY project SYSTEM "project.xml">
@@ -40,6 +54,11 @@
   in the <code>conf/server.xml</code> configuration file.  Its attributes
   represent the characteristics of the servlet container as a whole.</p>
 
+  서버 요소는 전체 카탈리 나의 서블릿 컨테이너를 나타냅니다.
+  따라서 conf의 / server.xml 구성 파일의 단일 바깥쪽 요소 여야합니다.
+  그 특성은 전체적으로 서블릿 컨테이너의 특성을 나타냅니다.
+
+
 </section>
 
 
@@ -50,6 +69,8 @@
   <p>All implementations of <strong>Server</strong>
   support the following attributes:</p>
 
+  서버의 모든 구현은 다음과 같은 속성을 지원합니다
+
   <attributes>
 
     <attribute name="className" required="false">
@@ -57,12 +78,20 @@
       implement the <code>org.apache.catalina.Server</code> interface.
       If no class name is specified, the standard implementation will
       be used.</p>
+
+	  사용하는 구현의 Java 클래스 이름.
+      이 클래스는 org.apache.catalina.Server 인터페이스를 구현해야합니다.
+      어떤 클래스 이름을 지정하지 않으면 표준 구현이 사용됩니다.
+
     </attribute>
 
     <attribute name="address" required="false">
       <p>The TCP/IP address on which this server waits for a shutdown
       command. If no address is specified, <code>localhost</code> is used.</p>
     </attribute>
+
+	 이 서버가 종료 기다립니다되는 TCP / IP 주소명령을 사용합니다.
+     어떤 주소가 지정되지 않으면 로컬 호스트가 사용됩니다.
 
     <attribute name="port" required="true">
       <p>The TCP/IP port number on which this server waits for a shutdown
@@ -73,11 +102,24 @@
       used when running Tomcat with the standard shell scripts though, as it
       will prevent shutdown.bat|.sh and catalina.bat|.sh from stopping it
       gracefully.</p>
+
+      이 서버가 shutdown 명령을 기다립니다되는 TCP / IP 포트 번호입니다.
+      
+	  종료 포트를 비활성화하려면 -1로 설정합니다.
+      주 : 톰캣은 아파치 커먼즈 데몬을 (취소 * xes에 Windows 또는 jsvc과 서비스로 실행)를 
+	  사용하여 시작될 때 종료 포트를 비활성화하면 잘 작동합니다.
+
+	  하지만 표준 쉘 스크립트와 Tomcat을 실행했을 때 그것이 정상적으로 그것을 멈추는에서 
+	  shutdown.bat.sh 및 catalina.bat.sh를 차단하므로 이것은 사용할 수 없습니다.
+	
     </attribute>
 
     <attribute name="shutdown" required="true">
       <p>The command string that must be received via a TCP/IP connection
       to the specified port number, in order to shut down Tomcat.</p>
+
+	  Tomcat을 종료하기 위해, 지정된 포트 번호로 TCP / IP 연결을 통해 접수되어야 명령 문자열입니다.
+
     </attribute>
 
   </attributes>
@@ -91,6 +133,11 @@
   It supports the following additional attributes (in addition to the
   common attributes listed above):</p>
 
+  서버의 표준 구현은 org.apache.catalina.core.StandardServer입니다
+
+  그것은 다음과 같은 추가 속성을 지원합니다
+  (위에 나열된 일반적인 특성 외에도)
+
   <attributes>
   </attributes>
 
@@ -103,11 +150,19 @@
 
   <p>The following components may be nested inside a <strong>Server</strong>
   element:</p>
+
+  다음 구성 요소가 서버 요소 안에 중첩 수 있습니다
+
   <ul>
   <li><a href="service.html"><strong>Service</strong></a> -
       One or more service element.</li>
+
+  서비스 하나 이상의 서비스 요소입니다.
+
   <li><a href="globalresources.html"><strong>GlobalNamingResources</strong></a> -
       Configure the JNDI global resources for the server.</li>
+
+	  GlobalNamingResources 서버의 JNDI 글로벌 리소스를 구성합니다.
   </ul>
 
 </section>
@@ -116,6 +171,9 @@
 <section name="Special Features">
 
   <p>There are no special features associated with a <strong>Server</strong>.
+    
+	 서버와 관련된 특별한 기능은 없습니다
+
   </p>
 
 </section>

@@ -15,6 +15,11 @@
   in the <code>conf/server.xml</code> configuration file.  Its attributes
   represent the characteristics of the servlet container as a whole.</p>
 
+  서버 요소는 전체 카탈리 나의 서블릿 컨테이너를 나타냅니다.
+  따라서 conf의 / server.xml 구성 파일의 단일 바깥쪽 요소 여야합니다.
+  그 특성은 전체적으로 서블릿 컨테이너의 특성을 나타냅니다.
+
+
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Attributes"><strong>Attributes</strong></a></font></td></tr><tr><td><blockquote>
 
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Common Attributes"><!--()--></a><a name="Common_Attributes"><strong>Common Attributes</strong></a></font></td></tr><tr><td><blockquote>
@@ -22,11 +27,18 @@
   <p>All implementations of <strong>Server</strong>
   support the following attributes:</p>
 
+  서버의 모든 구현은 다음과 같은 속성을 지원합니다
+
   <table border="1" cellpadding="5"><tr><th width="15%" bgcolor="#023264"><font color="#ffffff">Attribute</font></th><th width="85%" bgcolor="#023264"><font color="#ffffff">Description</font></th></tr><tr><td align="left" valign="center"><code class="attributeName">className</code></td><td align="left" valign="center">
       <p>Java class name of the implementation to use.  This class must
       implement the <code>org.apache.catalina.Server</code> interface.
       If no class name is specified, the standard implementation will
       be used.</p>
+
+	  사용하는 구현의 Java 클래스 이름.
+      이 클래스는 org.apache.catalina.Server 인터페이스를 구현해야합니다.
+      어떤 클래스 이름을 지정하지 않으면 표준 구현이 사용됩니다.
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">address</code></td><td align="left" valign="center">
       <p>The TCP/IP address on which this server waits for a shutdown
       command. If no address is specified, <code>localhost</code> is used.</p>
@@ -39,9 +51,22 @@
       used when running Tomcat with the standard shell scripts though, as it
       will prevent shutdown.bat|.sh and catalina.bat|.sh from stopping it
       gracefully.</p>
+
+      이 서버가 shutdown 명령을 기다립니다되는 TCP / IP 포트 번호입니다.
+      
+	  종료 포트를 비활성화하려면 -1로 설정합니다.
+      주 : 톰캣은 아파치 커먼즈 데몬을 (취소 * xes에 Windows 또는 jsvc과 서비스로 실행)를 
+	  사용하여 시작될 때 종료 포트를 비활성화하면 잘 작동합니다.
+
+	  하지만 표준 쉘 스크립트와 Tomcat을 실행했을 때 그것이 정상적으로 그것을 멈추는에서 
+	  shutdown.bat.sh 및 catalina.bat.sh를 차단하므로 이것은 사용할 수 없습니다.
+	
     </td></tr><tr><td align="left" valign="center"><strong><code class="attributeName">shutdown</code></strong></td><td align="left" valign="center">
       <p>The command string that must be received via a TCP/IP connection
       to the specified port number, in order to shut down Tomcat.</p>
+
+	  Tomcat을 종료하기 위해, 지정된 포트 번호로 TCP / IP 연결을 통해 접수되어야 명령 문자열입니다.
+
     </td></tr></table>
 
   </blockquote></td></tr></table>
@@ -53,6 +78,11 @@
   It supports the following additional attributes (in addition to the
   common attributes listed above):</p>
 
+  서버의 표준 구현은 org.apache.catalina.core.StandardServer입니다
+
+  그것은 다음과 같은 추가 속성을 지원합니다
+  (위에 나열된 일반적인 특성 외에도)
+
   <table border="1" cellpadding="5"><tr><th width="15%" bgcolor="#023264"><font color="#ffffff">Attribute</font></th><th width="85%" bgcolor="#023264"><font color="#ffffff">Description</font></th></tr></table>
 
   </blockquote></td></tr></table>
@@ -61,16 +91,27 @@
 
   <p>The following components may be nested inside a <strong>Server</strong>
   element:</p>
+
+  다음 구성 요소가 서버 요소 안에 중첩 수 있습니다
+
   <ul>
   <li><a href="service.html"><strong>Service</strong></a> -
       One or more service element.</li>
+
+  서비스 하나 이상의 서비스 요소입니다.
+
   <li><a href="globalresources.html"><strong>GlobalNamingResources</strong></a> -
       Configure the JNDI global resources for the server.</li>
+
+	  GlobalNamingResources 서버의 JNDI 글로벌 리소스를 구성합니다.
   </ul>
 
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Special Features"><!--()--></a><a name="Special_Features"><strong>Special Features</strong></a></font></td></tr><tr><td><blockquote>
 
   <p>There are no special features associated with a <strong>Server</strong>.
+    
+	 서버와 관련된 특별한 기능은 없습니다
+
   </p>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>

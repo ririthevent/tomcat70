@@ -1,4 +1,4 @@
-<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 Configuration Reference (7.0.28-dev) - The Executor (thread pool)</title><meta name="author" content="Filip Hanik"><style type="text/css" media="print">
+<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 Configuration Reference (7.0.28-dev) - 집행자 (스레드 풀)</title><meta name="author" content="Filip Hanik"><style type="text/css" media="print">
             .noPrint {display: none;}
             td#mainBody {width: 100%;}
         </style><style type="text/css">
@@ -6,7 +6,7 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="../images/tomcat.gif" align="right" alt="
     The Apache Tomcat Servlet/JSP Container
-  " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 3 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li><li><a href="index.html">Config Ref. Home</a></li></ul><p><strong>Top Level Elements</strong></p><ul><li><a href="server.html">Server</a></li><li><a href="service.html">Service</a></li></ul><p><strong>Executors</strong></p><ul><li><a href="executor.html">Executor</a></li></ul><p><strong>Connectors</strong></p><ul><li><a href="http.html">HTTP</a></li><li><a href="ajp.html">AJP</a></li></ul><p><strong>Containers</strong></p><ul><li><a href="context.html">Context</a></li><li><a href="engine.html">Engine</a></li><li><a href="host.html">Host</a></li><li><a href="cluster.html">Cluster</a></li></ul><p><strong>Nested Components</strong></p><ul><li><a href="globalresources.html">Global Resources</a></li><li><a href="jar-scanner.html">JarScanner</a></li><li><a href="listeners.html">Listeners</a></li><li><a href="loader.html">Loader</a></li><li><a href="manager.html">Manager</a></li><li><a href="realm.html">Realm</a></li><li><a href="resources.html">Resources</a></li><li><a href="valve.html">Valve</a></li></ul><p><strong>Cluster Elements</strong></p><ul><li><a href="cluster.html">Cluster</a></li><li><a href="cluster-manager.html">Manager</a></li><li><a href="cluster-channel.html">Channel</a></li><li><a href="cluster-membership.html">Channel/Membership</a></li><li><a href="cluster-sender.html">Channel/Sender</a></li><li><a href="cluster-receiver.html">Channel/Receiver</a></li><li><a href="cluster-interceptor.html">Channel/Interceptor</a></li><li><a href="cluster-valve.html">Valve</a></li><li><a href="cluster-deployer.html">Deployer</a></li><li><a href="cluster-listener.html">ClusterListener</a></li></ul><p><strong>Other</strong></p><ul><li><a href="filter.html">Filter</a></li><li><a href="systemprops.html">System properties</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>The Executor (thread pool)</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
+  " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 3 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li><li><a href="index.html">Config Ref. Home</a></li></ul><p><strong>Top Level Elements</strong></p><ul><li><a href="server.html">Server</a></li><li><a href="service.html">Service</a></li></ul><p><strong>Executors</strong></p><ul><li><a href="executor.html">Executor</a></li></ul><p><strong>Connectors</strong></p><ul><li><a href="http.html">HTTP</a></li><li><a href="ajp.html">AJP</a></li></ul><p><strong>Containers</strong></p><ul><li><a href="context.html">Context</a></li><li><a href="engine.html">Engine</a></li><li><a href="host.html">Host</a></li><li><a href="cluster.html">Cluster</a></li></ul><p><strong>Nested Components</strong></p><ul><li><a href="globalresources.html">Global Resources</a></li><li><a href="jar-scanner.html">JarScanner</a></li><li><a href="listeners.html">Listeners</a></li><li><a href="loader.html">Loader</a></li><li><a href="manager.html">Manager</a></li><li><a href="realm.html">Realm</a></li><li><a href="resources.html">Resources</a></li><li><a href="valve.html">Valve</a></li></ul><p><strong>Cluster Elements</strong></p><ul><li><a href="cluster.html">Cluster</a></li><li><a href="cluster-manager.html">Manager</a></li><li><a href="cluster-channel.html">Channel</a></li><li><a href="cluster-membership.html">Channel/Membership</a></li><li><a href="cluster-sender.html">Channel/Sender</a></li><li><a href="cluster-receiver.html">Channel/Receiver</a></li><li><a href="cluster-interceptor.html">Channel/Interceptor</a></li><li><a href="cluster-valve.html">Valve</a></li><li><a href="cluster-deployer.html">Deployer</a></li><li><a href="cluster-listener.html">ClusterListener</a></li></ul><p><strong>Other</strong></p><ul><li><a href="filter.html">Filter</a></li><li><a href="systemprops.html">System properties</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>집행자 (스레드 풀)</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
 <ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Attributes">Attributes</a><ol><li><a href="#Common_Attributes">Common Attributes</a></li><li><a href="#Standard_Implementation">Standard Implementation</a></li></ol></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
 
@@ -15,12 +15,24 @@
      connector created but this allows you to share a thread pool, between (primarly) connector
      but also other components when those get configured to support executors</p>
 
+	 집행자는 톰캣의 컴포넌트간에 공유할 수있는 스레드 풀을 나타냅니다.
+     역사적으로 거기에 만들어진 커넥터 당 스레드 풀이지만, 이것이 이들이 Executors를 지원하도록 
+	 구성되어받을 (primarly) 커넥터뿐만 아니라, 다른 구성 요소 사이에 스레드 풀을 공유할 수있다.
+
 
   <p>The executor has to implement the <code>org.apache.catalina.Executor</code> interface.</p>
+
+     집행자는 org.apache.catalina.Executor 인터페이스를 구현해야한다.
 
   <p>The executor is a nested element to the <a href="service.html">Service</a> element.
      And in order for it to be picked up by the connectors, the Executor element has to appear
      prior to the Connector element in server.xml</p>
+
+	집행자는 서비스 요소에 중첩된 요소입니다.
+    그리고 그것이 커넥터에 의해 포착되어 있어야 위해 집행자 요소는 
+    앞서 server.xml에있는 커넥터 요소에 표시해야한다.
+
+
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Attributes"><strong>Attributes</strong></a></font></td></tr><tr><td><blockquote>
 
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Common Attributes"><!--()--></a><a name="Common_Attributes"><strong>Common Attributes</strong></a></font></td></tr><tr><td><blockquote>
@@ -28,15 +40,32 @@
   <p>All implementations of <strong>Executor</strong>
   support the following attributes:</p>
 
+  집행자의 모든 구현은 다음 특성을 지원합니다
+
+
   <table border="1" cellpadding="5"><tr><th width="15%" bgcolor="#023264"><font color="#ffffff">Attribute</font></th><th width="85%" bgcolor="#023264"><font color="#ffffff">Description</font></th></tr><tr><td align="left" valign="center"><code class="attributeName">className</code></td><td align="left" valign="center">
       <p>The class of the implementation. The implementation has to implement the
          <code>org.apache.catalina.Executor</code> interface.
          This interface ensures that the object can be referenced through its <code>name</code> attribute
          and that implements Lifecycle, so that it can be started and stopped with the container.
          The default value for the className is <code>org.apache.catalina.core.StandardThreadExecutor</code></p>
+
+   구현 클래스.
+   구현은 org.apache.catalina.Executor 인터페이스를 구현해야한다.
+   이 인터페이스는 개체의 이름 속성을 통해 참조될, 그것은 시작과 컨테이너로 막을 수 있도록 
+   라이프 사이클을 구현 할 수있게 해줍니다.
+   
+   클래스에 대한 기본값은 org.apache.catalina.core입니다.
+   
+   표준 스레드 집행자
+
     </td></tr><tr><td align="left" valign="center"><strong><code class="attributeName">name</code></strong></td><td align="left" valign="center">
       <p>The name used to reference this pool in other places in server.xml.
          The name is required and must be unique.</p>
+
+   이름은 server.xml에있는 다른 장소에서이 수영장을 참조할 때 사용.
+   이름이 필요하며 고유해야합니다.
+
     </td></tr></table>
 
   </blockquote></td></tr></table>
@@ -45,31 +74,63 @@
 
   <p>
   The default implementation supports the following attributes:</p>
+  기본 구현은 다음과 같은 특성을 지원합니다.
+
 
   <table border="1" cellpadding="5"><tr><th width="15%" bgcolor="#023264"><font color="#ffffff">Attribute</font></th><th width="85%" bgcolor="#023264"><font color="#ffffff">Description</font></th></tr><tr><td align="left" valign="center"><code class="attributeName">threadPriority</code></td><td align="left" valign="center">
       <p>(int) The thread priority for threads in the executor, the default is <code>Thread.NORM_PRIORITY</code></p>
+	  (INT) 집행자의 스레드에 대한 스레드 우선순위는 기본값 Thread.NORM_PRIORITY입니다
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">daemon</code></td><td align="left" valign="center">
       <p>(boolean) Whether the threads should be daemon threads or not, the default is <code>true</code></p>
-    </td></tr><tr><td align="left" valign="center"><code class="attributeName">namePrefix</code></td><td align="left" valign="center">
+	  (부울) 스레드가 데몬 스레드가 아닌지 여부, 기본값은 사실이다
+	
+	</td></tr><tr><td align="left" valign="center"><code class="attributeName">namePrefix</code></td><td align="left" valign="center">
       <p>(String) The name prefix for each thread created by the executor.
          The thread name for an individual thread will be <code>namePrefix+threadNumber</code></p>
+
+     (문자열) 집행자가 만든 각 스레드에 대해 이름 접두어.
+	 
+	  개별 스레드에 대한 스레드 이름은 namePrefix + threadNumber 될 것입니다
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">maxThreads</code></td><td align="left" valign="center">
       <p>(int) The max number of active threads in this pool, default is <code>200</code></p>
-    </td></tr><tr><td align="left" valign="center"><code class="attributeName">minSpareThreads</code></td><td align="left" valign="center">
+
+     (INT)이 풀에있는 활성 스레드의 최대 개수가 기본값은 200 개입니다.
+	
+	</td></tr><tr><td align="left" valign="center"><code class="attributeName">minSpareThreads</code></td><td align="left" valign="center">
       <p>(int) The minimum number of threads always kept alive, default is <code>25</code></p>
+
+     (INT) 스레드의 최소 개수는 항상 살아 보관, 기본값은 25입니다.
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">maxIdleTime</code></td><td align="left" valign="center">
-      <p>(int) The number of milliseconds before an idle thread shutsdown, unless the number of active threads are less
-         or equal to minSpareThreads. Default value is <code>60000</code>(1 minute)</p>
+      <p>(int) The number of milliseconds before an idle thread shutsdown, unless the number of active threads are less or equal to minSpareThreads. Default value is <code>60000</code>(1 minute)</p>
+
+    유휴 스레드 shutsdown 전에 밀리초 (INT) 번호, 활성 스레드의 수가 작거나 minSpareThreads 같음가 아닌 경우.
+    기본값은 60,000 (1 분)입니다
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">maxQueueSize</code></td><td align="left" valign="center">
       <p>(int) The maximum number of runnable tasks that can queue up awaiting
         execution before we reject them. Default value is <code>Integer.MAX_VALUE</code></p>
-    </td></tr><tr><td align="left" valign="center"><code class="attributeName">prestartminSpareThreads</code></td><td align="left" valign="center">
+
+	우리가 그들을 거부하기 전에 대기열가 실행을 기다리는 수 runnable 작업 (INT) 최대 수입니다.
+    기본값은 Integer.MAX_VALUE이다.
+
+	</td></tr><tr><td align="left" valign="center"><code class="attributeName">prestartminSpareThreads</code></td><td align="left" valign="center">
       <p>(boolean) Whether minSpareThreads should be started when starting the Executor or not,
           the default is <code>false</code></p>
+
+    집행자 여부를 시작할 때&gt; (부울) minSpareThreads가 시작할지 여부, 기본값은 false입니다.
+
     </td></tr><tr><td align="left" valign="center"><code class="attributeName">threadRenewalDelay</code></td><td align="left" valign="center">
       <p>After a context is stopped, threads in the pool are renewed. To avoid renewing all threads at the same time,
         this delay is observed between 2 threads being renewed. Value is in ms, default value is 1000ms.
         If negative, threads are not renewed.</p>
+
+    컨텍스트가 중지되면 풀에 스레드가 갱신됩니다. 동시에 모든 스레드를 갱신하지 않도록하려면이 지연이 
+	갱신되는 두 스레드 사이에 관찰된다. 가치는 MS에, 기본값은 1000ms입니다.
+
+	부정적인면, 스레드가 갱신되지 않습니다.
     </td></tr></table>
 
 

@@ -29,7 +29,7 @@
 
 <body>
 
-<section name="Table of Contents">
+<section name="차례">
 <toc/>
 </section>
 
@@ -41,11 +41,9 @@
 
   </section>
 
-  <section name="Downloading">
+  <section name="내려받기">
   <p>
-    To download the extras components open the Tomcat download page and
-    select "browse" from the Quick Navigation Links. The extras components can be
-    found in bin/extras.
+    추가 컴포넌트를 다운받으려면 톰캣 다운로드 페이지를 열어 빠른탐색(Quick Navigation)링크에서 "browse"를 선택한다.
   </p>
   </section>
 

@@ -74,10 +74,9 @@ Ant 1.8.1 이후의 바이너리 배포 버전을
 </p>
 
 <p>
-<b>IMPORTANT</b>: Create an ANT_HOME environment variable to point the directory <code>${ant.home}</code>,
-and modify the PATH environment variable to include directory
-<code>${ant.home}/bin</code> in its list.  This makes the <code>ant</code> command line script
-available, which will be used to actually perform the build.
+<b>중요</b>: <code>${ant.home}</code> 디렉토리를 가리키도록 ANT_HOME 환경변수를 만들고,
+PATH를 <code>${ant.home}/bin</code>를 포함하도록 변경한다. 이렇게 함으로써 빌드에 사용되는 <code>ant</code> 명령어를
+command line에서 실행가능하다.
 </p>
 
 </section>
@@ -85,20 +84,18 @@ available, which will be used to actually perform the build.
 <section name="Checkout or obtain the source code for Tomcat 7.0">
 
   <p>
-  Tomcat 7.0 SVN repository URL:
+  Tomcat 7.0 SVN 저장소 URL:
   <a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk/">http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk/</a>
   </p>
   <p>
-  Tomcat source packages:
+  톰캣 소스 패키지:
   <a href="http://tomcat.apache.org/download-70.cgi">http://tomcat.apache.org/download-70.cgi</a>.
   </p>
 
   <p>
-  Checkout the source using SVN, selecting a tag for released version or
-  trunk for the current development code, or download and unpack a
-  source package. For the remainder of this guide, the symbolic name
-  <code>${tomcat.source}</code> is used to refer to the
-  location where the source has been placed.
+  SVN을 이용해서 릴리즈 버전이나 현재 개발중인 소스를 체크아웃하거나 다운로드하여 소스 패키지의
+  압축을 푼다. 이 가이드에서 <code>${tomcat.source}</code>를 해당 소스가 위치한 디렉토리를
+  가리키는 심볼릭 이름으로 사용할 것이다.
   </p>
 
 </section>
@@ -106,7 +103,7 @@ available, which will be used to actually perform the build.
 <section name="Building Tomcat">
 
 <p>
-Use the following commands to build Tomcat:
+아래의 명령어로 톰캣을 빌드한다.
 <br/>
 <code><br/>
     cd ${tomcat.source}<br/>

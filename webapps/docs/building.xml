@@ -38,8 +38,6 @@
 <p>
 아파치 톰캣 소스의 빌드는 매우 쉬우며, 톰캣에 기여하는 시작점이다. 아래에 톰캣 소스를 빌드하는
 방법을 소개하고 있다. 
-Building Apache Tomcat from source is very easy, and is the first step to contributing to
-Tomcat. The following is a step by step guide.
 </p>
 
 </section>
@@ -47,14 +45,15 @@ Tomcat. The following is a step by step guide.
 <section name="Download a Java Development Kit (JDK) 1.6 or later">
 
 <p>
-Tomcat requires a JDK (version 1.6 or later) to be installed.
-<br/>The Sun JDK can be downloaded
-<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a>.
+톰캣 설치는 JDK 1.6 이후 버전을 요구한다.
+<br/>
+Sun JDK는 
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">여기</a>
+에서 다운로드 할 수 있다.
 </p>
 
 <p>
-<b>IMPORTANT</b>: Set an environment variable JAVA_HOME to the pathname of the
-directory into which you installed the JDK release.
+<b>중요</b>: JDK를 설치한 디렉토리를 시스템 패스에 JAVA_HOME 이름으로 설정한다.
 </p>
 
 </section>
@@ -62,16 +61,16 @@ directory into which you installed the JDK release.
 <section name="Install Apache Ant 1.8.1 or later">
 
 <p>
-Download a binary distribution of Ant 1.8.1 or later from
-<a href="http://ant.apache.org/bindownload.cgi">here</a>.
+Ant 1.8.1 이후의 바이너리 배포 버전을 
+<a href="http://ant.apache.org/bindownload.cgi">여기</a>
+에서 다운로드 한다.
 </p>
 
 <p>
-Unpack the binary distribution into a convenient location so that the
-Ant release resides in its own directory (conventionally named
-<code>apache-ant-1.8.x</code>).  For the remainder of this guide,
-the symbolic name <code>${ant.home}</code> is used to refer to the full pathname of
- the Ant installation directory directory.
+바이너리 배포 버전의 압축을 적당한 곳에 풀고 Ant Release의 위치를 확인한다.
+(일반적으로 <code>apache-ant-1.8.x</code>). 앞으로 이 가이드에서는 
+심볼릭 이름인 <code>${ant.home}</code>를 Ant가 설치된 디렉토리를 가리키는데 
+사용하고자 한다.
 </p>
 
 <p>

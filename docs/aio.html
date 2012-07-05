@@ -32,19 +32,17 @@
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="CometEvent"><strong>CometEvent</strong></a></font></td></tr><tr><td><blockquote>
 
   <p>
-    Servlets which implement the <code>org.apache.catalina.comet.CometProcessor</code>
-    interface will have their event method invoked rather than the usual service
-    method, according to the event which occurred. The event object gives
-    access to the usual request and response objects, which may be used in the
-    usual way. The main difference is that those objects remain valid and fully
-    functional at any time between processing of the BEGIN event until processing
-    an END or ERROR event.
-    The following event types exist:
+    <code>org.apache.catalina.comet.CometProcessor</code> 인터페이스를 구현한 서블릿은
+    일반적인 서비스 메소드가 아닌, 발생한 이벤트에 따라 해당되는 이벤트 메소드를 호출하게 됩니다.
+    이벤트 객체는 일반적인 요청과 응답 객체에 접근할 수 있어서, 일반적인 방법으로도 사용할 수 있게
+    합니다. 중요한 차이점은 이 객체들은 END 또는 ERROR 이벤트 처리를 할 때까지 BEGIN 이벤트
+    처리 사이에서 유효하고 모든 기능을 다 사용할 수 있는 상태로 남아있게 됩니다.
+    다음은 이벤트 타입입니다:
   </p>
 
   <ul>
-  <li>EventType.BEGIN: will be called at the beginning
-     of the processing of the connection. It can be used to initialize any relevant
+  <li>EventType.BEGIN: 연결 처리의 시작에 호출됩니다.
+     It can be used to initialize any relevant
      fields using the request and response objects. Between the end of the processing
      of this event, and the beginning of the processing of the end or error events,
      it is possible to use the response object to write data on the open connection.

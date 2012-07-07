@@ -107,25 +107,24 @@
   </p>
 
   <ul>
-  <li>EventSubType.TIMEOUT: The connection timed out (sub type of ERROR); note that this ERROR
-    type is not fatal, and the connection will not be closed unless the servlet uses the close
-    method of the event.
+  <li>EventSubType.TIMEOUT: 연결 시간 초과 (ERROR의 서브 타입); 이 ERROR 타입은 치명적이 아니며, 
+    서블릿이 이벤트의 close 메소드를 사용하지 않으면 종료되지 않습니다.
   </li>
-  <li>EventSubType.CLIENT_DISCONNECT: The client connection was closed (sub type of ERROR).
+  <li>EventSubType.CLIENT_DISCONNECT: 클라이언트 연결이 닫혔습니다. (ERROR의 서브 타입)
   </li>
-  <li>EventSubType.IOEXCEPTION: An IO exception occurred, such as invalid content, for example,
-    an invalid chunk block (sub type of ERROR).
+  <li>EventSubType.IOEXCEPTION: IO 예외가 발생했습니다. 예를 들어 유효하지 않은 청크 블록같은 콘텐트
+    (ERROR의 서브 타입).
   </li>
-  <li>EventSubType.WEBAPP_RELOAD: The web application is being reloaded (sub type of END).
+  <li>EventSubType.WEBAPP_RELOAD: 웹 애플리케이션이 리로드되었습니다 (ERROR의 서브 타입).
   </li>
-  <li>EventSubType.SESSION_END: The servlet ended the session (sub type of END).
+  <li>EventSubType.SESSION_END: 서블릿이 세션을 종료했습니다 (ERROR의 서브 타입).
   </li>
   </ul>
 
   <p>
-    As described above, the typical lifecycle of a Comet request will consist in a series of
-    events such as: BEGIN -> READ -> READ -> READ -> ERROR/TIMEOUT. At any time, the servlet
-    may end processing of the request by using the close method of the event object.
+    위 설명처럼, 전형적인 코멧 요청의 생명주기는 다음과 같은 이벤트의 연속으로 이루어졌습니다: 
+    BEGIN -> READ -> READ -> READ -> ERROR/TIMEOUT.
+    어느 때이든, 서블릿은 이벤트 객체의 종료 메소드를 사용해서 요청 처리를 종료할 수 있습니다.
   </p>
 
   </subsection>

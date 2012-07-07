@@ -12,7 +12,7 @@
 
   <p>
     APR 또는 NIO API를 커넥터의 기반으로 사용할 때, 톰캣은 서블릿 API를 지원하는데 제공되는 
-    일반적인 블로킹 IO 위에서 수많은 확장을 제공할 수 있다.
+    일반적인 블로킹 IO 위에서 수많은 확장을 제공할 수 있습니다.
   </p>
 
   <p>
@@ -105,12 +105,10 @@
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="CometFilter"><strong>CometFilter</strong></a></font></td></tr><tr><td><blockquote>
 
   <p>
-    Similar to regular filters, a filter chain is invoked when comet events are processed.
-    These filters should implement the CometFilter interface (which works in the same way as
-    the regular Filter interface), and should be declared and mapped in the deployment
-    descriptor in the same way as a regular filter. The filter chain when processing an event
-    will only include filters which match all the usual mapping rules, and also implement
-    the CometFiler interface.
+    일반적인 필터와 마찬가지로, 필터 체인은 코멧 이벤트가 처리될 때 호출됩니다. 이 필터는 CometFilter
+    인터페이스(보통의 Filter 인터페이스처럼 동일한 방법으로 동작합니다)를 구현해야 하고, 일반적인 필터처럼 
+    배치 설명자에 선언되고 매핑되어야 합니다. 이벤트를 처리할 때 필터 체인은 모든 일반적인 매핑 룰에 매칭하는
+    필터만을 포함하고, CometFilter 인터페이스를 구현해야 합니다.
   </p>
 
   </blockquote></td></tr></table>
@@ -118,8 +116,7 @@
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Example code"><!--()--></a><a name="Example_code"><strong>Example code</strong></a></font></td></tr><tr><td><blockquote>
 
   <p>
-    The following pseudo code servlet implements asynchronous chat functionality using the API
-    described above:
+    아래의 유사 코드 서블릿은 앞서 설명한 API를 사용해서 비동기 채팅 기능을 구현했습니다:
   </p>
 
   <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
@@ -261,46 +258,44 @@ public class ChatServlet
 
   </blockquote></td></tr></table>
   <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Comet timeouts"><!--()--></a><a name="Comet_timeouts"><strong>Comet timeouts</strong></a></font></td></tr><tr><td><blockquote>
-    <p>If you are using the NIO connector, you can set individual timeouts for your different comet connections.
-       To set a timeout, simply set a request attribute like the following code shows:
-       <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>CometEvent event.... event.setTimeout(30*1000);</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div> or
+    <p>만약 NIO 커넥터를 사용한다면, 다른 코멧 연결을 위한 개별적인 타임아웃 시간을 설정할 수 있습니다.
+       타임아웃을 설정하려면, 간단히 다음 코드처럼 요청 속성을 설정하면 됩니다:
+       <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>CometEvent event.... event.setTimeout(30*1000);</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div> 또는
        <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>event.getHttpServletRequest().setAttribute("org.apache.tomcat.comet.timeout", new Integer(30 * 1000));</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-       This sets the timeout to 30 seconds.
-       Important note: in order to set this timeout, it has to be done on the <code>BEGIN</code> event.
-       The default value is <code>soTimeout</code>
+       이렇게 하면 타임아웃이 30초로 설정됩니다.
+       중요 노트: 이렇게 타임아웃을 설정하려면, <code>BEGIN</code> 이벤트에서 해야 됩니다.
+       기본 값은 <code>soTimeout</code>입니다.
     </p>
-    <p>If you are using the APR connector, all Comet connections will have the same timeout value. It is <code>soTimeout*50</code>
+    <p>만약 APR 커넥터를 사용한다면, 모든 코멧 연결은 동일한 타임아웃 값을 갖게 됩니다. <code>soTimeout*50</code> 입니다.
     </p>
   </blockquote></td></tr></table>
 
   </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Asynchronous writes"><!--()--></a><a name="Asynchronous_writes"><strong>Asynchronous writes</strong></a></font></td></tr><tr><td><blockquote>
 
   <p>
-    When APR or NIO is enabled, Tomcat supports using sendfile to send large static files.
-    These writes, as soon as the system load increases, will be performed
-    asynchronously in the most efficient way. Instead of sending a large response using
-    blocking writes, it is possible to write content to a static file, and write it
-    using a sendfile code. A caching valve could take advantage of this to cache the
-    response data in a file rather than store it in memory. Sendfile support is
-    available if the request attribute <code>org.apache.tomcat.sendfile.support</code>
-    is set to <code>Boolean.TRUE</code>.
+    APR 또는 NIO가 가능하면, 톰캣은 큰 용량의 정적인 파일을 보내기 위해서 sendfile 사용을 지원합니다.
+    시스템 부하가 증가하자마자, 가장 효율적인 방법으로 비동기적으로 실행되어 보내집니다. 블로킹 쓰기를 
+    통해서 대용량의 응답을 보내는 대신, 정적인 파일로 콘텐트를 쓰는 것이 가능하고, sendfile 코드를
+    이용해서 쓸 수 있습니다. 캐싱하는 값은 메모리에 저장하는 대신 응답 데이터를 파일에 캐싱하는 장점이
+    있습니다. Sendfile 지원은 요청 속성 <code>org.apache.tomcat.sendfile.support</code>
+    값이 <code>Boolean.TRUE</code>로 설정되어야 사용할 수 있습니다.
   </p>
 
   <p>
-    Any servlet can instruct Tomcat to perform a sendfile call by setting the appropriate
-    request attributes. It is also necessary to correctly set the content length
-    for the response. When using sendfile, it is best to ensure that neither the
+    적당한 요청 속성을 설정함으로 톰캣이 sendfile 호출을 실행하게 어떤 서블릿에서도 가능합니다.
+    응답에 정확한 콘텐츠 길이를 설정하는 것도 역시 필요합니다. sendfile을 사용할 때, 응답 내용이
+    커넥터에 의해 보내지기 때문에, 필터링 될 수 없습니다.
+    (When using sendfile, it is best to ensure that neither the
     request or response have been wrapped, since as the response body will be sent later
-    by the connector itself, it cannot be filtered. Other than setting the 3 needed
-    request attributes, the servlet should not send any response data, but it may use
-    any method which will result in modifying the response header (like setting cookies).
+    by the connector itself, it cannot be filtered.)
+    3가지 필요한 요청 속성을 설정하기 보다는, 서블릿은 어떤 응답 데이터도 보내면 안됩니다. 그러나 
+    응답 헤더를 수정하는 결과를 사용하는 어떤 메소드도 사용할 수 있습니다(쿠키 설정과 같은).
   </p>
 
   <ul>
-  <li><code>org.apache.tomcat.sendfile.filename</code>: Canonical filename of the file which will be sent as
-      a String</li>
-  <li><code>org.apache.tomcat.sendfile.start</code>: Start offset as a Long</li>
-  <li><code>org.apache.tomcat.sendfile.end</code>: End offset as a Long</li>
+  <li><code>org.apache.tomcat.sendfile.filename</code>: 문자열로 보내질 파일의 캐노니컬 파일명</li>
+  <li><code>org.apache.tomcat.sendfile.start</code>: Long 형태의 시작 오프셋</li>
+  <li><code>org.apache.tomcat.sendfile.end</code>: Long 형태의 종료 오프셋</li>
   </ul>
 
   </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>

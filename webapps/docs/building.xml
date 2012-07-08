@@ -163,7 +163,7 @@ and the following steps have been used by some developers.
 </p>
 
 <p>
-<b>참고</b>:</b> 
+<b>참고:</b> 
 모든 빌드 단계가 이클립스 아래에서 진행되지 않는다. 빌드 과정의 많은 부분에서
 Ant가 필요하다. 그러나 자바 코드를 보거나 수정할 수 있고, 경고를 찾거나 
 코드 수정 및 리팩토링이 가능하고, IDE에서 톰캣을 실행할 수 있다.
@@ -237,7 +237,8 @@ Variables</em>를 선택한 후 두 개의 <em>Classpath Variables</em>를 추�
 </p>
 
 <p>
-이클립스의 몇몇 preferece을 수정하는 것이 톰캣 코딩 컨벤션의 일관성을 유지하는데 도움을 줄 것이다.(톰캣 기여에 있어서도 필요하다)
+이클립스의 몇몇 preference를 수정하는 것이 톰캣 코딩 컨벤션의 일관성을 유지하는데 도움을 줄 것이다.
+(톰캣 기여에 있어서도 필요하다)
 </p>
 <p>
 <table border="1">

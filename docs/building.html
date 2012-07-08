@@ -6,7 +6,7 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 7 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Building Tomcat</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 9 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Building Tomcat</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
 <ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Download_a_Java_Development_Kit_(JDK)_1.6_or_later">Download a Java Development Kit (JDK) 1.6 or later</a></li><li><a href="#Install_Apache_Ant_1.8.1_or_later">Install Apache Ant 1.8.1 or later</a></li><li><a href="#Checkout_or_obtain_the_source_code_for_Tomcat_7.0">Checkout or obtain the source code for Tomcat 7.0</a></li><li><a href="#Building_Tomcat">Building Tomcat</a></li><li><a href="#Building_with_Eclipse">Building with Eclipse</a></li><li><a href="#Building_with_other_IDEs">Building with other IDEs</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
 
@@ -79,48 +79,48 @@ command line에서 실행가능하다.
 </p>
 
 <p>
-<b>WARNING:</b> Running this command will download libraries required
-  to build Tomcat to the <code>/usr/share/java</code> directory by default.
-  On a typical Linux or MacOX system, an ordinary user
-  will not have access to write to this directory, and, even if you do,
-  it is likely not appropriate for you to write there. On Windows
-  this usually corresponds to the <code>C:\usr\share\java</code> directory,
-  unless Cygwin is used. Read below to learn how to customize the directory
-  used to download the binaries.
+<b>경고:</b> 
+이 명령은 톰캣 빌드에 필요한 라이브러리를 기본으로 설정된 <code>/usr/share/java</code> 다운로드한다.
+Linux와 MacOX 같은 시스템에서는 일반적인 사용자는 이 디렉토리에 기록하는 것이 불가능하며, 설령 가능하더라도
+하지 않는것이 좋다. Windows에서 대응되는 위치는 Cygwin을 사용하지 않을경우, <code>C:\usr\share\java</code>이다.
+다음 내용을 읽으면 어떻게 이 다운로드 위치를 입맛대로 변경하는지 알 수 있다.
 </p>
 
 <p>
-<b>NOTE:</b> Users accessing the Internet through a proxy must use a properties
-  file to indicate to Ant the proxy configuration. Read below for details.
+<b>참고:</b> 
+프록시를 통해 인터넷을 사용한다면 Ant의 프록시 설정을 위한 설정 파일을 이용해야 한다.
+아래에 자세한 내용이 있다.
 </p>
 
 <p>
-  The build can be controlled by creating a <code>${tomcat.source}/build.properties</code>
-  file and adding the following content to it:
+  <code>${tomcat.source}/build.properties</code> 파일을 만들고 아래의 설정을 추가한다.
 <br>
 <code><br>
-    # ----- Proxy setup -----<br>
-    # Uncomment if using a proxy server.<br>
+    # ----- 프록시 셋업 -----<br>
+    # 프록시 서버 사용시 주석 해제<br>
     #proxy.host=proxy.domain<br>
     #proxy.port=8080<br>
     #proxy.use=on<br>
 <br>
-    # ----- Default Base Path for Dependent Packages -----<br>
-    # Replace this path with the directory path where<br>
-    # dependencies binaries should be downloaded.<br>
+    # ----- 의존성 패키지를 위한 기본 디렉토리 위치 -----<br>
+    # 의존성 바이너리가 다운로드된 디렉토리로 패스를 변경 <br>
     base.path=/home/me/some-place-to-download-to<br>
 </code>
 </p>
 
 <p>
-Once the build has completed successfully, a usable Tomcat installation will have been
-produced in the <code>${tomcat.source}/output/build</code> directory, and can be started
-and stopped with the usual scripts.
+빌드를 성공적으로 마치면, 사용가능한 톰캣이 <code>${tomcat.source}/output/build</code> 디렉토리에
+생성되고, 스크립트를 이용해 톰캣의 시작 / 중지가 가능하다.
 </p>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Building with Eclipse"><!--()--></a><a name="Building_with_Eclipse"><strong>Building with Eclipse</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>
-<b>IMPORTANT:</b> This is not a supported means of building Tomcat; this information is
+<b>중요:</b> 
+이 섹션은 톰캣 빌드를 위한 지원이 아니고, 보장되지 않았다.
+이 섹션 이전의 Ant 빌드를 설명한 부분만이 지원된다.
+그러나, 어떤 개발자들은 Java IDE를 이용해서 자바코드를 다루고 싶어하므로
+다음에 설명할 단계들이 유용할 것이다. 
+This is not a supported means of building Tomcat; this information is
 provided without warranty :-).
 The only supported means of building Tomcat is with the Ant build described above.
 However, some developers like to work on Java code with a Java IDE,
@@ -128,7 +128,11 @@ and the following steps have been used by some developers.
 </p>
 
 <p>
-<b>NOTE:</b> This will not let you build everything under Eclipse;
+<b>참고:</b> 
+모든 빌드 단계가 이클립스 아래에서 진행되지 않는다. 빌드 과정의 많은 부분에서
+Ant가 필요하다. 그러나 자바 코드를 보거나 수정할 수 있고, 경고를 찾거나 
+코드 수정 및 리팩토링이 가능하고, IDE에서 톰캣을 실행할 수 있다.
+This will not let you build everything under Eclipse;
 the build process requires use of Ant for the many stages that aren't
 simple Java compilations.
 However, it will allow you to view and edit the Java code,
@@ -137,17 +141,24 @@ under the IDE, and so on.
 </p>
 
 <p>
-<b>WARNING:</b> Do not forget to create and configure
+<b>경고:</b> 
+  Ant 실행전에 <code>${tomcat.source}/build.properties</code> 파일을 만들고
+  이전 섹션과 같이 설정하는 것을 잊지 말라.
+Do not forget to create and configure
   <code>${tomcat.source}/build.properties</code> file as described above
   before running any Ant targets.
 </p>
 
 <p>
+이클립스 샘플 프로젝트 파일과 런치 타겟들이 소스트리의 <code>res/ide-support/eclipse</code>
+에 제공된다. 아래의 명령이 자동으로 이 파일들을 필요한 위치로 카피한다. 
 Sample Eclipse project files and launch targets are provided in the
 <code>res/ide-support/eclipse</code> directory of the source tree.
 The instructions below will automatically copy these into the required locations.
 </p>
 <p>
+Ant 타겟은 모든 의존성 바이너리 다운로드의 편의성을 위해 제공되고, 이클립스 프로젝트와 클래스패스 파일들을
+소스 트리의 루트에 생성한다. 
 An Ant target is provided as a convenience to download all binary dependencies, and to create
 the Eclipse project and classpath files in the root of the source tree.
 <br>
@@ -158,41 +169,41 @@ the Eclipse project and classpath files in the root of the source tree.
 </p>
 
 <p>
-Start Eclipse and create a new Workspace.
+이클립스를 시작하고 새로운 Workspace를 만든다.
 </p>
 
 <p>
-Open the <em>Preferences</em> dialog and then select <em>Java-&gt;Build Path-&gt;Classpath
-Variables</em> to add two new <em>Classpath Variables</em>:
+<em>Preferences</em> 다이얼로그를 열고  <em>Java-&gt;Build Path-&gt;Classpath
+Variables</em>를 선택한 후 두 개의 <em>Classpath Variables</em>를 추가한다:
 </p>
 
 <p>
 <table border="1">
- <tr><td>TOMCAT_LIBS_BASE</td><td>The same location as the <code>base.path</code>
-  setting in <code>build.properties</code>, where the binary dependencies have been downloaded</td></tr>
- <tr><td>ANT_HOME</td><td>the base path of Ant 1.8.1 or later</td></tr>
+ <tr><td>TOMCAT_LIBS_BASE</td><td>
+ <code>build.properties</code>에 설정된 <code>base.path</code>와 같은 위치이며,
+ 이는 의존성 바이너리가 다운로드된 디레토리</td></tr>
+ <tr><td>ANT_HOME</td><td>Ant 1.8.1 나 이후 버전의 기본 위치</td></tr>
 </table>
 </p>
 
 <p>
-Use <em>File-&gt;Import</em> and choose <em>Existing Projects into Workspace</em>.
-From there choose the root directory of the Tomcat source tree (<code>${tomcat.source}</code>)
-and import the Tomcat project located there.
+<em>File-&gt;Import</em>를 클릭하고 <em>Existing Projects into Workspace</em>를 선택한다.
+톰캣 소스 트리 (<code>${tomcat.source}</code>)의 루트 디렉토리를 찾아 톰캣 프로젝트를 임포트 한다.
 </p>
 
 <p>
-<code>start-tomcat</code> and <code>stop-tomcat</code> launch configurations are provided in
-<code>res/ide-support/eclipse</code> and will be available in the <em>Run-&gt;Run Configurations</em>
-dialog. Use these to start and stop Tomcat from Eclipse.
-<br>If you want to configure these yourself (or are using a different IDE)
-then use <code>org.apache.catalina.startup.Bootstrap</code> as the main class,
-<code>start</code>/<code>stop</code> etc. as program arguments, and specify <code>-Dcatalina.home=...</code>
-(with the name of your build directory) as VM arguments.
+<code>start-tomcat</code> 과 <code>stop-tomcat</code> 실행 설정은 
+<code>res/ide-support/eclipse</code>에 있으며, <em>Run-&gt;Run Configurations</em>다이얼로그에서 사용할 수 있다.
+이를 이클립스에서 톰캣을 시작/중지하는데 사용하라.
+<br>이를 변경하거나 다른 IDE에서 사용하고 싶다면
+<code>org.apache.catalina.startup.Bootstrap</code>를 메인 클래스로 하여
+<code>start</code>/<code>stop</code>를 프로그램 인자로 이용하고, <code>-Dcatalina.home=...</code>
+(빌드 디렉토리 이름과 함께)를 VM 인자로 지정한다.
 </p>
 
 <p>
-Tweaking a few formatting preferences will make it much easier to keep consistent with Tomcat
-coding conventions (and have your contributions accepted):
+이클립스의 몇몇 preference를 수정하는 것이 톰캣 코딩 컨벤션의 일관성을 유지하는데 도움을 줄 것이다.
+(톰캣 기여에 있어서도 필요하다)
 </p>
 <p>
 <table border="1">
@@ -207,8 +218,8 @@ coding conventions (and have your contributions accepted):
 
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Building with other IDEs"><!--()--></a><a name="Building_with_other_IDEs"><strong>Building with other IDEs</strong></a></font></td></tr><tr><td><blockquote>
 <p>
-The same general approach should work for most IDEs; it has been reported
-to work in IntelliJ IDEA, for example.
+대부분의 IDE에서도 같은 방식으로 동작할 것이다. 예를 들면 IntelliJ IDEA 같은 곳에서도
+가능한 것이 알려져있다.
 </p>
 
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>

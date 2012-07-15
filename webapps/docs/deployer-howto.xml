@@ -23,8 +23,8 @@
     &project;
 
     <properties>
-        <author>Allistair Crossley</author>
-        <title>Tomcat Web Application Deployment</title>
+        <author>알리스테어 크로슬리</author>
+        <title>톰캣 웹 애플리케이션 배치</title>
     </properties>
 
 <body>
@@ -35,20 +35,24 @@
 
     <section name="Introduction">
         <p>
-            Deployment is the term used for the process of installing a web
-            application (either a 3rd party WAR or your own custom web application)
-            into the Tomcat server.
+            배치는 웹 애플리케이션(써드 파티 WAR 또는 직접 만든 웹 애플리케이션 모두 해당)을 
+            톰캣 서버에 설치하는 절차를 위한 용어입니다.
         </p>
         <p>
-            Web application deployment may be accomplished in a number of ways
-            within the Tomcat server.</p>
+            웹 애플리케이션 배치는 여러 가지 방법으로 톰캣 서버에서 가능합니다.</p>
         <ul>
-                <li>Statically; the web application is setup before Tomcat is started</li>
+                <li>정적으로; 웹 애플리케이션은 톰캣이 시작하기 전에 설치됩니다.</li>
                 <li>
-                    Dynamically; in conjunction with the Tomcat Manager web application or
-                    manipulating already deployed web applications
+                    동적으로; 톰캣 매니저 웹 애플리케이션을 통해서나 이미 배치된 웹 애플리케이션을
+                    조작해서 가능합니다.
                 </li>
         </ul>
+        <p>
+            톰캣 매니저는 URL기반 웹 애플리케이션 배치 기능이 있는 도구입니다. 클라이언트 배치자라는
+            도구가 있어서 명령 쉘 기반의 스크립트로 톰캣 매니저를 제어하고, 웹 애플리케이션의 컴파일과 
+            검증, 웹 애플리케이션을 WAR(웹 애플리케이션 자원; Web Application Resource) 파일로 
+            패키징하는 작업같은 추가 기능이 제공됩니다.
+        </p>
         <p>
             The Tomcat Manager is a tool that allows URL-based web application
             deployment features. There is also a tool called the Client Deployer,

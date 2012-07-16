@@ -63,27 +63,25 @@
             설치가 필요합니다.
         </p>
         <p>
-            The TCD is not packaged with the Tomcat core
-            distribution, and must therefore be downloaded separately from
-            the Downloads area. The download is usually labelled
-            <i>apache-tomcat-7.0.x-deployer</i>.
+            TCD는 톰캣 코어 배포판에 패키징되어 있지 않아서, 다운로드 페이지에서 
+            따로 다운로드 받아야 합니다. 다운로드 명칭은 보통 
+            <i>apache-tomcat-7.0.x-deployer</i> 입니다.
         </p>
         <p>
-            TCD has prerequisites of Apache Ant 1.6.2+ and a Java installation.
-            Your environment should define an ANT_HOME environment value pointing to
-            the root of your Ant installation, and a JAVA_HOME value pointing to
-            your Java installation. Additionally, you should ensure Ant's ant
-            command, and the Java javac compiler command run from the command shell
-            that your operating system provides.
+            TCD는 아파치 앤드 1.6.2 버전 이상 그리고 자바 설치가 되어있어야 합니다.
+            여러분의 환경은 ANT_HOME 환경변수가 앤트 설치된 경로를 가르키는 값으로 정의되어
+            있어야 하고, JAVA_HOME 환경변수는 자바가 설치된 곳을 가르키고 있어야 합니다.
+            덧붙여서, 앤트의 ant 명령, 자바의 javac 컴파일러 명령이 운영체제가 제공하는
+            명령어 쉘에서 실행할 수 있어야 합니다.
         </p>
         <ol>
-            <li>Download the TCD distribution</li>
+            <li>TCD 배포판 다운로드하기</li>
             <li>
-                The TCD package need not be extracted into any existing Tomcat
-                installation, it can be extracted to any location.
+                TCD 패키지는 기존 설치된 톰캣에 설치되지 않아도 되기 때문에, 어느 경로에든
+                압축이 풀려있으면 됩니다.
             </li>
-            <li>Read Using the <a href="#Deploying using the Client Deployer Package">
-            Tomcat Client Deployer</a></li>
+            <li><a href="#Deploying using the Client Deployer Package">
+            톰캣 클라이언트 배치자</a> 사용하는 방법을 읽어보세요.</li>
         </ol>
     </section>
 

@@ -92,30 +92,28 @@
             calls a web application.
         </p>
         <p>
-            In order to configure a Context within Tomcat a <i>Context Descriptor</i>
-            is required. A Context Descriptor is simply an XML file that contains
-            Tomcat related configuration for a Context, e.g naming resources or
-            session manager configuration. In earlier versions of
-            Tomcat the content of a Context Descriptor configuration was often stored within
-            Tomcat's primary configuration file <i>server.xml</i> but this is now
-            discouraged (although it currently still works).
+            톰캣에 컨텍스트 설정을 하기 위해서 <i>컨텍스트 설명자</i>가 필요합니다.
+            컨텍스트 설명자는 네이명 리소스 또는 세션 매니저 설정 등의 톰캣 관련 설정이 
+            담겨있는 단순한 XML 파일입니다. 톰캣의 초기 버전에서는 컨텍스트 설명자가 
+            톰캣의 주 설정 파일인 <i>server.xml</i> 내에 적용되었지만 지금은 
+            권장되지 않습니다(그렇기는 해도 현재도 동작은 합니다).
         </p>
         <p>
-            Context Descriptors not only help Tomcat to know how to configure
-            Contexts but other tools such as the Tomcat Manager and TCD often use
-            these Context Descriptors to perform their roles properly.
+            컨텍스트 설명자는 톰캣이 어떻게 컨텍스트를 설정해야 하는지 알려주고,
+            톰캣 매니저와 TCD 같은 도구가 해당 역할을 적절하게 수행하기 위해서 
+            이 컨텍스트 설명자를 사용합니다.
         </p>
         <p>
-            The locations for Context Descriptors are:
+            컨텍스트 설명자의 위치는 다음과 같습니다:
         </p>
         <ol>
                 <li>$CATALINA_BASE/conf/[enginename]/[hostname]/context.xml</li>
                 <li>$CATALINA_BASE/webapps/[webappname]/META-INF/context.xml</li>
         </ol>
         <p>
-            Files in (1) are named [webappname].xml but files in (2) are named
-            context.xml. If a Context Descriptor is not provided for a Context,
-            Tomcat configures the Context using default values.
+            (1)의 파일명은 [webappname].xml처럼 되어야 합니다만 (2)의 파일명은 context.xml
+            입니다. 만약 컨텍스트 설명자가 Context를 제공하지 않으면, 톰캣은 기본값으로 컨텍스트를
+            설정합니다.
         </p>
     </section>
 

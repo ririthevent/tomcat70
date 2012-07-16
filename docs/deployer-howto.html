@@ -6,7 +6,7 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 15 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 웹 애플리케이션 배치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 16 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 웹 애플리케이션 배치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
 <ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Installation">Installation</a></li><li><a href="#A_word_on_Contexts">A word on Contexts</a></li><li><a href="#Deployment_on_Tomcat_startup">Deployment on Tomcat startup</a></li><li><a href="#Deploying_on_a_running_Tomcat_server">Deploying on a running Tomcat server</a></li><li><a href="#Deploying_using_the_Tomcat_Manager">Deploying using the Tomcat Manager</a></li><li><a href="#Deploying_using_the_Client_Deployer_Package">Deploying using the Client Deployer Package</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
         <p>
@@ -28,45 +28,33 @@
             검증, 웹 애플리케이션을 WAR(웹 애플리케이션 자원; Web Application Resource) 파일로 
             패키징하는 작업같은 추가 기능이 제공됩니다.
         </p>
-        <p>
-            The Tomcat Manager is a tool that allows URL-based web application
-            deployment features. There is also a tool called the Client Deployer,
-            which is a command shell based script that interacts with the Tomcat
-            Manager but provides additional functionality such as compiling and
-            validating web applications as well as packaging web application into
-            web application resource (WAR) files.
-        </p>
     </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Installation"><strong>Installation</strong></a></font></td></tr><tr><td><blockquote>
         <p>
-            There is no installation required for static deployment of web
-            applications as this is provided out of the box by Tomcat. Nor is any
-            installation required for deployment functions with the Tomcat Manager,
-            although some configuration is required as detailed in the
-            Tomcat Manager manual. An installation is however required if you wish
-            to use the Tomcat Client Deployer (TCD).
+            웹 애플리케이션의 정적인 배치에는 톰캣의 기본 제공 기능이기 때문에 설치가 필요하지 않습니다.
+            톰캣 매니저 매뉴얼에 상세 설명된 설정이 필요한 경우도 있지만, 설치를 위해서 톰캣 매니저로 
+            배치 기능을 사용하지 않아도 됩니다. 하지만 톰캣 클라이언트 배치자(TCD)를 사용하려면 
+            설치가 필요합니다.
         </p>
         <p>
-            The TCD is not packaged with the Tomcat core
-            distribution, and must therefore be downloaded separately from
-            the Downloads area. The download is usually labelled
-            <i>apache-tomcat-7.0.x-deployer</i>.
+            TCD는 톰캣 코어 배포판에 패키징되어 있지 않아서, 다운로드 페이지에서 
+            따로 다운로드 받아야 합니다. 다운로드 명칭은 보통 
+            <i>apache-tomcat-7.0.x-deployer</i> 입니다.
         </p>
         <p>
-            TCD has prerequisites of Apache Ant 1.6.2+ and a Java installation.
-            Your environment should define an ANT_HOME environment value pointing to
-            the root of your Ant installation, and a JAVA_HOME value pointing to
-            your Java installation. Additionally, you should ensure Ant's ant
-            command, and the Java javac compiler command run from the command shell
-            that your operating system provides.
+            TCD는 아파치 앤드 1.6.2 버전 이상 그리고 자바 설치가 되어있어야 합니다.
+            여러분의 환경은 ANT_HOME 환경변수가 앤트 설치된 경로를 가르키는 값으로 정의되어
+            있어야 하고, JAVA_HOME 환경변수는 자바가 설치된 곳을 가르키고 있어야 합니다.
+            덧붙여서, 앤트의 ant 명령, 자바의 javac 컴파일러 명령이 운영체제가 제공하는
+            명령어 쉘에서 실행할 수 있어야 합니다.
         </p>
         <ol>
-            <li>Download the TCD distribution</li>
+            <li>TCD 배포판 다운로드하기</li>
             <li>
-                The TCD package need not be extracted into any existing Tomcat
-                installation, it can be extracted to any location.
+                TCD 패키지는 기존 설치된 톰캣에 설치되지 않아도 되기 때문에, 어느 경로에든
+                압축이 풀려있으면 됩니다.
             </li>
-            <li>Read Using the <a href="#Deploying using the Client Deployer Package">
-            Tomcat Client Deployer</a></li>
+            <li><a href="#Deploying using the Client Deployer Package">
+            톰캣 클라이언트 배치자</a> 사용하는 방법을 읽어보세요.</li>
         </ol>
     </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="A word on Contexts"><!--()--></a><a name="A_word_on_Contexts"><strong>A word on Contexts</strong></a></font></td></tr><tr><td><blockquote>
         <p>
@@ -75,30 +63,28 @@
             calls a web application.
         </p>
         <p>
-            In order to configure a Context within Tomcat a <i>Context Descriptor</i>
-            is required. A Context Descriptor is simply an XML file that contains
-            Tomcat related configuration for a Context, e.g naming resources or
-            session manager configuration. In earlier versions of
-            Tomcat the content of a Context Descriptor configuration was often stored within
-            Tomcat's primary configuration file <i>server.xml</i> but this is now
-            discouraged (although it currently still works).
+            톰캣에 컨텍스트 설정을 하기 위해서 <i>컨텍스트 설명자</i>가 필요합니다.
+            컨텍스트 설명자는 네이명 리소스 또는 세션 매니저 설정 등의 톰캣 관련 설정이 
+            담겨있는 단순한 XML 파일입니다. 톰캣의 초기 버전에서는 컨텍스트 설명자가 
+            톰캣의 주 설정 파일인 <i>server.xml</i> 내에 적용되었지만 지금은 
+            권장되지 않습니다(그렇기는 해도 현재도 동작은 합니다).
         </p>
         <p>
-            Context Descriptors not only help Tomcat to know how to configure
-            Contexts but other tools such as the Tomcat Manager and TCD often use
-            these Context Descriptors to perform their roles properly.
+            컨텍스트 설명자는 톰캣이 어떻게 컨텍스트를 설정해야 하는지 알려주고,
+            톰캣 매니저와 TCD 같은 도구가 해당 역할을 적절하게 수행하기 위해서 
+            이 컨텍스트 설명자를 사용합니다.
         </p>
         <p>
-            The locations for Context Descriptors are:
+            컨텍스트 설명자의 위치는 다음과 같습니다:
         </p>
         <ol>
                 <li>$CATALINA_BASE/conf/[enginename]/[hostname]/context.xml</li>
                 <li>$CATALINA_BASE/webapps/[webappname]/META-INF/context.xml</li>
         </ol>
         <p>
-            Files in (1) are named [webappname].xml but files in (2) are named
-            context.xml. If a Context Descriptor is not provided for a Context,
-            Tomcat configures the Context using default values.
+            (1)의 파일명은 [webappname].xml처럼 되어야 합니다만 (2)의 파일명은 context.xml
+            입니다. 만약 컨텍스트 설명자가 Context를 제공하지 않으면, 톰캣은 기본값으로 컨텍스트를
+            설정합니다.
         </p>
     </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Deployment on Tomcat startup"><!--()--></a><a name="Deployment_on_Tomcat_startup"><strong>Deployment on Tomcat startup</strong></a></font></td></tr><tr><td><blockquote>
         <p>

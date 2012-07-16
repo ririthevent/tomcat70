@@ -111,23 +111,23 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 </p>
 
 <ul>
-<li>Commons DBCP</li>
-<li>Commons Pool</li>
+<li>DBCP의 공통(Commons DBCP)</li>
+<li>POOL의 공통(Commons Pool)</li>
 </ul>
 
 <p>
-These libraries are located in a single JAR at
-<code>$CATALINA_HOME/lib/tomcat-dbcp.jar</code>. However,
-only the classes needed for connection pooling have been included, and the
-packages have been renamed to avoid interfering with applications.
+이 라이브러리들은 <code>$카트리나_홈/라이브/톰캣-디비시피(DBCP).자르[jar]($CATALINA_HOME/lib/tomcat-dbcp.jar)</code>의
+단하나의 자르(jar) 안에 위치해있다. 그러나 오직 클래스들은 연결 고임(Pooling)이 포함되는것을 필요로 하고, 그리고 그런 묶음(package)들은 프로그램들과 
+간섭하는 것을 피하기 위해 개명하게 되었다.
 </p>
 
-<p>DBCP 1.4 provides support for JDBC 4.0.</p>
+<p> DBCP 1.4는 JDBC 4.0에 대하여 지원한다.</p>
 
-<subsection name="Installation">
+<subsection name="설치">
 
-<p>See the <a href="http://commons.apache.org/dbcp/configuration.html">
-DBCP documentation</a> for a complete list of configuration parameters.
+<p> 환경설정 인수들의 완성목록을 위해 DBCP문서
+<a href="http://commons.apache.org/dbcp/configuration.html"></a>를 보라.
+
 </p>
 
 </subsection>
@@ -135,71 +135,77 @@ DBCP documentation</a> for a complete list of configuration parameters.
 <subsection name="Preventing database connection pool leaks">
 
 <p>
-A database connection pool creates and manages a pool of connections
-to a database. Recycling and reusing already existing connections
-to a database is more efficient than opening a new connection.
+데이타베이스 공통 접속은 데이타베이스에 여러개의 공통된 접속을 만들고 관리한다.
+이미 존재하고 있는 데이타베이스의 접속상태를 다시쓰고 재활용 하는 것이 
+(데이타베이스를)새롭게 여는것보다 더욱 효율적이다.
 </p>
 
 <p>
-There is one problem with connection pooling.  A web application has
-to explicitly close ResultSet's, Statement's, and Connection's.
-Failure of a web application to close these resources can result in
-them never being available again for reuse, a database connection pool "leak".
-This can eventually result in your web application database connections failing
-if there are no more available connections.</p>
-
-<p>
-There is a solution to this problem.  The Apache Commons DBCP can be
-configured to track and recover these abandoned database connections.  Not
-only can it recover them, but also generate a stack trace for the code
-which opened these resources and never closed them.</p>
-
-<p>
-To configure a DBCP DataSource so that abandoned database connections are
-removed and recycled add the following attribute to the
-<code>Resource</code> configuration for your DBCP DataSource:
-</p>
-
-<source>removeAbandoned="true"</source>
-
-<p>
-When available database connections run low DBCP will recover and recycle
-any abandoned database connections it finds. The default is <code>false</code>.
+여기 공통으로 접속하는 것과 함께 하나의 문제점이 있다. 웹 프로그램은 명확하게 설정한 결과(ResultSet)와 
+문장(Statement) 그리고 접속(Connection)을 기록하고 종료처리해야 한다.
+웹 프로그램의 실수를 차단 하기 위하여 이런 자원들이 절대 웹 프로그램에 재사용을 위해 다시  
+이용가능하게 끝낼 수 없다(데이타베이스 접속 공통 "낭비").
+만약 더 이상 이용가능한 접속이 없다면, 이것이 결국에는 당신의 웹 프로그램 
+데이타베이스 접속이 실패로 끝날 수 있다.
 </p>
 
 <p>
-Use the <code>removeAbandonedTimeout</code> attribute to set the number
-of seconds a database connection has been idle before it is considered abandoned.
-</p>
-
-<source>removeAbandonedTimeout="60"</source>
-
-<p>
-The default timeout for removing abandoned connections is 300 seconds.
+이 문제에 대해 하나의 해결책이 있다. 아파치 공동 DBCP는 이런 폐기된 데이타베이스 접속을 
+회복하고 추적하기 위해 환경설정을 할 수 있게 되었다.
+단순히 데이타베이스연결을 회복할 뿐만 아니라, 거기에 개방된 자원들과 
+결코 차단되지 않은 데이타베이스 연결 코드에 대한 임시기억의 흔적을 찾아낸다.
 </p>
 
 <p>
-The <code>logAbandoned</code> attribute can be set to <code>true</code>
-if you want DBCP to log a stack trace of the code which abandoned the
-database connection resources.
+폐기된 데이타베이스 연결들은 삭제되고, 당신의 DBCP 
+데이타소스를 위한 <code>자원</code> 
+환경설정을 더하며 데이터 처리를 되풀이하며, 뒤따르는 자원에게 
+돌려주는 것은 DBCP 데이타자원을 설정하기 위해서이다.   
 </p>
-<source>logAbandoned="true"</source>
+
+
+<source>파기되어 제거됨="사실"</source>
+
 <p>
-The default is <code>false</code>.
+낮은 실행의 DBCP를 이용가능한 데이타베이스의 연결이  회복하고, 
+어떤 폐기된 데이타베이스를 연결에서 그것을 찾고, 
+같은 데이타를 반복하여 처리한다. 디폴트(불이행)는 <code>실패</code>한다.
+</p>
+
+<p>
+<code>제거 및 폐기되어 활동이 멈춘 것</code>을 설정하고 되돌려서 사용하기 위한 
+일정시간의 데이터베이스 연결은 그것이 고려되어 폐기되기 이전에 작동이 멈추었다.  
+
+</p>
+
+
+<source>제거 및 폐기되어 활동이 멈춘 것="60"</source>
+
+<p>
+제거하여 폐기된 접속을 위한 불이행의 남은시간은 300초이다.
+</p>
+
+<p>
+그런 <code>파기된 로그</code> 속성은 순서에 맞고, 
+<code> 진지하게</code> 설정되어 질 수 있다. 만약 당신이 DBCP에 파기된 
+데이타베이스 접속 자원 코드의 일시적인 흔적을 기록하고 싶다면 말이다.  
+</p>
+<source>파기된기록="진실"</source>
+<p>
+불이행은<code>거짓</code>이다.
 </p>
 
 </subsection>
 
-<subsection name="MySQL DBCP Example">
+<subsection name="마이SQL DBCP 예시">
 
-<h3>0. Introduction</h3>
-<p>Versions of <a href="http://www.mysql.com/products/mysql/index.html">MySQL</a> and JDBC
-drivers that have been reported to work:
+<h3>0. 소개</h3>
+<p><a href="http://www.mysql.com/products/mysql/index.html">마이SQL</a>의 버전(판)과 JDBC드라이버는 작업하기 위해 보고되었다.
 </p>
 <ul>
-<li>MySQL 3.23.47, MySQL 3.23.47 using InnoDB,, MySQL 3.23.58,  MySQL 4.0.1alpha</li>
-<li><a href="http://www.mysql.com/products/connector-j">Connector/J</a> 3.0.11-stable (the official JDBC Driver)</li>
-<li><a href="http://mmmysql.sourceforge.net">mm.mysql</a> 2.0.14 (an old 3rd party JDBC Driver)</li>
+<li>마이SQL 3.23.47, 마이SQL 3.23.47 이노디비를 사용중에 있다(using InnoDB,,). 마이SQL 3.23.58,  마이SQL 4.0.1알파</li>
+<li><a href="http://www.mysql.com/products/connector-j">연결자/제이</a> 3.0.11-안정적인 (공식적인 JDBC 드라이버)</li>
+<li><a href="http://mmmysql.sourceforge.net">엠엠.마이SQL</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
 <p>Before you proceed, don't forget to copy the JDBC Driver's jar into <code>$CATALINA_HOME/lib</code>.</p>

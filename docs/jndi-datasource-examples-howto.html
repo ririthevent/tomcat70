@@ -6,8 +6,8 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 16 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EA%B3%B5%ED%86%B5(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 공통(DBCP) 환경설정</a><ol><li><a href="#Installation">Installation</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#MySQL_DBCP_Example">MySQL DBCP Example</a></li><li><a href="#Oracle_8i,_9i_&amp;_10g">Oracle 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#Non-DBCP_Solutions">Non-DBCP Solutions</a></li><li><a href="#Oracle_8i_with_OCI_client">Oracle 8i with OCI client</a><ol><li><a href="#Introduction">Introduction</a></li><li><a href="#Putting_it_all_together">Putting it all together</a></li></ol></li><li><a href="#Common_Problems">Common Problems</a><ol><li><a href="#Intermittent_Database_Connection_Failures">Intermittent Database Connection Failures</a></li><li><a href="#Random_Connection_Closed_Exceptions">Random Connection Closed Exceptions</a></li><li><a href="#Context_versus_GlobalNamingResources">Context versus GlobalNamingResources</a></li><li><a href="#JNDI_Resource_Naming_and_Realm_Interaction">JNDI Resource Naming and Realm Interaction</a></li></ol></li></ul>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 18 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EA%B3%B5%ED%86%B5(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 공통(DBCP) 환경설정</a><ol><li><a href="#%EC%84%A4%EC%B9%98">설치</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#%EB%A7%88%EC%9D%B4SQL_DBCP_%EC%98%88%EC%8B%9C">마이SQL DBCP 예시</a></li><li><a href="#Oracle_8i,_9i_&amp;_10g">Oracle 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#Non-DBCP_Solutions">Non-DBCP Solutions</a></li><li><a href="#Oracle_8i_with_OCI_client">Oracle 8i with OCI client</a><ol><li><a href="#Introduction">Introduction</a></li><li><a href="#Putting_it_all_together">Putting it all together</a></li></ol></li><li><a href="#Common_Problems">Common Problems</a><ol><li><a href="#Intermittent_Database_Connection_Failures">Intermittent Database Connection Failures</a></li><li><a href="#Random_Connection_Closed_Exceptions">Random Connection Closed Exceptions</a></li><li><a href="#Context_versus_GlobalNamingResources">Context versus GlobalNamingResources</a></li><li><a href="#JNDI_Resource_Naming_and_Realm_Interaction">JNDI Resource Naming and Realm Interaction</a></li></ol></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>JNDI 데이타베이스 환경설정은 JNDI-자원-사용법에 (JNDI-Resources-HOWTO) 광범위하게 퍼져있다.
@@ -79,23 +79,23 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 </p>
 
 <ul>
-<li>Commons DBCP</li>
-<li>Commons Pool</li>
+<li>DBCP의 공통(Commons DBCP)</li>
+<li>POOL의 공통(Commons Pool)</li>
 </ul>
 
 <p>
-These libraries are located in a single JAR at
-<code>$CATALINA_HOME/lib/tomcat-dbcp.jar</code>. However,
-only the classes needed for connection pooling have been included, and the
-packages have been renamed to avoid interfering with applications.
+이 라이브러리들은 <code>$카트리나_홈/라이브/톰캣-디비시피(DBCP).자르[jar]($CATALINA_HOME/lib/tomcat-dbcp.jar)</code>의
+단하나의 자르(jar) 안에 위치해있다. 그러나 오직 클래스들은 연결 고임(Pooling)이 포함되는것을 필요로 하고, 그리고 그런 묶음(package)들은 프로그램들과 
+간섭하는 것을 피하기 위해 개명하게 되었다.
 </p>
 
-<p>DBCP 1.4 provides support for JDBC 4.0.</p>
+<p> DBCP 1.4는 JDBC 4.0에 대하여 지원한다.</p>
 
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Installation"><strong>Installation</strong></a></font></td></tr><tr><td><blockquote>
+<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%84%A4%EC%B9%98"><strong>설치</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>See the <a href="http://commons.apache.org/dbcp/configuration.html">
-DBCP documentation</a> for a complete list of configuration parameters.
+<p> 환경설정 인수들의 완성목록을 위해 DBCP문서
+<a href="http://commons.apache.org/dbcp/configuration.html"></a>를 보라.
+
 </p>
 
 </blockquote></td></tr></table>
@@ -103,86 +103,96 @@ DBCP documentation</a> for a complete list of configuration parameters.
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Preventing database connection pool leaks"><!--()--></a><a name="Preventing_database_connection_pool_leaks"><strong>Preventing database connection pool leaks</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>
-A database connection pool creates and manages a pool of connections
-to a database. Recycling and reusing already existing connections
-to a database is more efficient than opening a new connection.
+데이타베이스 공통 접속은 데이타베이스에 여러개의 공통된 접속을 만들고 관리한다.
+이미 존재하고 있는 데이타베이스의 접속상태를 다시쓰고 재활용 하는 것이 
+(데이타베이스를)새롭게 여는것보다 더욱 효율적이다.
 </p>
 
 <p>
-There is one problem with connection pooling.  A web application has
-to explicitly close ResultSet's, Statement's, and Connection's.
-Failure of a web application to close these resources can result in
-them never being available again for reuse, a database connection pool "leak".
-This can eventually result in your web application database connections failing
-if there are no more available connections.</p>
-
-<p>
-There is a solution to this problem.  The Apache Commons DBCP can be
-configured to track and recover these abandoned database connections.  Not
-only can it recover them, but also generate a stack trace for the code
-which opened these resources and never closed them.</p>
-
-<p>
-To configure a DBCP DataSource so that abandoned database connections are
-removed and recycled add the following attribute to the
-<code>Resource</code> configuration for your DBCP DataSource:
-</p>
-
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>removeAbandoned="true"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-<p>
-When available database connections run low DBCP will recover and recycle
-any abandoned database connections it finds. The default is <code>false</code>.
+여기 공통으로 접속하는 것과 함께 하나의 문제점이 있다. 웹 프로그램은 명확하게 설정한 결과(ResultSet)와 
+문장(Statement) 그리고 접속(Connection)을 기록하고 종료처리해야 한다.
+웹 프로그램의 실수를 차단 하기 위하여 이런 자원들이 절대 웹 프로그램에 재사용을 위해 다시  
+이용가능하게 끝낼 수 없다(데이타베이스 접속 공통 "낭비").
+만약 더 이상 이용가능한 접속이 없다면, 이것이 결국에는 당신의 웹 프로그램 
+데이타베이스 접속이 실패로 끝날 수 있다.
 </p>
 
 <p>
-Use the <code>removeAbandonedTimeout</code> attribute to set the number
-of seconds a database connection has been idle before it is considered abandoned.
-</p>
-
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>removeAbandonedTimeout="60"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-<p>
-The default timeout for removing abandoned connections is 300 seconds.
+이 문제에 대해 하나의 해결책이 있다. 아파치 공동 DBCP는 이런 폐기된 데이타베이스 접속을 
+회복하고 추적하기 위해 환경설정을 할 수 있게 되었다.
+단순히 데이타베이스연결을 회복할 뿐만 아니라, 거기에 개방된 자원들과 
+결코 차단되지 않은 데이타베이스 연결 코드에 대한 임시기억의 흔적을 찾아낸다.
 </p>
 
 <p>
-The <code>logAbandoned</code> attribute can be set to <code>true</code>
-if you want DBCP to log a stack trace of the code which abandoned the
-database connection resources.
+폐기된 데이타베이스 연결들은 삭제되고, 당신의 DBCP 
+데이타소스를 위한 <code>자원</code> 
+환경설정을 더하며 데이터 처리를 되풀이하며, 뒤따르는 자원에게 
+돌려주는 것은 DBCP 데이타자원을 설정하기 위해서이다.   
 </p>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>logAbandoned="true"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+
+
+<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>파기되어 제거됨="사실"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+
 <p>
-The default is <code>false</code>.
+낮은 실행의 DBCP를 이용가능한 데이타베이스의 연결이  회복하고, 
+어떤 폐기된 데이타베이스를 연결에서 그것을 찾고, 
+같은 데이타를 반복하여 처리한다. 디폴트(불이행)는 <code>실패</code>한다.
+</p>
+
+<p>
+<code>제거 및 폐기되어 활동이 멈춘 것</code>을 설정하고 되돌려서 사용하기 위한 
+일정시간의 데이터베이스 연결은 그것이 고려되어 폐기되기 이전에 작동이 멈추었다.  
+
+</p>
+
+
+<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>제거 및 폐기되어 활동이 멈춘 것="60"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+
+<p>
+제거하여 폐기된 접속을 위한 불이행의 남은시간은 300초이다.
+</p>
+
+<p>
+그런 <code>파기된 로그</code> 속성은 순서에 맞고, 
+<code> 진지하게</code> 설정되어 질 수 있다. 만약 당신이 DBCP에 파기된 
+데이타베이스 접속 자원 코드의 일시적인 흔적을 기록하고 싶다면 말이다.  
+</p>
+<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>파기된기록="진실"</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+<p>
+불이행은<code>거짓</code>이다.
 </p>
 
 </blockquote></td></tr></table>
 
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="MySQL DBCP Example"><!--()--></a><a name="MySQL_DBCP_Example"><strong>MySQL DBCP Example</strong></a></font></td></tr><tr><td><blockquote>
+<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%A7%88%EC%9D%B4SQL DBCP %EC%98%88%EC%8B%9C"><!--()--></a><a name="%EB%A7%88%EC%9D%B4SQL_DBCP_%EC%98%88%EC%8B%9C"><strong>마이SQL DBCP 예시</strong></a></font></td></tr><tr><td><blockquote>
 
-<h3>0. Introduction</h3>
-<p>Versions of <a href="http://www.mysql.com/products/mysql/index.html">MySQL</a> and JDBC
-drivers that have been reported to work:
+<h3>0. 소개</h3>
+<p><a href="http://www.mysql.com/products/mysql/index.html">마이SQL</a>의 버전(판)과 JDBC드라이버는 작업하기 위해 보고되었다.
 </p>
 <ul>
-<li>MySQL 3.23.47, MySQL 3.23.47 using InnoDB,, MySQL 3.23.58,  MySQL 4.0.1alpha</li>
-<li><a href="http://www.mysql.com/products/connector-j">Connector/J</a> 3.0.11-stable (the official JDBC Driver)</li>
-<li><a href="http://mmmysql.sourceforge.net">mm.mysql</a> 2.0.14 (an old 3rd party JDBC Driver)</li>
+<li>마이SQL 3.23.47, 마이SQL 3.23.47 이노디비를 사용중에 있다(using InnoDB,,). 마이SQL 3.23.58,  마이SQL 4.0.1알파</li>
+<li><a href="http://www.mysql.com/products/connector-j">연결자/제이</a> 3.0.11-안정적인 (공식적인 JDBC 드라이버)</li>
+<li><a href="http://mmmysql.sourceforge.net">엠엠.마이SQL</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
-<p>Before you proceed, don't forget to copy the JDBC Driver's jar into <code>$CATALINA_HOME/lib</code>.</p>
+<p>당신이 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
 
-<h3>1. MySQL configuration</h3>
+<h3>1. 마이SQL 환경설정</h3>
 <p>
+변화함으로써 문제를 야기할 수 있는 당신은 지시사항을 반드시 따르도록 하라.
 Ensure that you follow these instructions as variations can cause problems.
 </p>
 
-<p>Create a new test user, a new database and a single test table.
+<p>새로운 시험 사용자를 새로운 데이타베이스와 단 하나의 시험 테이블과 함께 발굴하라.
+당신의 마이SQL 사용자는 반드시 지정된 하나의 암호를 가지고 있어야 한다. 
+당신이 암호가 없이 접속을 시도하려 한다면 드라이버에 접속실패 할 것이다.
+Create a new test user, a new database and a single test table.
 Your MySQL user <strong>must</strong> have a password assigned. The driver
 will fail if you try to connect with an empty password.
 </p>
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO javauser@localhost
+mysql&gt; GRANT ALL PRIVILEGES ON *.* javauser@localhost에게
     -&gt;   IDENTIFIED BY 'javadude' WITH GRANT OPTION;
 mysql&gt; create database javatest;
 mysql&gt; use javatest;

@@ -208,19 +208,23 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 <li><a href="http://mmmysql.sourceforge.net">엠엠.마이SQL</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
-<p>Before you proceed, don't forget to copy the JDBC Driver's jar into <code>$CATALINA_HOME/lib</code>.</p>
+<p>당신이 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
 
-<h3>1. MySQL configuration</h3>
+<h3>1. 마이SQL 환경설정</h3>
 <p>
+변화함으로써 문제를 야기할 수 있는 당신은 지시사항을 반드시 따르도록 하라.
 Ensure that you follow these instructions as variations can cause problems.
 </p>
 
-<p>Create a new test user, a new database and a single test table.
+<p>새로운 시험 사용자를 새로운 데이타베이스와 단 하나의 시험 테이블과 함께 발굴하라.
+당신의 마이SQL 사용자는 반드시 지정된 하나의 암호를 가지고 있어야 한다. 
+당신이 암호가 없이 접속을 시도하려 한다면 드라이버에 접속실패 할 것이다.
+Create a new test user, a new database and a single test table.
 Your MySQL user <strong>must</strong> have a password assigned. The driver
 will fail if you try to connect with an empty password.
 </p>
 <source>
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO javauser@localhost
+mysql&gt; GRANT ALL PRIVILEGES ON *.* javauser@localhost에게
     -&gt;   IDENTIFIED BY 'javadude' WITH GRANT OPTION;
 mysql&gt; create database javatest;
 mysql&gt; use javatest;

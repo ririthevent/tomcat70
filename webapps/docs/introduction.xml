@@ -33,18 +33,17 @@
 <toc/>
 </section>
 
-<section name="Introduction">
+<section name="소개">
 
-<p>For administrators and web developers alike, there are some important bits
-of information you should familiarize yourself with before starting out. This
-document serves as a brief introduction to some of the concepts and
-terminology behind the Tomcat container. As well, where to go when you need
-help.</p>
+<p>관리자와 웹개발자분들이 톰캣에 익숙해지기전 알아야 할 몇몇 중요한 정보들을 포함하고 있습니다. 이 문서는 
+톰캣 컨테이너가 가지고 있는 개념과 전문용어에 대해서 설명합니다. 또한, 여러분들이 필요한 정보를 얻으려고 할 때 참고해야 할 
+문서를 소개합니다. 
+</p>
 
 </section>
 
 
-<section name="Terminology">
+<section name="전문용어">
 
 <p>In the course of reading these documents, you will run across a number of
 terms; some specific to Tomcat, and others defined by the

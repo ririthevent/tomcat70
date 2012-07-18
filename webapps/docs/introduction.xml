@@ -29,7 +29,7 @@
 
 <body>
 
-<section name="Table of Contents">
+<section name="컨텐츠 목록">
 <toc/>
 </section>
 
@@ -47,13 +47,12 @@
 
 <p>이 문서를 읽는 동안 여러분은 여러 전문용어를 접하게 될 것입니다. 이 중 일부분은 톰캣에 특정한 용어들입니다.
 다른 용어들은 
-<a href="http://wiki.apache.org/tomcat/Specifications"> 서블렛과 JSP 명세서에 정의되어 있습니다.</a>.</p>
+<a href="http://wiki.apache.org/tomcat/Specifications"> 서블렛과 JSP 명세서</a> 에 정의되어 있습니다.</p>
 
 <ul>
-<li><strong>Context</strong> - In a nutshell, a Context is a
-    web application.</li>
-<li><strong>Term2</strong> - This is it.</li>
-<li><strong>Term3</strong> - This is it!</li>
+<li><strong>컨텍스트</strong> - 간단히 말해서 컨텍스트는 웹 애플리케이션 입니다.</li>
+<li><strong>Term2</strong> - 이것입니다.</li>
+<li><strong>Term3</strong> - 이것입니다!</li>
 </ul>
 
 </section>
@@ -95,47 +94,43 @@
 </section>
 
 
-<section name="Where to Go for Help">
+<section name="도움이 필요하신 경우">
 
-<p>While we've done our best to ensure that these documents are clearly
-written and easy to understand, we may have missed something.  Provided
-below are various web sites and mailing lists in case you get stuck.</p>
+<p>우리가 이 문서들을 명확하고 알기쉽게 최선의 노력을 다했지만 우리가 몇가지를 빠트린 부분이 있을 수 있습니다.
+하단 부분에는 여러분이 도움을 얻으실 수 있는 다양한 웹사이트와 메일링 리스트가 있습니다.
+</p>
 
-<p>As Tomcat 7 is a new release of Tomcat, keep in mind that some of the
-issues and solutions vary between the major versions of Tomcat (6.x versus
-7.x).  As you search around the web, there will be some documentation that
-is not relevant to Tomcat 7, but 6.x, 5.x or earlier versions.  Doing 3.x
-or 4.x things to 7 will probably not work in most cases as the server.xml
-files are very different.</p>
+<p> 톰캣 7이 톰캣의 새로운 버젼이기 때문에 몇몇 이슈와 해결책이 톰캣의 중요 버젼들과 다를 수 있음을 양지해주시기 바랍니다.
+(6.x와 7.x). 여러분이 웹에서 찾을 수 있듯이 톰캣 7에는 연관되어 있지 않으나 6.x, 5.x 또는 그 이전 버젼과 연관된 문서가
+있을 수 있습니다. server.xml과 같이 3.x 또는 4.x 버젼은 7 버젼과 대부분 호환되지 않습니다.
+</p>
 
 <ul>
-<li>Current document - most documents will list potential hangups. Be sure
-    to fully read the relevant documentation as it will save you much time
-    and effort. There's nothing like scouring the web only to find out that
-    the answer was right in front of you all along!</li>
-<li><a href="http://wiki.apache.org/tomcat/FAQ">Tomcat FAQ</a></li>
-<li><a href="http://wiki.apache.org/tomcat/">Tomcat WIKI</a></li>
-<li>Tomcat FAQ at <a href="http://www.jguru.com/faq/home.jsp?topic=Tomcat">jGuru</a></li>
-<li>Tomcat mailing list archives - numerous sites archive the Tomcat mailing
-    lists. Since the links change over time, clicking here will search
+<li>현재 문서 - 대부분의 문서들은 잠재적인 장애를 열거할 것 입니다. 연관된 문서를 모두 읽으시면 여러분의 시간과 노력을
+절감할 수 있다는 점을 유의하십시오. 당신앞에 있는 문제의 대답이 옳다는 것을 찾기 위해 웹을 샅샅이 찾는 것만한 것은 없습니다!!</li>
+<li><a href="http://wiki.apache.org/tomcat/FAQ">톰캣 FAQ</a></li>
+<li><a href="http://wiki.apache.org/tomcat/">톰캣 위키</a></li>
+<li>jGuru에서의 톰캣 FAQ <a href="http://www.jguru.com/faq/home.jsp?topic=Tomcat">jGuru</a></li>
+<li>톰캣 메일링 리스트 아카이브 - 다양한 사이트가 톰캣 메일링 리스트를 가지고 있습니다.
+    링크가 계속 변하므로 google을 사용하세요.
     <a href="http://www.google.com/search?q=tomcat+mailing+list+archives">Google</a>.
     </li>
-<li>The TOMCAT-USER mailing list, which you can subscribe to
-    <a href="http://tomcat.apache.org/lists.html">here</a>. If you don't
-    get a reply, then there's a good chance that your question was probably
-    answered in the list archives or one of the FAQs.  Although questions
-    about web application development in general are sometimes asked and
-    answered, please focus your questions on Tomcat-specific issues.</li>
-<li>The TOMCAT-DEV mailing list, which you can subscribe to
-    <a href="http://tomcat.apache.org/lists.html">here</a>.  This list is
-    <strong>reserved</strong> for discussions about the development of Tomcat
-    itself.  Questions about Tomcat configuration, and the problems you run
-    into while developing and running applications, will normally be more
-    appropriate on the TOMCAT-USER list instead.</li>
+<li><strong>톰캣 유저</strong> 메일링 리스트에 여러분이 가입하실 수 있습니다.
+    <a href="http://tomcat.apache.org/lists.html">여기</a>. 
+    만약 여러분이 답장을 받지 못하면 대답이 리스트 아키이브 또는 FAQ에 있을 수 있습니다.
+    웹 애플리케이션 개발에 대한 일반적인 질문들이 가끔 묻고 답해지더라도 톰캣에 특정한 이슈들에 대한 여러분의 질문에
+    유의하세요.
+</li>
+<li><strong>톰캣 개발자</strong> 메일링 리스트는 여기서 구독할 수 있습니다.
+    <a href="http://tomcat.apache.org/lists.html">여기</a>. 이 리스트는  
+    톰캣 개발 그 자체에 대해서만 <strong>예약되어 있습니다./strong> 
+    톰캣 설정에 대한 질문 그리고 애플리케이션 개발과 실행하는 동안의 문제점들은 보통 톰캣 유저 리스트가
+    더욱 적절합니다.
+</li>
 </ul>
 
-<p>And, if you think something should be in the docs, by all means let us know
-on the TOMCAT-DEV list.</p>
+<p>그리고 만약 여러분이 문서에 대한 아이디어나 생각이 있으시면 <strong>톰캣 개발자</strong> 리스트를 통해 알려주세요.
+</p>
 
 </section>
 

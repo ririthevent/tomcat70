@@ -30,53 +30,48 @@
 
 <body>
 
-<section name="Table of Contents">
+<section name="컨텐츠 목록">
 <toc/>
 </section>
 
-<section name="Introduction">
+<section name="소개">
 
-<p>Tomcat 7.0 uses the Jasper 2 JSP Engine to implement
-the <a href="http://wiki.apache.org/tomcat/Specifications">JavaServer Pages 2.2</a>
-specification.</p>
+<p>톰캣 7.0은 Jasper 2 JSP 엔진을 
+<a href="http://wiki.apache.org/tomcat/Specifications">JavaServer Pages 2.2</a>
+명세서를 구현하기 위해 사용합니다.</p>
 
-<p>Jasper 2 has been redesigned to significantly improve performance over
-the original Jasper.  In addition to general code improvements the following
-changes were made:
+<p>Jasper 2는 기존 Jasper의 성능을 향상시키기 위해 다시 디자인 되었습니다. 일반적인 코드 향상 이외에도 다음과 같은
+변경이 있었습니다:
 <ul>
-<li><strong>JSP Custom Tag Pooling</strong> - The java objects instantiated
-for JSP Custom Tags can now be pooled and reused.  This significantly boosts
-the performance of JSP pages which use custom tags.</li>
-<li><strong>Background JSP compilation</strong> - If you make a change to
-a JSP page which had already been compiled Jasper 2 can recompile that
-page in the background.  The previously compiled JSP page will still be
-available to serve requests.  Once the new page has been compiled
-successfully it will replace the old page.  This helps improve availability
-of your JSP pages on a production server.</li>
-<li><strong>Recompile JSP when included page changes</strong> - Jasper 2
-can now detect when a page included at compile time from a JSP has changed
-and then recompile the parent JSP.</li>
-<li><strong>JDT used to compile JSP pages</strong> - The
-Eclipse JDT Java compiler is now used to perform JSP java source code
-compilation. This compiler loads source dependencies from the container
-classloader. Ant and javac can still be used.</li>
+<li><strong>JSP 커스텀 태크 풀링</strong> - JSP 커스텀 태크를 위해 사용된 자바 오브젝트가
+이제 사용될 수 있습니다. 이는 커스텀 태크를 사용하는 JSP 페이지의 성능을 월등히 향상시킵니다.
+</li>
+<li><strong>백그라운드 JSP 컴파일레이션</strong> - 만약 여러분이 이미 컴파일된 JSP 페이지를 변경하면 Jasper 2는 그 페이지를
+백그라운드로 재컴파일 할 수 있습니다. 기존에 컴파일된 JSP 페이지는 여전히 서버 요구에 따라 이용 가능합니다. 새로운 페이지가
+성공적으로 컴파일되면 이는 예전 페이지를 대체하게 됩니다. 이는 여러분의 JSP 페이지가 생산 서버에 반영되기 쉽게 도와줍니다. 
+</li>
+<li><strong>포함된 페이지가 변경될 때 JSP 재컴파일 하기</strong> - Jasper 2는 컴파일 타임에 JSP가 변경된 것을 감지할 수 있으며
+부모 JSP를 재컴파일 합니다.
+</li>
+<li><strong>JDT는 JSP 파일을 컴파일 하는데 사용됩니다</strong> - 이클립스 JDT 자바 컴파일러는 이제 JSP 소스 컴파일을 수행하는데
+사용됩니다. 이 컴파일러는 소스 의존도를 컨테이너 클래스로더로 부터 로드합니다. Ant와 javac은 여전히 사용 가능합니다.
+</li>
 </ul>
 </p>
 
-<p>Jasper is implemented using the servlet class
+<p>Jasper는 서블렛 클래스를 사용하여 구현됩니다
 <code>org.apache.jasper.servlet.JspServlet</code>.</p>
 
 </section>
 
-<section name="Configuration">
+<section name="설정">
 
-<p>By default Jasper is configured for use when doing web application
-development.  See the section <a href="#Production Configuration">
-Production Configuration</a> for information on configuring Jasper
-for use on a production Tomcat server.</p>
+<p> 기본적으로 Jasper는 웹 애플리케이션 개발을 위해 설정됩니다.
+생산 톰캣 서버를 사용하기 위한 Jasper 설정은 다음에서 정보를 얻으실 수 있습니다<a href="#Production Configuration">
+생산 설정</a> </p>
 
-<p>The servlet which implements Jasper is configured using init parameters
-in your global <code>$CATALINA_BASE/conf/web.xml</code>.
+<p> Jasper를 구현하는 서블렛은 여러분의 글로벌 <code>$CATALINA_BASE/conf/web.xml</code>에 있는 초기 파라미터를 사용하여
+설정됩니다.
 
 <ul>
 <li><strong>checkInterval</strong> - If development is false and checkInterval

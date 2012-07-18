@@ -37,47 +37,41 @@
 <section name="Overview">
 
 
-  <subsection name="Introduction">
+  <subsection name="소개">
 
-    <p>The purpose of this specification is to define high level requirements
-    for administrative applications that can be used to manage the operation
-    of a running Tomcat container.  A variety of <em>Access Methods</em>
-    to the supported administrative functionality shall be supported, to
-    meet varying requirements:</p>
+    <p>이 명세서의 목적은 실행되고 있는 톰캣 컨테이너의 운영에 사용되는 
+       관리 어플리케이션들을 위한 높은 수준의 요구사항을 정의하기 위함입니다. 
+       다양한 변화 요구 사항을 충족하도록 하는 관리 기능을 제공하는 다양한 
+       <em>엑세스 메소드</em>들이 제공됩니다:</p>
     <ul>
-    <li><em>As A Scriptable Web Application</em> - The existing
-        <code>Manager</code> web application provides a simple HTTP-based
-        interface for managing Tomcat through commands that are expressed
-        entirely through a request URI.  This is useful in environments
-        where you wish to script administrative commands with tools that
-        can generate HTTP transactions.</li>
-    <li><em>As An HTML-Based Web Application</em> - Use an HTML presentation
-        to provide a GUI-like user interface for humans to interact with the
-        administrative capabilities.</li>
-    <li><em>As SOAP-Based Web Services</em> - The operational commands to
-        administer Tomcat are made available as web services that utilize
-        SOAP message formats.</li>
-    <li><em>As Java Management Extensions (JMX) Commands</em> - The operational
-        commands to administer Tomcat are made available through JMX APIs,
-        for integration into management consoles that utilize them.</li>
-    <li><em>Other Remote Access APIs</em> - Other remote access APIs, such
-        as JINI, RMI, and CORBA can also be utilized to access administrative
-        capabilities.</li>
+    <li><em>스크립트적 웹 어플리케이션</em> - 존재하는 <code>관리(Manager)</code> 
+        웹 어플리케이션은 커멘드를 이용한 톰캣을 관리하기 위한 단순 HTTP 베이스 인터페이스를 
+        제공합니다. 이것은 오직 요청 URI를 통해서만 표현됩니다. 이 방법은 
+        HTTP 트랜젝션을 생성할 수 있는 툴과 함께 스크립트 관리적 커멘드를 
+        원하는 환경에서 유용합니다.</li>
+    <li><em>HTML 기반 웹 어플리케이션</em> - 관리 기능과의 연동을 위한 HTML로 
+        표현된 사람 중심의 GUI 사용자 인터페이스를 제공합니다.</li>
+    <li><em>SOAP 기반 웹 서비스</em> - 톰캣을 관리하기 위한 운영 커멘드들이 
+        SOAP 메세지 규격을 이용한 웹 서비스를 활용 가능하게 만들어져 있습니다.</li>
+    <li><em>Java Management Extensions (JMX) 커멘드</em> - 톰캣을 관리하기 위한 
+        운영 커멘드들이 관리 콘솔과 통합하기 위해 JMX API를 활용 가능하도록 
+        만들어져 있습니다.</li>
+    <li><em>외부 리모트 엑세스 APIs</em> - JINI, RMI 그리고 COBBA와 같은 
+        외부 리모트 엑세스 APIs도 관리 기능에 엑세스 하는데 활용될 수 있습니다.</li>
     </ul>
 
-    <p>Underlying all of the access methods described above, it is assumed
-    that the actual operations are performed either directly on the
-    corresponding Catalina components (such as calling the
-    <code>Deployer.deploy()</code> method to deploy a new web application),
-    or through a "business logic" layer that can be shared across all of the
-    access methods.  This approach minimizes the cost of adding new
-    administrative capabilities later -- it is only necessary to add the
-    corresponding business logic function, and then write adapters to it for
-    all desired access methods.</p>
+    <p>
+    위에서 설명한 모든 엑세스 메소드들 바탕에는 실제 작업이 해당 Catalina 컴포넌트들
+    (마치 새로운 웹 어플리케이션을 디플로이하기 위해 <code>Deployer.deploy()</code>를 
+    호출하는 것처럼), 또는 모든 엑세스 메소드를 공유하는 "비지니스 로직" 레이어을 
+    직접 수행하는 것으로 간주합니다. 이 접근법은 새로운 관리 기능을 추가로 더하는 
+    비용을 최소로 합니다 -- 이것은 오직 부합하는 비지니스 로직 기능을 추가하기 
+    위해서만 필요합니다. 그리고 나서 모든 엑세스 메소드들의 어뎁터들을 작성합니다.  
+    </p>
 
-    <p>The current status of this functional specification is
-    <strong>PROPOSED</strong>.  It has not yet been discussed and
-    agreed to on the TOMCAT-DEV mailing list.</p>
+    <p>이 기능들의 현재 상태는 <strong>PROPOSED</strong>입니다. 이것은 
+    아직 토의되지 않았으며 TOMCAT_DEV 메일 리스트에서 동의되었습니다.
+    </p>
 
   </subsection>
 

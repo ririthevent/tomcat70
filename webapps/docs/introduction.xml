@@ -45,10 +45,9 @@
 
 <section name="전문용어">
 
-<p>In the course of reading these documents, you will run across a number of
-terms; some specific to Tomcat, and others defined by the
-<a href="http://wiki.apache.org/tomcat/Specifications">Servlet and
-JSP specifications</a>.</p>
+<p>이 문서를 읽는 동안 여러분은 여러 전문용어를 접하게 될 것입니다. 이 중 일부분은 톰캣에 특정한 용어들입니다.
+다른 용어들은 
+<a href="http://wiki.apache.org/tomcat/Specifications"> 서블렛과 JSP 명세서에 정의되어 있습니다.</a>.</p>
 
 <ul>
 <li><strong>Context</strong> - In a nutshell, a Context is a
@@ -60,42 +59,37 @@ JSP specifications</a>.</p>
 </section>
 
 
-<section name="Directories and Files">
+<section name="디렉토리와 파일들">
 
-<p>Throughout the docs, you'll notice there are numerous references to
-<strong>$CATALINA_HOME</strong>. This represents the root of your Tomcat
-installation. When we say, "This information can be found in your
-$CATALINA_HOME/README.txt file" we mean to look at the README.txt file at the
-root of your Tomcat install. Optionally, Tomcat may be configured for multiple
-instances by defining <strong>$CATALINA_BASE</strong> for each instance. If
-multiple instances are not configured, <strong>$CATALINA_BASE</strong> is the
-same as <strong>$CATALINA_HOME</strong>.</p>
+<p>이 문서를 통해서 여러분은 <strong>$CATALINA_HOME</strong>가 많이 언급되는 것을 알 수 있습니다.
+이는 여러분의 톰캣 설치경로의 루트를 뜻합니다. 우리가 "이 정보는 여러분의 $CATALINA_HOME/README.txt 파일에서 찾을 수 있습니다"
+라고 한다는 것은 README.txt 파일이 여러분의 톰캣 설치경로의 루트에 있다는 것을 뜻합니다. 선택적으로 각각 인스턴스에
+<strong>$CATALINA_BASE</strong>을 설정하면서 많은 인스턴스를 만들 수 있습니다.만약 많은 인스턴스를 만들지 않으면 <strong>$CATALINA_BASE</strong>
+은 <strong>$CATALINA_HOME</strong>과 같습니다.</p>
 
-<p>These are some of the key tomcat directories:</p>
+<p>이들은 몇몇 톰캣의 중요한 디렉토리 들입니다:</p>
 
 <ul>
-<li><strong>/bin</strong> - Startup, shutdown, and other scripts. The
-    <code>*.sh</code> files (for Unix systems) are functional duplicates of
-    the <code>*.bat</code> files (for Windows systems).  Since the Win32
-    command-line lacks certain functionality, there are some additional
-    files in here.</li>
-<li><strong>/conf</strong> - Configuration files and related DTDs.  The most
-    important file in here is server.xml.  It is the main configuration file
-    for the container.</li>
-<li><strong>/logs</strong> - Log files are here by default.</li>
-<li><strong>/webapps</strong> - This is where your webapps go.</li>
+<li><strong>/bin</strong> - 시작, 종료, 그리고 다른 스크립트들. (유닉스 시스템을 위한) <code>*.sh</code> 파일들은 (윈도우 시스템을 위한)
+<code>*.bat</code> 파일들의 기능적 복사물 입니다. 윈32 커맨드 라인이 몇명 특정 기능을 가지고 있지 않으므로 몇몇 추가적인
+파일들이 이 곳에 있습니다.
+</li>
+<li><strong>/conf</strong> - 설정 파일 및 그와 연관된 DTD 파일들. 이 곳에 있는 가장 중요한 파일은 server.xml 입니다. 
+이는 컨테이너를 위한 주요 설정 파일입니다.
+</li>
+<li><strong>/logs</strong> - 기본적으로 로그 파일들이 이곳에 있습니다.</li>
+<li><strong>/webapps</strong> - 이곳은 여러분의 webapps가 가는 곳입니다.</li>
 </ul>
 
 </section>
 
 
-<section name="Configuring Tomcat">
+<section name="톰캣 설정하기">
 
-<p>This section will acquaint you with the basic information used during
-the configuration of the container.</p>
+<p>이 센션에서는 컨테이너를 설정하는 동안 필요한 기초 정보를 얻으실 수 있습니다.</p>
 
-<p>All of the information in the configuration files is read at startup,
-meaning that any change to the files necessitates a restart of the container.
+<p>설정 파일에 있는 모든 정보들은 톰캣이 시작할 때 사용됩니다. 이는 이 파일들에 대한 어떠한 변경도 컨테이너가 재시작할 때
+필요하다는 것을 뜻합니다.
 </p>
 
 </section>

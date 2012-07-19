@@ -24,7 +24,7 @@
 
     <properties>
         <author email="funkman@apache.org">Tim Funk</author>
-        <title>Default Servlet Reference</title>
+        <title>디폴트 서블릿 레퍼런스</title>
     </properties>
 
 <body>
@@ -34,13 +34,15 @@
 </section>
 
 <section anchor="what" name="What is the DefaultServlet">
+디폴트 서블릿은 정적 자원들과 디렉토리 목록(디렉토리 목록이 지원된다면)을 지원하는 서블릿이다.
 The default servlet is the servlet which serves static resources as well
 as serves the directory listings (if directory listings are enabled).
 
 </section>
 
 <section anchor="where" name="Where is it declared?">
-It is declared globally in <i>$CATALINA_BASE/conf/web.xml</i>.
+<i>$CATALINA_BASE/conf/web.xml</i>에 아래와 같이 전역적으로
+선언되어 있다.
 By default here is it's declaration:
 <source>
     &lt;servlet&gt;
@@ -67,18 +69,22 @@ By default here is it's declaration:
     &lt;/servlet-mapping&gt;
 
 </source>
-
+따라서, 디폴트 서블릿은 webapp의 시작시에 로드되고 디렉토리 목록은 접근할 수 없으며
+디버깅 기능은 작동하지 않는 상태다.
 So by default, the default servlet is loaded at webapp startup and
 directory listings are disabled and debugging is turned off.
 </section>
 
 <section anchor="change" name="What can I change?">
+디폴트 서블릿은 아래와 같은 초기화 인자를 허용한다.
 The DefaultServlet allows the following initParamters:
 
 <table border="1">
   <tr>
     <th valign='top'>debug</th>
     <td valign='top'>
+        디버깅 레벨. 톰캣 개발자가 아니라면 그다지 쓸모있진 않다.
+        이 글을 쓰는 시점에 유용한 값은 0,1,11,1000 가 있다.[0]
         Debugging level. It is not very useful unless you are a tomcat
         developer. As
         of this writing, useful values are 0, 1, 11, 1000. [0]
@@ -87,12 +93,18 @@ The DefaultServlet allows the following initParamters:
   <tr>
     <th valign='top'>listings</th>
     <td valign='top'>
+        welcome 파일이 없으면, 디렉토리 목록이 보여지는가?
         If no welcome file is present, can a directory listing be
         shown?
+        설정값은 <b>true</b> 나 <b>false</b>가 된다. [false]
         value may be <b>true</b> or <b>false</b> [false]
         <br />
+        Welcome 파일들은 서블릿 API의 일부이다.
         Welcome files are part of the servlet api.
         <br />
+        <b>경고:</b> 
+        많은 엔트리를 포함하는 디렉토리 목록은 부하를 유발한다.
+        큰 디렉토리 목록에 대한 여러번의 요청이 서버의 자원을 눈에 띌 정도로 소모하게 된다.
         <b>WARNING:</b> Listings of directories containing many entries are
         expensive. Multiple requests for large directory listings can consume
         significant proportions of server resources.
@@ -101,6 +113,8 @@ The DefaultServlet allows the following initParamters:
   <tr>
     <th valign='top'>readmeFile</th>
     <td valign='top'>
+        디렉토리 목록이 나타난다면, readme 파일또한 목록과 함께 보여진다.
+        이 파일은 그대로 삽입되므로 HTML 을 포함할 수도 있다.
         If a directory listing is presented, a readme file may also
         be presented with the listing. This file is inserted as is
         so it may contain HTML.
@@ -109,6 +123,11 @@ The DefaultServlet allows the following initParamters:
   <tr>
     <th valign='top'>globalXsltFile</th>
     <td valign='top'>
+        디렉토리 목록을 수정하고 싶다면, XSL 변환을 사용하라.
+        이 값은 모든 디렉토리 목록에 사용되는 파일의 절대 경로 이름이다. 
+        이는 컨텍스트 혹은 디렉토리당 override 될 수 있다. 
+        아래의 <strong>contextXsltFile</strong> 와 <strong>localXsltFile</strong>
+        를 살펴보자. xml 형식이 자세히 나와 있다.
         If you wish to customize your directory listing, you
         can use an XSL transformation. This value is an absolute
         file name which be used for all directory listings.

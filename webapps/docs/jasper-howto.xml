@@ -74,50 +74,48 @@
 설정됩니다.
 
 <ul>
-<li><strong>checkInterval</strong> - If development is false and checkInterval
-is greater than zero, background compiles are enabled. checkInterval is the time
-in seconds between checks to see if a JSP page (and its dependent files) needs
-to be recompiled. Default <code>0</code> seconds.</li>
+<li><strong>checkInterval</strong> - 만약 development가 false 이고 checkInterval이 0보다 크면 백그라운드 컴파일이
+활성화 됩니다. checkInterval은 JSP 페이지(그리고 그것에 의존해 있는 파일들)가 재컴파일을 해야 하는지 check 하는 
+초단위 시간을 뜻합니다. 기본적으로는 <code>0</code> 초 입니다.</li>
 
-<li><strong>classdebuginfo</strong> - Should the class file be compiled with
-debugging information?  <code>true</code> or <code>false</code>, default
-<code>true</code>.
+<li><strong>classdebuginfo</strong> - 클래스 파일이 디버깅 정보와 함께 컴파일 되어야 하는가?
+<code>true</code> or <code>false</code>, 기본적으로는 <code>true</code> 입니다.
 </li>
 
-<li><strong>classpath</strong> - Defines the class path to be used to compile
-the generated servlets. This parameter only has an effect if the ServletContext
-attribute org.apache.jasper.Constants.SERVLET_CLASSPATH is not set. This
-attribute is always set when Jasper is used within Tomcat. By default the
-classpath is created dynamically based on the current web application.</li>
+<li><strong>classpath</strong> - 생성된 서블렛을 컴파일하는데 사용되는 클래스 경로를 뜻합니다. 이 파라미터는 오직
+ServletContext attribute org.apache.jasper.Constants.SERVLET_CLASSPATH이 세팅되어 있지 않을 때만 효력이 있습니다. 이 
+속성은 Jasper가 톰캣 안에서 사용될때는 언제나 세팅되어 집니다. 기본적으로 classpath는 현재 웹 애플리케이션에 따라 다이나믹하게
+생성됩니다.
+</li>
 
-<li><strong>compiler</strong> - Which compiler Ant should use to compile JSP
-pages.  See the Ant documentation for more information. If the value is not set,
-then the default Eclipse JDT Java compiler will be used instead of using Ant.
-No default value.</li>
+<li><strong>compiler</strong> - Ant가 어떤 컴파일러는 JSP 페이지를 컴파일 하기 위해 사용해야 하는가를 결정합니다. 더 많은
+정보를 위해서는 Ant 문서를 참고하세요. 만약 값이 세팅되어 있지 않으면 기본적으로 Eclipse JDT Java 컴파일러가 Ant 대신에
+사용됩니다. 기본적은 값은 없습니다.
+</li>
 
-<li><strong>compilerSourceVM</strong> - What JDK version are the source files
-compatible with? (Default value: <code>1.6</code>)</li>
+<li><strong>compilerSourceVM</strong> - 어떤 JDK 버젼이 소스 파일과 호환이 되는가? (기본 값:
+<code>1.6</code>)</li>
 
-<li><strong>compilerTargetVM</strong> - What JDK version are the generated files
-compatible with? (Default value: <code>1.6</code>)</li>
+<li><strong>compilerTargetVM</strong> - 어떤 JDK 버젼이 생성된 파일과 호환이 되는가?
+(기본 값: <code>1.6</code>)</li>
 
-<li><strong>development</strong> - Is Jasper used in development mode? If true,
-the frequency at which JSPs are checked for modification may be specified via
-the modificationTestInterval parameter.<code>true</code> or <code>false</code>,
-default <code>true</code>.</li>
+<li><strong>development</strong> - Jasper가 개발 모드에서 사용되는가? 만약 true이면 어떤 JSP가 수정을 위해 체크되었는지를
+확인하는 빈도가 modificationTestInterval 에서 명시될 것 입니다.
+<code>true</code> 또는 <code>false</code>,
+기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>displaySourceFragment</strong> - Should a source fragment be
-included in exception messages? <code>true</code> or <code>false</code>,
-default <code>true</code>.</li>
+<li><strong>displaySourceFragment</strong> - 소스 조각이 예외 메시지에 포함되어야 하는가?
+<code>true</code> or <code>false</code>,
+기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>dumpSmap</strong> - Should the SMAP info for JSR45 debugging be
-dumped to a file? <code>true</code> or <code>false</code>, default
-<code>false</code>. <code>false</code> if suppressSmap is true.</li>
+<li><strong>dumpSmap</strong> - JSR45 디버깅을 위한 SMAP 정보가 파일에 덤프되어야 하는가?
+<code>true</code> or <code>false</code>, 기본값은
+<code>false</code> 입니다. 만약 suppressSmap가 true 이면 <code>false</code> 입니다.</li>
 
-<li><strong>enablePooling</strong> - Determines whether tag handler pooling is
-enabled. This is a compilation option. It will not alter the behaviour of JSPs
-that have already been compiled. <code>true</code> or <code>false</code>,
-default <code>true</code>.
+<li><strong>enablePooling</strong> - 태그 핸들러 풀링이 활성화 되었는지를 결정합니다. 이는 컴파일 옵션이며 이미 컴파일된
+JSP의 행동을 바꾸지 않습니다.
+<code>true</code> or <code>false</code>,
+기본값은 <code>true</code> 입니다.
 </li>
 
 <li><strong>engineOptionsClass</strong> - Allows specifying the Options class

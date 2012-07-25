@@ -189,18 +189,18 @@ Should the generation of SMAP info for JSR45
 
 <section name="알려진 이슈들">
 
-<p>As described in
+<p>
 <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=39089">
-bug 39089</a>, a known JVM issue,
+bug 39089</a> 에서도 기술되어 있듯이, 알려진 JVM 이슈는
 <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6294277">
-bug 6294277</a>, may cause a
-<code>java.lang.InternalError: name is too long to represent</code> exception
-when compiling very large JSPs. If this is observed then it may be worked around
-by using one of the following:
+bug 6294277</a>,
+<code>java.lang.InternalError: name is too long to represent</code> 예외를 많은양의 JSP를 컴파일 할 때 
+발생시킬 수 있습니다. 만약 이러한 상황이 발생할 시에는 이들 중 하나를 사용하면 해결할 수 있습니다:
+
 <ul>
-<li>reduce the size of the JSP</li>
-<li>disable SMAP generation and JSR-045 support by setting
-<code>suppressSmap</code> to <code>true</code>.</li>
+<li>JSP 사이즈를 줄입니다JSP</li>
+<li>SMAP 생성을 비활성화 하고 JSR-045 
+<code>suppressSmap</code>을 <code>true</code>로 변경합니다.</li>
 </ul>
 </p>
 

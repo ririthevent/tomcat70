@@ -6,8 +6,8 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 25 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Jasper 2 JSP Engine How To</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%90%EC%B8%A0 %EB%AA%A9%EB%A1%9D"><!--()--></a><a name="%EC%BB%A8%ED%85%90%EC%B8%A0_%EB%AA%A9%EB%A1%9D"><strong>컨텐츠 목록</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EC%84%A4%EC%A0%95">설정</a></li><li><a href="#Known_issues">Known issues</a></li><li><a href="#Production_Configuration">Production Configuration</a></li><li><a href="#Web_Application_Compilation">Web Application Compilation</a></li></ul>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 26 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Jasper 2 JSP Engine How To</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%90%EC%B8%A0 %EB%AA%A9%EB%A1%9D"><!--()--></a><a name="%EC%BB%A8%ED%85%90%EC%B8%A0_%EB%AA%A9%EB%A1%9D"><strong>컨텐츠 목록</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EC%84%A4%EC%A0%95">설정</a></li><li><a href="#%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%9D%B4%EC%8A%88%EB%93%A4">알려진 이슈들</a></li><li><a href="#Production_Configuration">Production Configuration</a></li><li><a href="#Web_Application_Compilation">Web Application Compilation</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>톰캣 7.0은 Jasper 2 JSP 엔진을 
@@ -90,101 +90,87 @@ JSP의 행동을 바꾸지 않습니다.
 기본값은 <code>true</code> 입니다.
 </li>
 
-<li><strong>engineOptionsClass</strong> - Allows specifying the Options class
-used to configure Jasper. If not present, the default EmbeddedServletOptions
-will be used.
+<li><strong>engineOptionsClass</strong> - Jasper를 설정하는 클래스의 옵션을 명시합니다. 만약 없다면 기본
+EmbeddedServletOptions가 사용됩니다.
 </li>
 
-<li><strong>errorOnUseBeanInvalidClassAttribute</strong> - Should Jasper issue
-an error when the value of the class attribute in an useBean action is not a
-valid bean class? <code>true</code> or <code>false</code>, default
-<code>true</code>.</li>
+<li><strong>errorOnUseBeanInvalidClassAttribute</strong> - useBean 액션의 클래스 속성이 유효한 클래스가 아닐때
+에러를 이슈해야 하는가? <code>true</code> 또는 <code>false</code>, 기본값은
+<code>true</code> 입니다.</li>
 
-<li><strong>fork</strong> - Have Ant fork JSP page compiles so they are
-performed in a separate JVM from Tomcat? <code>true</code> or
-<code>false</code>, default <code>true</code>.</li>
+<li><strong>fork</strong> - Ant fork JSP 페이지가 톰캣으로부터 개별적인 JVM에서 실행되는가? 
+<code>true</code> 또는 <code>false</code>, 기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>genStringAsCharArray</strong> - Should text strings be generated as char
-arrays, to improve performance in some cases? Default <code>false</code>.</li>
+<li><strong>genStringAsCharArray</strong> - 몇몇 경우에 텍스트 스트링이 char 배열로 생성되어야 하는가?
+기본값은 <code>false</code> 입니다.</li>
 
-<li><strong>ieClassId</strong> - The class-id value to be sent to Internet
-Explorer when using &lt;jsp:plugin&gt; tags.   Default
-<code>clsid:8AD9C840-044E-11D1-B3E9-00805F499D93</code>.</li>
+<li><strong>ieClassId</strong> - &lt;jsp:plugin&gt; 태그들을 쓸 때 인터넷 익스플로어로 보내지는 class-id 값.
+기본값은  <code>clsid:8AD9C840-044E-11D1-B3E9-00805F499D93</code> 입니다.</li>
 
-<li><strong>javaEncoding</strong> - Java file encoding to use for generating
-java source files. Default <code>UTF8</code>.</li>
+<li><strong>javaEncoding</strong> - 자바 소스 파일을 생성할 때 사용되는 자바 파일 인코딩.
+기본값은 <code>UTF8</code> 입니다.</li>
 
-<li><strong>keepgenerated</strong> - Should we keep the generated Java source
-code for each page instead of deleting it? <code>true</code> or
-<code>false</code>, default <code>true</code>.</li>
+<li><strong>keepgenerated</strong> - 각 페이지에 대해 생성되는 자바 소스 코드를 지니고 있어야 하는가 아니면 지워야 하는가?
+, 기본값은  <code>true</code> 입니다.</li>
 
-<li><strong>mappedfile</strong> - Should we generate static content with one
-print statement per input line, to ease debugging?
-<code>true</code> or <code>false</code>, default <code>true</code>.</li>
+<li><strong>mappedfile</strong> - 디버깅이 쉽게 하기 위해서 각 인풋 라인마다 정적인 컨탠츠와 함께 statement를 출력해야 
+하는가? <code>true</code> or <code>false</code>, 기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>maxLoadedJsps</strong> - The maximum number of JSPs that will be
-loaded for a web application. If more than this number of JSPs are loaded, the
-least recently used JSPs will be unloaded so that the number of JSPs loaded at
-any one time does not exceed this limit. A value of zero or less indicates no
-limit. Default <code>-1</code></li>
+<li><strong>maxLoadedJsps</strong> - 웹 애플리케이션을 위해 로드되는 JSP의 최대 갯수. 만약 이보다 많은 JSP가 로드되면
+이 한계점을 지키기 위해서 가장 오래전에 사용된 JSP가 언로드 됩니다. 0 또는 그보다 작은 값은 한계점이 없다는 것을
+뜻합니다.기본값은 <code>-1</code> 입니다.</li>
 
-<li><strong>jspIdleTimeout</strong> - The amount of time in seconds a JSP can be
-idle before it is unloaded. A value of zero or less indicates never unload.
-Default <code>-1</code></li>
+<li><strong>jspIdleTimeout</strong> - JSP가 언로드 되기 전에 비활성화 되는 초단위 시간. 0 또는 그보다 작은 값은 
+언로드 되지 않음을 뜻합니다. 기본값은 <code>-1</code> 입니다.</li>
 
-<li><strong>modificationTestInterval</strong> - Causes a JSP (and its dependent
-files) to not be checked for modification during the specified time interval
-(in seconds) from the last time the JSP was checked for modification. A value of
-0 will cause the JSP to be checked on every access. Used in development mode
-only. Default is <code>4</code> seconds.</li>
+<li><strong>modificationTestInterval</strong> - JSP가 수정되었는지 체크를 한 마지막 시간으로부터 특정 시간 간격동안
+(초단위) JSP (그리고 그에 의존한 파일들)가 수정되었는지 체크하지 않도록 합니다. 0 값을 쓰면 매번 접근 시 마다 JSP가
+체크됩니다. 개발 모드에서만 사용 가능합니다.
+기본값은 <code>4</code> 초 입니다.</li>
 
-<li><strong>recompileOnFail</strong> - If a JSP compilation fails should the
-modificationTestInterval be ignored and the next access trigger a re-compilation
-attempt? Used in development mode only and is disabled by default as compilation
-may be expensive and could lead to excessive resource usage.</li>
+<li><strong>recompileOnFail</strong> - 만약 JSP 컴파일이 실패한다면 modificationTestInterva가 무시되고 다음 접근이
+재컴파일을 시도하는가? 개발 모드에서만 사용되며 기본적으로는 비활성화 되어 있습니다. 이는 과도한 리소스 사용을 막기 위함
+입니다. </li>
 
-<li><strong>scratchdir</strong> - What scratch directory should we use when
-compiling JSP pages? Default is the work directory for the current web
-application.</li>
+<li><strong>scratchdir</strong> - JSP 페이지를 컴파일 할 때 어떤 스크래치 디렉토리를 사용해야 하는가? 기본 값은
+현재 웹애플리케이션 작업 디렉토리 입니다. </li>
 
-<li><strong>suppressSmap</strong> - Should the generation of SMAP info for JSR45
-debugging be suppressed? <code>true</code> or <code>false</code>, default
-<code>false</code>.</li>
+<li><strong>suppressSmap</strong> - JSR45를 위해 SMAP 정보를 생성하는 것이 억압되어 있는가?
+Should the generation of SMAP info for JSR45
+<code>true</code> 또는 <code>false</code>, 기본값은 <code>false</code> 입니다.</li>
 
-<li><strong>trimSpaces</strong> - Should white spaces in template text between
-actions or directives be trimmed ?, default <code>false</code>.</li>
+<li><strong>trimSpaces</strong> - 액션간에 탬플레이트 텍스트를 빈공간으로 해야 하는가 아니면 명령이 다듬어 져야 하는가?,
+기본값은 <code>false</code> 입니다.</li><b> 재해석 필요!!!</b>
 
-<li><strong>xpoweredBy</strong> - Determines whether X-Powered-By response
-header is added by generated servlet. <code>true</code> or <code>false</code>,
-default <code>false</code>.</li>
+<li><strong>xpoweredBy</strong> - X-Powered-By 응답 해더가 생성된 서블렛에 의해 추가되어야 하는가를 결정합니다.
+<code>true</code> or <code>false</code>,
+기본값은 <code>false</code> 입니다.</li>
 </ul>
 </p>
 
-<p>The Java compiler from Eclipse JDT in included as the default compiler. It is
-an advanced Java compiler which will load all dependencies from the Tomcat class
-loader, which will help tremendously when compiling on large installations with
-tens of JARs. On fast servers, this will allow sub-second recompilation cycles
-for even large JSP  pages.</p>
+<p>Eclipse JDT에 포함된 자바 컴파일러가 기본 컴파일러로 사용됩니다. 이는 톰캣 클래스 로더로 부터 모든 디펜던시를
+로드하는 향상된 컴파일러 이며, 수십개의 JAR를 사용하여 대용량의 설치를 컴파일할 때 많은 도움을 줍니다. 빠른 서버에서
+이는 많은 JSP 페이지에서도 서브-세컨드 재컴파일 사이클을 허용합니다.
+</p>
 
-<p>Apache Ant, which was used in previous Tomcat releases, can be used instead
-of the new compiler by simply removing the <code>lib/ecj-*.jar</code> file,
-and placing the <code>ant.jar</code> and <code>ant-launcher.jar</code> files
-from the latest Ant distribution in the <code>lib</code> folder.</p>
+<p> 예전 톰캣 릴리즈에서도 사용된 아파치 안트가 새로운 컴파일로에서도 대신 사용될 수 있습니다. 이는 단순히 
+<code>lib/ecj-*.jar</code> 파일을 삭제하고,최신 안트 배포판의 <code>lib</code> 안에 있는 <code>ant.jar</code> 과 <code>ant-launcher.jar</code> 파일로
+대체하면 됩니다.</p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Known issues"><!--()--></a><a name="Known_issues"><strong>Known issues</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%95%8C%EB%A0%A4%EC%A7%84 %EC%9D%B4%EC%8A%88%EB%93%A4"><!--()--></a><a name="%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%9D%B4%EC%8A%88%EB%93%A4"><strong>알려진 이슈들</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>As described in
+<p>
 <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=39089">
-bug 39089</a>, a known JVM issue,
+bug 39089</a> 에서도 기술되어 있듯이, 알려진 JVM 이슈는
 <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6294277">
-bug 6294277</a>, may cause a
-<code>java.lang.InternalError: name is too long to represent</code> exception
-when compiling very large JSPs. If this is observed then it may be worked around
-by using one of the following:
+bug 6294277</a>,
+<code>java.lang.InternalError: name is too long to represent</code> 예외를 많은양의 JSP를 컴파일 할 때 
+발생시킬 수 있습니다. 만약 이러한 상황이 발생할 시에는 이들 중 하나를 사용하면 해결할 수 있습니다:
+
 <ul>
-<li>reduce the size of the JSP</li>
-<li>disable SMAP generation and JSR-045 support by setting
-<code>suppressSmap</code> to <code>true</code>.</li>
+<li>JSP 사이즈를 줄입니다JSP</li>
+<li>SMAP 생성을 비활성화 하고 JSR-045 
+<code>suppressSmap</code>을 <code>true</code>로 변경합니다.</li>
 </ul>
 </p>
 

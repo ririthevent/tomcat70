@@ -118,90 +118,76 @@ JSP의 행동을 바꾸지 않습니다.
 기본값은 <code>true</code> 입니다.
 </li>
 
-<li><strong>engineOptionsClass</strong> - Allows specifying the Options class
-used to configure Jasper. If not present, the default EmbeddedServletOptions
-will be used.
+<li><strong>engineOptionsClass</strong> - Jasper를 설정하는 클래스의 옵션을 명시합니다. 만약 없다면 기본
+EmbeddedServletOptions가 사용됩니다.
 </li>
 
-<li><strong>errorOnUseBeanInvalidClassAttribute</strong> - Should Jasper issue
-an error when the value of the class attribute in an useBean action is not a
-valid bean class? <code>true</code> or <code>false</code>, default
-<code>true</code>.</li>
+<li><strong>errorOnUseBeanInvalidClassAttribute</strong> - useBean 액션의 클래스 속성이 유효한 클래스가 아닐때
+에러를 이슈해야 하는가? <code>true</code> 또는 <code>false</code>, 기본값은
+<code>true</code> 입니다.</li>
 
-<li><strong>fork</strong> - Have Ant fork JSP page compiles so they are
-performed in a separate JVM from Tomcat? <code>true</code> or
-<code>false</code>, default <code>true</code>.</li>
+<li><strong>fork</strong> - Ant fork JSP 페이지가 톰캣으로부터 개별적인 JVM에서 실행되는가? 
+<code>true</code> 또는 <code>false</code>, 기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>genStringAsCharArray</strong> - Should text strings be generated as char
-arrays, to improve performance in some cases? Default <code>false</code>.</li>
+<li><strong>genStringAsCharArray</strong> - 몇몇 경우에 텍스트 스트링이 char 배열로 생성되어야 하는가?
+기본값은 <code>false</code> 입니다.</li>
 
-<li><strong>ieClassId</strong> - The class-id value to be sent to Internet
-Explorer when using &lt;jsp:plugin&gt; tags.   Default
-<code>clsid:8AD9C840-044E-11D1-B3E9-00805F499D93</code>.</li>
+<li><strong>ieClassId</strong> - &lt;jsp:plugin&gt; 태그들을 쓸 때 인터넷 익스플로어로 보내지는 class-id 값.
+기본값은  <code>clsid:8AD9C840-044E-11D1-B3E9-00805F499D93</code> 입니다.</li>
 
-<li><strong>javaEncoding</strong> - Java file encoding to use for generating
-java source files. Default <code>UTF8</code>.</li>
+<li><strong>javaEncoding</strong> - 자바 소스 파일을 생성할 때 사용되는 자바 파일 인코딩.
+기본값은 <code>UTF8</code> 입니다.</li>
 
-<li><strong>keepgenerated</strong> - Should we keep the generated Java source
-code for each page instead of deleting it? <code>true</code> or
-<code>false</code>, default <code>true</code>.</li>
+<li><strong>keepgenerated</strong> - 각 페이지에 대해 생성되는 자바 소스 코드를 지니고 있어야 하는가 아니면 지워야 하는가?
+, 기본값은  <code>true</code> 입니다.</li>
 
-<li><strong>mappedfile</strong> - Should we generate static content with one
-print statement per input line, to ease debugging?
-<code>true</code> or <code>false</code>, default <code>true</code>.</li>
+<li><strong>mappedfile</strong> - 디버깅이 쉽게 하기 위해서 각 인풋 라인마다 정적인 컨탠츠와 함께 statement를 출력해야 
+하는가? <code>true</code> or <code>false</code>, 기본값은 <code>true</code> 입니다.</li>
 
-<li><strong>maxLoadedJsps</strong> - The maximum number of JSPs that will be
-loaded for a web application. If more than this number of JSPs are loaded, the
-least recently used JSPs will be unloaded so that the number of JSPs loaded at
-any one time does not exceed this limit. A value of zero or less indicates no
-limit. Default <code>-1</code></li>
+<li><strong>maxLoadedJsps</strong> - 웹 애플리케이션을 위해 로드되는 JSP의 최대 갯수. 만약 이보다 많은 JSP가 로드되면
+이 한계점을 지키기 위해서 가장 오래전에 사용된 JSP가 언로드 됩니다. 0 또는 그보다 작은 값은 한계점이 없다는 것을
+뜻합니다.기본값은 <code>-1</code> 입니다.</li>
 
-<li><strong>jspIdleTimeout</strong> - The amount of time in seconds a JSP can be
-idle before it is unloaded. A value of zero or less indicates never unload.
-Default <code>-1</code></li>
+<li><strong>jspIdleTimeout</strong> - JSP가 언로드 되기 전에 비활성화 되는 초단위 시간. 0 또는 그보다 작은 값은 
+언로드 되지 않음을 뜻합니다. 기본값은 <code>-1</code> 입니다.</li>
 
-<li><strong>modificationTestInterval</strong> - Causes a JSP (and its dependent
-files) to not be checked for modification during the specified time interval
-(in seconds) from the last time the JSP was checked for modification. A value of
-0 will cause the JSP to be checked on every access. Used in development mode
-only. Default is <code>4</code> seconds.</li>
+<li><strong>modificationTestInterval</strong> - JSP가 수정되었는지 체크를 한 마지막 시간으로부터 특정 시간 간격동안
+(초단위) JSP (그리고 그에 의존한 파일들)가 수정되었는지 체크하지 않도록 합니다. 0 값을 쓰면 매번 접근 시 마다 JSP가
+체크됩니다. 개발 모드에서만 사용 가능합니다.
+기본값은 <code>4</code> 초 입니다.</li>
 
-<li><strong>recompileOnFail</strong> - If a JSP compilation fails should the
-modificationTestInterval be ignored and the next access trigger a re-compilation
-attempt? Used in development mode only and is disabled by default as compilation
-may be expensive and could lead to excessive resource usage.</li>
+<li><strong>recompileOnFail</strong> - 만약 JSP 컴파일이 실패한다면 modificationTestInterva가 무시되고 다음 접근이
+재컴파일을 시도하는가? 개발 모드에서만 사용되며 기본적으로는 비활성화 되어 있습니다. 이는 과도한 리소스 사용을 막기 위함
+입니다. </li>
 
-<li><strong>scratchdir</strong> - What scratch directory should we use when
-compiling JSP pages? Default is the work directory for the current web
-application.</li>
+<li><strong>scratchdir</strong> - JSP 페이지를 컴파일 할 때 어떤 스크래치 디렉토리를 사용해야 하는가? 기본 값은
+현재 웹애플리케이션 작업 디렉토리 입니다. </li>
 
-<li><strong>suppressSmap</strong> - Should the generation of SMAP info for JSR45
-debugging be suppressed? <code>true</code> or <code>false</code>, default
-<code>false</code>.</li>
+<li><strong>suppressSmap</strong> - JSR45를 위해 SMAP 정보를 생성하는 것이 억압되어 있는가?
+Should the generation of SMAP info for JSR45
+<code>true</code> 또는 <code>false</code>, 기본값은 <code>false</code> 입니다.</li>
 
-<li><strong>trimSpaces</strong> - Should white spaces in template text between
-actions or directives be trimmed ?, default <code>false</code>.</li>
+<li><strong>trimSpaces</strong> - 액션간에 탬플레이트 텍스트를 빈공간으로 해야 하는가 아니면 명령이 다듬어 져야 하는가?,
+기본값은 <code>false</code> 입니다.</li><b> 재해석 필요!!!</b>
 
-<li><strong>xpoweredBy</strong> - Determines whether X-Powered-By response
-header is added by generated servlet. <code>true</code> or <code>false</code>,
-default <code>false</code>.</li>
+<li><strong>xpoweredBy</strong> - X-Powered-By 응답 해더가 생성된 서블렛에 의해 추가되어야 하는가를 결정합니다.
+<code>true</code> or <code>false</code>,
+기본값은 <code>false</code> 입니다.</li>
 </ul>
 </p>
 
-<p>The Java compiler from Eclipse JDT in included as the default compiler. It is
-an advanced Java compiler which will load all dependencies from the Tomcat class
-loader, which will help tremendously when compiling on large installations with
-tens of JARs. On fast servers, this will allow sub-second recompilation cycles
-for even large JSP  pages.</p>
+<p>Eclipse JDT에 포함된 자바 컴파일러가 기본 컴파일러로 사용됩니다. 이는 톰캣 클래스 로더로 부터 모든 디펜던시를
+로드하는 향상된 컴파일러 이며, 수십개의 JAR를 사용하여 대용량의 설치를 컴파일할 때 많은 도움을 줍니다. 빠른 서버에서
+이는 많은 JSP 페이지에서도 서브-세컨드 재컴파일 사이클을 허용합니다.
+</p>
 
-<p>Apache Ant, which was used in previous Tomcat releases, can be used instead
-of the new compiler by simply removing the <code>lib/ecj-*.jar</code> file,
-and placing the <code>ant.jar</code> and <code>ant-launcher.jar</code> files
-from the latest Ant distribution in the <code>lib</code> folder.</p>
+<p> 예전 톰캣 릴리즈에서도 사용된 아파치 안트가 새로운 컴파일로에서도 대신 사용될 수 있습니다. 이는 단순히 
+<code>lib/ecj-*.jar</code> 파일을 삭제하고,최신 안트 배포판의 <code>lib</code> 안에 있는 <code>ant.jar</code> 과 <code>ant-launcher.jar</code> 파일로
+대체하면 됩니다.</p>
 
 </section>
 
-<section name="Known issues">
+<section name="알려진 이슈들">
 
 <p>As described in
 <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=39089">

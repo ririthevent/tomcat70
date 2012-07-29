@@ -6,7 +6,7 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 28 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 웹 애플리케이션 배치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Jul 30 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>톰캣 웹 애플리케이션 배치</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
 <ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Installation">Installation</a></li><li><a href="#A_word_on_Contexts">A word on Contexts</a></li><li><a href="#Deployment_on_Tomcat_startup">Deployment on Tomcat startup</a></li><li><a href="#Deploying_on_a_running_Tomcat_server">Deploying on a running Tomcat server</a></li><li><a href="#Deploying_using_the_Tomcat_Manager">Deploying using the Tomcat Manager</a></li><li><a href="#Deploying_using_the_Client_Deployer_Package">Deploying using the Client Deployer Package</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Introduction"><strong>Introduction</strong></a></font></td></tr><tr><td><blockquote>
         <p>
@@ -87,42 +87,38 @@
         </p>
     </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Deployment on Tomcat startup"><!--()--></a><a name="Deployment_on_Tomcat_startup"><strong>Deployment on Tomcat startup</strong></a></font></td></tr><tr><td><blockquote>
         <p>
-            If you are not interested in using the Tomcat Manager, or TCD,
-            then you'll need to deploy your web applications
-            statically to Tomcat, followed by a Tomcat startup. The location you
-            deploy web applications to for this type of deployment is called the
-            <code>appBase</code> which is specified per Host. You either copy a
-            so-called <i>exploded web application</i>, i.e non-compressed, to this
-            location, or a compressed web application resource .WAR file.
+            만약 톰캣 매니저, 또는 TCD 사용에 관심이 없다면, 톰캣에 웹 애플리케이션 배치를 
+            정적으로 하고 톰캣을 시작해야 할 필요가 있습니다. 이런 형식의 배치를 위해서 
+            웹 애플리케이션이 위치하게 될 곳은 <code>appBase</code> 라고 불리는 
+            호스트마다 지정되는 경로입니다. 이 위치에 소위 <i>압축되지 않은 웹 애플리케이션 폴더</i>나
+            압축된 웹 애플리케이션 자원 .WAR 파일을 복사하면 됩니다.
         </p>
         <p>
-            The web applications present in the location specified by the Host's
-            (default Host is "localhost") <code>appBase</code> attribute (default
-            appBase is "$CATALINA_BASE/webapps") will be deployed on Tomcat startup
-            only if the Host's <code>deployOnStartup</code> attribute is "true".
+            호스트(기본 호스트는 "localhost")에 <code>appBase</code> 속성으로 설정된 경로(기본
+            appBase는 "$CATALINA_BASE/webapps")에 있는 웹 애플리케이션들은 
+            <code>deployOnStartup</code> 속성이 "true"값이면 톰캣이 시작될 때에 자동으로 
+            배치됩니다.
         </p>
         <p>
-            The following deployment sequence will occur on Tomcat startup in that
-            case:
+            다음의 배치 절차는 톰캣 시작시 발생됩니다:
         </p>
         <ol>
-            <li>Any Context Descriptors will be deployed first.</li>
+            <li>컨텍스트 설명자가 처음 배치됩니다.</li>
             <li>
-                Exploded web applications not referenced by any Context
-                Descriptor will then be deployed. If they have an associated
-                .WAR file in the appBase and it is newer than the exploded web application,
-                the exploded directory will be removed and the webapp will be
-                redeployed from the .WAR
+                컨텍스트 설명자에 의해 참조되지 않은 압축되지 않은 웹 애플리케이션이 그 다음으로 
+                배치될 것입니다. 만약 관련된 .WAR 파일이 appBase에 있고, 그 파일이 
+                압축되지 않은 웹 애플리케이션보다 새로운 것이라면 기존 폴더는 지워지고,
+                .WAR 파일에서 다시 재배치됩니다.
             </li>
-            <li>.WAR files will be deployed</li>
+            <li>.WAR 파일이 배치될 것입니다.</li>
         </ol>
         <p>
-            Note again that for each deployed web application, a
-            Context Descriptor will be created <i>unless one exists already</i>.
+            다시 한 번 명심할 것은 각각의 배치된 웹 애플리케이션을 위한, 컨텍스트 설명자가
+            <i>하나라도 존재하지 않는다면</i> 만들어질 것입니다.
         </p>
     </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Deploying on a running Tomcat server"><!--()--></a><a name="Deploying_on_a_running_Tomcat_server"><strong>Deploying on a running Tomcat server</strong></a></font></td></tr><tr><td><blockquote>
         <p>
-            It is possible to deploy web applications to a running Tomcat server.
+            실행 중인 톰캣 서버에 웹 애플리케이션을 배치하는 것도 가능합니다.
         </p>
         <p>
             If the Host <code>autoDeploy</code> attribute is "true", the Host will

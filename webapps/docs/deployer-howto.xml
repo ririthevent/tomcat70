@@ -118,44 +118,40 @@
 
     <section name="Deployment on Tomcat startup">
         <p>
-            If you are not interested in using the Tomcat Manager, or TCD,
-            then you'll need to deploy your web applications
-            statically to Tomcat, followed by a Tomcat startup. The location you
-            deploy web applications to for this type of deployment is called the
-            <code>appBase</code> which is specified per Host. You either copy a
-            so-called <i>exploded web application</i>, i.e non-compressed, to this
-            location, or a compressed web application resource .WAR file.
+            만약 톰캣 매니저, 또는 TCD 사용에 관심이 없다면, 톰캣에 웹 애플리케이션 배치를 
+            정적으로 하고 톰캣을 시작해야 할 필요가 있습니다. 이런 형식의 배치를 위해서 
+            웹 애플리케이션이 위치하게 될 곳은 <code>appBase</code> 라고 불리는 
+            호스트마다 지정되는 경로입니다. 이 위치에 소위 <i>압축되지 않은 웹 애플리케이션 폴더</i>나
+            압축된 웹 애플리케이션 자원 .WAR 파일을 복사하면 됩니다.
         </p>
         <p>
-            The web applications present in the location specified by the Host's
-            (default Host is "localhost") <code>appBase</code> attribute (default
-            appBase is "$CATALINA_BASE/webapps") will be deployed on Tomcat startup
-            only if the Host's <code>deployOnStartup</code> attribute is "true".
+            호스트(기본 호스트는 "localhost")에 <code>appBase</code> 속성으로 설정된 경로(기본
+            appBase는 "$CATALINA_BASE/webapps")에 있는 웹 애플리케이션들은 
+            <code>deployOnStartup</code> 속성이 "true"값이면 톰캣이 시작될 때에 자동으로 
+            배치됩니다.
         </p>
         <p>
-            The following deployment sequence will occur on Tomcat startup in that
-            case:
+            다음의 배치 절차는 톰캣 시작시 발생됩니다:
         </p>
         <ol>
-            <li>Any Context Descriptors will be deployed first.</li>
+            <li>컨텍스트 설명자가 처음 배치됩니다.</li>
             <li>
-                Exploded web applications not referenced by any Context
-                Descriptor will then be deployed. If they have an associated
-                .WAR file in the appBase and it is newer than the exploded web application,
-                the exploded directory will be removed and the webapp will be
-                redeployed from the .WAR
+                컨텍스트 설명자에 의해 참조되지 않은 압축되지 않은 웹 애플리케이션이 그 다음으로 
+                배치될 것입니다. 만약 관련된 .WAR 파일이 appBase에 있고, 그 파일이 
+                압축되지 않은 웹 애플리케이션보다 새로운 것이라면 기존 폴더는 지워지고,
+                .WAR 파일에서 다시 재배치됩니다.
             </li>
-            <li>.WAR files will be deployed</li>
+            <li>.WAR 파일이 배치될 것입니다.</li>
         </ol>
         <p>
-            Note again that for each deployed web application, a
-            Context Descriptor will be created <i>unless one exists already</i>.
+            다시 한 번 명심할 것은 각각의 배치된 웹 애플리케이션을 위한, 컨텍스트 설명자가
+            <i>하나라도 존재하지 않는다면</i> 만들어질 것입니다.
         </p>
     </section>
 
     <section name="Deploying on a running Tomcat server">
         <p>
-            It is possible to deploy web applications to a running Tomcat server.
+            실행 중인 톰캣 서버에 웹 애플리케이션을 배치하는 것도 가능합니다.
         </p>
         <p>
             If the Host <code>autoDeploy</code> attribute is "true", the Host will

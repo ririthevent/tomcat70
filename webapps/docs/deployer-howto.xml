@@ -199,34 +199,29 @@
             </li>
         </ul>
         <p>
-            Note that web application reloading can also be configured in the loader, in which
-            case loaded classes will be tracked for changes.
+            웹 애플리케이션 리로딩은 로더에서 설정될 수 있고, 그 경우 로드된 클래스는 변경 사항을 
+            추적당하게 됩니다.
         </p>
     </section>
 
     <section name="Deploying using the Tomcat Manager">
         <p>
-            The Tomcat Manager is covered in its <a href="manager-howto.html">own manual page</a>.
+            톰캣 매니저는 <a href="manager-howto.html">고유한 매뉴얼 페이지</a>가 있습니다.
         </p>
     </section>
 
     <section name="Deploying using the Client Deployer Package">
         <p>
-            Finally, deployment of web application may be achieved using the
-            Tomcat Client Deployer. This is a package which can be used to
-            validate, compile, compress to .WAR, and deploy web applications to
-            production or development Tomcat servers. It should be noted that this feature
-            uses the Tomcat Manager and as such the target Tomcat server should be
-            running.
+            마지막으로, 웹 애플리케이션의 배치는 톰캣 클라이언트 배치자(TCD)를 사용해서 이뤄집니다.
+            이 패키지는 검증하고, 컴파일하고, .WAR로 압축하고, 웹 애플리케이션을 운영 또는 개발 중인 
+            톰캣 서버에 배치하는 데 사용됩니다. 이 기능은 톰캣 매니저를 사용하고, 타겟 톰캣 서버는 
+            실행중이어야 됩니다.
         </p>
 
         <p>
-            It is assumed the user will be familiar with Apache Ant for using the TCD.
-            Apache Ant is a scripted build tool. The TCD comes pre-packaged with a
-            build script to use. Only a modest understanding of Apache Ant is
-            required (installation as listed earlier in this page, and familiarity
-            with using the operating system command shell and configuring
-            environment variables).
+            TCD를 사용하려면 아파치 앤트 사용법을 알고 있다고 가정합니다. 아파치 앤트는 스크립트 빌드
+            도구입니다. TCD는 사용 빌드 스크립트로 프리 패키지되어 있습니다. 아파치 앤트의 적당한 지식만
+            있으면 됩니다(이 페이지의 앞 부분에 있는 설치, 운영 체제 명령 쉘 사용의 익숙함과 환경 변수 설정).
         </p>
 
         <p>

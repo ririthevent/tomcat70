@@ -154,57 +154,48 @@
             실행 중인 톰캣 서버에 웹 애플리케이션을 배치하는 것도 가능합니다.
         </p>
         <p>
-            If the Host <code>autoDeploy</code> attribute is "true", the Host will
-            attempt to deploy and update web applications dynamically, as needed,
-            for example if a new .WAR is dropped into the <code>appBase</code>.
-            For this to work, the Host needs to have background processing
-            enabled which is the default configuration.
+            만약 Host <code>autoDeploy</code> 속성이 "true"이면, Host는, 필요에 따라서,
+            동적으로 웹 애플리케이션을 배치 또는 업데이트를 시도할 것입니다. 예를 들면 
+            <code>appBase</code> 폴더에 새로운 .WAR 파일이 떨구어 지는 경우입니다. 
+            이렇게 동작하기 위해서, Host는 기본 설정으로 잡혀있는 것처럼 백그라운드 프로세싱 기능을
+            필요로 합니다.
         </p>
 
         <p>
-            <code>autoDeploy</code> set to "true" and a running Tomcat allows for:
+            <code>autoDeploy</code> 속성을 "true"로 하면 실행중인 톰캣에서 다음이 가능합니다:
         </p>
         <ul>
-            <li>Deployment of .WAR files copied into the Host <code>appBase</code>.</li>
+            <li>Host의 <code>appBase</code>에 복사된 .WAR 파일의 배치.</li>
             <li>
-                Deployment of exploded web applications which are
-                copied into the Host <code>appBase</code>.
+                Host의 <code>appBase</code> 폴더에 있는 압축이 안 된 웹 애플리케이션의 배치.
             </li>
             <li>
-                Re-deployment of a web application which has already been deployed from
-                a .WAR when the new .WAR is provided. In this case the exploded
-                web application is removed, and the .WAR is expanded again.
-                Note that the explosion will not occur if the Host is configured
-                so that .WARs are not exploded with a <code>unpackWARs</code>
-                attribute set to "false", in which case the web application
-                will be simply redeployed as a compressed archive.
+                새로운 .WAR 파일이 복사될 때 예전 .WAR파일에서 배치된 웹 애플리케이션의 재배치.
+                이 경우 이전 웹 애플리케이션 폴더는 삭제되고, .WAR 파일이 다시 압축이 풀립니다.
+                Host의 설정에 <code>unpackWARs</code> 속성이 "false"로 되어 있다면 
+                .WAR 파일의 압축은 풀리지 않고, 웹 애플리케이션은 단지 압축된 채로 재배치됩니다.
             </li>
             <li>
-                Re-loading of a web application if the /WEB-INF/web.xml file (or
-                any other resource defined as a WatchedResource) is updated.
+                만약 /WEB-INF/web.xml 파일 (또는 WatchedResource에 정의된 어느 리소스라도)
+                업데이트가 발생하면 웹 애플리케이션을 리로딩합니다.
             </li>
             <li>
-                Re-deployment of a web application if the Context Descriptor
-                file from which the web application has been deployed is
-                updated.
+                배치된 웹 애플리케이션의 컨텍스트 설명자 파일이 갱신되면 웹 애플리케이션을
+                재배치합니다.
             </li>
             <li>
-                Re-deployment of dependent web applications if the global or
-                per-host Context Descriptor file used by the web application is
-                updated.
+                글로벌 또는 웹 애플리케이션에서 사용하는 호스트별 컨텍스트 설명자 파일이 갱신되면
+                연관된 웹 애플리케이션들을 재배치합니다.
             </li>
             <li>
-                Re-deployment of a web application if a Context Descriptor file (with a
-                filename corresponding to the Context path of the previously deployed
-                web application) is added to the
-                <code>$CATALINA_BASE/conf/[enginename]/[hostname]/</code>
-                directory.
+                <code>$CATALINA_BASE/conf/[enginename]/[hostname]/</code> 폴더에
+                컨텍스트 설명자 파일이 (이전에 배치된 웹 애플리케이션의 컨텍스트 경로명에 해당되는 파일명으로 된) 
+                추가되면 웹 애플리케이션을 재배치합니다.
             </li>
             <li>
-                Undeployment of a web application if its document base (docBase)
-                is deleted. Note that on Windows, this assumes that anti-locking
-                features (see Context configuration) are enabled, otherwise it is not
-                possible to delete the resources of a running web application.
+                도큐먼트 베이스 (docBase)가 삭제된 웹 애플리케이션의 제거. 윈도우에서, 이것은 안티-락킹 기능
+                (컨텍스트 설정 참고)이 활성화된 것으로 가정하며, 그렇지 않다면 실행중인 웹 애플리케이션의 자원을 
+                삭제하는 것은 불가능합니다.
             </li>
         </ul>
         <p>

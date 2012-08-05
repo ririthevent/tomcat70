@@ -23,8 +23,8 @@
     &project;
 
     <properties>
-        <author email="fhanik@apache.org">Filip Hanik</author>
-        <title>Apache Tomcat - Using Tomcat libraries with Maven</title>
+        <author email="fhanik@apache.org">필립 하닉</author>
+        <title>아파치 톰캣 - 메이븐에서 톰캣 라이브러리 사용하기</title>
     </properties>
 
 <body>
@@ -35,17 +35,13 @@
 
 <section name="Using Tomcat libraries With Maven">
     <subsection name="Tomcat Snapshots">
-      Tomcat snapshots are located in the
-      <a href="http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/">Apache Snapshot Repository</a>.
-      The official URL is <source>http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/</source>
-      Snapshots are done periodically, not on a regular basis, but when changes happen and the Tomcat team deems a new snapshot might
-      useful.
+      톰캣 스냅샷은 <a href="http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/">아파치 스냅샷 저장소</a>에 위치합니다.
+      공식적인 URL은 <source>http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/</source> 입니다.
+      스냡샷은 정기적은 아니지만 변경사항이 있고, 톰캣 팀이 새로운 스냅샷이 유용하다고 판단하면 주기적으로 만들어집니다.
     </subsection>
     <subsection name="Tomcat Releases">
-      Stable releases are published to the
-      <a href="http://repo2.maven.org/maven2/org/apache/tomcat/">Central
-      Maven Repositories</a>. The URL for this is
-      <source>http://repo2.maven.org/maven2/org/apache/tomcat/</source>
+      안정 릴리스는 <a href="http://repo2.maven.org/maven2/org/apache/tomcat/">센트럴 메이븐 저장소</a>로 퍼블리쉬됩니다. 이에 대한 URL은
+      <source>http://repo2.maven.org/maven2/org/apache/tomcat/</source> 입니다.
     </subsection>
 
 </section>

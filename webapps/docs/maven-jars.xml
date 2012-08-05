@@ -37,7 +37,7 @@
     <subsection name="Tomcat Snapshots">
       톰캣 스냅샷은 <a href="http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/">아파치 스냅샷 저장소</a>에 위치합니다.
       공식적인 URL은 <source>http://people.apache.org/repo/m2-snapshot-repository/org/apache/tomcat/</source> 입니다.
-      스냡샷은 정기적은 아니지만 변경사항이 있고, 톰캣 팀이 새로운 스냅샷이 유용하다고 판단하면 주기적으로 만들어집니다.
+      스냅샷은 정기적은 아니지만 변경사항이 있고, 톰캣 팀이 새로운 스냅샷이 유용하다고 판단하면 주기적으로 만들어집니다.
     </subsection>
     <subsection name="Tomcat Releases">
       안정 릴리스는 <a href="http://repo2.maven.org/maven2/org/apache/tomcat/">센트럴 메이븐 저장소</a>로 퍼블리쉬됩니다. 이에 대한 URL은

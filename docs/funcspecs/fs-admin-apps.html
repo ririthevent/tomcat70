@@ -7,7 +7,7 @@
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="../images/tomcat.gif" align="right" alt="
       Catalina Functional Specifications
     " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Aug 7 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="../images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="../index.html">Docs Home</a></li><li><a href="index.html">Functional Specs</a></li></ul><p><strong>Administrative Apps</strong></p><ul><li><a href="fs-admin-apps.html">Overall Requirements</a></li><li><a href="mbean-names.html">Tomcat MBean Names</a></li><li><a href="fs-admin-objects.html">Administered Objects</a></li><li><a href="fs-admin-opers.html">Supported Operations</a></li></ul><p><strong>Internal Servlets</strong></p><ul><li><a href="fs-default.html">Default Servlet</a></li></ul><p><strong>Realm Implementations</strong></p><ul><li><a href="fs-jdbc-realm.html">JDBC Realm</a></li><li><a href="fs-jndi-realm.html">JNDI Realm</a></li><li><a href="fs-memory-realm.html">Memory Realm</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Administrative Apps - Overall Requirements</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#Overview">Overview</a><ol><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#External_Specifications">External Specifications</a></li><li><a href="#Implementation_Requirements">Implementation Requirements</a></li></ol></li><li><a href="#Dependencies">Dependencies</a><ol><li><a href="#Environmental_Dependencies">Environmental Dependencies</a></li><li><a href="#Container_Dependencies">Container Dependencies</a></li><li><a href="#External_Technologies">External Technologies</a></li></ol></li><li><a href="#Functionality">Functionality</a><ol><li><a href="#Properties_of_Administered_Objects">Properties of Administered Objects</a></li><li><a href="#Supported_Administrative_Operations">Supported Administrative Operations</a></li><li><a href="#Access_Method_Specific_Requirements">Access Method Specific Requirements</a></li></ol></li><li><a href="#Testable_Assertions">Testable Assertions</a></li></ul>
+<ul><li><a href="#Overview">Overview</a><ol><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EC%99%B8%EB%B6%80_%EC%A1%B0%EA%B1%B4">외부 조건</a></li><li><a href="#%EA%B5%AC%ED%98%84_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">구현 요구사항</a></li></ol></li><li><a href="#%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84">의존관계</a><ol><li><a href="#%ED%99%98%EA%B2%BD%EC%A0%81_%EC%9D%98%EC%A1%B4">환경적 의존</a></li><li><a href="#%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88_%EC%9D%98%EC%A1%B4">컨테이너 의존</a></li><li><a href="#%EC%99%B8%EB%B6%80_%EA%B8%B0%EC%88%A0">외부 기술</a></li></ol></li><li><a href="#Functionality">Functionality</a><ol><li><a href="#Properties_of_Administered_Objects">Properties of Administered Objects</a></li><li><a href="#Supported_Administrative_Operations">Supported Administrative Operations</a></li><li><a href="#Access_Method_Specific_Requirements">Access Method Specific Requirements</a></li></ol></li><li><a href="#Testable_Assertions">Testable Assertions</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Overview"><strong>Overview</strong></a></font></td></tr><tr><td><blockquote>
 
 
@@ -50,10 +50,9 @@
   </blockquote></td></tr></table>
 
 
-  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="External Specifications"><!--()--></a><a name="External_Specifications"><strong>External Specifications</strong></a></font></td></tr><tr><td><blockquote>
+  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%99%B8%EB%B6%80 %EC%A1%B0%EA%B1%B4"><!--()--></a><a name="%EC%99%B8%EB%B6%80_%EC%A1%B0%EA%B1%B4"><strong>외부 조건</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>The implementation of this functionality depends on the following
-    external specifications:</p>
+    <p>이 기능의 구현은 아래와 같은 외부 조건에 따라 달라집니다:</p>
     <ul>
     <li><a href="http://java.sun.com/products/jdk/idl/index.html">Java
         IDL</a> (for CORBA, included in the JDK)</li>
@@ -66,83 +65,77 @@
   </blockquote></td></tr></table>
 
 
-  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Implementation Requirements"><!--()--></a><a name="Implementation_Requirements"><strong>Implementation Requirements</strong></a></font></td></tr><tr><td><blockquote>
+  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EA%B5%AC%ED%98%84 %EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD"><!--()--></a><a name="%EA%B5%AC%ED%98%84_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD"><strong>구현 요구사항</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>The implementation of this functionality shall conform to the
-    following requirements:</p>
+    <p>이 기능의 구현은 아래와 같은 요구사항을 반드시 따라야합니다:</p>
     <ul>
-    <li>To the maximum extent feasible, all administrative functions,
-        and the access methods that support them, shall run portably
-        on all platforms where Tomcat itself runs.</li>
-    <li>In a default Tomcat distribution, all administrative capabilities
-        shall be disabled.  It shall be necessary for a system
-        administrator to specifically enable the desired access methods
-        (such as by adding a username/password with a specific role to
-        the Tomcat user's database.</li>
-    <li>Administrative functions shall be realized as direct calls to
-        corresponding Catalina APIs, or through a business logic layer
-        that is independent of the access method used to initiate it.</li>
-    <li>The common business logic components shall be implemented in
-        package <code>org.apache.catalina.admin</code>.</li>
-    <li>The common business logic components shall be built as part of the
-        standard Catalina build process, and made visible in the
-        Catalina class loader.</li>
-    <li>The Java components required for each access method shall be
-        implemented in subpackages of <code>org.apache.catalina.admin</code>.
-        </li>
-    <li>The build scripts should treat each access method as optional,
-        so that it will be built only if the corresponding required
-        APIs are present at build time.</li>
-    <li>It shall be possible to save the configured state of the running
-        Tomcat container such that this state can be reproduced when the
-        container is shut down and restarted.</li>
-    <li>Administrative commands to start up and shut down the overall
-        Tomcat container are <strong>out of scope</strong> for the
-        purposes of these applications.  It is assumed that other
-        (usually platform-specific) mechanisms will be used for container
-        startup and shutdown.</li>
+    <li>최대실행범위까지, 모든 관리상 기능들과 그것을 지원하는 
+        엑세스 메소드들은 톰캣 자체의 실행되는 모든 플랫폼에서 
+        편리하게 실행되어야 합니다.</li>
+    <li>기본톰캣배포판에서 모든 관리상 특성들은 비활성화되어야 
+        합니다.이것은 시스템 관리자가 요구되는 엑세스 메소드들
+        (예를 들어 톰캣의 사용자 데이타베이스에 특정 역할의 
+        username/password를 추가)을 특정적으로 활성화시키기 위해 
+        필수적입다.</li>
+    <li>관리적 기능들은 Catalina API 또는 그것을 시작하는데 사용되는 
+        엑서스 메소드의 독립적인 비지니스 로직을 통한 직접적인 호출을 
+        위해 분명하게 파악되어야 합니다</li>
+    <li>공통적인 비지니스로직 컴포넌트들은 <code>org.apache.catalina.admin</code>
+        패키지내에서 구현해야 합니다.</li>
+    <li>공통적인 비지니스로직 컴포넌트들은 기준 Catalina 빌드 프로세스의 
+        부분으로서 빌드되어야 하며, Catalina 클래스 로더에서 보여져야
+        합니다.</li>
+    <li>각 엑세스 메소드를 위한 자바컴포넌트들은 
+        <code>org.apache.catalina.admin</code>의 하위 패키지에 
+        요구되어집니다.</li>
+    <li>빌드 스크립트들은 해당 필요한 API를 빌드시간에 존재하는 경우에만 
+        구축되도록 옵션으로 각각의 접근방법을 취급합니다.</li>
+    <li>실행중인 톰캣 컨테이너가 중지되고 재시작될때 재현될 설정상태를 
+        저장할 수 있어야 합니다.</li>
+    <li>전체적인 톰캣 컨테이너의 실행과 중지 관련 관리적 명령어들은 
+        이 어플리케이션들의 목적의 <strong>범위를 벗어납니다(out of scope)</strong>. 
+        다른(보통 플랫폼 종속적인) 매커니즘들은 컨테이너의 실행과 
+        중지를 위해 사용됨이 당연합니다.</li>
     </ul>
 
   </blockquote></td></tr></table>
 
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Dependencies"><strong>Dependencies</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84"><strong>의존관계</strong></a></font></td></tr><tr><td><blockquote>
 
 
-  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Environmental Dependencies"><!--()--></a><a name="Environmental_Dependencies"><strong>Environmental Dependencies</strong></a></font></td></tr><tr><td><blockquote>
+  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%ED%99%98%EA%B2%BD%EC%A0%81 %EC%9D%98%EC%A1%B4"><!--()--></a><a name="%ED%99%98%EA%B2%BD%EC%A0%81_%EC%9D%98%EC%A1%B4"><strong>환경적 의존</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>The following environmental dependencies must be met in order for
-    administrative applications to operate correctly:</p>
+    <p>아래와 같은 환경적 의존성은 관리적 어플리케이션을 
+        정확히 다루기 위해 순서에 따라 마주해야만 합니다:</p>
     <ul>
-    <li>For access methods that require creation of server sockets, the
-        appropriate ports must be configured and available.</li>
+    <li>서버 소켓의 생성에 필요한 엑세스 메소드들을 위한 
+        적절한 port들이 설정되고 가능해야 합니다.</li>
     </ul>
 
   </blockquote></td></tr></table>
 
 
-  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Container Dependencies"><!--()--></a><a name="Container_Dependencies"><strong>Container Dependencies</strong></a></font></td></tr><tr><td><blockquote>
+  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88 %EC%9D%98%EC%A1%B4"><!--()--></a><a name="%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88_%EC%9D%98%EC%A1%B4"><strong>컨테이너 의존</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>Correct operation of administrative applications depends on the
-       following specific features of the surrounding container:</p>
+    <p>관리적 어플리케이션의 정확한 실행은 아래와 같은 주변 
+        컨테이너의 특징에 의존합니다:</p>
     <ul>
-    <li>To the maximum extent feasible, Catalina components that offer
-        direct administrative APIs and property setters shall support
-        "live" changes to their operation, without requiring a container
-        restart.</li>
+    <li>Catalina 컴포넌트들은 컨테이너의 재시작이 필요없이 
+        설정을 바꿀수 있는 실행("live")중 변경할 수 있는 최대 범위의 
+        직접적인 관리 API과 property setter를 지원합니다.</li>
     </ul>
 
   </blockquote></td></tr></table>
 
 
-  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="External Technologies"><!--()--></a><a name="External_Technologies"><strong>External Technologies</strong></a></font></td></tr><tr><td><blockquote>
+  <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%99%B8%EB%B6%80 %EA%B8%B0%EC%88%A0"><!--()--></a><a name="%EC%99%B8%EB%B6%80_%EA%B8%B0%EC%88%A0"><strong>외부 기술</strong></a></font></td></tr><tr><td><blockquote>
 
-    <p>The availability of the following technologies can be assumed
-    for the implementation and operation of the various access methods
-    and the corresponding administrative business logic:<br>
-    <strong>FIXME</strong> - This list below is totally outdated, but nobody
-    cares about the administrative app anymore. It is removed and unsupported
-    since Tomcat 6.0.</p>
+    <p>아래와 같은 기술은 다양한 엑세스 메소드들과 해당 관리적 
+        비지니스 로직의 제어와 구현을 맡을 수 있습니다:<br>
+    <strong>FIXME</strong> - 아래 리스트들은 기한을 초과했지만, 
+        아무도 관리적 앱에 대해서 더이상 신경쓰지 않는다. Tomcat 6.0이후로 
+        지원하지 않으며 삭제되었습니다.</p>
     <ul>
     <li><a href="http://java.sun.com/j2se/">Java 2 Standard Edition</a>
         (Version 1.2 or later)</li>

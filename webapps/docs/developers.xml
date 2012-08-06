@@ -23,9 +23,9 @@
   &project;
 
   <properties>
-    <author email="remm@apache.org">Remy Maucherat</author>
-    <author email="yoavs@apache.org">Yoav Shapira</author>
-    <title>Tomcat Developers</title>
+    <author email="remm@apache.org">레미 모체랏</author>
+    <author email="yoavs@apache.org">요압 샤피라</author>
+    <title>톰캣 개발자</title>
   </properties>
 
 <body>
@@ -33,15 +33,13 @@
   <section name="Active Developers">
 
     <p>
-      The list indicates the developers' main areas of interest. Feel free to
-      add to the list :) The developers email addresses are
-      <code>[login]@apache.org</code>. Please <strong>do not</strong> contact
-      developers directly for any support issues (please post to the
-      tomcat-users mailing list instead, or one of the other support
-      resources; some organizations and individual consultants also offer
-      for pay Tomcat support, as listed on the
-      <a href="http://wiki.apache.org/tomcat/SupportAndTraining">support and
-      training</a> page on the Tomcat Wiki).
+      아래 목록은 개발자의 메인 관심 영역을 지시합니다. 자유롭게 목록에 추가하세요 :)  
+      개발자의 이메일 주소는 <code>[login]@apache.org</code> 입니다.
+      부탁드릴 것은 어떤 지원 이슈가 있어도 직접 개발자에게 연락<strong>하지 마세요.</strong>
+      (대신 tomcat-users 메일링 리스트에 글을 올리시거나, 다른 지원 자원의 하나를 이용해주세요;
+      어떤 기관이나 개발 컨설턴트 역시 유상으로 톰캣 지원을 제공할 것입니다. 톰캣 위키에 있는 
+      <a href="http://wiki.apache.org/tomcat/SupportAndTraining">지원과 트레이닝</a> 
+      목록입니다).
     </p>
 
     <ul>

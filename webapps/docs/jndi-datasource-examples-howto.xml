@@ -399,11 +399,10 @@ files - a simple rename will suffice.</p>
 
 <p>드라이버는 오라클의 오래된 버전을 위해서 *.jar 파일보다 오히려 *.zip 파일이 더 배포되었을 수도 있다.
 톰캣은 오직<code>$CATALINA_HOME/lib</code>안에서 설치된 <code>*.jar</code>파일을 사용하는 프로그램 일 것이다.
-그러므로, <code>classes111.zip</code>or <code>classes12.zip</code>은 <code>.jar</code>의 확장명으로 이름을 바꾸는 것이 
-필요하게 될 것이다. jarfiles이 zipfiles이기 때문에, 이 jar파일들의 압축을 풀지않아도 되고, 
+그러므로, <code>classes111.zip</code>이나 <code>classes12.zip</code>은 <code>.jar</code>의 확장명으로의 개명이 
+필요하게 될 것이다. jarfiles이 zipfiles이기 때문에, 이 jar파일들의 압축을 풀지않아도 되고, 간단한 개명으로 언급할 것이다.
+</p>
 
- Since jarfiles are zipfiles, there is no need to unzip and jar these
-files - a simple rename will suffice.</p>
 
 
 

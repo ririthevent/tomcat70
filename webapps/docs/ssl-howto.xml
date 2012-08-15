@@ -23,9 +23,9 @@
     &project;
 
     <properties>
-        <author email="ccain@apache.org">Christopher Cain</author>
-        <author email="yoavs@apache.org">Yoav Shapira</author>
-        <title>SSL Configuration HOW-TO</title>
+        <author email="ccain@apache.org">크리스토퍼 카인</author>
+        <author email="yoavs@apache.org">요압 샤피라</author>
+        <title>SSL 설정 HOW-TO</title>
     </properties>
 
 <body>
@@ -37,18 +37,16 @@
 <section name="Quick Start">
 
     <blockquote><em>
-    <p>The description below uses the variable name $CATALINA_BASE to refer the
-    base directory against which most relative paths are resolved. If you have
-    not configured Tomcat for multiple instances by setting a CATALINA_BASE
-    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
-    the directory into which you have installed Tomcat.</p>
+    <p>아래 설명은 환경 변수 $CATALINA_BASE 를 사용해서 기준 디렉토리를 정하고 대부분의 상대경로를
+    풀어가도록 했습니다. 만약 여러분이 CATALINA_BASE 디렉토리를 설정해서 여러 인스턴스로 톰캣을 
+    설정하지 않았다면, $CATALINA_BASE는 톰캣이 설치된 디렉토리인 $CATALINA_HOME 값으로 정해질 
+    것입니다.</p>
     </em></blockquote>
 
-<p>To install and configure SSL support on Tomcat, you need to follow
-these simple steps.  For more information, read the rest of this HOW-TO.</p>
+<p>톰캣에 SSL 지원을 설치해서 설정하기 위해서, 여러분은 아래의 간단한 단계들을 따라하기만 하면
+됩니다. 더 자세한 정보를 원한다면, 이 HOW-TO 문서의 나머지를 읽어보세요.</p>
 <ol>
-<li>Create a keystore file to store the server&apos;s private key and
-self-signed certificate by executing the following command:
+<li>keystore 파일을 만들어서 서버의 개인 키와 아래 명령을 실행해서 자체 사인한 인증서를 저장합니다:
 <p>Windows:</p>
 <source>
 %JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA
@@ -58,10 +56,11 @@ self-signed certificate by executing the following command:
 $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 </source>
 <p></p>
-    and specify a password value of "changeit".</li><br/><br/>
-<li>Uncomment the "SSL HTTP/1.1 Connector" entry in
-    <code>$CATALINA_BASE/conf/server.xml</code> and modify as described in
-    the <a href="#Configuration">Configuration section</a> below.</li>
+    그리고 "changeit"을 대신할 비밀번호를 정합니다.</li><br/><br/>
+<li><code>$CATALINA_BASE/conf/server.xml</code> 파일에 있는 
+    "SSL HTTP/1.1 Connector" 항목의 주석을 제거하고 아래 
+    <a href="#Configuration">Configuration 섹션</a>에 있는
+    설명을 참고해서 수정합니다.</li>
     <br/><br/>
 </ol>
 

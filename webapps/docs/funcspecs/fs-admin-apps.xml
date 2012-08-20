@@ -185,39 +185,31 @@
 </section>
 
 
-<section name="Functionality">
+<section name="기능">
 
 
-  <subsection name="Properties of Administered Objects">
+  <subsection name="관리 오브젝트의 properties">
 
-  <p>Functional requirements for administrative applications are specified
-  in terms of <em>Administered Objects</em>, whose definitions and detailed
-  properties are listed <a href="fs-admin-objects.html">here</a>.  In general,
-  Administered Objects correspond to components in the Catalina architecture,
-  but these objects are defined separately here for the following reasons:</p>
+  <p>관리적 어플리케이션의 기능적 요구사항은 <em>관리오브젝트(Administered Objects)</em>
+  의 약관에 명시되어 있습니다. 각 개별적으로 상세한 properties는 
+  <a href="fs-admin-objects.html">여기</a>에 정리되어 있습니다.  일반적으로, 
+  관리오브젝트들은 Catalina 설계의 컴포넌트들과 일치하지만 이 오브젝트들은 아래와 
+  같은 이유로 여기 분리되어 정의되어 있습니다:</p>
   <ul>
-  <li>It is possible that the administrative applications do not expose
-      every possible configurable facet of the underlying components.</li>
-  <li>In some cases, an Administered Object (from the perspective of an
-      administrative operation) is realized by more than one Catalina
-      component, at a finer-grained level of detail.</li>
-  <li>It is necessary to represent the configuration information for a
-      component separately from the component itself (for instance, in
-      order to store that configuration information for later use).</li>
-  <li>It is necessary to represent configuration information (such as
-      a Default Context) when there is no corresponding component instance.
-      </li>
-  <li>Administered Objects, when realized as Java classes, will include
-      methods for administrative operations that have no correspondence
-      to operations performed by the corresponding actual components.</li>
+  <li>관리적 어플리케이션은 잠재컴포넌트의 모든 가능한 구성 facet을 제공하지 않습니다.</li>
+  <li>어떤 케이스에서 관리 오브젝트(관리 운영의 관점으로부터)는 아주 상세한 하나이상의 
+  Catalina 컴포넌트에 의해 제공되어집니다. </li>
+  <li>컴포넌트 자체로부터 컴포넌트 분리를 위한 설정 정보의 표현하기 위해 필요합니다. 
+  (예를 들어 나중에 사용할 저장소의 설정정보를 구성)</li>
+  <li>일치하는 컴포넌트 인스턴스가 없을때 설정 정보(기본 Context처럼)를 표현하기 위해 필요합니다.</li>
+  <li>관리 오브젝트는 자바 클래스로 표현할때 실제 구성요소에서 수행한 작업에 전혀 부합하지 않는 
+  관리 운영을 위한 메소드를 포함합니다..</li>
   </ul>
 
-  <p>It is assumed that the reader is familiar with the overall component
-  architecture of Catalina.  For further information, see the corresponding
-  Developer Documentation.  To distinguish names that are used as both
-  <em>Administered Objects</em> and <code>Components</code>, different
-  font presentations are utilized.  Default values for many properties
-  are listed in [square brackets].</p>
+  <p>리더(reader)는 Catalina의 기본적인 컴포넌트 아키텍쳐와 비슷하다고 여져집니다. 자세한 내용은 
+  개발 문서를 참고하세요. 식별하는 이름으로써 <em>관리 오브젝트(Administered Objects)</em>와 
+  <code>컴포넌트(Components)</code> 모두 다른 글꼴 프레젠테이션을 
+  활용하여 사용됩니다. 많은 properties의 기본 값은 [대 가로]의 리스트로 되어 있습니다.</p>
 
   </subsection>
 

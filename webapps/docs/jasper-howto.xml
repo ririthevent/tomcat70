@@ -208,10 +208,9 @@ bug 6294277</a>,
 
 <section name="Production Configuration">
 
-<p>The main JSP optimization which can be done is precompilation of JSPs.
-However, this might not be possible (for example, when using the
-jsp-property-group feature) or practical, in which case the configuration of the
-Jasper servlet becomes critical.</p>
+<p> 주요 JSP 최적화 방법은 JSP를 미리 컴파일 하는 것입니다. 그러나 이 방법은 Jasper 서블렛 설정이 중요할 때는
+가능하지 않거나 실용적이지 않습니다 (예를 들어 jsp-property-group feature를 사용할 때).
+</p>
 
 <p>When using Jasper 2 in a production Tomcat server you should consider making
 the following changes from the default configuration.

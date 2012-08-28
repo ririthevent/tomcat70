@@ -70,21 +70,17 @@ $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 
 <section name="Introduction to SSL">
 
-<p>SSL, or Secure Socket Layer, is a technology which allows web browsers and
-web servers to communicate over a secured connection.  This means that the data
-being sent is encrypted by one side, transmitted, then decrypted by the other
-side before processing.  This is a two-way process, meaning that both the
-server AND the browser encrypt all traffic before sending out data.</p>
+<p>SSL, 또는 Secure Socket Layer (안전한 소켓 레이어)는 웹 브라우저와 웹 서버 사이에 안전한 
+연결 위에서 통신할 수 있도록 하는 기술입니다. 이것이 의미하는 것은 한쪽에서 암호화된 데이터가 송신되고,
+전송되고, 다른 쪽에서 처리하기 전에 복호화하는 것입니다. 이것은 서버와 브라우저 모두 모든 트래픽을 보내기
+전에 암호화 하는 것을 의미하는 양방향 처리입니다.</p>
 
-<p>Another important aspect of the SSL protocol is Authentication.  This means
-that during your initial attempt to communicate with a web server over a secure
-connection, that server will present your web browser with a set of
-credentials, in the form of a "Certificate", as proof the site is who and what
-it claims to be.  In certain cases, the server may also request a Certificate
-from your web browser, asking for proof that <em>you</em> are who you claim
-to be.  This is known as "Client Authentication," although in practice this is
-used more for business-to-business (B2B) transactions than with individual
-users.  Most SSL-enabled web servers do not request Client Authentication.</p>
+<p>SSL 프로토콜의 다른 중요한 면은 인증입니다. 이것은 여러분이 웹 서버와 안전한 연결 상태에서 통신을 
+시도하는 초기에, 서버는 한 세트의 자격증명서를 "인증서" 형태로, 사이트가 누구이고 무엇을 다루는지에 대한 
+증명으로, 브라우저에게 보여준다는 것을 의미합니다. 어떤 경우에는, 서버가 <em>여러분</em>이 자격을 
+갖추었는지 증명하기 위해서, 여러분의 웹 브라우저로부터 인증서를 요구할 수도 있습니다. 이것은 "클라이언트 
+인증"으로 알려져 있는데, 실제로 이것은 개인 사용자보다는 비즈니스 to 비즈니스(B2B) 트랜잭션에 더 많이
+사용되고 있습니다. 대부분의 SSL 가능한 웹 브라우저는 클라이언트 인증을 요구하지 않습니다.</p>
 
 </section>
 

@@ -99,7 +99,9 @@ $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 
 <section name="Certificates">
 
-<p>In order to implement SSL, a web server must have an associated Certificate
+<p>SSL을 구현하려면, 
+
+In order to implement SSL, a web server must have an associated Certificate
 for each external interface (IP address) that accepts secure connections.
 The theory behind this design is that a server should provide some kind of
 reasonable assurance that its owner is who you think it is, particularly

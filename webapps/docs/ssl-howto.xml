@@ -99,17 +99,12 @@ $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 
 <section name="Certificates">
 
-<p>SSL을 구현하려면, 
-
-In order to implement SSL, a web server must have an associated Certificate
-for each external interface (IP address) that accepts secure connections.
-The theory behind this design is that a server should provide some kind of
-reasonable assurance that its owner is who you think it is, particularly
-before receiving any sensitive information.  While a broader explanation of
-Certificates is beyond the scope of this document, think of a Certificate
-as a "digital driver's license" for an Internet address.  It states what
-company the site is associated with, along with some basic contact
-information about the site owner or administrator.</p>
+<p>SSL을 구현하려면, 웹서버는 반드시 안전한 연결을 사용하려는 개별 외부 인터페이스(IP 주소)마다 
+관련된 인증서를 갖고 있어야 합니다. 이 설계 너머의 이론은 서버는 특히 민감한 정보를 수신하기 
+전에, 여러분이 생각하는 소유주가 맞다는 것에 대한 어떤 종류이든 합리적인 확신을 제공해야 한다는 것입니다.
+인증서에 대한 더 자세한 설명은 이 문서의 범위를 벗어납니다만, 인증서를 인터넷 주소에 대한 "디지털 
+운전면허증"이라고 생각해 보세요. 사이트와 연관된 회사가 무엇인지,그 사이트 소유자 또는 관리자에 대한
+기본적인 연락 정보와 함께 말해 줍니다.</p>
 
 <p>This "driver's license" is cryptographically signed by its owner, and is
 therefore extremely difficult for anyone else to forge.  For sites involved

@@ -591,9 +591,8 @@ mgr.invalidateSession();
 // is closed
 response.setHeader("Connection", "close");
     </source>
-    Note that this code is Tomcat specific due to the use of the
-    SSLSessionManager class. This is currently only available for the BIO and
-    NIO connectors, not the APR/native connector.
+    조용히 하구요. 이 코드는 톰캣 특정된 SSLSessionManager 클래스 때문이죠. 바이너리 IO와 NIO 커넥터를
+    위한 방법입니다, APR/네이티브 커넥트는 제외됩니다. 
   </p>
 </section>
 

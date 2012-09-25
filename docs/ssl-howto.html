@@ -73,37 +73,29 @@ $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
 운전면허증"이라고 생각해 보세요. 사이트와 연관된 회사가 무엇인지,그 사이트 소유자 또는 관리자에 대한
 기본적인 연락 정보와 함께 말해 줍니다.</p>
 
-<p>This "driver's license" is cryptographically signed by its owner, and is
-therefore extremely difficult for anyone else to forge.  For sites involved
-in e-commerce, or any other business transaction in which authentication of
-identity is important, a Certificate is typically purchased from a well-known
-<em>Certificate Authority</em> (CA) such as VeriSign or Thawte.  Such
-certificates can be electronically verified -- in effect, the Certificate
-Authority will vouch for the authenticity of the certificates that it grants,
-so you can believe that that Certificate is valid if you trust the Certificate
-Authority that granted it.</p>
+<p>이 "운전 면허증"은 암호학적으로 해당 소유자가 사인한 것이고, 그러므로 다른 누군가가 위조하기
+극도로 어렵습니다. 정체성의 인증이 중요한 전자상거래 또는 다른 비즈니스 트랜잭션에 연관된 사이트를 위하여,
+인증서는 전통적으로 VeriSign 또는 Thawte와 같이 잘 알려진 <em>인증 기관 Certificate 
+Authority</em>(CA)에서 구매합니다. 그러한 인증서는 전자적으로 검증할 수 있습니다 -- 실제로,
+인증 기관은 승인한 인증서의 확실성을 위해 보증을 하고, 그래서 만약 여러분이 그 인증서를 승인한 인증 기관을 신뢰한다면
+여러분은 그 인증서가 유효하다는 것을 믿을 수 있게 됩니다.</p>
 
-<p>In many cases, however, authentication is not really a concern.  An
-administrator may simply want to ensure that the data being transmitted and
-received by the server is private and cannot be snooped by anyone who may be
-eavesdropping on the connection.  Fortunately, Java provides a relatively
-simple command-line tool, called <code>keytool</code>, which can easily create
-a "self-signed" Certificate.  Self-signed Certificates are simply user
-generated Certificates which have not been officially registered with any
-well-known CA, and are therefore not really guaranteed to be authentic at all.
-Again, this may or may not even be important, depending on your needs.</p>
+<p>그러나, 많은 경우 인증이 실제로 중요한 관심사는 아닙니다. 관리자는 단지 서버에 의해 전송되고 받아오는
+데이터가 프라이빗으로 되고 연결에 도청을 하는 누군가에게 정보가 새나가지 않는다는 것을 확실히 하고 싶어합니다.
+다행히, 자바는 상대적으로 간단한 <code>keytoo</code>이라는 커맨드-라인 도구를 제공하고, 이것으로
+쉽게 "자체-서명된" 인증서를 만들수 있습니다. 자체-서명된 인증서는 단지 사용자가 만든 인증서이고, 잘 알려진 
+CA를 통해 공식적으로 등록된 것이 아니고, 그러므로 진짜로 보증되는 것은 전혀 아닙니다. 다시 말하면,
+이것은 여러분의 필요에 따라서, 중요할 수도 아닐 수도 있습니다.</p>
 
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="General Tips on Running SSL"><!--()--></a><a name="General_Tips_on_Running_SSL"><strong>General Tips on Running SSL</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>The first time a user attempts to access a secured page on your site,
-he or she is typically presented with a dialog containing the details of
-the certificate (such as the company and contact name), and asked if he or she
-wishes to accept the Certificate as valid and continue with the transaction.
-Some browsers will provide an option for permanently accepting a given
-Certificate as valid, in which case the user will not be bothered with a
-prompt each time they visit your site.  Other browsers do not provide this
-option.  Once approved by the user, a Certificate will be considered valid
-for at least the entire browser session.</p>
+<p>우선 사용자는 여러분의 사이트에 안전한 페이지 접속을 시도하고, 전통적으로 사용자는
+인증서 상세정보(회사와 담당자 성명과 같은)를 포함한 대화상자를 보게되고, 
+사용자가 인증서를 유효하다고 인정해서 트랜잭션을 계속할 것인지 질문을 받게 됩니다.
+어떤 브라우저는 여러분의 사이트를 방문할 때마다 알림이 떠서 사용자를 귀찮게 하지 않도록,
+주어진 인증서가 유효하다고 영원히 인정하는 옵션을 제공합니다. 다른 브라우저는 이 옵션을
+제공하지 않습니다. 사용자가 한 번 승인하면, 인증서는 적어도 전체 브라우저 세션에서 유효한 것으로 
+간주될 것입니다.</p>
 
 <p>Also, while the SSL protocol was designed to be as efficient as securely
 possible, encryption/decryption is a computationally expensive process from
@@ -546,8 +538,8 @@ mgr.invalidateSession();
 // is closed
 response.setHeader("Connection", "close");
     </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-    조용히 하구요. 이 코드는 톰캣 특정된 SSLSessionManager 클래스 때문이죠. 바이너리 IO와 NIO 커넥터를
-    위한 방법입니다, APR/네이티브 커넥트는 제외됩니다. 
+    주의할 것은 이 코드는 SSLSessionManager 클래스 사용하는 것 때문에 톰캣에 특화된 것입니다.
+    이것은 현재 바이너리 IO와 NIO 커넥터만을 위한 것이고, APR/네이티브 커넥터는 해당되지 않습니다.
   </p>
 </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>
         Copyright &copy; 1999-2012, Apache Software Foundation

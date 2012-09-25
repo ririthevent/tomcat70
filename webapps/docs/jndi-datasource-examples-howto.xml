@@ -420,6 +420,14 @@ that <code>oracle.jdbc.driver.OracleDriver</code> is deprecated and support
 for this driver class will be discontinued in the next major release.
 </p>
 
+<p>오라클 9i의 사용을 위하여 사용자는 앞으로 <code>oracle.jdbc.driver.OracleDriver</code>보다 
+<code>oracle.jdbc.OracleDriver</code>를 오라클이 제시했던 것처럼 대로 사용해야 한다.
+<code>oracle.jdbc.driver.OracleDriver</code>는 덜 친숙했었고, 이것의 드라이버 클래스를 지원한 다음 주요 릴리즈에서
+계속 사용되지 않을 것이다.</p>
+
+
+
+
 <h3>1. Context configuration</h3>
 <p>In a similar manner to the mysql config above, you will need to define your
 Datasource in your <a href="config/context.html">Context</a>. Here we define a
@@ -428,6 +436,23 @@ password tiger to the sid called mysid. (Note: with the thin driver this sid is
 not the same as the tnsname). The schema used will be the default schema for the
 user scott.</p>
 
+<h3>1. 컨텍스트 환경설정</h3>
+<p>mysql 환경설정안에서의 비슷한 방식으로, 사용자는 사용자의 <a href="config/context.html">Context</a>에서
+사용자의 데이타소스를 정의할 필요가 있다. 여기서 우리는 하나의 데이타소스를 myoracle(마이 오라클)이라고 정의하고
+유저 스캇으로 연결하기 위해 내장된 드라이버(thin driver)에서 사용중에 있다. 비밀번호는 mysid라고 불려지는 sid에서 
+타이거(tiger)라고 되어 있다.(주의사항: 내장된 드라이버(thin driver)와 sid(Segment IDentifier)는 tnsname이 동일하지 않다.)
+스키마는 기본적인 스키마로 사용자 스캇을 위해 사용될 것이다.</p>
+
+
+
+
+
+
+
+
+
+
+<h3>1. Context configuration</h3>
 <p>Use of the OCI driver should simply involve a changing thin to oci in the URL string.
 </p>
 <source>

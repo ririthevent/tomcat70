@@ -463,6 +463,25 @@ user scott.</p>
               maxWait="-1"/&gt;
 </source>
 
+<h3>1. 컨텍스트 환경설정</h3>
+<p>
+oci안에의 URL주소에서 변하는 저사양고객(changing thin)에 분명하게 포함되어야 한다.
+</p>
+<source>
+&lt;Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:mysid"
+              username="scott" password="tiger" maxActive="20" maxIdle="10"
+              maxWait="-1"/&gt;
+</source>
+
+
+
+
+
+
+
+
 <h3>2.    web.xml configuration</h3>
 <p>You should ensure that you respect the element ordering defined by the DTD when you
 create you applications web.xml file.</p>

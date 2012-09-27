@@ -29,13 +29,13 @@
 
 <body>
 
-<section name="Table of Contents">
+<section name="컨텐츠 목록">
 <toc/>
 </section>
 
-<section name="Introduction">
+<section name="소개">
 
-<p>톰캣은 톰캣의 취급 시행을 위한 기술로 JMX MBeans을 사용한다. </p>
+<p>톰캣은 톰캣의 취급 시행을 위한 기술로 JMX MBeans을 사용합니다. </p>
 
 <p>카탈리나(톰캣)에 대한 JMX MBeans 의 설명서들은 각각의 패키지 안의 mbeans-descriptior.xml에 있습니다.</p>
 
@@ -43,7 +43,7 @@
 
 </section>
 
-<section name="Adding MBean descriptions">
+<section name="MBean descriptions 추가하기">
 
 <p>여러분은 또한 사용자 지정 컴포넌트에 MBean 설명서들을 그것이 설명하는 클래스 파일로서 동일한 패키지 안에 위치한 mbeans-descriptor.xml파일에 추가 할 수 도 있습니다.</p>
 

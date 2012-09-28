@@ -505,6 +505,18 @@ Connection conn = ds.getConnection();
 </source>
 </subsection>
 
+<h3>2.    web.xml 환경설정</h3>
+<p>사용자는 web.xml 파일을 프로그래밍 할때, DTD에 의한 요소의 정리법을 정의한 것을 반드시 우선순위로 삼아야 한다.</p>
+<source>
+&lt;resource-ref&gt;
+ &lt;description&gt;Oracle Datasource example&lt;/description&gt;
+ &lt;res-ref-name&gt;jdbc/myoracle&lt;/res-ref-name&gt;
+ &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+ &lt;res-auth&gt;Container&lt;/res-auth&gt;
+&lt;/resource-ref&gt;
+</source>
+<h3>3.   코드 환경설정</h3>
+<p>사용자는 위와 같이(사용자가 만든 필수적인 DB인스턴스나 테이블 등.) 대체가능한 데이타소스코드와 이런 비슷한 종류와 함께 동일하게 예시된 어플리케이션을 사용할 수 있다.</p> 
 
 <subsection name="PostgreSQL">
 <h3>0.    Introduction</h3>
@@ -517,12 +529,32 @@ jars need to be in this directory in order for DBCP's Classloader to find
 them. This has to be done regardless of which configuration step you take next.
 </p>
 
+<h3>1. 필수적인 파일들</h3>
+<p>
+이 시점에서의 사용자는 2가지 선택권이 있다: 모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
+하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
+</p>
+
+
+
+
 <h3>2. Resource configuration</h3>
 
 <p>
 You have two choices here: define a datasource that is shared across all Tomcat
 applications, or define a datasource specifically for one application.
 </p>
+
+<h3>2. 자원(Resource) 환경설정</h3>
+<p>
+여기서도 역시 사용자에게 2가지 선택권이 있다:모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
+하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
+</p>
+
+
+
+
+
 
 <h4>2a. Shared resource configuration</h4>
 <p>
@@ -539,6 +571,16 @@ Clarification would be appreciated here.</i></p>
           url="jdbc:postgresql://127.0.0.1:5432/mydb"
           username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
 </source>
+
+
+
+
+
+
+
+
+
+
 <h4>2b. Application-specific resource configuration</h4>
 
 <p>

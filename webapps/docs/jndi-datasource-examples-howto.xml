@@ -574,6 +574,23 @@ Clarification would be appreciated here.</i></p>
 
 
 
+<h4>2a. 공유된자원 환경설정</h4>
+<p>
+  사용자가 데이타소스(다양하게 공유되는 톰캣 어플리케이션)를 정의하길 바란다면 이런 옵션을 사용하거나, 사용자가
+파일안에서 사용자의 데이타소스를 정의하는 것을 선호할 것이다.
+</p>
+<source>
+&lt;Resource name="jdbc/postgres" auth="Container"
+          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://127.0.0.1:5432/mydb"
+          username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
+</source>
+
+
+
+
+
+
 
 
 
@@ -604,6 +621,20 @@ The Context element should look something like the following.
 maxWait="-1"/&gt;
 &lt;/Context&gt;
 </source>
+
+<h4>2b. 어플리케이션 특수자원 환경설정</h4>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h3>3. web.xml configuration</h3>
 <source>

@@ -626,14 +626,13 @@ maxWait="-1"/&gt;
 
 <h4>2b. 어플리케이션 특수자원 환경설정</h4>
 <p>
-Use this option if you wish to define a datasource specific to your application,
-not visible to other Tomcat applications. This method is less invasive to your
-Tomcat installation.
+만약 사용자의 어플리케이션에서 그 자신이 특별하게 데이터소스를 정의하길 바란다면, 다른 톰캣 어플리케이션에 보이지 않는 
+옵션을 사용하라. 이 방법은 사용자의 톰캣 설치에 있어서 작은 간섭이 필요하다.
 </p>
 
 <p>
-Create a resource definition for your <a href="config/context.html">Context</a>.
-The Context element should look something like the following.
+사용자의 <a href="config/context.html">컨텍스트</a>를 위해 리소스 정의를 만들어라.
+제시한 컨텍스트 요소는 아래와 같이 뭔가를 봐야한다. 
 </p>
 
 <source>
@@ -647,27 +646,6 @@ maxWait="-1"/&gt;
 &lt;/Context&gt;
 </source>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>3. web.xml configuration</h3>
 <source>
 &lt;resource-ref&gt;
@@ -677,6 +655,22 @@ maxWait="-1"/&gt;
  &lt;res-auth&gt;Container&lt;/res-auth&gt;
 &lt;/resource-ref&gt;
 </source>
+<h3>3. web.xml 환경설정.</h3>
+<source>
+&lt;resource-ref&gt;
+ &lt;description&gt;postgreSQL Datasource example&lt;/description&gt;
+ &lt;res-ref-name&gt;jdbc/postgres&lt;/res-ref-name&gt;
+ &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+ &lt;res-auth&gt;Container&lt;/res-auth&gt;
+&lt;/resource-ref&gt;
+</source>
+
+
+
+
+
+
+
 
 <h4>4. Accessing the datasource</h4>
 <p>
@@ -701,6 +695,46 @@ if ( ds == null ) {
 
 </subsection>
 </section>
+
+
+
+
+
+
+<h4>4. 데이타소스에 접근하는 것.</h4>
+<p>
+데이타소스 프로그램에 맞게 접근 할 때, 사용자의 JNDI 룩업에 <code>java:/comp/env</code>을 넣는 것을 기억하라.
+, as in the following snippet of
+code. Note also that "jdbc/postgres" can be replaced with any value you prefer, provided
+you change it in the above resource definition file as well.
+</p>
+
+<source>
+InitialContext cxt = new InitialContext();
+if ( cxt == null ) {
+   throw new Exception("Uh oh -- no context!");
+}
+
+DataSource ds = (DataSource) cxt.lookup( "java:/comp/env/jdbc/postgres" );
+
+if ( ds == null ) {
+   throw new Exception("Data source not found!");
+}
+</source>
+
+</subsection>
+</section>
+
+
+<!-------------------------2012/10/5-------------------------------->
+
+
+
+
+
+
+
+
 
 <section name="Non-DBCP Solutions">
 <p>

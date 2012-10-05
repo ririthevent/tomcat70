@@ -579,6 +579,8 @@ Clarification would be appreciated here.</i></p>
   사용자가 데이타소스(다양하게 공유되는 톰캣 어플리케이션)를 정의하길 바란다면 이런 옵션을 사용하거나, 사용자가
 파일안에서 사용자의 데이타소스를 정의하는 것을 선호할 것이다.
 </p>
+<p><i>저자가 이 경우에 성공한 적이 없었다., 비록 다른 사람들이 제시했어도 말이다.
+여기 분명하게 제시한다.</i></p>
 <source>
 &lt;Resource name="jdbc/postgres" auth="Container"
           type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
@@ -623,6 +625,36 @@ maxWait="-1"/&gt;
 </source>
 
 <h4>2b. 어플리케이션 특수자원 환경설정</h4>
+<p>
+Use this option if you wish to define a datasource specific to your application,
+not visible to other Tomcat applications. This method is less invasive to your
+Tomcat installation.
+</p>
+
+<p>
+Create a resource definition for your <a href="config/context.html">Context</a>.
+The Context element should look something like the following.
+</p>
+
+<source>
+&lt;Context&gt;
+
+&lt;Resource name="jdbc/postgres" auth="Container"
+          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://127.0.0.1:5432/mydb"
+          username="myuser" password="mypasswd" maxActive="20" maxIdle="10"
+maxWait="-1"/&gt;
+&lt;/Context&gt;
+</source>
+
+
+
+
+
+
+
+
+
 
 
 

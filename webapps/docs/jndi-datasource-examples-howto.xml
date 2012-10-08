@@ -655,6 +655,8 @@ maxWait="-1"/&gt;
  &lt;res-auth&gt;Container&lt;/res-auth&gt;
 &lt;/resource-ref&gt;
 </source>
+
+
 <h3>3. web.xml 환경설정.</h3>
 <source>
 &lt;resource-ref&gt;
@@ -703,10 +705,10 @@ if ( ds == null ) {
 
 <h4>4. 데이타소스에 접근하는 것.</h4>
 <p>
-데이타소스 프로그램에 맞게 접근 할 때, 사용자의 JNDI 룩업에 <code>java:/comp/env</code>을 넣는 것을 기억하라.
-, as in the following snippet of
-code. Note also that "jdbc/postgres" can be replaced with any value you prefer, provided
-you change it in the above resource definition file as well.
+데이타소스 프로그램에 맞게 접근 할 때, 사용자의 JNDI 룩업에 <code>java:/comp/env</code>을 넣는 것을 기억하면서,
+코드의 작은부분도 따라하라.
+또한 주의할 것이 있는데, "jdbc/postgres"는 사용자의 선호에 따라서 함께 대체될 수 있고, 또한 제공된 것을 
+사용자가 정의된 파일소스 내에서 바꾸는 것을 말한다.
 </p>
 
 <source>
@@ -726,7 +728,6 @@ if ( ds == null ) {
 </section>
 
 
-<!-------------------------2012/10/5-------------------------------->
 
 
 
@@ -798,10 +799,13 @@ the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will al
 <p>
 Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designator</code>
 </p>
+
+
+
+<!------------------------------------------10/8------------------------------------------------------->
 <p>
 The Oracle documentation says : "Cause: The login (connect) string contains an invalid
 driver designator. Action: Correct the string and re-submit."
-
 Change the database connect string (of the form <code>host:port:SID</code>) with this one:
 <code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
 </p>

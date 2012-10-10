@@ -674,34 +674,6 @@ maxWait="-1"/&gt;
 
 
 
-<h4>4. Accessing the datasource</h4>
-<p>
-When accessing the datasource programmatically, remember to prepend
-<code>java:/comp/env</code> to your JNDI lookup, as in the following snippet of
-code. Note also that "jdbc/postgres" can be replaced with any value you prefer, provided
-you change it in the above resource definition file as well.
-</p>
-
-<source>
-InitialContext cxt = new InitialContext();
-if ( cxt == null ) {
-   throw new Exception("Uh oh -- no context!");
-}
-
-DataSource ds = (DataSource) cxt.lookup( "java:/comp/env/jdbc/postgres" );
-
-if ( ds == null ) {
-   throw new Exception("Data source not found!");
-}
-</source>
-
-</subsection>
-</section>
-
-
-
-
-
 
 <h4>4. 데이타소스에 접근하는 것.</h4>
 <p>
@@ -802,7 +774,6 @@ Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designa
 
 
 
-<!------------------------------------------10/8------------------------------------------------------->
 <p>
 The Oracle documentation says : "Cause: The login (connect) string contains an invalid
 driver designator. Action: Correct the string and re-submit."

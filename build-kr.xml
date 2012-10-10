@@ -1,0 +1,9 @@
+<project default="build-docs">
+  <target name="build-docs">
+    <echo message="build-docs ${basedir}"/>
+<exec executable="${basedir}/build-kr.sh">
+</exec>
+
+<ant antfile="build.xml" target="build-docs"/>
+  </target>
+</project>

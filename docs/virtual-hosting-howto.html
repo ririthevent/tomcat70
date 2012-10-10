@@ -1,4 +1,4 @@
-<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 (7.0.28-dev) - Virtual Hosting and Tomcat</title><style type="text/css" media="print">
+<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Apache Tomcat 7 (7.0.28-dev) - 가상 호스팅과 톰캣</title><style type="text/css" media="print">
             .noPrint {display: none;}
             td#mainBody {width: 100%;}
         </style><style type="text/css">
@@ -6,23 +6,21 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Oct 4 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>Virtual Hosting and Tomcat</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Table of Contents"><!--()--></a><a name="Table_of_Contents"><strong>Table of Contents</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#Assumptions">Assumptions</a></li><li><a href="#server.xml">server.xml</a></li><li><a href="#Webapps_Directory">Webapps Directory</a></li><li><a href="#Configuring_Your_Contexts">Configuring Your Contexts</a><ol><li><a href="#General">General</a></li><li><a href="#context.xml_-_approach__1">context.xml - approach #1</a></li><li><a href="#context.xml_-_approach__2">context.xml - approach #2</a></li><li><a href="#Further_Information">Further Information</a></li></ol></li></ul>
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Assumptions"><strong>Assumptions</strong></a></font></td></tr><tr><td><blockquote>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Oct 10 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>가상 호스팅과 톰캣</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%90%EC%B8%A0 %EB%AA%A9%EB%A1%9D"><!--()--></a><a name="%EC%BB%A8%ED%85%90%EC%B8%A0_%EB%AA%A9%EB%A1%9D"><strong>컨텐츠 목록</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EA%B0%80%EC%A0%95">가정</a></li><li><a href="#server.xml">server.xml</a></li><li><a href="#Webapps_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC">Webapps 디렉토리</a></li><li><a href="#%EC%BB%A8%ED%83%9D%EC%8A%A4%ED%8A%B8_%EC%84%A4%EC%A0%95">컨택스트 설정</a><ol><li><a href="#%EC%9D%BC%EB%B0%98">일반</a></li><li><a href="#context.xml_-_%EC%A0%91%EA%B7%BC%EB%B2%95__1">context.xml - 접근법 #1</a></li><li><a href="#context.xml_-_%EC%A0%91%EA%B7%BC%EB%B2%95__2">context.xml - 접근법 #2</a></li><li><a href="#%EC%B6%94%EA%B0%80%EC%A0%95%EB%B3%B4">추가정보</a></li></ol></li></ul>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EA%B0%80%EC%A0%95"><strong>가정</strong></a></font></td></tr><tr><td><blockquote>
+
     <p>
-      For the sake of this how-to, assume you have a development host with two
-      host names, <code>ren</code> and <code>stimpy</code>. Let's also assume
-      one instance of Tomcat running, so <code>$CATALINA_HOME</code> refers to
-      wherever it's installed, perhaps <code>/usr/local/tomcat</code>.
+      가상호스팅을 구성하기 위해서, 여러분이 <code>ren</code>과 <code>stimpy</code>라는 두개의 호스트네임을 가진 개발환경을 가지고 있다고 생각해 봅시다.
+      또한 구동되고 있는 톰캣의 인스턴스를 가정해봅시다. <code>$CATALINA_HOME</code>은 톰캣이 설치 된곳을 참조합니다. (<code>/usr/local/tomcat</code>)
     </p>
     <p>
-      Also, this how-to uses Unix-style path separators and commands; if you're
-      on Windows modify accordingly.
+      그리고 이 가상호스팅 구성방법의 코맨트나 경로 구분자는 유닉스 표기방법을 사용합니다. 
+      만약 윈도우를 사용중이라면 윈도우 표기법에 맞게 수정해야 합니다.
     </p>
   </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="server.xml"><strong>server.xml</strong></a></font></td></tr><tr><td><blockquote>
     <p>
-      At the simplest, edit the <a href="config/engine.html">Engine</a> portion
-      of your <code>server.xml</code> file to look like this:
+      가장 간단한 방법으로 여러분의 <code>server.xml</code>파일의 <a href="config/engine.html">엔진</a>부분을 아래와 같이 수정하세요.
     </p>
     <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;Engine name="Catalina" defaultHost="ren"&gt;
@@ -31,70 +29,54 @@
 &lt;/Engine&gt;
     </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
     <p>
-      Note that the directory structures under the appBase for each host should
-      not overlap each other.
+    주의 할 점은 각각의 호스트에 있는 appBase아래 디렉토리 구조들은 서로 겹쳐지면 안됩니다.
     </p>
     <p>
-      Consult the configuration documentation for other attributes of the
-      <a href="config/engine.html">Engine</a> and <a href="config/host.html">
-      Host</a> elements.
+      다른 <a href="config/engine.html">엔진</a>의 어트리뷰트와 <a href="config/host.html"> 호스트</a> 엘리먼트들의 속성에 대한 구성문서를 참고하세요
     </p>
-  </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Webapps Directory"><!--()--></a><a name="Webapps_Directory"><strong>Webapps Directory</strong></a></font></td></tr><tr><td><blockquote>
+  </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Webapps %EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC"><!--()--></a><a name="Webapps_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC"><strong>Webapps 디렉토리</strong></a></font></td></tr><tr><td><blockquote>
     <p>
-      Create directories for each of the virtual hosts:
+      각각의 가상 호스트들에 대한 디렉토리를 생성하세요:
     </p>
     <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 mkdir $CATALINA_HOME/renapps
 mkdir $CATALINA_HOME/stimpyapps
     </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-  </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Configuring Your Contexts"><!--()--></a><a name="Configuring_Your_Contexts"><strong>Configuring Your Contexts</strong></a></font></td></tr><tr><td><blockquote>
-    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="General"><strong>General</strong></a></font></td></tr><tr><td><blockquote>
-      <p>Contexts are normally located underneath the appBase directory. For
-       example, to deploy the <code>foobar</code> context as a war file in
-       the <code>ren</code> host, use
-       <code>$CATALINA_HOME/renapps/foobar.war</code>. Note that the
-       default or ROOT context for <code>ren</code> would be deployed as
-       <code>$CATALINA_HOME/renapps/ROOT.war</code> (WAR) or
-       <code>$CATALINA_HOME/renapps/ROOT</code> (directory).
+  </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%83%9D%EC%8A%A4%ED%8A%B8 %EC%84%A4%EC%A0%95"><!--()--></a><a name="%EC%BB%A8%ED%83%9D%EC%8A%A4%ED%8A%B8_%EC%84%A4%EC%A0%95"><strong>컨택스트 설정</strong></a></font></td></tr><tr><td><blockquote>
+    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%9D%BC%EB%B0%98"><strong>일반</strong></a></font></td></tr><tr><td><blockquote>
+
+      <p>컨택스트들은 보통 appBase 디렉토리 아래 위치하고 있습니다. 예를 들어 <code>ren</code>호스트에 있는 war파일인 <code>foobar</code>를 디플로이 시키기 위해 <code>$CATALINA_HOME/renapps/foobar.war</code>를 사용해야 합니다.
+       <code>ren</code>호스트의 디폴트나 루트 컨택스트는 <code>$CATALINA_HOME/renapps/ROOT.war</code> (WAR) or <code>$CATALINA_HOME/renapps/ROOT</code> (directory)로 디플로이 되어져야 합니다.
       </p>
-      <p><strong>NOTE: The <code>docBase</code> for a context should never be
-        the same as the <code>appBase</code> for a host.</strong>
+      <p><strong>주의: 컨택스트에 대한 <code>docBase</code>는 호스트의 <code>appBase</code>와 같아서는 안됩니다.</strong>
       </p>
     </blockquote></td></tr></table>
-    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="context.xml - approach #1"><!--()--></a><a name="context.xml_-_approach__1"><strong>context.xml - approach #1</strong></a></font></td></tr><tr><td><blockquote>
+    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="context.xml - %EC%A0%91%EA%B7%BC%EB%B2%95 #1"><!--()--></a><a name="context.xml_-_%EC%A0%91%EA%B7%BC%EB%B2%95__1"><strong>context.xml - 접근법 #1</strong></a></font></td></tr><tr><td><blockquote>
       <p>
-        Within your Context, create a <code>META-INF</code> directory and then
-        place your Context definition in it in a file named
-        <code>context.xml</code>. i.e.
-        <code>$CATALINA_HOME/renapps/ROOT/META-INF/context.xml</code>
-        This makes deployment easier, particularly if you're distributing a WAR
-        file.
+      여러분의 컨택스트안에, <code>META-INF</code>를 생성 한 후 이 디렉토리안에 <code>context.xml</code>이라고 이름 지어진 파일에 컨택스트 정의를 넣으세요. 
+      즉 <code>$CATALINA_HOME/renapps/ROOT/META-INF/context.xml</code> 만약 여러분이 WAR file을 배포한다면 특히 이 방법은 디플로이를 더 쉽게 할 수 있습니다.      
       </p>
     </blockquote></td></tr></table>
-    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="context.xml - approach #2"><!--()--></a><a name="context.xml_-_approach__2"><strong>context.xml - approach #2</strong></a></font></td></tr><tr><td><blockquote>
+    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="context.xml - %EC%A0%91%EA%B7%BC%EB%B2%95 #2"><!--()--></a><a name="context.xml_-_%EC%A0%91%EA%B7%BC%EB%B2%95__2"><strong>context.xml - 접근법 #2</strong></a></font></td></tr><tr><td><blockquote>
       <p>
-        Create a structure under <code>$CATALINA_HOME/conf/Catalina</code>
-        corresponding to your virtual hosts, e.g.:
+        <code>$CATALINA_HOME/conf/Catalina</code>아래 여러분의 가상 호스트들과 일치하는 구조를 생성하세요. 예)
       </p>
       <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 mkdir $CATALINA_HOME/conf/Catalina/ren
 mkdir $CATALINA_HOME/conf/Catalina/stimpy
       </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
       <p>
-        Note that the ending directory name "Catalina" represents the
-        <code>name</code> attribute of the
-        <a href="config/engine.html">Engine</a> element as shown above.
+        마지막 디렉토리 이름 "Catalina"는 위에 보여지는것처럼 <a href="config/engine.html">엔진</a> 엘레먼트 <code>이름</code>의 속성(어트리뷰트)를 나타냅니다.
       </p>
       <p>
-        Now, for your default webapps, add:
+        그리고 여러분의 디폴트 webapps를 위해 아래내용을 추가하세요
       </p>
       <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 $CATALINA_HOME/conf/Catalina/ren/ROOT.xml
 $CATALINA_HOME/conf/Catalina/stimpy/ROOT.xml
       </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
       <p>
-        If you want to use the Tomcat manager webapp for each host, you'll also
-        need to add it here:
+        만약 여러분이 각각의 호스트에 대해 톰캣매니저 webapp를 사용하길 원하신다면 여러분은 또한 아래같이 추가하는것이 필요할 것입니다.
       </p>
       <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 cd $CATALINA_HOME/conf/Catalina
@@ -102,10 +84,9 @@ cp localhost/manager.xml ren/
 cp localhost/manager.xml stimpy/
       </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
     </blockquote></td></tr></table>
-    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Further Information"><!--()--></a><a name="Further_Information"><strong>Further Information</strong></a></font></td></tr><tr><td><blockquote>
+    <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B6%94%EA%B0%80%EC%A0%95%EB%B3%B4"><strong>추가정보</strong></a></font></td></tr><tr><td><blockquote>
       <p>
-        Consult the configuration documentation for other attributes of the
-        <a href="config/context.html">Context</a> element.
+        <a href="config/context.html">컨택스트</a> 엘리먼트의 다른 어트리뷰트에 대해서는 구성문서기록을 참고하세요
       </p>
     </blockquote></td></tr></table>
   </blockquote></td></tr></table></td></tr><!--FOOTER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><!--PAGE FOOTER--><tr><td colspan="2"><div align="center"><font color="#525D76" size="-1"><em>

@@ -551,36 +551,35 @@ public class SessionTrackingModeListener implements ServletContextListener {
 }
     </source>
   </p>
-  <p>Note: SSL session tracking is implemented for the BIO and NIO connectors.
-     It is not yet implemented for the APR connector.</p>
+  <p>주의: SSL 세션 트래킹은 BIO와 NIO 커넥터를 위해서만 구현되었습니다.
+     APR 커넥터를 위해서는 아직 구현되지 않았습니다.</p>
 
 </section>
 
 <section name="Miscellaneous Tips and Bits">
 
-<p>To access the SSL session ID from the request, use:<br />
+<p>요청으로부터 SSL 세션 ID에 접근하려면, 이렇게 합나다::<br />
 
   <code>
     String sslID = (String)request.getAttribute("javax.servlet.request.ssl_session_id");
   </code>
 <br />
-For additional discussion on this area, please see
-<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=22679">Bugzilla</a>.
+이 영역에 대한 추가적인 논의는 
+<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=22679">버그질라</a>를 참고하세요.
 </p>
 
-  <p>To terminate an SSL session, use:
+  <p>SSL 세션을 종료하려면, 이렇게 합니다:
     <source>
-// Standard HTTP session invalidation
+// 표준 HTTP 세션 무효화
 session.invalidate();
 
-// Invalidate the SSL Session
+// SSL 세션을 무효화합니다.
 org.apache.tomcat.util.net.SSLSessionManager mgr =
     (org.apache.tomcat.util.net.SSLSessionManager)
     request.getAttribute("javax.servlet.request.ssl_session_mgr");
 mgr.invalidateSession();
 
-// Close the connection since the SSL session will be active until the connection
-// is closed
+// 연결을 닫습니다. 왜냐하면 닫힐 때 까지 SSL 세션이 살아있기 때문입니다.
 response.setHeader("Connection", "close");
     </source>
     주의할 것은 이 코드는 SSLSessionManager 클래스 사용하는 것 때문에 톰캣에 특화된 것입니다.

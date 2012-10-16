@@ -733,6 +733,49 @@ from this file depending upon the version of Tomcat and JDK you are using.
 </p>
 </subsection>
 
+
+<section name="DBCP 이외의 해결책들">
+<p>
+이런 해결책들은 하나의 단순한 연결로 데이터베이스에 사용하거나(시범 이외의 다른 어떤 것도 추천하지 않는다!)
+몇몇 다른 풀링(Pooling)기술이다.
+</p>
+</section>
+
+<section name="오라클 8i과 OCI 고객">
+<subsection name="소개">
+<p>윌스트(Whilst)는 모호하게 OCI고객이 사용하는 JNDI 데이터소스의 탄생을 언급하지 않고, 이런 점들을 오라클과 DBCP 해결책
+위에 조합하게 되었다.
+</p>
+<p>
+OCI 드라이버의 사용을 위해서, 사용자는 설치된 오라클 클라이언트를 가지고 있어야 한다.
+그리고 사용자는 cd에서 오라클8i(8.1.7) 클라이언트를 설치했어야 하고, 적용가능한 
+JDBC/OCI driver(Oracle8i 8.1.7.1 JDBC/OCI Driver)를 <a href="http://otn.oracle.com/">otn.oracle.com</a>
+에서 다운 받아야 한다.
+</p>
+<p>
+그 다음에, <code>classes12.zip</code>파일을 <code>classes12.jar</code>으로 톰캣에서 정정하고,
+<code>$CATALINA_HOME/lib</code>에 복사하여 넣어야 한다.
+사용자는 톰캣과 JDK의 버전에 이런 파일로부터 종속하고 있는 <code>javax.sql.*</code>클래스들을 또한 제거해야
+할수도 있다.
+</p>
+</subsection>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <subsection name="Putting it all together">
 <p>
 Ensure that you have the <code>ocijdbc8.dll</code> or <code>.so</code> in your <code>$PATH</code> or <code>LD_LIBRARY_PATH</code>

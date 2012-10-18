@@ -709,29 +709,6 @@ if ( ds == null ) {
 
 
 
-<section name="Non-DBCP Solutions">
-<p>
-These solutions either utilise a single connection to the database (not recommended for anything other
-than testing!) or some other pooling technology.
-</p>
-</section>
-
-<section name="Oracle 8i with OCI client">
-<subsection name="Introduction">
-<p>Whilst not strictly addressing the creation of a JNDI DataSource using the OCI client, these notes can be combined with the
-Oracle and DBCP solution above.</p>
-<p>
-In order to use OCI driver, you should have an Oracle client installed. You should have installed
-Oracle8i(8.1.7) client from cd,  and download the suitable JDBC/OCI
-driver(Oracle8i 8.1.7.1 JDBC/OCI Driver) from <a href="http://otn.oracle.com/">otn.oracle.com</a>.
-</p>
-<p>
-After renaming <code>classes12.zip</code> file to <code>classes12.jar</code>
-for Tomcat, copy it into <code>$CATALINA_HOME/lib</code>.
-You may also have to remove the <code>javax.sql.*</code> classes
-from this file depending upon the version of Tomcat and JDK you are using.
-</p>
-</subsection>
 
 
 <section name="DBCP 이외의 해결책들">

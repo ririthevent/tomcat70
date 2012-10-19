@@ -759,6 +759,14 @@ Ensure that you have the <code>ocijdbc8.dll</code> or <code>.so</code> in your <
  (possibly in <code>$ORAHOME\bin</code>) and also confirm that the native library can be loaded by a simple test program
 using <code>System.loadLibrary("ocijdbc8");</code>
 </p>
+
+<subsection name="모든 것을 다같이 대입할때">
+<p>
+당신이 <code>ocijdbc8.dll</code>나 <code>.so</code>를 당신의 <code>$PATH</code>나 <code>LD_LIBRARY_PATH</code>에
+(가능하다면 <code>$ORAHOME\bin</code>안에)확실히 가지고 있으면, 원래 라이브러리에 사용하고 있는 
+<code>System.loadLibrary("ocijdbc8");</code>에 단순한 테스트 프로그램에 의해 적재되어질 수 있다.
+</p>
+----------------------------------------------------------------------------------------------------------------------------------
 <p>
 You should next create a simple test servlet or jsp that has these
 <strong>critical lines</strong>:

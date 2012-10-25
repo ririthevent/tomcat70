@@ -826,14 +826,6 @@ Oracle client. The classeXXXs.zip file and Oracle client software versions must 
 </li>
 
 
-
-
-
-
-
-
-
------------------------------------------------------------------------------------------------------
 <li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code> problem.</li>
 <li>It has been reported that ignoring the driver you have downloded from otn and using
 the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will also work.
@@ -843,15 +835,34 @@ the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will al
 <p>
 Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designator</code>
 </p>
-
-
-
 <p>
 The Oracle documentation says : "Cause: The login (connect) string contains an invalid
 driver designator. Action: Correct the string and re-submit."
 Change the database connect string (of the form <code>host:port:SID</code>) with this one:
 <code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
 </p>
+
+
+<li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code>의 문제.</li>
+<li>이것으로서 당신이 otn과 <code>$ORAHOME\jdbc\lib</code>에서 작동할 그 디렉토리로부터
+사용하고 있는 클래스12 압축파일에 대해 설명되었다.
+</li>
+</ul>
+</p>
+<p>
+다음으로 사용자는 <code>ORA-06401 NETCMN: invalid driver designator</code>에러에 대하여 경험할 수도 있다.
+</p>
+<p>
+오라클 문서는 "원인: 로그인(연결)문자는 유효하지 않은 드라이버 설계자를 포함한다. 지침행동: 문자와 다시제출하고 
+연결하라." 이렇게 제시할 것이다.
+데이타베이스 연결 문자를(<code>host:port:SID</code>의 양식에서) 다음과 같이 바꾸어라. 
+<code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
+</p>
+
+
+
+
+-----------------------------------------------------------------------------------------------------
 <p>
 <i>Ed. Hmm, I don't think this is really needed if you sort out your TNSNames - but I'm not an Oracle DBA :-)</i>
 </p>

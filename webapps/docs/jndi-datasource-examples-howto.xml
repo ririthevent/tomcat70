@@ -862,7 +862,6 @@ Change the database connect string (of the form <code>host:port:SID</code>) with
 
 
 
------------------------------------------------------------------------------------------------------
 <p>
 <i>Ed. Hmm, I don't think this is really needed if you sort out your TNSNames - but I'm not an Oracle DBA :-)</i>
 </p>
@@ -881,6 +880,30 @@ performs GC execution of code within Tomcat freezes. If the maximum time
 configured for establishment of a database connection is less than the amount
 of time garbage collection took you can get a database connection failure.
 </p>
+
+
+
+
+
+
+
+<p>
+<i>Ed.흠, 나는 만약에 사용자가 사용자의 TNSNames를 정리하는 것이 정말로 필요하지 않는다고 봐요. 오라클 데이터베이스 관리자가 아니니까요:-)</i>
+</p>
+</subsection>
+</section>
+
+<section name="공통적인 문제들">
+<p>여기에 몇가지 공통적인 문제들이 웹 어플리케이션과 함께 데이터베이스를 사용할 때와 그것들을 어떻게 해결하는가에 있다.</p>
+
+<subsection name="간간이 발생하는 데이터베이스 연결 실패">
+<p>
+톰캣은 자바버츄얼머신(JVM)안에서 운영한다. 이 JVM은 주기적으로 가비지 콜렉션(GC)에서 더이상 사용되어 지지 않는
+자바 객체들을 지우기 위하여 운영한다. JVM을 톰캣 프리즈(freezes)안에서 코드의 실행을 위해 운영할 때, 만약 데이터베이스 연결의 설정을 위해
+최대 환경설정 시간은 GC의 시간의 총량보다 적다면 사용자는 데이터베이스 연결 획득 실패할 수 있다.
+</p>
+
+-----------------------------------------------------------------------------------------------------
 
 <p>To collect data on how long garbage collection is taking add the
 <code>-verbose:gc</code> argument to your <code>CATALINA_OPTS</code>

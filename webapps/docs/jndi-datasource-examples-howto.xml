@@ -903,7 +903,7 @@ of time garbage collection took you can get a database connection failure.
 최대 환경설정 시간은 GC의 시간의 총량보다 적다면 사용자는 데이터베이스 연결 획득 실패할 수 있다.
 </p>
 
------------------------------------------------------------------------------------------------------
+
 
 <p>To collect data on how long garbage collection is taking add the
 <code>-verbose:gc</code> argument to your <code>CATALINA_OPTS</code>
@@ -914,6 +914,21 @@ data for every garbage collection including how long it took.</p>
 <p>When your JVM is tuned correctly 99% of the time a GC will take less
 than one second.  The remainder will only take a few seconds.  Rarely,
 if ever should a GC take more than 10 seconds.</p>
+
+<p>장기간에 걸친 불필요한 정보정리(garbage collection)에서 자료를 모으기 위한것은 톰캣을 시작할 때,
+<code>-verbose:gc</code> 독립변수를 당신의 <code>CATALINA_OPTS</code>환경에 추가로 가져가고 있는 것이다.
+어지러운 gc(garbage collection)는 당신의 <code>$CATALINA_BASE/logs/catalina.out</code> 로그 파일이 장기간에 
+걸친 gc를 가져가는 것에 포함하면서 모든 불필요한 정보정리를 위해 자료를 포함할 것이다.</p>
+
+<p> 사용자의 JVM의 해당 시간에 99% 가깝게 조정된  GC는 1초보다 적게 걸린다.
+나머지는 오직 몇초만이 걸릴 것이다. 드물게도, 언제든지 GC가 10초 보다 더욱 GC를 가져가야 한다.</p>
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
 
 <p>Make sure that the db connection timeout is set to 10-15 seconds.
 For the DBCP you set this using the parameter <code>maxWait</code>.</p>

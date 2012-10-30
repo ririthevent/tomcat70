@@ -944,24 +944,6 @@ it doesn't close the connection.  And Tomcat uses multiple threads to
 handle concurrent requests. Here is an example of the sequence
 of events which could cause this error in Tomcat:
 </p>
-
-
-
-
-
-
-<p>디비 접속 시간초과는 10~15초로 되어 있는것을 확실히 해라. 이런 DBCP(DataBase Connection Pool)를 위하여
-사용자는 <code>maxWait</code>의 사용중인 인자값을 정하라.</p>
-</subsection>
-
-<subsection name="무작위의 접숙과 닫혀진 예외들">
-<p>
-이런 것들은 어떤 요청있어서 디비접속의 이런 접속 풀(Pool)과 2것을 다시 닫을 때로부터 발생할 수 있다.
-이런 접속 풀을 사용할 때, 접속했던 접속을 닫고 다른 요청으로 재사용을 하기 위해, 해당 풀로 다시 돌아오라.
-그렇게 한다면 접속이 닫히지 않는다. 그리고 톰캣은 다중 쓰레드로 동시발생 요청을 다루기 위해 사용한다.
-여기에서 톰캣 내부의 에러의 원인에 대한 이벤트 발생의 예문이 제시되있다.
-</p>
-
 <pre>
   Request 1 running in Thread 1 gets a db connection.
 
@@ -981,7 +963,43 @@ of events which could cause this error in Tomcat:
   Request 2 Thread 2 tries to use the db connection but fails
   because Request 1 closed it.
 </pre>
------------------------------------------------------------------------------------------------------
+
+
+
+
+
+<p>디비 접속 시간초과는 10~15초로 되어 있는것을 확실히 해라. 이런 DBCP(DataBase Connection Pool)를 위하여
+사용자는 <code>maxWait</code>의 사용중인 인자값을 정하라.</p>
+</subsection>
+
+<subsection name="무작위의 접숙과 닫혀진 예외들">
+<p>
+이런 것들은 어떤 요청있어서 디비접속의 이런 접속 풀(Pool)과 2것을 다시 닫을 때로부터 발생할 수 있다.
+이런 접속 풀을 사용할 때, 접속했던 접속을 닫고 다른 요청으로 재사용을 하기 위해, 해당 풀로 다시 돌아오라.
+그렇게 한다면 접속이 닫히지 않는다. 그리고 톰캣은 다중 쓰레드로 동시발생 요청을 다루기 위해 사용한다.
+여기에서 톰캣 내부의 에러의 원인에 대한 이벤트 발생의 예문이 제시되있다.
+</p>
+
+<pre>
+  하나의 요청, 1번째 쓰레드 안의 1개의 실행중인 디비 접속.
+
+  하나의 요청이 디비 접속을 닫는다.
+
+  JVM(자바 버츄얼 머신)이 실행중인 1번째 쓰레드를 2번째 쓰레드로 전환한다.
+
+  2번째 쓰레드 안에서 실행중인 2번째 요청이 디비 접속을 한다.
+  (이 동일한 디비 접속은 1번째 요청에 의해 종료했다.).
+
+  JVM은 운영중인 쓰레드(2번째 쓰레드)를 1번째 쓰레드에게 되돌려준다.
+
+  1번째 쓰레드는 마지막 블록안에서 2번 디비 접속을 종료한다.
+
+  JVM 2번째 쓰레드에게 운영중인 쓰레드(1번째 쓰레드)를 전환한다.
+
+  2번째 요청의 2번째 쓰레드는 디비 접속을 사용하려 시도하지만, 1번째 요청으로 닫혀있어서 실패한다.
+  
+</pre>
+
 <p>
 Here is an example of properly written code to use a database connection
 obtained from a connection pool:
@@ -1022,7 +1040,7 @@ obtained from a connection pool:
 </pre>
 
 </subsection>
-
+-----------------------------------------------------------------------------------------------------
 <subsection name="Context versus GlobalNamingResources">
 <p>
   Please note that although the above instructions place the JNDI declarations in a Context

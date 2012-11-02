@@ -6,8 +6,8 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Oct 18 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%ED%92%80(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 풀(DBCP) 환경설정</a><ol><li><a href="#%EC%84%A4%EC%B9%98">설치</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#MySQL_DBCP_%EC%98%88%EC%8B%9C">MySQL DBCP 예시</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i,_9i_&amp;_10g">오라클 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#DBCP_%EC%9D%B4%EC%99%B8%EC%9D%98_%ED%95%B4%EA%B2%B0%EC%B1%85%EB%93%A4">DBCP 이외의 해결책들</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D">오라클 8i과 OCI 고객</a><ol><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#Putting_it_all_together">Putting it all together</a></li></ol></li><li><a href="#Common_Problems">Common Problems</a><ol><li><a href="#Intermittent_Database_Connection_Failures">Intermittent Database Connection Failures</a></li><li><a href="#Random_Connection_Closed_Exceptions">Random Connection Closed Exceptions</a></li><li><a href="#Context_versus_GlobalNamingResources">Context versus GlobalNamingResources</a></li><li><a href="#JNDI_Resource_Naming_and_Realm_Interaction">JNDI Resource Naming and Realm Interaction</a></li></ol></li></ul>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Nov 3 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%ED%92%80(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 풀(DBCP) 환경설정</a><ol><li><a href="#%EC%84%A4%EC%B9%98">설치</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#MySQL_DBCP_%EC%98%88%EC%8B%9C">MySQL DBCP 예시</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i,_9i_&amp;_10g">오라클 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#DBCP_%EC%9D%B4%EC%99%B8%EC%9D%98_%ED%95%B4%EA%B2%B0%EC%B1%85%EB%93%A4">DBCP 이외의 해결책들</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D">오라클 8i과 OCI 고객</a><ol><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%AA%A8%EB%93%A0_%EA%B2%83%EC%9D%84_%EB%8B%A4%EA%B0%99%EC%9D%B4_%EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C">모든 것을 다같이 대입할때</a></li></ol></li><li><a href="#Common_Problems">Common Problems</a><ol><li><a href="#Intermittent_Database_Connection_Failures">Intermittent Database Connection Failures</a></li></ol></li><li><a href="#%EA%B3%B5%ED%86%B5%EC%A0%81%EC%9D%B8_%EB%AC%B8%EC%A0%9C%EB%93%A4">공통적인 문제들</a><ol><li><a href="#%EA%B0%84%EA%B0%84%EC%9D%B4_%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EC%8B%A4%ED%8C%A8">간간이 발생하는 데이터베이스 연결 실패</a></li><li><a href="#Random_Connection_Closed_Exceptions">Random Connection Closed Exceptions</a></li><li><a href="#%EB%AC%B4%EC%9E%91%EC%9C%84%EC%9D%98_%EC%A0%91%EC%88%99%EA%B3%BC_%EB%8B%AB%ED%98%80%EC%A7%84_%EC%98%88%EC%99%B8%EB%93%A4">무작위의 접숙과 닫혀진 예외들</a></li><li><a href="#Context_versus_GlobalNamingResources">Context versus GlobalNamingResources</a></li><li><a href="#JNDI_Resource_Naming_and_Realm_Interaction">JNDI Resource Naming and Realm Interaction</a></li></ol></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>JNDI 데이타베이스 환경설정은 JNDI-자원-사용법에 (JNDI-Resources-HOWTO) 광범위하게 퍼져있다.
@@ -705,12 +705,13 @@ JDBC/OCI driver(Oracle8i 8.1.7.1 JDBC/OCI Driver)를 <a href="http://otn.oracle.
 
 
 
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Putting it all together"><!--()--></a><a name="Putting_it_all_together"><strong>Putting it all together</strong></a></font></td></tr><tr><td><blockquote>
+<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%AA%A8%EB%93%A0 %EA%B2%83%EC%9D%84 %EB%8B%A4%EA%B0%99%EC%9D%B4 %EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C"><!--()--></a><a name="%EB%AA%A8%EB%93%A0_%EA%B2%83%EC%9D%84_%EB%8B%A4%EA%B0%99%EC%9D%B4_%EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C"><strong>모든 것을 다같이 대입할때</strong></a></font></td></tr><tr><td><blockquote>
 <p>
-Ensure that you have the <code>ocijdbc8.dll</code> or <code>.so</code> in your <code>$PATH</code> or <code>LD_LIBRARY_PATH</code>
- (possibly in <code>$ORAHOME\bin</code>) and also confirm that the native library can be loaded by a simple test program
-using <code>System.loadLibrary("ocijdbc8");</code>
+당신이 <code>ocijdbc8.dll</code>나 <code>.so</code>를 당신의 <code>$PATH</code>나 <code>LD_LIBRARY_PATH</code>에
+(가능하다면 <code>$ORAHOME\bin</code>안에)확실히 가지고 있으면, 원래 라이브러리에 사용하고 있는 
+<code>System.loadLibrary("ocijdbc8");</code>에 단순한 테스트 프로그램에 의해 적재되어질 수 있다.
 </p>
+
 <p>
 You should next create a simple test servlet or jsp that has these
 <strong>critical lines</strong>:
@@ -721,11 +722,35 @@ oracle.jdbc.driver.OracleDriver());
 conn =
 DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+
+<p>
+사용자는 간단한 테스트용 서블릿을 만들거나 jsp에 만들어야 한다. 
+You should next create a simple test servlet or jsp that has these
+<strong>크리스탈 라인</strong>:
+</p>
+<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
+DriverManager.registerDriver(new
+oracle.jdbc.driver.OracleDriver());
+conn =
+DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
+</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+
+
 <p>
 where database is of the form <code>host:port:SID</code> Now if you try to access the URL of your
 test servlet/jsp and what you get is a
 <code>ServletException</code> with a root cause of <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>.
 </p>
+
+<p>
+데이타베이스의 형식(<code>host:port:SID</code>)이고, 만약에 지금 사용자가 사용자의 시험용 servlet/jsp의 URL에 접근하는 것을
+시도한다면, 사용자가 <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>의 근원과 함께 
+<code>ServletException</code>을 획득한다.
+</p>
+
+
+
+
 <p>
 First, the <code>UnsatisfiedLinkError</code> indicates that you have
 <ul>
@@ -734,6 +759,18 @@ your Oracle client version. The giveaway here is the message stating that a need
 found. For example, you may be using a classes12.zip file from Oracle Version 8.1.6 with a Version 8.1.5
 Oracle client. The classeXXXs.zip file and Oracle client software versions must match.
 </li>
+
+
+<p>
+첫째로, <code>UnsatisfiedLinkError</code>는 사용자가 다음의 상황에 처해있다는 것을 알려준다.
+<ul>
+<li> 사용자의 JDBC 파일과 사용자의 오라클 클라이언트 버전(client version)이 일치하지 않는다는 것이다.
+그것은 라이브러리 파일을 찾을 수 없게되었다는 메세지에서 명시한다. 예를 들어, 
+사용자는 오라클 버전 8.1.5와 함께 오라클 버전 8.1.6버전부터 클래스12 파일(classes12.zip file)을 사용하고 있을지도 모른다.
+이런 클래스xxx파일(classeXXXs.zip file)과 오라클 클라이언트 소프트웨어 버전은 반드시 일치해야 한다.
+</li>
+
+
 <li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code> problem.</li>
 <li>It has been reported that ignoring the driver you have downloded from otn and using
 the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will also work.
@@ -743,15 +780,33 @@ the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will al
 <p>
 Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designator</code>
 </p>
-
-
-
 <p>
 The Oracle documentation says : "Cause: The login (connect) string contains an invalid
 driver designator. Action: Correct the string and re-submit."
 Change the database connect string (of the form <code>host:port:SID</code>) with this one:
 <code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
 </p>
+
+
+<li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code>의 문제.</li>
+<li>이것으로서 당신이 otn과 <code>$ORAHOME\jdbc\lib</code>에서 작동할 그 디렉토리로부터
+사용하고 있는 클래스12 압축파일에 대해 설명되었다.
+</li>
+</ul>
+</p>
+<p>
+다음으로 사용자는 <code>ORA-06401 NETCMN: invalid driver designator</code>에러에 대하여 경험할 수도 있다.
+</p>
+<p>
+오라클 문서는 "원인: 로그인(연결)문자는 유효하지 않은 드라이버 설계자를 포함한다. 지침행동: 문자와 다시제출하고 
+연결하라." 이렇게 제시할 것이다.
+데이타베이스 연결 문자를(<code>host:port:SID</code>의 양식에서) 다음과 같이 바꾸어라. 
+<code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
+</p>
+
+
+
+
 <p>
 <i>Ed. Hmm, I don't think this is really needed if you sort out your TNSNames - but I'm not an Oracle DBA :-)</i>
 </p>
@@ -769,6 +824,28 @@ configured for establishment of a database connection is less than the amount
 of time garbage collection took you can get a database connection failure.
 </p>
 
+
+
+
+
+
+
+<p>
+<i>Ed.흠, 나는 만약에 사용자가 사용자의 TNSNames를 정리하는 것이 정말로 필요하지 않는다고 봐요. 오라클 데이터베이스 관리자가 아니니까요:-)</i>
+</p>
+</blockquote></td></tr></table>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EA%B3%B5%ED%86%B5%EC%A0%81%EC%9D%B8 %EB%AC%B8%EC%A0%9C%EB%93%A4"><!--()--></a><a name="%EA%B3%B5%ED%86%B5%EC%A0%81%EC%9D%B8_%EB%AC%B8%EC%A0%9C%EB%93%A4"><strong>공통적인 문제들</strong></a></font></td></tr><tr><td><blockquote>
+<p>여기에 몇가지 공통적인 문제들이 웹 어플리케이션과 함께 데이터베이스를 사용할 때와 그것들을 어떻게 해결하는가에 있다.</p>
+
+<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EA%B0%84%EA%B0%84%EC%9D%B4 %EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94 %EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4 %EC%97%B0%EA%B2%B0 %EC%8B%A4%ED%8C%A8"><!--()--></a><a name="%EA%B0%84%EA%B0%84%EC%9D%B4_%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EC%8B%A4%ED%8C%A8"><strong>간간이 발생하는 데이터베이스 연결 실패</strong></a></font></td></tr><tr><td><blockquote>
+<p>
+톰캣은 자바버츄얼머신(JVM)안에서 운영한다. 이 JVM은 주기적으로 가비지 콜렉션(GC)에서 더이상 사용되어 지지 않는
+자바 객체들을 지우기 위하여 운영한다. JVM을 톰캣 프리즈(freezes)안에서 코드의 실행을 위해 운영할 때, 만약 데이터베이스 연결의 설정을 위해
+최대 환경설정 시간은 GC의 시간의 총량보다 적다면 사용자는 데이터베이스 연결 획득 실패할 수 있다.
+</p>
+
+
+
 <p>To collect data on how long garbage collection is taking add the
 <code>-verbose:gc</code> argument to your <code>CATALINA_OPTS</code>
 environment variable when starting Tomcat.  When verbose gc is enabled
@@ -778,6 +855,21 @@ data for every garbage collection including how long it took.</p>
 <p>When your JVM is tuned correctly 99% of the time a GC will take less
 than one second.  The remainder will only take a few seconds.  Rarely,
 if ever should a GC take more than 10 seconds.</p>
+
+<p>장기간에 걸친 불필요한 정보정리(garbage collection)에서 자료를 모으기 위한것은 톰캣을 시작할 때,
+<code>-verbose:gc</code> 독립변수를 당신의 <code>CATALINA_OPTS</code>환경에 추가로 가져가고 있는 것이다.
+어지러운 gc(garbage collection)는 당신의 <code>$CATALINA_BASE/logs/catalina.out</code> 로그 파일이 장기간에 
+걸친 gc를 가져가는 것에 포함하면서 모든 불필요한 정보정리를 위해 자료를 포함할 것이다.</p>
+
+<p> 사용자의 JVM의 해당 시간에 99% 가깝게 조정된  GC는 1초보다 적게 걸린다.
+나머지는 오직 몇초만이 걸릴 것이다. 드물게도, 언제든지 GC가 10초 보다 더욱 GC를 가져가야 한다.</p>
+
+
+
+
+
+
+
 
 <p>Make sure that the db connection timeout is set to 10-15 seconds.
 For the DBCP you set this using the parameter <code>maxWait</code>.</p>
@@ -812,6 +904,43 @@ of events which could cause this error in Tomcat:
   Request 2 Thread 2 tries to use the db connection but fails
   because Request 1 closed it.
 </pre>
+
+
+
+
+
+<p>디비 접속 시간초과는 10~15초로 되어 있는것을 확실히 해라. 이런 DBCP(DataBase Connection Pool)를 위하여
+사용자는 <code>maxWait</code>의 사용중인 인자값을 정하라.</p>
+</blockquote></td></tr></table>
+
+<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%AC%B4%EC%9E%91%EC%9C%84%EC%9D%98 %EC%A0%91%EC%88%99%EA%B3%BC %EB%8B%AB%ED%98%80%EC%A7%84 %EC%98%88%EC%99%B8%EB%93%A4"><!--()--></a><a name="%EB%AC%B4%EC%9E%91%EC%9C%84%EC%9D%98_%EC%A0%91%EC%88%99%EA%B3%BC_%EB%8B%AB%ED%98%80%EC%A7%84_%EC%98%88%EC%99%B8%EB%93%A4"><strong>무작위의 접숙과 닫혀진 예외들</strong></a></font></td></tr><tr><td><blockquote>
+<p>
+이런 것들은 어떤 요청있어서 디비접속의 이런 접속 풀(Pool)과 2것을 다시 닫을 때로부터 발생할 수 있다.
+이런 접속 풀을 사용할 때, 접속했던 접속을 닫고 다른 요청으로 재사용을 하기 위해, 해당 풀로 다시 돌아오라.
+그렇게 한다면 접속이 닫히지 않는다. 그리고 톰캣은 다중 쓰레드로 동시발생 요청을 다루기 위해 사용한다.
+여기에서 톰캣 내부의 에러의 원인에 대한 이벤트 발생의 예문이 제시되있다.
+</p>
+
+<pre>
+  하나의 요청, 1번째 쓰레드 안의 1개의 실행중인 디비 접속.
+
+  하나의 요청이 디비 접속을 닫는다.
+
+  JVM(자바 버츄얼 머신)이 실행중인 1번째 쓰레드를 2번째 쓰레드로 전환한다.
+
+  2번째 쓰레드 안에서 실행중인 2번째 요청이 디비 접속을 한다.
+  (이 동일한 디비 접속은 1번째 요청에 의해 종료했다.).
+
+  JVM은 운영중인 쓰레드(2번째 쓰레드)를 1번째 쓰레드에게 되돌려준다.
+
+  1번째 쓰레드는 마지막 블록안에서 2번 디비 접속을 종료한다.
+
+  JVM 2번째 쓰레드에게 운영중인 쓰레드(1번째 쓰레드)를 전환한다.
+
+  2번째 요청의 2번째 쓰레드는 디비 접속을 사용하려 시도하지만, 1번째 요청으로 닫혀있어서 실패한다.
+  
+</pre>
+
 <p>
 Here is an example of properly written code to use a database connection
 obtained from a connection pool:
@@ -852,7 +981,7 @@ obtained from a connection pool:
 </pre>
 
 </blockquote></td></tr></table>
-
+-----------------------------------------------------------------------------------------------------
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Context versus GlobalNamingResources"><!--()--></a><a name="Context_versus_GlobalNamingResources"><strong>Context versus GlobalNamingResources</strong></a></font></td></tr><tr><td><blockquote>
 <p>
   Please note that although the above instructions place the JNDI declarations in a Context

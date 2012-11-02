@@ -132,26 +132,24 @@ CA를 통해 공식적으로 등록된 것이 아니고, 그러므로 진짜로 
 제공하지 않습니다. 사용자가 한 번 승인하면, 인증서는 적어도 전체 브라우저 세션에서 유효한 것으로 
 간주될 것입니다.</p>
 
-<p>Also, while the SSL protocol was designed to be as efficient as securely
-possible, encryption/decryption is a computationally expensive process from
-a performance standpoint.  It is not strictly necessary to run an entire
-web application over SSL, and indeed a developer can pick and choose which
-pages require a secure connection and which do not.  For a reasonably busy
-site, it is customary to only run certain pages under SSL, namely those
-pages where sensitive information could possibly be exchanged.  This would
-include things like login pages, personal information pages, and shopping
-cart checkouts, where credit card information could possibly be transmitted.
-Any page within an application can be requested over a secure socket by
-simply prefixing the address with <code>https:</code> instead of
-<code>http:</code>.  Any pages which absolutely <strong>require</strong>
-a secure connection should check the protocol type associated with the
-page request and take the appropriate action if <code>https</code> is not
-specified.</p>
+<p>또한, SSL 프로토콜이 효율적으로 안전한 통신이 가능하도록 설계되었지만, 성능의 관점에서 보면
+암호화/복호화는 컴퓨터 연산이 많이 필요한 처리 절차입니다. 전체 웹 애플리케이션을 
+SSL 위에서 돌아가게 하는 것이 반드시 필요한 것은 아닙고, 실제로 개발자가 어느 페이지가 안전한 
+연결이 필요하고 어느 페이지가 그렇지 않은지 선택할 수 있습니다. 상당히 바쁜 사이트에서, 
+특정 페이지만을 SSL로 운영하는 것은 선택하기 나름이고, 다시 말하면 그러한 페이지들은 
+민감한 정보들이 교환되는 페이지들입니다. 여기에는 로그인 페이지, 개인 정보 페이지, 그리고 
+신용 카드 정보가 전송되는 쇼핑 카트 체크아웃 페이지를 포함됩니다. 웹 애플리케이션에 있는 
+어느 페이지이든 간단히 <code>http:</code> 대신에 주소줄에 <code>https:</code>로 
+시작하면 안전한 소켓을 통해서 요청될 수 있습니다. 절대로 안전한 연결이 필요한 페이지가 있다면
+만약 <code>https</code>가 지정되지 않았을 때 페이지 요청과 관련된 프로토콜 타입을 확인하고 
+적절한 액션을 취해야 합니다.</p>
 
-<p>Finally, using name-based virtual hosts on a secured connection can be
-problematic.  This is a design limitation of the SSL protocol itself.  The SSL
-handshake, where the client browser accepts the server certificate, must occur
-before the HTTP request is accessed.  As a result, the request information
+<p>마지막으로, 이름 기반의 가상 호스트를 안전한 연결 위에서 사용하는 것은 문제가 발생할 수 있습니다.
+이것은 SSL 프로토콜 자체적인 설계상의 한계입니다. 클라이언트 브라우저가 서버 인증서를 승인하는 SSL 연결은
+HTTP 요청이 접근하기 전에 일어나야 합니다. 결과적으로, 가상 호스트 이름을 포함하는 요청 정보는 
+인증에 앞서 결정지어질 수 없고, 그러므로 하나의 IP 주소에 복수의 인증서를 할당할 수 없습니다. 
+만약 하나의 IP 주소에 있는 모든 가상 호스트가 같은 인증서에 대해서 인증이 필요하다면, 멀티 가상 호스트의 
+As a result, the request information
 containing the virtual host name cannot be determined prior to authentication,
 and it is therefore not possible to assign multiple certificates to a single
 IP address.  If all virtual hosts on a single IP address need to authenticate

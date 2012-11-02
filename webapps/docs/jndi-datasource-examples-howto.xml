@@ -753,13 +753,6 @@ JDBC/OCI driver(Oracle8i 8.1.7.1 JDBC/OCI Driver)를 <a href="http://otn.oracle.
 
 
 
-<subsection name="Putting it all together">
-<p>
-Ensure that you have the <code>ocijdbc8.dll</code> or <code>.so</code> in your <code>$PATH</code> or <code>LD_LIBRARY_PATH</code>
- (possibly in <code>$ORAHOME\bin</code>) and also confirm that the native library can be loaded by a simple test program
-using <code>System.loadLibrary("ocijdbc8");</code>
-</p>
-
 <subsection name="모든 것을 다같이 대입할때">
 <p>
 당신이 <code>ocijdbc8.dll</code>나 <code>.so</code>를 당신의 <code>$PATH</code>나 <code>LD_LIBRARY_PATH</code>에

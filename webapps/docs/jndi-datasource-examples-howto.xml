@@ -994,8 +994,7 @@ of events which could cause this error in Tomcat:
 </pre>
 
 <p>
-Here is an example of properly written code to use a database connection
-obtained from a connection pool:
+커넥션 풀에서 데이터베이스를 사용하기 위한 적절하게 쓰여진 코드의 예제가 여기 있다.
 </p>
 <pre>
   Connection conn = null;

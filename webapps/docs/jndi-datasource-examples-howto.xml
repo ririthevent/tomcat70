@@ -1054,15 +1054,25 @@ of events which could cause this error in Tomcat:
 </subsection>
 
 
------------------------------------------------------------------------------------------------------
+
 <subsection name="JNDI Resource Naming and Realm Interaction">
 <p>
   In order to get Realms to work, the realm must refer to the datasource as
   defined in the &lt;GlobalNamingResources&gt; or &lt;Context&gt; section, not a datasource as renamed
   using &lt;ResourceLink&gt;.
 </p>
-</subsection>
 
+
+
+
+
+
+<subsection name="JNDI 자원의 정의와 범위의 상호작용">
+<p>
+  일하기 위한 공간을 얻기 위하여, 이 공간은 반드시 정의된 &lt;GlobalNamingResources&gt;나 or &lt;Context&gt; 부분에서 
+  데이타소스를 참조하여야 하며 사용하고 있는 재정의된 &lt;ResourceLink&gt;는 안된다.
+</p>
+</subsection>
 </section>
 
 </body>

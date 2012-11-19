@@ -1044,7 +1044,7 @@ of events which could cause this error in Tomcat:
 </subsection>
 
 
-<subsection name="컨텍스트와 글로벌네이밍리소스( GlobalNamingResources)">
+<subsection name="컨텍스트와 글로벌네이밍리소스(GlobalNamingResources)">
 <p>
   비록 위의 지시한 장소가 JNDI 선언장소의 컨텍스트 요소 내부일지라도, 그것은 가능하고 때때로  
   바람직하게 서버 환경설정파일의 <a href="config/globalresources.html">GlobalNamingResources</a>부분에
@@ -1052,16 +1052,6 @@ of events which could cause this error in Tomcat:
   해당 자원은 글로벌네이밍리소스 부분에 위치며 있으며 서버의 컨텍스트 중에서 공유될 것이다.
 </p>
 </subsection>
-
-
-
-<subsection name="JNDI Resource Naming and Realm Interaction">
-<p>
-  In order to get Realms to work, the realm must refer to the datasource as
-  defined in the &lt;GlobalNamingResources&gt; or &lt;Context&gt; section, not a datasource as renamed
-  using &lt;ResourceLink&gt;.
-</p>
-
 
 
 

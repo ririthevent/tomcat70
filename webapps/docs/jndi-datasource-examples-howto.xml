@@ -24,7 +24,7 @@
 
     <properties>
         <author email="leslie.hughes@rubus.com">레즈 휴스</author>
-        <author email="david-tomcat@haraburda.com">데이비드 하라버다</author>
+         <author email="david-tomcat@haraburda.com">데이비드 하라버다</author>
         <author>글린 닐슨</author>
         <author email="yoavs@apache.org">요압 샤피라</author>
         <title>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</title>
@@ -377,14 +377,8 @@ copy <code>jstl.jar</code> and <code>standard.jar</code> to your web app's
 당신이 JSTL을 얻으면, <code>jstl.jar</code>과 <code>standard.jar</code>를 당신의 web app's
 <code>WEB-INF/lib</code>의 디렉토리에 복사하라.</p>
 
-<p>Finally deploy your web app into <code>$CATALINA_BASE/webapps</code> either
-as a warfile called <code>DBTest.war</code> or into a sub-directory called
-<code>DBTest</code></p>
 <p>마지막으로 당신의 웹 앱안에 <code>$CATALINA_BASE/webapps</code> 워파일(warfile)이라 불리는 <code>DBTest.war</code>이나 
 <code>DBTest</code>라고 불리는 하위 디렉토리안에 파일들을 배치하라.</p>
-<p>Once deployed, point a browser at
-<code>http://localhost:8080/DBTest/test.jsp</code> to view the fruits of
-your hard work.</p>
 <p>배치하고 하면, <code>http://localhost:8080/DBTest/test.jsp</code>에서 브라우저를 
 당신의 결과물을 보기위해 지정하라.</p>
 </subsection>
@@ -396,14 +390,6 @@ your hard work.</p>
 usual gotchas :-)</p>
 <p>오라클은 MySQL 환경설정의 통상적인 사용법을 제외하고 나서, 최소한의 변화가 요구된다. :-)</p>
 
-<p>Drivers for older Oracle versions may be distributed as *.zip files rather
-than *.jar files. Tomcat will only use <code>*.jar</code> files installed in
-<code>$CATALINA_HOME/lib</code>. Therefore <code>classes111.zip</code>
-or <code>classes12.zip</code> will need to be renamed with a <code>.jar</code>
-extension. Since jarfiles are zipfiles, there is no need to unzip and jar these
-files - a simple rename will suffice.</p>
-
-
 <p>드라이버는 오라클의 오래된 버전을 위해서 *.jar 파일보다 오히려 *.zip 파일이 더 배포되었을 수도 있다.
 톰캣은 오직<code>$CATALINA_HOME/lib</code>안에서 설치된 <code>*.jar</code>파일을 사용하는 프로그램 일 것이다.
 그러므로, <code>classes111.zip</code>이나 <code>classes12.zip</code>은 <code>.jar</code>의 확장명으로의 개명이 
@@ -411,30 +397,10 @@ files - a simple rename will suffice.</p>
 </p>
 
 
-
-
-
-<p>For Oracle 9i onwards you should use <code>oracle.jdbc.OracleDriver</code>
-rather than <code>oracle.jdbc.driver.OracleDriver</code> as Oracle have stated
-that <code>oracle.jdbc.driver.OracleDriver</code> is deprecated and support
-for this driver class will be discontinued in the next major release.
-</p>
-
 <p>오라클 9i의 사용을 위하여 사용자는 앞으로 <code>oracle.jdbc.driver.OracleDriver</code>보다 
 <code>oracle.jdbc.OracleDriver</code>를 오라클이 제시했던 것처럼 대로 사용해야 한다.
 <code>oracle.jdbc.driver.OracleDriver</code>는 덜 친숙했었고, 이것의 드라이버 클래스를 지원한 다음 주요 릴리즈에서
 계속 사용되지 않을 것이다.</p>
-
-
-
-
-<h3>1. Context configuration</h3>
-<p>In a similar manner to the mysql config above, you will need to define your
-Datasource in your <a href="config/context.html">Context</a>. Here we define a
-Datasource called myoracle using the thin driver to connect as user scott,
-password tiger to the sid called mysid. (Note: with the thin driver this sid is
-not the same as the tnsname). The schema used will be the default schema for the
-user scott.</p>
 
 <h3>1. 컨텍스트 환경설정</h3>
 <p>mysql 환경설정안에서의 비슷한 방식으로, 사용자는 사용자의 <a href="config/context.html">Context</a>에서
@@ -442,26 +408,6 @@ user scott.</p>
 유저 스캇으로 연결하기 위해 내장된 드라이버(thin driver)에서 사용중에 있다. 비밀번호는 mysid라고 불려지는 sid에서 
 타이거(tiger)라고 되어 있다.(주의사항: 내장된 드라이버(thin driver)와 sid(Segment IDentifier)는 tnsname이 동일하지 않다.)
 스키마는 기본적인 스키마로 사용자 스캇을 위해 사용될 것이다.</p>
-
-
-
-
-
-
-
-
-
-
-<h3>1. Context configuration</h3>
-<p>Use of the OCI driver should simply involve a changing thin to oci in the URL string.
-</p>
-<source>
-&lt;Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:mysid"
-              username="scott" password="tiger" maxActive="20" maxIdle="10"
-              maxWait="-1"/&gt;
-</source>
 
 <h3>1. 컨텍스트 환경설정</h3>
 <p>
@@ -475,36 +421,6 @@ oci안에의 URL주소에서 변하는 저사양고객(changing thin)에 분명�
               maxWait="-1"/&gt;
 </source>
 
-
-
-
-
-
-
-
-<h3>2.    web.xml configuration</h3>
-<p>You should ensure that you respect the element ordering defined by the DTD when you
-create you applications web.xml file.</p>
-<source>
-&lt;resource-ref&gt;
- &lt;description&gt;Oracle Datasource example&lt;/description&gt;
- &lt;res-ref-name&gt;jdbc/myoracle&lt;/res-ref-name&gt;
- &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
- &lt;res-auth&gt;Container&lt;/res-auth&gt;
-&lt;/resource-ref&gt;
-</source>
-<h3>3.   Code example</h3>
-<p>You can use the same example application as above (asuming you create the required DB
-instance, tables etc.) replacing the Datasource code with something like</p>
-<source>
-Context initContext = new InitialContext();
-Context envContext  = (Context)initContext.lookup("java:/comp/env");
-DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-Connection conn = ds.getConnection();
-//etc.
-</source>
-</subsection>
-
 <h3>2.    web.xml 환경설정</h3>
 <p>사용자는 web.xml 파일을 프로그래밍 할때, DTD에 의한 요소의 정리법을 정의한 것을 반드시 우선순위로 삼아야 한다.</p>
 <source>
@@ -516,33 +432,27 @@ Connection conn = ds.getConnection();
 &lt;/resource-ref&gt;
 </source>
 <h3>3.   코드 환경설정</h3>
-<p>사용자는 위와 같이(사용자가 만든 필수적인 DB인스턴스나 테이블 등.) 대체가능한 데이타소스코드와 이런 비슷한 종류와 함께 동일하게 예시된 어플리케이션을 사용할 수 있다.</p> 
+<p>사용자는 위와 같이(사용자가 만든 필수적인 DB인스턴스나 테이블 등.) 
+대체가능한 데이타소스코드와 이런 비슷한 종류와 함께 동일하게 예시된 어플리케이션을 사용할 수 있다.</p> 
+<source>
+Context initContext = new InitialContext();
+Context envContext  = (Context)initContext.lookup("java:/comp/env");
+DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+Connection conn = ds.getConnection();
+//etc.
+</source>
+</subsection>
+
+
 
 <subsection name="PostgreSQL">
-<h3>0.    Introduction</h3>
-<p>PostgreSQL is configured in a similar manner to Oracle.</p>
+<h3>0. 소개</h3>
+<p>PostgreSQL은 오라클에서 유사한 방법으로 설정되있다.</p>
 
-<h3>1. Required files </h3>
+<h3>1. 필요한 파일들</h3>
 <p>
-Copy the Postgres JDBC jar to $CATALINA_HOME/lib. As with Oracle, the
-jars need to be in this directory in order for DBCP's Classloader to find
-them. This has to be done regardless of which configuration step you take next.
-</p>
-
-<h3>1. 필수적인 파일들</h3>
-<p>
-이 시점에서의 사용자는 2가지 선택권이 있다: 모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
-하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
-</p>
-
-
-
-
-<h3>2. Resource configuration</h3>
-
-<p>
-You have two choices here: define a datasource that is shared across all Tomcat
-applications, or define a datasource specifically for one application.
+$CATALINA_HOME/lib의 장소에 Postgres JDBC jar를 복사하라. 오라클과 함께, 복사한 자르(jars)파일은 그것들로 하여금 
+DBCP's Classloader를 찾기 위해서 해당폴더안에 있어야 한다. 이 설정은 사용자의 원활한 진행을 위해 필요하다.
 </p>
 
 <h3>2. 자원(Resource) 환경설정</h3>
@@ -550,29 +460,6 @@ applications, or define a datasource specifically for one application.
 여기서도 역시 사용자에게 2가지 선택권이 있다:모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
 하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
 </p>
-
-
-
-
-
-
-<h4>2a. Shared resource configuration</h4>
-<p>
-Use this option if you wish to define a datasource that is shared across
-multiple Tomcat applications, or if you just prefer defining your datasource
-in this file.
-</p>
-<p><i>This author has not had success here, although others have reported so.
-Clarification would be appreciated here.</i></p>
-
-<source>
-&lt;Resource name="jdbc/postgres" auth="Container"
-          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-          url="jdbc:postgresql://127.0.0.1:5432/mydb"
-          username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
-</source>
-
-
 
 <h4>2a. 공유된자원 환경설정</h4>
 <p>
@@ -586,42 +473,6 @@ Clarification would be appreciated here.</i></p>
           type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
           url="jdbc:postgresql://127.0.0.1:5432/mydb"
           username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
-</source>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h4>2b. Application-specific resource configuration</h4>
-
-<p>
-Use this option if you wish to define a datasource specific to your application,
-not visible to other Tomcat applications. This method is less invasive to your
-Tomcat installation.
-</p>
-
-<p>
-Create a resource definition for your <a href="config/context.html">Context</a>.
-The Context element should look something like the following.
-</p>
-
-<source>
-&lt;Context&gt;
-
-&lt;Resource name="jdbc/postgres" auth="Container"
-          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-          url="jdbc:postgresql://127.0.0.1:5432/mydb"
-          username="myuser" password="mypasswd" maxActive="20" maxIdle="10"
-maxWait="-1"/&gt;
-&lt;/Context&gt;
 </source>
 
 <h4>2b. 어플리케이션 특수자원 환경설정</h4>
@@ -667,14 +518,6 @@ maxWait="-1"/&gt;
 &lt;/resource-ref&gt;
 </source>
 
-
-
-
-
-
-
-
-
 <h4>4. 데이타소스에 접근하는 것.</h4>
 <p>
 데이타소스 프로그램에 맞게 접근 할 때, 사용자의 JNDI 룩업에 <code>java:/comp/env</code>을 넣는 것을 기억하면서,
@@ -698,18 +541,6 @@ if ( ds == null ) {
 
 </subsection>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <section name="DBCP 이외의 해결책들">
 <p>
@@ -737,39 +568,12 @@ JDBC/OCI driver(Oracle8i 8.1.7.1 JDBC/OCI Driver)를 <a href="http://otn.oracle.
 </p>
 </subsection>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <subsection name="모든 것을 다같이 대입할때">
 <p>
 당신이 <code>ocijdbc8.dll</code>나 <code>.so</code>를 당신의 <code>$PATH</code>나 <code>LD_LIBRARY_PATH</code>에
 (가능하다면 <code>$ORAHOME\bin</code>안에)확실히 가지고 있으면, 원래 라이브러리에 사용하고 있는 
 <code>System.loadLibrary("ocijdbc8");</code>에 단순한 테스트 프로그램에 의해 적재되어질 수 있다.
 </p>
-
-<p>
-You should next create a simple test servlet or jsp that has these
-<strong>critical lines</strong>:
-</p>
-<source>
-DriverManager.registerDriver(new
-oracle.jdbc.driver.OracleDriver());
-conn =
-DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
-</source>
 
 <p>
 사용자는 간단한 테스트용 서블릿을 만들거나 jsp에 만들어야 한다. 
@@ -783,31 +587,11 @@ conn =
 DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
 </source>
 
-
-<p>
-where database is of the form <code>host:port:SID</code> Now if you try to access the URL of your
-test servlet/jsp and what you get is a
-<code>ServletException</code> with a root cause of <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>.
-</p>
-
 <p>
 데이타베이스의 형식(<code>host:port:SID</code>)이고, 만약에 지금 사용자가 사용자의 시험용 servlet/jsp의 URL에 접근하는 것을
 시도한다면, 사용자가 <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>의 근원과 함께 
 <code>ServletException</code>을 획득한다.
 </p>
-
-
-
-
-<p>
-First, the <code>UnsatisfiedLinkError</code> indicates that you have
-<ul>
-<li>a mismatch between your JDBC classes file and
-your Oracle client version. The giveaway here is the message stating that a needed library file cannot be
-found. For example, you may be using a classes12.zip file from Oracle Version 8.1.6 with a Version 8.1.5
-Oracle client. The classeXXXs.zip file and Oracle client software versions must match.
-</li>
-
 
 <p>
 첫째로, <code>UnsatisfiedLinkError</code>는 사용자가 다음의 상황에 처해있다는 것을 알려준다.
@@ -817,24 +601,6 @@ Oracle client. The classeXXXs.zip file and Oracle client software versions must 
 사용자는 오라클 버전 8.1.5와 함께 오라클 버전 8.1.6버전부터 클래스12 파일(classes12.zip file)을 사용하고 있을지도 모른다.
 이런 클래스xxx파일(classeXXXs.zip file)과 오라클 클라이언트 소프트웨어 버전은 반드시 일치해야 한다.
 </li>
-
-
-<li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code> problem.</li>
-<li>It has been reported that ignoring the driver you have downloded from otn and using
-the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will also work.
-</li>
-</ul>
-</p>
-<p>
-Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designator</code>
-</p>
-<p>
-The Oracle documentation says : "Cause: The login (connect) string contains an invalid
-driver designator. Action: Correct the string and re-submit."
-Change the database connect string (of the form <code>host:port:SID</code>) with this one:
-<code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
-</p>
-
 
 <li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code>의 문제.</li>
 <li>이것으로서 당신이 otn과 <code>$ORAHOME\jdbc\lib</code>에서 작동할 그 디렉토리로부터
@@ -852,34 +618,6 @@ Change the database connect string (of the form <code>host:port:SID</code>) with
 <code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
 </p>
 
-
-
-
-<p>
-<i>Ed. Hmm, I don't think this is really needed if you sort out your TNSNames - but I'm not an Oracle DBA :-)</i>
-</p>
-</subsection>
-</section>
-
-<section name="Common Problems">
-<p>Here are some common problems encountered with a web application which
-uses a database and tips for how to solve them.</p>
-
-<subsection name="Intermittent Database Connection Failures">
-<p>
-Tomcat runs within a JVM.  The JVM periodically performs garbage collection
-(GC) to remove java objects which are no longer being used.  When the JVM
-performs GC execution of code within Tomcat freezes. If the maximum time
-configured for establishment of a database connection is less than the amount
-of time garbage collection took you can get a database connection failure.
-</p>
-
-
-
-
-
-
-
 <p>
 <i>Ed.흠, 나는 만약에 사용자가 사용자의 TNSNames를 정리하는 것이 정말로 필요하지 않는다고 봐요. 오라클 데이터베이스 관리자가 아니니까요:-)</i>
 </p>
@@ -896,18 +634,6 @@ of time garbage collection took you can get a database connection failure.
 최대 환경설정 시간은 GC의 시간의 총량보다 적다면 사용자는 데이터베이스 연결 획득 실패할 수 있다.
 </p>
 
-
-
-<p>To collect data on how long garbage collection is taking add the
-<code>-verbose:gc</code> argument to your <code>CATALINA_OPTS</code>
-environment variable when starting Tomcat.  When verbose gc is enabled
-your <code>$CATALINA_BASE/logs/catalina.out</code> log file will include
-data for every garbage collection including how long it took.</p>
-
-<p>When your JVM is tuned correctly 99% of the time a GC will take less
-than one second.  The remainder will only take a few seconds.  Rarely,
-if ever should a GC take more than 10 seconds.</p>
-
 <p>장기간에 걸친 불필요한 정보정리(garbage collection)에서 자료를 모으기 위한것은 톰캣을 시작할 때,
 <code>-verbose:gc</code> 독립변수를 당신의 <code>CATALINA_OPTS</code>환경에 추가로 가져가고 있는 것이다.
 어지러운 gc(garbage collection)는 당신의 <code>$CATALINA_BASE/logs/catalina.out</code> 로그 파일이 장기간에 
@@ -915,51 +641,6 @@ if ever should a GC take more than 10 seconds.</p>
 
 <p> 사용자의 JVM의 해당 시간에 99% 가깝게 조정된  GC는 1초보다 적게 걸린다.
 나머지는 오직 몇초만이 걸릴 것이다. 드물게도, 언제든지 GC가 10초 보다 더욱 GC를 가져가야 한다.</p>
-
-
-
-
-
-
-
-
-<p>Make sure that the db connection timeout is set to 10-15 seconds.
-For the DBCP you set this using the parameter <code>maxWait</code>.</p>
-
-</subsection>
-
-<subsection name="Random Connection Closed Exceptions">
-<p>
-These can occur when one request gets a db connection from the connection
-pool and closes it twice.  When using a connection pool, closing the
-connection just returns it to the pool for reuse by another request,
-it doesn't close the connection.  And Tomcat uses multiple threads to
-handle concurrent requests. Here is an example of the sequence
-of events which could cause this error in Tomcat:
-</p>
-<pre>
-  Request 1 running in Thread 1 gets a db connection.
-
-  Request 1 closes the db connection.
-
-  The JVM switches the running thread to Thread 2
-
-  Request 2 running in Thread 2 gets a db connection
-  (the same db connection just closed by Request 1).
-
-  The JVM switches the running thread back to Thread 1
-
-  Request 1 closes the db connection a second time in a finally block.
-
-  The JVM switches the running thread back to Thread 2
-
-  Request 2 Thread 2 tries to use the db connection but fails
-  because Request 1 closed it.
-</pre>
-
-
-
-
 
 <p>디비 접속 시간초과는 10~15초로 되어 있는것을 확실히 해라. 이런 DBCP(DataBase Connection Pool)를 위하여
 사용자는 <code>maxWait</code>의 사용중인 인자값을 정하라.</p>
@@ -1033,17 +714,6 @@ of events which could cause this error in Tomcat:
 
 </subsection>
 
-<subsection name="Context versus GlobalNamingResources">
-<p>
-  Please note that although the above instructions place the JNDI declarations in a Context
-  element, it is possible and sometimes desirable to place these declarations in the
-  <a href="config/globalresources.html">GlobalNamingResources</a> section of the server
-  configuration file.  A resource placed in the GlobalNamingResources section will be shared
-  among the Contexts of the server.
-</p>
-</subsection>
-
-
 <subsection name="컨텍스트와 글로벌네이밍리소스(GlobalNamingResources)">
 <p>
   비록 위의 지시한 장소가 JNDI 선언장소의 컨텍스트 요소 내부일지라도, 그것은 가능하고 때때로  
@@ -1052,10 +722,6 @@ of events which could cause this error in Tomcat:
   해당 자원은 글로벌네이밍리소스 부분에 위치며 있으며 서버의 컨텍스트 중에서 공유될 것이다.
 </p>
 </subsection>
-
-
-
-
 
 <subsection name="JNDI 자원의 정의와 범위의 상호작용">
 <p>

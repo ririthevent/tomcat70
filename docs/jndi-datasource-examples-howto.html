@@ -6,8 +6,8 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Nov 20 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%ED%92%80(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 풀(DBCP) 환경설정</a><ol><li><a href="#%EC%84%A4%EC%B9%98">설치</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#MySQL_DBCP_%EC%98%88%EC%8B%9C">MySQL DBCP 예시</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i,_9i_&amp;_10g">오라클 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#DBCP_%EC%9D%B4%EC%99%B8%EC%9D%98_%ED%95%B4%EA%B2%B0%EC%B1%85%EB%93%A4">DBCP 이외의 해결책들</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D">오라클 8i과 OCI 고객</a><ol><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%AA%A8%EB%93%A0_%EA%B2%83%EC%9D%84_%EB%8B%A4%EA%B0%99%EC%9D%B4_%EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C">모든 것을 다같이 대입할때</a></li></ol></li><li><a href="#Common_Problems">Common Problems</a><ol><li><a href="#Intermittent_Database_Connection_Failures">Intermittent Database Connection Failures</a></li></ol></li><li><a href="#%EA%B3%B5%ED%86%B5%EC%A0%81%EC%9D%B8_%EB%AC%B8%EC%A0%9C%EB%93%A4">공통적인 문제들</a><ol><li><a href="#%EA%B0%84%EA%B0%84%EC%9D%B4_%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EC%8B%A4%ED%8C%A8">간간이 발생하는 데이터베이스 연결 실패</a></li><li><a href="#Random_Connection_Closed_Exceptions">Random Connection Closed Exceptions</a></li><li><a href="#%EB%AC%B4%EC%9E%91%EC%9C%84%EC%9D%98_%EC%A0%91%EC%88%99%EA%B3%BC_%EB%8B%AB%ED%98%80%EC%A7%84_%EC%98%88%EC%99%B8%EB%93%A4">무작위의 접숙과 닫혀진 예외들</a></li><li><a href="#Context_versus_GlobalNamingResources">Context versus GlobalNamingResources</a></li><li><a href="#%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%99%80_%EA%B8%80%EB%A1%9C%EB%B2%8C%EB%84%A4%EC%9D%B4%EB%B0%8D%EB%A6%AC%EC%86%8C%EC%8A%A4(GlobalNamingResources)">컨텍스트와 글로벌네이밍리소스(GlobalNamingResources)</a></li><li><a href="#JNDI_%EC%9E%90%EC%9B%90%EC%9D%98_%EC%A0%95%EC%9D%98%EC%99%80_%EB%B2%94%EC%9C%84%EC%9D%98_%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9">JNDI 자원의 정의와 범위의 상호작용</a></li></ol></li></ul>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Dec 1 2012</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI(Java Naming Directory Interface) 데이타베이스 다루는 방법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%B0%A8%EB%A1%80"><strong>차례</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84_%EB%A7%A4%EB%8B%88%EC%A0%80,_%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B3%B5%EA%B8%89%EC%9E%90_%EA%B5%AC%EC%A1%B0%EC%99%80_%EB%A9%94%EB%AA%A8%EB%A6%AC_%EB%82%AD%EB%B9%84">드라이버 매니저, 서비스공급자 구조와 메모리 낭비</a></li><li><a href="#%EB%8D%B0%EC%9D%B4%ED%83%80%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%ED%92%80(DBCP)_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">데이타베이스 연결 풀(DBCP) 환경설정</a><ol><li><a href="#%EC%84%A4%EC%B9%98">설치</a></li><li><a href="#Preventing_database_connection_pool_leaks">Preventing database connection pool leaks</a></li><li><a href="#MySQL_DBCP_%EC%98%88%EC%8B%9C">MySQL DBCP 예시</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i,_9i_&amp;_10g">오라클 8i, 9i &amp; 10g</a></li><li><a href="#PostgreSQL">PostgreSQL</a></li></ol></li><li><a href="#DBCP_%EC%9D%B4%EC%99%B8%EC%9D%98_%ED%95%B4%EA%B2%B0%EC%B1%85%EB%93%A4">DBCP 이외의 해결책들</a></li><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D">오라클 8i과 OCI 고객</a><ol><li><a href="#%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#%EB%AA%A8%EB%93%A0_%EA%B2%83%EC%9D%84_%EB%8B%A4%EA%B0%99%EC%9D%B4_%EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C">모든 것을 다같이 대입할때</a></li></ol></li><li><a href="#%EA%B3%B5%ED%86%B5%EC%A0%81%EC%9D%B8_%EB%AC%B8%EC%A0%9C%EB%93%A4">공통적인 문제들</a><ol><li><a href="#%EA%B0%84%EA%B0%84%EC%9D%B4_%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%97%B0%EA%B2%B0_%EC%8B%A4%ED%8C%A8">간간이 발생하는 데이터베이스 연결 실패</a></li><li><a href="#%EB%AC%B4%EC%9E%91%EC%9C%84%EC%9D%98_%EC%A0%91%EC%88%99%EA%B3%BC_%EB%8B%AB%ED%98%80%EC%A7%84_%EC%98%88%EC%99%B8%EB%93%A4">무작위의 접숙과 닫혀진 예외들</a></li><li><a href="#%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%99%80_%EA%B8%80%EB%A1%9C%EB%B2%8C%EB%84%A4%EC%9D%B4%EB%B0%8D%EB%A6%AC%EC%86%8C%EC%8A%A4(GlobalNamingResources)">컨텍스트와 글로벌네이밍리소스(GlobalNamingResources)</a></li><li><a href="#JNDI_%EC%9E%90%EC%9B%90%EC%9D%98_%EC%A0%95%EC%9D%98%EC%99%80_%EB%B2%94%EC%9C%84%EC%9D%98_%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9">JNDI 자원의 정의와 범위의 상호작용</a></li></ol></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>JNDI 데이타베이스 환경설정은 JNDI-자원-사용법에 (JNDI-Resources-HOWTO) 광범위하게 퍼져있다.
@@ -85,7 +85,7 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 
 <p>
 이 라이브러리들은 <code>$CATALINA_HOME/lib/tomcat-dbcp.jar</code>의
-단하나의 자르(jar) 안에 위치해있다. 그러나 오직 클래스들은 연결 풀링이 포함되는 것을 
+단 하나의 jar 안에 위치해있다. 그러나 오직 클래스들은 연결 풀링이 포함되는 것을 
 필요로 하고, 그리고 그런 패키지들은 프로그램들과 
 간섭하는 것을 피하기 위해 개명하게 되었다.
 </p>
@@ -170,12 +170,12 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 <p><a href="http://www.mysql.com/products/mysql/index.html">MySQL</a>의 버전(판)과 JDBC드라이버는 작업하기 위해 보고되었다.
 </p>
 <ul>
-<li>MySQL 3.23.47, MySQL 3.23.47 이노디비를 사용중에 있다(using InnoDB,). MySQL 3.23.58,  MySQL 4.0.1알파</li>
+<li>MySQL 3.23.47, MySQL 3.23.47 이노디비를 사용하고 있다(using InnoDB,). MySQL 3.23.58,  MySQL 4.0.1알파</li>
 <li><a href="http://www.mysql.com/products/connector-j">Connector/J</a> 3.0.11-안정적인 (공식적인 JDBC 드라이버)</li>
 <li><a href="http://mmmysql.sourceforge.net">mm.mysql</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
-<p>당신이 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
+<p>여러분은 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
 
 <h3>1. MySQL 환경설정</h3>
 <p>
@@ -228,9 +228,6 @@ mysql&gt;
 
     &lt;!-- maxActive: Maximum number of database connections in pool. 
      사용하는 커넥션의 최대값: 공통적인 데이타베이스 접속의 최대값
-  Make sure you
-         configure your mysqld max_connections large enough to handle
-         all of your db connections. 
   당신은 확실하게 당신의 mysqld의 엄청난 접속을 충분히 많은 것을, 당신의 디비 접속에서의 모든것을 다루기 위해 환경설정하라.
   Set to -1 for no limit.
   제한없기 위해 -1값에서 정하라.(0보다 작고,-값에선 무한대기)
@@ -241,32 +238,25 @@ mysql&gt;
   제한없기위해 -1에서 지정하라(0보다 작고,-값에선 무한대기). 이것을 또한 DBCP 문서에서 보고, minEvictableIdleTimeMillis(사용되지 않는 커넥션을 추출할때 지정한 시간 
   이상 비활성화 상태인 것만 추출하는 최소한의 시간)의 환경설정 매개변수와 minEvictableIdleTimeMillis도 그렇게 하라. 
          --&gt;
-    &lt;!-- maxWait: Maximum time to wait for a database connection to become available
-         in ms, in this example 10 seconds. An Exception is thrown if
-         this timeout is exceeded.  Set to -1 to wait indefinitely.
-         --&gt;
+    &lt;!-- maxWait: 
     사용하는 커넥션의 최대 대기값: ms에서 이용가능케 되기위한 어떤 데이타베이스 접속을 위해 기다리는 최대의 시간, 예를들어 10초 이다. 어떤 예외는 이것이 남는 시간이 초과되면 동작된다.
     지정된 시간없이 기다리게 하기 위해서 -1값으로 지정하라.
+         --&gt;
 
 
 
  
-&lt;!-- username and password: MySQL username and password for database connections  --&gt;
-//사용자이름과 비밀번호: 데이터베이스 접속을 위한 MySQL 사용자이름과 비밀번호
+&lt;!-- 사용자이름과 비밀번호: 데이터베이스 접속을 위한 MySQL 사용자이름과 비밀번호 --&gt;
 
-    &lt;!-- driverClassName: Class name for the old mm.mysql JDBC driver is
-org.gjt.mm.mysql.Driver - we recommend using Connector/J though. 
- 드라이버클래스이름: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 org.gjt.mm.mysql.Driver -이다. 우린 
+    &lt;!-- driverClassName: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 org.gjt.mm.mysql.Driver -이다. 우린 
 Connector/J를 통해 사용하는 것을 추천한다.
          Class name for the official MySQL Connector/J driver is com.mysql.jdbc.Driver.
-  공식적인 MySQL로 연결하는 것/제이 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
+  공식적인 MySQL Connector/J 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
  
          --&gt;
 
 
-    &lt;!-- url: The JDBC connection url for connecting to your MySQL database.
-경로: 당신의 MySQL 데이타베이스 접속을 위한 JDBC 접속경로.
-         --&gt;
+    &lt;!-- url: MySQL 데이타베이스 접속을 위한 JDBC 접속경로. --&gt;
 
 
   &lt;Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
@@ -278,12 +268,9 @@ Connector/J를 통해 사용하는 것을 추천한다.
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
 
-<h3>3. web.xml configuration</h3>
-<h3>web.xml의 환경설정.</h3> 
+<h3>3. web.xml의 환경설정</h3> 
 
-
-<p>Now create a <code>WEB-INF/web.xml</code> for this test application.</p>
- <p>시험을 프로그램을 위해 <code>WEB-INF/web.xml</code>을 지금 만들어보자.</p>
+<p>테스트 프로그램을 위해 <code>WEB-INF/web.xml</code>을 지금 만들어보자.</p>
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -300,9 +287,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 &lt;/web-app&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
-<h3>4. Test code</h3>
-<h3>4. 시험용 코드</h3>
-<p>Now create a simple <code>test.jsp</code> page for use later.
+<h3>4. 테스트 코드</h3>
 <p>이제 나중에 사용하기 위해 간단한<code>test.jsp</code>를 지금 만들어보자.
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %&gt;
@@ -330,47 +315,24 @@ select id, foo, bar from testdata
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 </p>
 
-<p>That JSP page makes use of <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s
-SQL and Core taglibs. 
-이 JSP페이지는 <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s SQL과 핵심 태그라이브러리에 사용된다.
+
+<p>이 JSP페이지는 <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s SQL과 핵심 태그라이브러리에 사용된다.
 You can get it from
-<a href="http://tomcat.apache.org/taglibs/standard/">Apache Tomcat Taglibs - Standard Tag Library</a>
-project &mdash; just make sure you get a 1.1.x release. 
-당신은 <a href="http://tomcat.apache.org/taglibs/standard/">아파치 태크라이브러리 - 일반적인 태그 라이브러리</a>
+여러분은 <a href="http://tomcat.apache.org/taglibs/standard/">아파치 톰캣 태그라이브러리 - 표준 태그 라이브러리</a>
 프로젝트 &mdash;로부터 얻을 수 있고, 당신은 확실히 1.1.x release를 얻을 수 있다.
-Once you have JSTL,
-copy <code>jstl.jar</code> and <code>standard.jar</code> to your web app's
-<code>WEB-INF/lib</code> directory.
-</p>
 당신이 JSTL을 얻으면, <code>jstl.jar</code>과 <code>standard.jar</code>를 당신의 web app's
 <code>WEB-INF/lib</code>의 디렉토리에 복사하라.</p>
 
-<p>Finally deploy your web app into <code>$CATALINA_BASE/webapps</code> either
-as a warfile called <code>DBTest.war</code> or into a sub-directory called
-<code>DBTest</code></p>
-<p>마지막으로 당신의 웹 앱안에 <code>$CATALINA_BASE/webapps</code> 워파일(warfile)이라 불리는 <code>DBTest.war</code>이나 
+<p>마지막으로 여러분의 웹 앱안에 <code>$CATALINA_BASE/webapps</code> 워파일(warfile)이라 불리는 <code>DBTest.war</code>이나 
 <code>DBTest</code>라고 불리는 하위 디렉토리안에 파일들을 배치하라.</p>
-<p>Once deployed, point a browser at
-<code>http://localhost:8080/DBTest/test.jsp</code> to view the fruits of
-your hard work.</p>
 <p>배치하고 하면, <code>http://localhost:8080/DBTest/test.jsp</code>에서 브라우저를 
 당신의 결과물을 보기위해 지정하라.</p>
 </blockquote></td></tr></table>
 
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%98%A4%EB%9D%BC%ED%81%B4 8i, 9i &amp; 10g"><!--()--></a><a name="%EC%98%A4%EB%9D%BC%ED%81%B4_8i,_9i_&amp;_10g"><strong>오라클 8i, 9i &amp; 10g</strong></a></font></td></tr><tr><td><blockquote>
-<h3>0.    소개</h3>
+<h3>0. 소개</h3>
 
-<p>Oracle requires minimal changes from the MySQL configuration except for the
-usual gotchas :-)</p>
 <p>오라클은 MySQL 환경설정의 통상적인 사용법을 제외하고 나서, 최소한의 변화가 요구된다. :-)</p>
-
-<p>Drivers for older Oracle versions may be distributed as *.zip files rather
-than *.jar files. Tomcat will only use <code>*.jar</code> files installed in
-<code>$CATALINA_HOME/lib</code>. Therefore <code>classes111.zip</code>
-or <code>classes12.zip</code> will need to be renamed with a <code>.jar</code>
-extension. Since jarfiles are zipfiles, there is no need to unzip and jar these
-files - a simple rename will suffice.</p>
-
 
 <p>드라이버는 오라클의 오래된 버전을 위해서 *.jar 파일보다 오히려 *.zip 파일이 더 배포되었을 수도 있다.
 톰캣은 오직<code>$CATALINA_HOME/lib</code>안에서 설치된 <code>*.jar</code>파일을 사용하는 프로그램 일 것이다.
@@ -379,30 +341,10 @@ files - a simple rename will suffice.</p>
 </p>
 
 
-
-
-
-<p>For Oracle 9i onwards you should use <code>oracle.jdbc.OracleDriver</code>
-rather than <code>oracle.jdbc.driver.OracleDriver</code> as Oracle have stated
-that <code>oracle.jdbc.driver.OracleDriver</code> is deprecated and support
-for this driver class will be discontinued in the next major release.
-</p>
-
 <p>오라클 9i의 사용을 위하여 사용자는 앞으로 <code>oracle.jdbc.driver.OracleDriver</code>보다 
 <code>oracle.jdbc.OracleDriver</code>를 오라클이 제시했던 것처럼 대로 사용해야 한다.
 <code>oracle.jdbc.driver.OracleDriver</code>는 덜 친숙했었고, 이것의 드라이버 클래스를 지원한 다음 주요 릴리즈에서
 계속 사용되지 않을 것이다.</p>
-
-
-
-
-<h3>1. Context configuration</h3>
-<p>In a similar manner to the mysql config above, you will need to define your
-Datasource in your <a href="config/context.html">Context</a>. Here we define a
-Datasource called myoracle using the thin driver to connect as user scott,
-password tiger to the sid called mysid. (Note: with the thin driver this sid is
-not the same as the tnsname). The schema used will be the default schema for the
-user scott.</p>
 
 <h3>1. 컨텍스트 환경설정</h3>
 <p>mysql 환경설정안에서의 비슷한 방식으로, 사용자는 사용자의 <a href="config/context.html">Context</a>에서
@@ -410,26 +352,6 @@ user scott.</p>
 유저 스캇으로 연결하기 위해 내장된 드라이버(thin driver)에서 사용중에 있다. 비밀번호는 mysid라고 불려지는 sid에서 
 타이거(tiger)라고 되어 있다.(주의사항: 내장된 드라이버(thin driver)와 sid(Segment IDentifier)는 tnsname이 동일하지 않다.)
 스키마는 기본적인 스키마로 사용자 스캇을 위해 사용될 것이다.</p>
-
-
-
-
-
-
-
-
-
-
-<h3>1. Context configuration</h3>
-<p>Use of the OCI driver should simply involve a changing thin to oci in the URL string.
-</p>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-&lt;Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:mysid"
-              username="scott" password="tiger" maxActive="20" maxIdle="10"
-              maxWait="-1"/&gt;
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
 <h3>1. 컨텍스트 환경설정</h3>
 <p>
@@ -443,37 +365,7 @@ oci안에의 URL주소에서 변하는 저사양고객(changing thin)에 분명�
               maxWait="-1"/&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
-
-
-
-
-
-
-
-<h3>2.    web.xml configuration</h3>
-<p>You should ensure that you respect the element ordering defined by the DTD when you
-create you applications web.xml file.</p>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-&lt;resource-ref&gt;
- &lt;description&gt;Oracle Datasource example&lt;/description&gt;
- &lt;res-ref-name&gt;jdbc/myoracle&lt;/res-ref-name&gt;
- &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
- &lt;res-auth&gt;Container&lt;/res-auth&gt;
-&lt;/resource-ref&gt;
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-<h3>3.   Code example</h3>
-<p>You can use the same example application as above (asuming you create the required DB
-instance, tables etc.) replacing the Datasource code with something like</p>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-Context initContext = new InitialContext();
-Context envContext  = (Context)initContext.lookup("java:/comp/env");
-DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-Connection conn = ds.getConnection();
-//etc.
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-</blockquote></td></tr></table>
-
-<h3>2.    web.xml 환경설정</h3>
+<h3>2. web.xml 환경설정</h3>
 <p>사용자는 web.xml 파일을 프로그래밍 할때, DTD에 의한 요소의 정리법을 정의한 것을 반드시 우선순위로 삼아야 한다.</p>
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;resource-ref&gt;
@@ -484,33 +376,27 @@ Connection conn = ds.getConnection();
 &lt;/resource-ref&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 <h3>3.   코드 환경설정</h3>
-<p>사용자는 위와 같이(사용자가 만든 필수적인 DB인스턴스나 테이블 등.) 대체가능한 데이타소스코드와 이런 비슷한 종류와 함께 동일하게 예시된 어플리케이션을 사용할 수 있다.</p> 
+<p>사용자는 위와 같이(사용자가 만든 필수적인 DB인스턴스나 테이블 등.) 
+대체가능한 데이타소스코드와 이런 비슷한 종류와 함께 동일하게 예시된 어플리케이션을 사용할 수 있다.</p> 
+<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
+Context initContext = new InitialContext();
+Context envContext  = (Context)initContext.lookup("java:/comp/env");
+DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+Connection conn = ds.getConnection();
+//etc.
+</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
+</blockquote></td></tr></table>
+
+
 
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="PostgreSQL"><strong>PostgreSQL</strong></a></font></td></tr><tr><td><blockquote>
-<h3>0.    Introduction</h3>
-<p>PostgreSQL is configured in a similar manner to Oracle.</p>
+<h3>0. 소개</h3>
+<p>PostgreSQL은 오라클에서 유사한 방법으로 설정되있다.</p>
 
-<h3>1. Required files </h3>
+<h3>1. 필요한 파일들</h3>
 <p>
-Copy the Postgres JDBC jar to $CATALINA_HOME/lib. As with Oracle, the
-jars need to be in this directory in order for DBCP's Classloader to find
-them. This has to be done regardless of which configuration step you take next.
-</p>
-
-<h3>1. 필수적인 파일들</h3>
-<p>
-이 시점에서의 사용자는 2가지 선택권이 있다: 모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
-하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
-</p>
-
-
-
-
-<h3>2. Resource configuration</h3>
-
-<p>
-You have two choices here: define a datasource that is shared across all Tomcat
-applications, or define a datasource specifically for one application.
+$CATALINA_HOME/lib의 장소에 Postgres JDBC jar를 복사하라. 오라클과 함께, 복사한 자르(jars)파일은 그것들로 하여금 
+DBCP's Classloader를 찾기 위해서 해당폴더안에 있어야 한다. 이 설정은 사용자의 원활한 진행을 위해 필요하다.
 </p>
 
 <h3>2. 자원(Resource) 환경설정</h3>
@@ -518,29 +404,6 @@ applications, or define a datasource specifically for one application.
 여기서도 역시 사용자에게 2가지 선택권이 있다:모든 톰캣 어플리케이션 쪽에 데이타소스를 정의하여 공유시키거나
 하나의 어플리케이션을 위해 특별한 데이타소스를 정의하는 것이다.
 </p>
-
-
-
-
-
-
-<h4>2a. Shared resource configuration</h4>
-<p>
-Use this option if you wish to define a datasource that is shared across
-multiple Tomcat applications, or if you just prefer defining your datasource
-in this file.
-</p>
-<p><i>This author has not had success here, although others have reported so.
-Clarification would be appreciated here.</i></p>
-
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-&lt;Resource name="jdbc/postgres" auth="Container"
-          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-          url="jdbc:postgresql://127.0.0.1:5432/mydb"
-          username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-
 
 <h4>2a. 공유된자원 환경설정</h4>
 <p>
@@ -554,42 +417,6 @@ Clarification would be appreciated here.</i></p>
           type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
           url="jdbc:postgresql://127.0.0.1:5432/mydb"
           username="myuser" password="mypasswd" maxActive="20" maxIdle="10" maxWait="-1"/&gt;
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h4>2b. Application-specific resource configuration</h4>
-
-<p>
-Use this option if you wish to define a datasource specific to your application,
-not visible to other Tomcat applications. This method is less invasive to your
-Tomcat installation.
-</p>
-
-<p>
-Create a resource definition for your <a href="config/context.html">Context</a>.
-The Context element should look something like the following.
-</p>
-
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-&lt;Context&gt;
-
-&lt;Resource name="jdbc/postgres" auth="Container"
-          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-          url="jdbc:postgresql://127.0.0.1:5432/mydb"
-          username="myuser" password="mypasswd" maxActive="20" maxIdle="10"
-maxWait="-1"/&gt;
-&lt;/Context&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
 <h4>2b. 어플리케이션 특수자원 환경설정</h4>
@@ -614,17 +441,6 @@ maxWait="-1"/&gt;
 &lt;/Context&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
-<h3>3. web.xml configuration</h3>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-&lt;resource-ref&gt;
- &lt;description&gt;postgreSQL Datasource example&lt;/description&gt;
- &lt;res-ref-name&gt;jdbc/postgres&lt;/res-ref-name&gt;
- &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
- &lt;res-auth&gt;Container&lt;/res-auth&gt;
-&lt;/resource-ref&gt;
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-
 <h3>3. web.xml 환경설정.</h3>
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;resource-ref&gt;
@@ -634,14 +450,6 @@ maxWait="-1"/&gt;
  &lt;res-auth&gt;Container&lt;/res-auth&gt;
 &lt;/resource-ref&gt;
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
-
-
-
-
-
-
-
-
 
 <h4>4. 데이타소스에 접근하는 것.</h4>
 <p>
@@ -672,7 +480,7 @@ if ( ds == null ) {
 </p>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%98%A4%EB%9D%BC%ED%81%B4 8i%EA%B3%BC OCI %EA%B3%A0%EA%B0%9D"><!--()--></a><a name="%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D"><strong>오라클 8i과 OCI 고객</strong></a></font></td></tr><tr><td><blockquote>
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%98%A4%EB%9D%BC%ED%81%B4 8i%EA%B3%BC OCI %EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C"><!--()--></a><a name="%EC%98%A4%EB%9D%BC%ED%81%B4_8i%EA%B3%BC_OCI_%EA%B3%A0%EA%B0%9D/%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
-<p>윌스트(Whilst)는 모호하게 OCI고객이 사용하는 JNDI 데이터소스의 탄생을 언급하지 않고, 이런 점들을 오라클과 DBCP 해결책
+<p>윌스트(Whilst)는 모호하게 OCI 클라이언트가 사용하는 JNDI 데이터소스의 탄생을 언급하지 않고, 이런 점들을 오라클과 DBCP 해결책
 위에 조합하게 되었다.
 </p>
 <p>
@@ -689,39 +497,12 @@ JDBC/OCI driver(Oracle8i 8.1.7.1 JDBC/OCI Driver)를 <a href="http://otn.oracle.
 </p>
 </blockquote></td></tr></table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%AA%A8%EB%93%A0 %EA%B2%83%EC%9D%84 %EB%8B%A4%EA%B0%99%EC%9D%B4 %EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C"><!--()--></a><a name="%EB%AA%A8%EB%93%A0_%EA%B2%83%EC%9D%84_%EB%8B%A4%EA%B0%99%EC%9D%B4_%EB%8C%80%EC%9E%85%ED%95%A0%EB%95%8C"><strong>모든 것을 다같이 대입할때</strong></a></font></td></tr><tr><td><blockquote>
 <p>
 당신이 <code>ocijdbc8.dll</code>나 <code>.so</code>를 당신의 <code>$PATH</code>나 <code>LD_LIBRARY_PATH</code>에
 (가능하다면 <code>$ORAHOME\bin</code>안에)확실히 가지고 있으면, 원래 라이브러리에 사용하고 있는 
 <code>System.loadLibrary("ocijdbc8");</code>에 단순한 테스트 프로그램에 의해 적재되어질 수 있다.
 </p>
-
-<p>
-You should next create a simple test servlet or jsp that has these
-<strong>critical lines</strong>:
-</p>
-<div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-DriverManager.registerDriver(new
-oracle.jdbc.driver.OracleDriver());
-conn =
-DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
-</pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
 <p>
 사용자는 간단한 테스트용 서블릿을 만들거나 jsp에 만들어야 한다. 
@@ -735,31 +516,11 @@ conn =
 DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
-
-<p>
-where database is of the form <code>host:port:SID</code> Now if you try to access the URL of your
-test servlet/jsp and what you get is a
-<code>ServletException</code> with a root cause of <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>.
-</p>
-
 <p>
 데이타베이스의 형식(<code>host:port:SID</code>)이고, 만약에 지금 사용자가 사용자의 시험용 servlet/jsp의 URL에 접근하는 것을
 시도한다면, 사용자가 <code>java.lang.UnsatisfiedLinkError:get_env_handle</code>의 근원과 함께 
 <code>ServletException</code>을 획득한다.
 </p>
-
-
-
-
-<p>
-First, the <code>UnsatisfiedLinkError</code> indicates that you have
-<ul>
-<li>a mismatch between your JDBC classes file and
-your Oracle client version. The giveaway here is the message stating that a needed library file cannot be
-found. For example, you may be using a classes12.zip file from Oracle Version 8.1.6 with a Version 8.1.5
-Oracle client. The classeXXXs.zip file and Oracle client software versions must match.
-</li>
-
 
 <p>
 첫째로, <code>UnsatisfiedLinkError</code>는 사용자가 다음의 상황에 처해있다는 것을 알려준다.
@@ -769,24 +530,6 @@ Oracle client. The classeXXXs.zip file and Oracle client software versions must 
 사용자는 오라클 버전 8.1.5와 함께 오라클 버전 8.1.6버전부터 클래스12 파일(classes12.zip file)을 사용하고 있을지도 모른다.
 이런 클래스xxx파일(classeXXXs.zip file)과 오라클 클라이언트 소프트웨어 버전은 반드시 일치해야 한다.
 </li>
-
-
-<li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code> problem.</li>
-<li>It has been reported that ignoring the driver you have downloded from otn and using
-the classes12.zip file from the directory <code>$ORAHOME\jdbc\lib</code> will also work.
-</li>
-</ul>
-</p>
-<p>
-Next you may experience the error <code>ORA-06401 NETCMN: invalid driver designator</code>
-</p>
-<p>
-The Oracle documentation says : "Cause: The login (connect) string contains an invalid
-driver designator. Action: Correct the string and re-submit."
-Change the database connect string (of the form <code>host:port:SID</code>) with this one:
-<code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
-</p>
-
 
 <li>A <code>$PATH</code>, <code>LD_LIBRARY_PATH</code>의 문제.</li>
 <li>이것으로서 당신이 otn과 <code>$ORAHOME\jdbc\lib</code>에서 작동할 그 디렉토리로부터
@@ -804,32 +547,6 @@ Change the database connect string (of the form <code>host:port:SID</code>) with
 <code>(description=(address=(host=myhost)(protocol=tcp)(port=1521))(connect_data=(sid=orcl)))</code>
 </p>
 
-
-
-
-<p>
-<i>Ed. Hmm, I don't think this is really needed if you sort out your TNSNames - but I'm not an Oracle DBA :-)</i>
-</p>
-</blockquote></td></tr></table>
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Common Problems"><!--()--></a><a name="Common_Problems"><strong>Common Problems</strong></a></font></td></tr><tr><td><blockquote>
-<p>Here are some common problems encountered with a web application which
-uses a database and tips for how to solve them.</p>
-
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Intermittent Database Connection Failures"><!--()--></a><a name="Intermittent_Database_Connection_Failures"><strong>Intermittent Database Connection Failures</strong></a></font></td></tr><tr><td><blockquote>
-<p>
-Tomcat runs within a JVM.  The JVM periodically performs garbage collection
-(GC) to remove java objects which are no longer being used.  When the JVM
-performs GC execution of code within Tomcat freezes. If the maximum time
-configured for establishment of a database connection is less than the amount
-of time garbage collection took you can get a database connection failure.
-</p>
-
-
-
-
-
-
-
 <p>
 <i>Ed.흠, 나는 만약에 사용자가 사용자의 TNSNames를 정리하는 것이 정말로 필요하지 않는다고 봐요. 오라클 데이터베이스 관리자가 아니니까요:-)</i>
 </p>
@@ -844,18 +561,6 @@ of time garbage collection took you can get a database connection failure.
 최대 환경설정 시간은 GC의 시간의 총량보다 적다면 사용자는 데이터베이스 연결 획득 실패할 수 있다.
 </p>
 
-
-
-<p>To collect data on how long garbage collection is taking add the
-<code>-verbose:gc</code> argument to your <code>CATALINA_OPTS</code>
-environment variable when starting Tomcat.  When verbose gc is enabled
-your <code>$CATALINA_BASE/logs/catalina.out</code> log file will include
-data for every garbage collection including how long it took.</p>
-
-<p>When your JVM is tuned correctly 99% of the time a GC will take less
-than one second.  The remainder will only take a few seconds.  Rarely,
-if ever should a GC take more than 10 seconds.</p>
-
 <p>장기간에 걸친 불필요한 정보정리(garbage collection)에서 자료를 모으기 위한것은 톰캣을 시작할 때,
 <code>-verbose:gc</code> 독립변수를 당신의 <code>CATALINA_OPTS</code>환경에 추가로 가져가고 있는 것이다.
 어지러운 gc(garbage collection)는 당신의 <code>$CATALINA_BASE/logs/catalina.out</code> 로그 파일이 장기간에 
@@ -863,51 +568,6 @@ if ever should a GC take more than 10 seconds.</p>
 
 <p> 사용자의 JVM의 해당 시간에 99% 가깝게 조정된  GC는 1초보다 적게 걸린다.
 나머지는 오직 몇초만이 걸릴 것이다. 드물게도, 언제든지 GC가 10초 보다 더욱 GC를 가져가야 한다.</p>
-
-
-
-
-
-
-
-
-<p>Make sure that the db connection timeout is set to 10-15 seconds.
-For the DBCP you set this using the parameter <code>maxWait</code>.</p>
-
-</blockquote></td></tr></table>
-
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Random Connection Closed Exceptions"><!--()--></a><a name="Random_Connection_Closed_Exceptions"><strong>Random Connection Closed Exceptions</strong></a></font></td></tr><tr><td><blockquote>
-<p>
-These can occur when one request gets a db connection from the connection
-pool and closes it twice.  When using a connection pool, closing the
-connection just returns it to the pool for reuse by another request,
-it doesn't close the connection.  And Tomcat uses multiple threads to
-handle concurrent requests. Here is an example of the sequence
-of events which could cause this error in Tomcat:
-</p>
-<pre>
-  Request 1 running in Thread 1 gets a db connection.
-
-  Request 1 closes the db connection.
-
-  The JVM switches the running thread to Thread 2
-
-  Request 2 running in Thread 2 gets a db connection
-  (the same db connection just closed by Request 1).
-
-  The JVM switches the running thread back to Thread 1
-
-  Request 1 closes the db connection a second time in a finally block.
-
-  The JVM switches the running thread back to Thread 2
-
-  Request 2 Thread 2 tries to use the db connection but fails
-  because Request 1 closed it.
-</pre>
-
-
-
-
 
 <p>디비 접속 시간초과는 10~15초로 되어 있는것을 확실히 해라. 이런 DBCP(DataBase Connection Pool)를 위하여
 사용자는 <code>maxWait</code>의 사용중인 인자값을 정하라.</p>
@@ -981,17 +641,6 @@ of events which could cause this error in Tomcat:
 
 </blockquote></td></tr></table>
 
-<table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Context versus GlobalNamingResources"><!--()--></a><a name="Context_versus_GlobalNamingResources"><strong>Context versus GlobalNamingResources</strong></a></font></td></tr><tr><td><blockquote>
-<p>
-  Please note that although the above instructions place the JNDI declarations in a Context
-  element, it is possible and sometimes desirable to place these declarations in the
-  <a href="config/globalresources.html">GlobalNamingResources</a> section of the server
-  configuration file.  A resource placed in the GlobalNamingResources section will be shared
-  among the Contexts of the server.
-</p>
-</blockquote></td></tr></table>
-
-
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%99%80 %EA%B8%80%EB%A1%9C%EB%B2%8C%EB%84%A4%EC%9D%B4%EB%B0%8D%EB%A6%AC%EC%86%8C%EC%8A%A4(GlobalNamingResources)"><!--()--></a><a name="%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%99%80_%EA%B8%80%EB%A1%9C%EB%B2%8C%EB%84%A4%EC%9D%B4%EB%B0%8D%EB%A6%AC%EC%86%8C%EC%8A%A4(GlobalNamingResources)"><strong>컨텍스트와 글로벌네이밍리소스(GlobalNamingResources)</strong></a></font></td></tr><tr><td><blockquote>
 <p>
   비록 위의 지시한 장소가 JNDI 선언장소의 컨텍스트 요소 내부일지라도, 그것은 가능하고 때때로  
@@ -1001,13 +650,9 @@ of events which could cause this error in Tomcat:
 </p>
 </blockquote></td></tr></table>
 
-
-
-
-
 <table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#828DA6"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="JNDI %EC%9E%90%EC%9B%90%EC%9D%98 %EC%A0%95%EC%9D%98%EC%99%80 %EB%B2%94%EC%9C%84%EC%9D%98 %EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9"><!--()--></a><a name="JNDI_%EC%9E%90%EC%9B%90%EC%9D%98_%EC%A0%95%EC%9D%98%EC%99%80_%EB%B2%94%EC%9C%84%EC%9D%98_%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9"><strong>JNDI 자원의 정의와 범위의 상호작용</strong></a></font></td></tr><tr><td><blockquote>
 <p>
-  일하기 위한 공간을 얻기 위하여, 이 공간은 반드시 정의된 &lt;GlobalNamingResources&gt;나 or &lt;Context&gt; 부분에서 
+  작업 공간을 얻기 위하여, 이 공간은 반드시 정의된 &lt;GlobalNamingResources&gt;나 or &lt;Context&gt; 부분에서 
   데이타소스를 참조하여야 하며 사용하고 있는 재정의된 &lt;ResourceLink&gt;는 안된다.
 </p>
 </blockquote></td></tr></table>

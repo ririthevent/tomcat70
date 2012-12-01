@@ -117,7 +117,7 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 
 <p>
 이 라이브러리들은 <code>$CATALINA_HOME/lib/tomcat-dbcp.jar</code>의
-단하나의 자르(jar) 안에 위치해있다. 그러나 오직 클래스들은 연결 풀링이 포함되는 것을 
+단 하나의 jar 안에 위치해있다. 그러나 오직 클래스들은 연결 풀링이 포함되는 것을 
 필요로 하고, 그리고 그런 패키지들은 프로그램들과 
 간섭하는 것을 피하기 위해 개명하게 되었다.
 </p>
@@ -202,12 +202,12 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 <p><a href="http://www.mysql.com/products/mysql/index.html">MySQL</a>의 버전(판)과 JDBC드라이버는 작업하기 위해 보고되었다.
 </p>
 <ul>
-<li>MySQL 3.23.47, MySQL 3.23.47 이노디비를 사용중에 있다(using InnoDB,). MySQL 3.23.58,  MySQL 4.0.1알파</li>
+<li>MySQL 3.23.47, MySQL 3.23.47 이노디비를 사용하고 있다(using InnoDB,). MySQL 3.23.58,  MySQL 4.0.1알파</li>
 <li><a href="http://www.mysql.com/products/connector-j">Connector/J</a> 3.0.11-안정적인 (공식적인 JDBC 드라이버)</li>
 <li><a href="http://mmmysql.sourceforge.net">mm.mysql</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
-<p>당신이 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
+<p>여러분은 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
 
 <h3>1. MySQL 환경설정</h3>
 <p>
@@ -260,9 +260,6 @@ mysql&gt;
 
     &lt;!-- maxActive: Maximum number of database connections in pool. 
      사용하는 커넥션의 최대값: 공통적인 데이타베이스 접속의 최대값
-  Make sure you
-         configure your mysqld max_connections large enough to handle
-         all of your db connections. 
   당신은 확실하게 당신의 mysqld의 엄청난 접속을 충분히 많은 것을, 당신의 디비 접속에서의 모든것을 다루기 위해 환경설정하라.
   Set to -1 for no limit.
   제한없기 위해 -1값에서 정하라.(0보다 작고,-값에선 무한대기)
@@ -273,32 +270,25 @@ mysql&gt;
   제한없기위해 -1에서 지정하라(0보다 작고,-값에선 무한대기). 이것을 또한 DBCP 문서에서 보고, minEvictableIdleTimeMillis(사용되지 않는 커넥션을 추출할때 지정한 시간 
   이상 비활성화 상태인 것만 추출하는 최소한의 시간)의 환경설정 매개변수와 minEvictableIdleTimeMillis도 그렇게 하라. 
          --&gt;
-    &lt;!-- maxWait: Maximum time to wait for a database connection to become available
-         in ms, in this example 10 seconds. An Exception is thrown if
-         this timeout is exceeded.  Set to -1 to wait indefinitely.
-         --&gt;
+    &lt;!-- maxWait: 
     사용하는 커넥션의 최대 대기값: ms에서 이용가능케 되기위한 어떤 데이타베이스 접속을 위해 기다리는 최대의 시간, 예를들어 10초 이다. 어떤 예외는 이것이 남는 시간이 초과되면 동작된다.
     지정된 시간없이 기다리게 하기 위해서 -1값으로 지정하라.
+         --&gt;
 
 
 
  
-&lt;!-- username and password: MySQL username and password for database connections  --&gt;
-//사용자이름과 비밀번호: 데이터베이스 접속을 위한 MySQL 사용자이름과 비밀번호
+&lt;!-- 사용자이름과 비밀번호: 데이터베이스 접속을 위한 MySQL 사용자이름과 비밀번호 --&gt;
 
-    &lt;!-- driverClassName: Class name for the old mm.mysql JDBC driver is
-org.gjt.mm.mysql.Driver - we recommend using Connector/J though. 
- 드라이버클래스이름: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 org.gjt.mm.mysql.Driver -이다. 우린 
+    &lt;!-- driverClassName: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 org.gjt.mm.mysql.Driver -이다. 우린 
 Connector/J를 통해 사용하는 것을 추천한다.
          Class name for the official MySQL Connector/J driver is com.mysql.jdbc.Driver.
-  공식적인 MySQL로 연결하는 것/제이 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
+  공식적인 MySQL Connector/J 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
  
          --&gt;
 
 
-    &lt;!-- url: The JDBC connection url for connecting to your MySQL database.
-경로: 당신의 MySQL 데이타베이스 접속을 위한 JDBC 접속경로.
-         --&gt;
+    &lt;!-- url: MySQL 데이타베이스 접속을 위한 JDBC 접속경로. --&gt;
 
 
   &lt;Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
@@ -310,12 +300,9 @@ Connector/J를 통해 사용하는 것을 추천한다.
 </source>
 
 
-<h3>3. web.xml configuration</h3>
-<h3>web.xml의 환경설정.</h3> 
+<h3>3. web.xml의 환경설정</h3> 
 
-
-<p>Now create a <code>WEB-INF/web.xml</code> for this test application.</p>
- <p>시험을 프로그램을 위해 <code>WEB-INF/web.xml</code>을 지금 만들어보자.</p>
+<p>테스트 프로그램을 위해 <code>WEB-INF/web.xml</code>을 지금 만들어보자.</p>
 <source>
 &lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -332,9 +319,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 &lt;/web-app&gt;
 </source>
 
-<h3>4. Test code</h3>
-<h3>4. 시험용 코드</h3>
-<p>Now create a simple <code>test.jsp</code> page for use later.
+<h3>4. 테스트 코드</h3>
 <p>이제 나중에 사용하기 위해 간단한<code>test.jsp</code>를 지금 만들어보자.
 <source>
 &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %&gt;
@@ -362,32 +347,23 @@ select id, foo, bar from testdata
 </source>
 </p>
 
-<p>That JSP page makes use of <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s
-SQL and Core taglibs. 
-이 JSP페이지는 <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s SQL과 핵심 태그라이브러리에 사용된다.
+
+<p>이 JSP페이지는 <a href="http://java.sun.com/products/jsp/jstl">JSTL</a>'s SQL과 핵심 태그라이브러리에 사용된다.
 You can get it from
-<a href="http://tomcat.apache.org/taglibs/standard/">Apache Tomcat Taglibs - Standard Tag Library</a>
-project &#x2014; just make sure you get a 1.1.x release. 
-당신은 <a href="http://tomcat.apache.org/taglibs/standard/">아파치 태크라이브러리 - 일반적인 태그 라이브러리</a>
+여러분은 <a href="http://tomcat.apache.org/taglibs/standard/">아파치 톰캣 태그라이브러리 - 표준 태그 라이브러리</a>
 프로젝트 &#x2014;로부터 얻을 수 있고, 당신은 확실히 1.1.x release를 얻을 수 있다.
-Once you have JSTL,
-copy <code>jstl.jar</code> and <code>standard.jar</code> to your web app's
-<code>WEB-INF/lib</code> directory.
-</p>
 당신이 JSTL을 얻으면, <code>jstl.jar</code>과 <code>standard.jar</code>를 당신의 web app's
 <code>WEB-INF/lib</code>의 디렉토리에 복사하라.</p>
 
-<p>마지막으로 당신의 웹 앱안에 <code>$CATALINA_BASE/webapps</code> 워파일(warfile)이라 불리는 <code>DBTest.war</code>이나 
+<p>마지막으로 여러분의 웹 앱안에 <code>$CATALINA_BASE/webapps</code> 워파일(warfile)이라 불리는 <code>DBTest.war</code>이나 
 <code>DBTest</code>라고 불리는 하위 디렉토리안에 파일들을 배치하라.</p>
 <p>배치하고 하면, <code>http://localhost:8080/DBTest/test.jsp</code>에서 브라우저를 
 당신의 결과물을 보기위해 지정하라.</p>
 </subsection>
 
 <subsection name="오라클 8i, 9i &amp; 10g">
-<h3>0.    소개</h3>
+<h3>0. 소개</h3>
 
-<p>Oracle requires minimal changes from the MySQL configuration except for the
-usual gotchas :-)</p>
 <p>오라클은 MySQL 환경설정의 통상적인 사용법을 제외하고 나서, 최소한의 변화가 요구된다. :-)</p>
 
 <p>드라이버는 오라클의 오래된 버전을 위해서 *.jar 파일보다 오히려 *.zip 파일이 더 배포되었을 수도 있다.
@@ -421,7 +397,7 @@ oci안에의 URL주소에서 변하는 저사양고객(changing thin)에 분명�
               maxWait="-1"/&gt;
 </source>
 
-<h3>2.    web.xml 환경설정</h3>
+<h3>2. web.xml 환경설정</h3>
 <p>사용자는 web.xml 파일을 프로그래밍 할때, DTD에 의한 요소의 정리법을 정의한 것을 반드시 우선순위로 삼아야 한다.</p>
 <source>
 &lt;resource-ref&gt;
@@ -497,17 +473,6 @@ maxWait="-1"/&gt;
 &lt;/Context&gt;
 </source>
 
-<h3>3. web.xml configuration</h3>
-<source>
-&lt;resource-ref&gt;
- &lt;description&gt;postgreSQL Datasource example&lt;/description&gt;
- &lt;res-ref-name&gt;jdbc/postgres&lt;/res-ref-name&gt;
- &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
- &lt;res-auth&gt;Container&lt;/res-auth&gt;
-&lt;/resource-ref&gt;
-</source>
-
-
 <h3>3. web.xml 환경설정.</h3>
 <source>
 &lt;resource-ref&gt;
@@ -551,7 +516,7 @@ if ( ds == null ) {
 
 <section name="오라클 8i과 OCI 고객">
 <subsection name="소개">
-<p>윌스트(Whilst)는 모호하게 OCI고객이 사용하는 JNDI 데이터소스의 탄생을 언급하지 않고, 이런 점들을 오라클과 DBCP 해결책
+<p>윌스트(Whilst)는 모호하게 OCI 클라이언트가 사용하는 JNDI 데이터소스의 탄생을 언급하지 않고, 이런 점들을 오라클과 DBCP 해결책
 위에 조합하게 되었다.
 </p>
 <p>
@@ -725,7 +690,7 @@ DriverManager.getConnection("jdbc:oracle:oci8:@database","username","password");
 
 <subsection name="JNDI 자원의 정의와 범위의 상호작용">
 <p>
-  일하기 위한 공간을 얻기 위하여, 이 공간은 반드시 정의된 &lt;GlobalNamingResources&gt;나 or &lt;Context&gt; 부분에서 
+  작업 공간을 얻기 위하여, 이 공간은 반드시 정의된 &lt;GlobalNamingResources&gt;나 or &lt;Context&gt; 부분에서 
   데이타소스를 참조하여야 하며 사용하고 있는 재정의된 &lt;ResourceLink&gt;는 안된다.
 </p>
 </subsection>

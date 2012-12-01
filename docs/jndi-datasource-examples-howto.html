@@ -226,20 +226,20 @@ mysql&gt;
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
 &lt;Context&gt;
 
-    &lt;!-- maxActive: Maximum number of database connections in pool. 
-     사용하는 커넥션의 최대값: 공통적인 데이타베이스 접속의 최대값
-  당신은 확실하게 당신의 mysqld의 엄청난 접속을 충분히 많은 것을, 당신의 디비 접속에서의 모든것을 다루기 위해 환경설정하라.
-  Set to -1 for no limit.
+    &lt;!-- maxActive: 데이타베이스 연결 풀의 최대값
+  여러분은 확실하게 당신의 mysqld의 엄청난 접속을 충분히 많은 것을, 
+  당신의 디비 접속에서의 모든것을 다루기 위해 환경설정하라.
   제한없기 위해 -1값에서 정하라.(0보다 작고,-값에선 무한대기)
          --&gt;
-    &lt;!-- maxIdle: Maximum number of idle database connections to retain in pool.
-     사용하는 커넥션의 최소값: 공통적으로 특별한 일 없이 유지하는 데이타베이스 접속의 최대 갯수 
-         Set to -1 for no limit.  See also the DBCP documentation on this and the minEvictableIdleTimeMillis configuration parameter.
-  제한없기위해 -1에서 지정하라(0보다 작고,-값에선 무한대기). 이것을 또한 DBCP 문서에서 보고, minEvictableIdleTimeMillis(사용되지 않는 커넥션을 추출할때 지정한 시간 
-  이상 비활성화 상태인 것만 추출하는 최소한의 시간)의 환경설정 매개변수와 minEvictableIdleTimeMillis도 그렇게 하라. 
+    &lt;!-- maxIdle: 특별한 일 없이 유지하는 데이타베이스 접속풀의 최대 갯수 
+  제한없기위해 -1에서 지정하라. 이것을 또한 DBCP 문서에서 보고, 
+  minEvictableIdleTimeMillis(사용되지 않는 커넥션을 추출할때 지정한 시간 
+  이상 비활성화 상태인 것만 추출하는 최소한의 시간)의 환경설정 매개변수와 
+  minEvictableIdleTimeMillis도 그렇게 하라. 
          --&gt;
-    &lt;!-- maxWait: 
-    사용하는 커넥션의 최대 대기값: ms에서 이용가능케 되기위한 어떤 데이타베이스 접속을 위해 기다리는 최대의 시간, 예를들어 10초 이다. 어떤 예외는 이것이 남는 시간이 초과되면 동작된다.
+    &lt;!-- maxWait: ms에서 이용가능케 되기 위한 어떤 데이타베이스 접속을 
+    위해 기다리는 최대의 시간, 예를들어 10초 이다. 어떤 예외는 이것이 남는 시간이 
+    초과되면 동작된다.
     지정된 시간없이 기다리게 하기 위해서 -1값으로 지정하라.
          --&gt;
 
@@ -248,11 +248,9 @@ mysql&gt;
  
 &lt;!-- 사용자이름과 비밀번호: 데이터베이스 접속을 위한 MySQL 사용자이름과 비밀번호 --&gt;
 
-    &lt;!-- driverClassName: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 org.gjt.mm.mysql.Driver -이다. 우린 
-Connector/J를 통해 사용하는 것을 추천한다.
-         Class name for the official MySQL Connector/J driver is com.mysql.jdbc.Driver.
-  공식적인 MySQL Connector/J 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
- 
+    &lt;!-- driverClassName: 오래된 mm.mysql JDBC driver를 위한 클래스 이름은 
+    org.gjt.mm.mysql.Driver -이다. 우린 Connector/J를 통해 사용하는 것을 추천한다.
+    공식적인 MySQL Connector/J 드라이버에 대한 클래스 이름은 com.mysql.jdbc.Driver이다.
          --&gt;
 
 

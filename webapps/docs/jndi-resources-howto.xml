@@ -28,7 +28,23 @@
       <title>JNDI Resources HOW-TO</title>
     </properties>
 
+
+
 <body>
+
+
+
+
+    <properties>
+      <author email="craigmcc@apache.org">크레이그 R. 맥클레이나한</author>
+      <author email="yoavs@apache.org">요아브 샤피라</author>
+      <title>JNDI의 활용법</title>
+    </properties>
+<body>
+
+
+
+
 
 <section name="Table of Contents">
 <toc/>

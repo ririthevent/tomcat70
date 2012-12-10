@@ -23,19 +23,6 @@
     &project;
 
     <properties>
-      <author email="craigmcc@apache.org">Craig R. McClanahan</author>
-      <author email="yoavs@apache.org">Yoav Shapira</author>
-      <title>JNDI Resources HOW-TO</title>
-    </properties>
-
-
-
-<body>
-
-
-
-
-    <properties>
       <author email="craigmcc@apache.org">크레이그 R. 맥클레이나한</author>
       <author email="yoavs@apache.org">요아브 샤피라</author>
       <title>JNDI의 활용법</title>
@@ -46,18 +33,21 @@
 
 
 
-<section name="Table of Contents">
+<section name="내용과 테이블">
 <toc/>
 </section>
 
-<section name="Introduction">
+<section name="소개">
 
-<p>Tomcat provides a JNDI <strong>InitialContext</strong> implementation
-instance for each web application running under it, in a manner that is
+<p>톰캣은 JNDI(Java Naming and Directory Interface)에서 그것을 각각의 웹 어플리케이션의 실행을 위해, <strong>최초 컨텍스트</strong>를 구현할 인스턴스(instance)를 제공하고,
+
+ in a manner that is
 compatible with those provided by a
 <a href="http://java.sun.com/j2ee">Java Enterprise Edition</a> application
 server. The Java EE standard provides a standard set of elements in the
 <code>/WEB-INF/web.xml</code> file to reference/define resources.</p>
+
+
 
 <p>See the following Specifications for more information about programming APIs
 for JNDI, and for the features supported by Java Enterprise Edition (Java EE)

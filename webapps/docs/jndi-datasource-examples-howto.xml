@@ -207,7 +207,7 @@ JDBC 드라이버들의 등록 취소는 웹 프로그램이 멈추었을 때, �
 <li><a href="http://mmmysql.sourceforge.net">mm.mysql</a> 2.0.14 (JDBC 드라이버의 오래된 3번째 그룹)</li>
 </ul>
 
-<p>여러분은 이것을 진행하기 전에, <code>$카트리나_홈/라이브</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
+<p>여러분은 이것을 진행하기 전에, <code>$CATALINA_HOME/lib</code>안에  JDBC Driver's jar를 복사하는 걸 잊지 말라.</p>
 
 <h3>1. MySQL 환경설정</h3>
 <p>

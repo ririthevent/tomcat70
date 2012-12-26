@@ -47,9 +47,8 @@
 
 
 <p>JNDI의 원활한 사용을 위해 프로그래밍 API(Application Programming Interface)에 대한 
-많은 정보를 위해 아래에 열거된 사항을 참고하고,
-for the features supported by Java Enterprise Edition (Java EE)
-servers, which Tomcat emulates for the services that it provides:</p>
+많은 정보를 위해 아래에 열거된 사항을 참고하며,자바 엔터프라이즈 에디션(Java EE)서버에 의해 지원되는 
+여러 기능들(자바 엔터프라이즈 에디션(Java EE) 서버가 제공하는 서비스에 의한 톰캣 에뮬레이트)을 보라:</p>
 <ul>
 <li><a href="http://java.sun.com/products/jndi">Java Naming and Directory
     Interface</a> (included in JDK 1.4 onwards)</li>

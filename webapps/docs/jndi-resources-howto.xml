@@ -51,9 +51,9 @@
 여러 기능들(자바 엔터프라이즈 에디션(Java EE) 서버가 제공하는 서비스에 의한 톰캣 에뮬레이트)을 보라:</p>
 <ul>
 <li><a href="http://java.sun.com/products/jndi">Java Naming and Directory
-    Interface</a> (included in JDK 1.4 onwards)</li>
+    Interface(자바 네이밍 디렉토리 인터페이스)</a> (JDK 1.4가 계속 포함되어 있음.)</li>
 <li><a href="http://java.sun.com/j2ee/download.html">Java EE Platform
-    Specification</a> (in particular, see Chapter 5 on <em>Naming</em>)</li>
+    Specification(자바 EE 플랫폼 사용명세서)</a> (특히,<em>Naming</em>에서 제5장을 보라.)</li>
 </ul>
 
 </section>

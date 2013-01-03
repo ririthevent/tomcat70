@@ -63,9 +63,8 @@
 <p>자원을 정의하기 위한 사용자의 웹 어플리케이션의 웹 어플리케이션 개발에 관련한 내용을 
 기록하는 파일(<code>/WEB-INF/web.xml</code>)내에 다음의 요소들이 사용되고 있을 수도 있다.:</p>
 <ul>
-<li><code><strong>&lt;env-entry&gt;</strong></code> - Environment entry, a
-    single-value parameter that can be used to configure how the application
-    will operate.</li>
+<li><code><strong>&lt;env-entry&gt;</strong></code> - 환경 설정에 있어서, 해당 어플리케이션이 어떻게 작동할 것인지
+ 환경설정을 하기 위해 오직 하나의 값을 가진 인자가 사용되곤 한다.</li>
 <li><code><strong>&lt;resource-ref&gt;</strong></code> - Resource reference,
     which is typically to an object factory for resources such as a JDBC
     <code>DataSource</code>, a JavaMail <code>Session</code>, or custom

@@ -74,7 +74,8 @@
     that do not require authentication information.</li>
 </ul>
 
-<p>Providing that Tomcat is able to identify an appropriate resource factory to
+<p> 톰캣은 어떤 적절한 리소스 팩토리를 규정하고 사용하며 그 리소스를 만들기 위해 제공하고,
+Providing that Tomcat is able to identify an appropriate resource factory to
 use to create the resource and that no further configuration information is
 required, Tomcat will use the information in <code>/WEB-INF/web.xml</code> to
 create the resource.</p>

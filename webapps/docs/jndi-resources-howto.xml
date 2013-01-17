@@ -39,11 +39,11 @@
 
 <section name="소개">
 
-<p>톰캣은 JNDI(Java Naming and Directory Interface)에서 각각의 웹 어플리케이션의 실행을 위해, 
+<p>톰캣은 JNDI(Java Naming and Directory Interface)에서 각각의 웹 애플리케이션의 실행을 위해, 
 <strong>최초 컨텍스트</strong>를 구현할 인스턴스(instance)를 적절한 방식으로 제공하고,
 <a href="http://java.sun.com/j2ee">자바 엔터프라이즈 에디션</a>프로그램 서버에 의해 호환이 가능하게 지원된다.
 자바 EE 스탠다드는 <code>/WEB-INF/web.xml</code> 파일의 내부에서 요소들의 기준이 되는 세트로
-"참조사항/정의된 경로의 자원"를 제공한다.
+"참조사항/정의된 경로의 자원"를 제공한다.</p>
 
 
 <p>JNDI의 원활한 사용을 위해 프로그래밍 API(Application Programming Interface)에 대한 
@@ -60,14 +60,14 @@
 
 <section name="web.xml 환경설정" >
 
-<p>자원을 정의하기 위한 사용자의 웹 어플리케이션의 웹 어플리케이션 개발에 관련한 내용을 
+<p>자원을 정의하기 위한 사용자의 웹 애플리케이션의 웹 애플리케이션 개발에 관련한 내용을 
 기록하는 파일(<code>/WEB-INF/web.xml</code>)내에 다음의 요소들이 사용되고 있을 수도 있다.:</p>
 <ul>
-<li><code><strong>&lt;env-entry&gt;</strong></code> - 환경 설정에 있어서, 해당 어플리케이션이 어떻게 작동할 것인지
+<li><code><strong>&lt;env-entry&gt;</strong></code> - 환경 설정에 있어서, 해당 애플리케이션이 어떻게 작동할 것인지
  환경설정을 하기 위해 오직 하나의 값을 가진 인자가 사용되곤 한다.</li>
 <li><code><strong>&lt;resource-ref&gt;</strong></code> - 리소스의 참조하는 것은,
 보통 오브젝트 팩토리로 예를 들자면, JDBC의<code>DataSource</code>와 자바메일의 <code>Session</code>자원을 참조하는 것이거나
-커스텀 오브젝트 팩토리가 톰캣안에 환경설정에 반영되는 것이다.<li>
+커스텀 오브젝트 팩토리가 톰캣 안에 환경설정에 반영되는 것이다.</li>
 <li><code><strong>&lt;resource-env-ref&gt;</strong></code> - Resource
     environment reference, a new variation of <code>resource-ref</code>
     added in Servlet 2.4 that is simpler to configure for resources

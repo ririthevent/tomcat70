@@ -68,10 +68,9 @@
 <li><code><strong>&lt;resource-ref&gt;</strong></code> - 리소스의 참조하는 것은,
 보통 오브젝트 팩토리로 예를 들자면, JDBC의<code>DataSource</code>와 자바메일의 <code>Session</code>자원을 참조하는 것이거나
 커스텀 오브젝트 팩토리가 톰캣 안에 환경설정에 반영되는 것이다.</li>
-<li><code><strong>&lt;resource-env-ref&gt;</strong></code> - Resource
-    environment reference, a new variation of <code>resource-ref</code>
-    added in Servlet 2.4 that is simpler to configure for resources
-    that do not require authentication information.</li>
+<li><code><strong>&lt;resource-env-ref&gt;</strong></code> - 리소스 환경 참조사항에서,
+ 서블릿 2.4 내에서 추가된 <code>resource-ref</code>의 새로운 변수는 리소스 때문에 환경설정을 하기 위하여 더 단순하고,
+ 관리자 정보를 요구하지 않는다.</li>
 </ul>
 
 <p> 톰캣은 어떤 적절한 리소스 팩토리를 규정하고 사용하며 그 리소스를 만들기 위해 제공하고,

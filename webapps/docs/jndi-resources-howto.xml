@@ -73,18 +73,15 @@
  관리자 정보를 요구하지 않는다.</li>
 </ul>
 
-<p> 톰캣은 어떤 적절한 리소스 팩토리를 규정하고 사용하며 그 리소스를 만들기 위해 제공하고,
+<p> 톰캣은 어떤 적절한 리소스 팩토리를 규정하고 사용하며 그 리소스를 정의하기 위해 더 이상 추가할 필요없는 정보를 제공할 것이고,
 Providing that Tomcat is able to identify an appropriate resource factory to
-use to create the resource and that no further configuration information is
-required, Tomcat will use the information in <code>/WEB-INF/web.xml</code> to
-create the resource.</p>
+톰캣은 <code>/WEB-INF/web.xml</code>에서 리소스를 만들기 위해 정보를 사용한다.
 </section>
 
-<section name="context.xml configuration">
+<section name="context.xml 환경설정">
 
-<p>If Tomcat is unable to identify the appropriate resource factory and/or
-additional configuration information is required, additional Tomcat specific
-configuration must be specified before Tomcat can create the resource.
+<p>만약 톰캣이 적절한 리소스 팩토리를 정의할 수 없고(혹은 없거나) 추가적인 환경설정이 요구된다면, 추가적인 
+톰캣의 특별한 환경설정은 반드시 톰캣으로 리소스를 만들기 전에 명시되어져야 한다.
 Tomcat specific resource configuration is entered in
 the <a href="config/context.html"><code>&lt;Context&gt;</code></a> elements that
 can be specified in either <code>$CATALINA_BASE/conf/server.xml</code> or,

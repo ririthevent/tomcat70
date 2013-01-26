@@ -82,6 +82,9 @@ Providing that Tomcat is able to identify an appropriate resource factory to
 
 <p>만약 톰캣이 적절한 리소스 팩토리를 정의할 수 없고(혹은 없거나) 추가적인 환경설정이 요구된다면, 추가적인 
 톰캣의 특별한 환경설정은 반드시 톰캣으로 리소스를 만들기 전에 명시되어져야 한다.
+톰캣의 명시하는 리소스 환경설정은 <a href="config/context.html"><code>&lt;Context&gt;</code></a>의 요소에
+들어가져 있다.
+
 Tomcat specific resource configuration is entered in
 the <a href="config/context.html"><code>&lt;Context&gt;</code></a> elements that
 can be specified in either <code>$CATALINA_BASE/conf/server.xml</code> or,

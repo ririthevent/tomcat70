@@ -85,15 +85,12 @@
 톰캣의 명시하는 리소스 환경설정은 <a href="config/context.html"><code>&lt;Context&gt;</code></a>의 요소에
 들어가져 있다.
 
-톰캣의 특별한 리소스 환경설정은 entered in
-the <a href="config/context.html"><code>&lt;Context&gt;</code></a> elements that
-can be specified in either <code>$CATALINA_BASE/conf/server.xml</code> or,
-preferably, the per-web-application context XML file
-(<code>META-INF/context.xml</code>).</p>
+톰캣의 특별한 리소스 환경설정은 <a href="config/context.html"><code>&lt;에 들어가서 할 수 있고, 
+Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>에 상세화 되어 있거나,
+오히려, 퍼-웹-어플리케이션 컨텍스트 XML 파일에(<code>META-INF/context.xml</code>)되어 있을수도 있다.</p>
 
-<p>Tomcat specific resource configuration is performed using the following
-elements in the <a href="config/context.html"><code>&lt;Context&gt;</code></a>
-element:</p>
+<p>톰캣의 상세한 리소스 환경설정은 다음의 사용하고 있는 속성에서 <a href="config/context.html"><code>&lt;Context&gt;</code>
+운영되고 있다 :</p>
 
 <ul>
 <li><a href="config/context.html#Environment Entries">&lt;Environment&gt;</a> -

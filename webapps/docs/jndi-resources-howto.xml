@@ -25,7 +25,7 @@
     <properties>
       <author email="craigmcc@apache.org">크레이그 R. 맥클레이나한</author>
       <author email="yoavs@apache.org">요아브 샤피라</author>
-      <title>JNDI의 활용법</title>
+      <title>JNDI 자원 활용법</title>
     </properties>
 <body>
 
@@ -33,7 +33,7 @@
 
 
 
-<section name="내용과 테이블">
+<section name="목차">
 <toc/>
 </section>
 
@@ -75,7 +75,7 @@
 
 <p> 톰캣은 어떤 적절한 리소스 팩토리를 규정하고 사용하며 그 리소스를 정의하기 위해 더 이상 추가할 필요없는 
 정보를 제공할 것이고,
-톰캣은 <code>/WEB-INF/web.xml</code>에서 리소스를 만들기 위해 정보를 사용한다.
+톰캣은 <code>/WEB-INF/web.xml</code>에서 리소스를 만들기 위해 정보를 사용한다.</p>
 </section>
 
 <section name="context.xml 환경설정">

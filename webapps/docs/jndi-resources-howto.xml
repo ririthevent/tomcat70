@@ -89,7 +89,7 @@
 Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>에 상세화 되어 있거나,
 오히려, 퍼-웹-어플리케이션 컨텍스트 XML 파일에(<code>META-INF/context.xml</code>)되어 있을수도 있다.</p>
 
-<p>톰캣의 상세한 리소스 환경설정은 다음의 사용하고 있는 속성에서 <a href="config/context.html"><code>&lt;Context&gt;</code>
+<p>톰캣의 상세한 리소스 환경설정은 다음의 사용하고 있는 속성에서 <a href="config/context.html"><code>&lt;Context&gt;</code></a>
 운영되고 있다 :</p>
 
 <ul>

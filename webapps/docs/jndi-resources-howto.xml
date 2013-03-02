@@ -93,9 +93,8 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 운영되고 있다 :</p>
 
 <ul>
-<li><a href="config/context.html#Environment Entries">&lt;Environment&gt;</a> -
-    Configure names and values for scalar environment entries that will be
-    exposed to the web application through the JNDI
+<li><a href="config/context.html#Environment Entries">&lt;환경&gt;</a> -
+    전반적으로 자세한 내용을 위해 환경설정 이름과 값을 JNDI를 통해 웹 어플리케이션에 노출시킬 것이다.    
     <code>InitialContext</code> (equivalent to the inclusion of an
     <code>&lt;env-entry&gt;</code> element in the web application
     deployment descriptor).</li>

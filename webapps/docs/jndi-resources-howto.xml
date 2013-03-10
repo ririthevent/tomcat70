@@ -97,9 +97,9 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
     전반적으로 자세한 내용을 위해 환경설정 이름과 값을 JNDI를 통해 웹 어플리케이션에 노출시킬 것이다.    
     <code>InitialContext</code> (웹 어클리케이션 배치 디스크립터에서 <code>&lt;env-entry&gt;</code> 속성이 포함한 것과
     맞먹는 것이다.</li>
-<li><a href="config/context.html#Resource Definitions">&lt;Resource&gt;</a> -
-    Configure the name and data type of a resource made available to the
-    application (equivalent to the inclusion of a
+<li><a href="config/context.html#Resource Definitions">&lt;리소스&gt;</a> -
+    해당 어플리케이션에 이용할 수 있는 리소스의 데이터종류와 이름을 설정하라.
+    (equivalent to the inclusion of a
     <code>&lt;resource-ref&gt;</code> element in the web application
     deployment descriptor).</li>
 <li><a href="config/context.html#Resource Links">&lt;ResourceLink&gt;</a> -

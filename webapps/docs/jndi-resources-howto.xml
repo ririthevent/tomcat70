@@ -106,9 +106,9 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
     the <a href="config/globalresources.html">&lt;GlobalNamingResources&gt;</a>
     child element of the <a href="config/server.html">&lt;Server&gt;</a>
     element.</li>
-<li><a href="config/context.html#Transaction">&lt;Transaction&gt;</a> -
-    Add a resource factory for instantiating the UserTransaction object
-    instance that is available at <code>java:comp/UserTransaction</code>.</li>
+<li><a href="config/context.html#Transaction">&lt;트랜잭션 (단말의 이용자가 중앙처리시스템에 서비스를 요구하는 작업의 단위)&gt;</a> -
+     <code>java:comp/UserTransaction</code>에서 가능한 사용자 트랜잭션 오브젝트 인스턴스를 
+     예를 들어서 하나의 리소스 팩토리를 추가하라.</li>
 
 </ul>
 

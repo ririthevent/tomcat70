@@ -112,9 +112,8 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 
 </ul>
 
-<p>Any number of these elements may be nested inside a
-<a href="config/context.html"><code>&lt;Context&gt;</code></a> element and will
-be associated only with that particular web application.</p>
+<p>이러한 요소들의 몇몇은  <a href="config/context.html"><code>&lt;Context&gt;</code></a>
+요소들이 포함되어 있을 수도 있고 오직 특정 웹 어플리케이션에서만 같이 있게 될 것이다.</p>
 
 <p>If a resource has been defined in a
 <a href="config/context.html"><code>&lt;Context&gt;</code></a> element it is not

@@ -115,11 +115,10 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 <p>이러한 요소들의 몇몇은  <a href="config/context.html"><code>&lt;Context&gt;</code></a>
 요소들이 포함되어 있을 수도 있고 오직 특정 웹 어플리케이션에서만 같이 있게 될 것이다.</p>
 
-<p>If a resource has been defined in a
-<a href="config/context.html"><code>&lt;Context&gt;</code></a> element it is not
-necessary for that resource to be defined in <code>/WEB-INF/web.xml</code>.
-However, it is recommended to keep the entry in <code>/WEB-INF/web.xml</code>
-to document the resource requirements for the web application.</p>
+<p>만약 어떤 리소스가 <a href="config/context.html"><code>&lt;Context&gt;</code></a>속성 내부에 정의 된다면,
+그것은  <code>/WEB-INF/web.xml</code>파일에 반드시 정의되야 하는 것은 아니다.
+그러나, 웹 어플리케이션을 위해 리소스에 필수조건으로 해당문서의 <code>/WEB-INF/web.xml</code>에 입력하는 것을
+권장한다.</p>
 
 <p>Where the same resource name has been defined for a
 <code>&lt;env-entry&gt;</code> element included in the web application

@@ -120,9 +120,9 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 그러나, 웹 어플리케이션을 위해 리소스에 필수조건으로 해당문서의 <code>/WEB-INF/web.xml</code>에 입력하는 것을
 권장한다.</p>
 
-<p>Where the same resource name has been defined for a
-<code>&lt;env-entry&gt;</code> element included in the web application
-deployment descriptor (<code>/WEB-INF/web.xml</code>) and in an
+<p>웹 어플리케이션 배치 기술자(<code>/WEB-INF/web.xml</code>)에 포함된 <code>&lt;env-entry&gt;</code>속성에 대해 
+동일한 리소스가 정의되어 있고,
+and in an
 <code>&lt;Environment&gt;</code> element as part of the
 <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for the
 web application, the values in the deployment descriptor will take precedence

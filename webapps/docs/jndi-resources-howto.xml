@@ -121,11 +121,10 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 권장한다.</p>
 
 <p>웹 어플리케이션 배치 기술자(<code>/WEB-INF/web.xml</code>)에 포함된 <code>&lt;env-entry&gt;</code>속성에 대해 
-동일한 리소스가 정의되어 있고,
-and in an
-<code>&lt;Environment&gt;</code> element as part of the
-<a href="config/context.html"><code>&lt;Context&gt;</code></a> element for the
-web application, the values in the deployment descriptor will take precedence
+동일한 리소스가 정의되어 있고, <code>&lt;Environment&gt;</code>속성내에 웹 어클리케이션을 위한
+<a href="config/context.html"><code>&lt;Context&gt;</code></a>속성의 한 부분으로서,
+
+the values in the deployment descriptor will take precedence
 <strong>only</strong> if allowed by the corresponding
 <code>&lt;Environment&gt;</code> element (by setting the <code>override</code>
 attribute to "true").</p>

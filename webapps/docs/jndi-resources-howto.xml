@@ -131,9 +131,8 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 
 <section name="글로벌 환경설정">
 
-<p>Tomcat maintains a separate namespace of global resources for the
-entire server.  These are configured in the
-<a href="config/globalresources.html">
+<p>톰캣은 전체적인 서버를 위해서 다수의 글로벌 리소스 각각의 이름을 지정할 수 있는 공간을 유지한다.
+  These are configured in the <a href="config/globalresources.html">
 <code><strong>&lt;GlobalNamingResources&gt;</strong></code></a> element of
 <code>$CATALINA_BASE/conf/server.xml</code>. You may expose these resources to
 web applications by using a

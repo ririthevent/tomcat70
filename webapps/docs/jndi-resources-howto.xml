@@ -134,9 +134,8 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 <p>톰캣은 전체적인 서버를 위해서 다수의 글로벌 리소스 각각의 이름을 지정할 수 있는 공간을 유지한다.
 <code>$CATALINA_BASE/conf/server.xml</code>의 <a href="config/globalresources.html">
 <code><strong>&lt;GlobalNamingResources&gt;</strong></code></a>속성에서 환경설정을 할 수 있다.
-You may expose these resources to web applications by using a
-<a href="config/context.html#Resource Links">&lt;ResourceLink&gt;</a> to
-include it in the per-web-application context.</p>
+사용자는 각각의-웹-어플리케이션 컨텍스트(per-web-application)내에 <a href="config/context.html#Resource Links">&lt;리소스 링크&gt;</a>를
+포함하고 사용함으로서 웹 어플리케이션에 이러한 자원들을 노출할 수도 있다. </p>
 
 <p>If a resource has been defined using a
 <a href="config/context.html#Resource Links">&lt;ResourceLink&gt;</a>, it is not

@@ -137,9 +137,8 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 사용자는 각각의-웹-어플리케이션 컨텍스트(per-web-application)내에 <a href="config/context.html#Resource Links">&lt;리소스 링크&gt;</a>를
 포함하고 사용함으로서 웹 어플리케이션에 이러한 자원들을 노출할 수도 있다. </p>
 
-<p>If a resource has been defined using a
-<a href="config/context.html#Resource Links">&lt;ResourceLink&gt;</a>, it is not
-necessary for that resource to be defined in <code>/WEB-INF/web.xml</code>.
+<p>어떠한 자원이  <a href="config/context.html#Resource Links">&lt;리소스 링크&gt;</a>로
+사용하는 것이 정의되었다면, 그것이 필수적으로 <code>/WEB-INF/web.xml</code>내에 리소스가 정의되는 것은 아니다.
 However, it is recommended to keep the entry in <code>/WEB-INF/web.xml</code>
 to document the resource requirements for the web application.</p>
 

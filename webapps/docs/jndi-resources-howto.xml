@@ -144,11 +144,11 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 
 </section>
 
-<section name="Using resources">
+<section name="리소스를 사용하는 것">
 
-<p>The <code>InitialContext</code> is configured as a web application is
-initially deployed, and is made available to web application components (for
-read-only access).  All configured entries and resources are placed in
+<p><code>InitialContext(이니셜 컨텍스트)</code>는 웹 어플리케이션이 최초로 배치됨으로서 환경설정이 되고
+웹 어플리케이션 컴포넌트에 만들어진다.(오로지 읽기전용을 위해서)
+  All configured entries and resources are placed in
 the <code>java:comp/env</code> portion of the JNDI namespace, so a typical
 access to a resource - in this case, to a JDBC <code>DataSource</code> -
 would look something like this:</p>

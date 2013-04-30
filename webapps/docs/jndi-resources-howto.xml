@@ -148,9 +148,10 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 
 <p><code>InitialContext(이니셜 컨텍스트)</code>는 웹 어플리케이션이 최초로 배치됨으로서 환경설정이 되고
 웹 어플리케이션 컴포넌트에 만들어진다.(오로지 읽기전용을 위해서)
-모든 설정된 영역과 리소스들은 JNDI명이 저장된 곳의 부분적인 공간<code>java:comp/env</code>내에 지정되고,   
-so a typical access to a resource - in this case, to a JDBC <code>DataSource</code> -
-would look something like this:</p>
+모든 설정된 영역과 리소스들은 JNDI명이 저장된 곳의 부분적인 공간<code>java:comp/env</code>내에 지정되고,
+
+또한 리소스에 일반적인 접근이 있다. 이런 경우는 JDBC의 <code>DataSource</code>와 같이 뭔가를 바라보는 경우이다.
+</p>
 
 <source>
 // Obtain our environment naming context

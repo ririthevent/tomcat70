@@ -154,7 +154,7 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 </p>
 
 <source>
-// Obtain our environment naming context
+// 컨텍스트를 설정하여 적합한 환경을 구성한다.
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
 

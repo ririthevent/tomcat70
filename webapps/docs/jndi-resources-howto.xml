@@ -158,7 +158,7 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-// Look up our data source
+// 데이터소스를 바라본다.
 DataSource ds = (DataSource)
   envCtx.lookup("jdbc/EmployeeDB");
 

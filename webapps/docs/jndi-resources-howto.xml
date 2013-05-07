@@ -162,7 +162,7 @@ Context envCtx = (Context) initCtx.lookup("java:comp/env");
 DataSource ds = (DataSource)
   envCtx.lookup("jdbc/EmployeeDB");
 
-// Allocate and use a connection from the pool
+// 할당하고 풀로부터 어떤 커넥션객체를 사용한다.
 Connection conn = ds.getConnection();
 ... use this connection to access the database ...
 conn.close();

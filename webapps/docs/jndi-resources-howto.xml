@@ -170,7 +170,7 @@ conn.close();
 
 </section>
 
-<section name="Tomcat Standard Resource Factories">
+<section name="톰캣 표준 리소스팩토리들">
 
   <p>Tomcat includes a series of standard resource factories that can
   provide services to your web applications, but give you configuration

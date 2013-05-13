@@ -172,8 +172,8 @@ conn.close();
 
 <section name="톰캣 표준 리소스팩토리들">
 
-  <p>Tomcat includes a series of standard resource factories that can
-  provide services to your web applications, but give you configuration
+  <p>톰캣은 표준 리소스 팩토리에서 당신의 웹 어플리케이션 서비스를 제공할 수 있는 기능을 가지고 있고,
+  but give you configuration
   flexibility (via the
   <a href="config/context.html"><code>&lt;Context&gt;</code></a> element)
   without modifying the web application or the deployment descriptor. Each

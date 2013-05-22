@@ -175,9 +175,7 @@ conn.close();
   <p>톰캣은 표준 리소스 팩토리에서 당신의 웹 어플리케이션 서비스를 제공할 수 있는 기능을 가지고 있으나,
   배치 기술자나 웹 어플리케이션의 변경없이(
   <a href="config/context.html"><code>&lt;컨텍스트&gt;</code></a> 속성을 통해서) 사용자 중심의 환경설정이 가능하다.
-  Each
-  subsection below details the configuration and usage of the standard resource
-  factories.</p>
+ 표준 리소스 팩토리들의 사용접과 환경설정을 아래와 같이 각각의 세부항목을 보고 참고하라.</p>
 
   <p>See <a href="#Adding Custom Resource Factories">Adding Custom
   Resource Factories</a> for information about how to create, install,

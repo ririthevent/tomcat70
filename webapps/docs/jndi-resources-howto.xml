@@ -177,8 +177,8 @@ conn.close();
   <a href="config/context.html"><code>&lt;컨텍스트&gt;</code></a> 속성을 통해서) 사용자 중심의 환경설정이 가능하다.
  표준 리소스 팩토리들의 사용접과 환경설정을 아래와 같이 각각의 세부항목을 보고 참고하라.</p>
 
-  <p>See <a href="#Adding Custom Resource Factories">Adding Custom
-  Resource Factories</a> for information about how to create, install,
+  <p>여기 <a href="#Adding Custom Resource Factories">추가된 맞춤형 리소스 팩토리를 보라.</a> 
+  for information about how to create, install,
   configure, and use your own custom resource factory classes with
   Tomcat.</p>
 

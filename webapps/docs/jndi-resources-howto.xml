@@ -177,10 +177,10 @@ conn.close();
   <a href="config/context.html"><code>&lt;컨텍스트&gt;</code></a> 속성을 통해서) 사용자 중심의 환경설정이 가능하다.
  표준 리소스 팩토리들의 사용접과 환경설정을 아래와 같이 각각의 세부항목을 보고 참고하라.</p>
 
-  <p>여기 <a href="#Adding Custom Resource Factories">추가된 맞춤형 리소스 팩토리를 보라.</a> 
-  for information about how to create, install,
-  configure, and use your own custom resource factory classes with
-  Tomcat.</p>
+  <p>여기 생성하는 방법에 대한 정보와 설치, 환경설정과 톰캣과 함께 
+  사용자의 맞춤형 리소스 팩토리 클래스를 사용하는 것에 대한
+  <a href="#Adding Custom Resource Factories">추가된 맞춤형 리소스 팩토리를 보라.</a>
+</p>
 
   <p><em>NOTE</em> - Of the standard resource factories, only the
   "JDBC Data Source" and "User Transaction" factories are mandated to

@@ -182,9 +182,9 @@ conn.close();
   <a href="#Adding Custom Resource Factories">추가된 맞춤형 리소스 팩토리를 보라.</a>
 </p>
 
-  <p><em>NOTE</em> - Of the standard resource factories, only the
-  "JDBC Data Source" and "User Transaction" factories are mandated to
-  be available on other platforms, and then they are required only if
+  <p><em>주의사항</em> - 표준 리소스 팩토리들 중에서, 
+  오직 "JDBC 데이터소스"와 "사용자 처리" 팩토리들은  다른 플랫폼들에서 사용 할 수 있는 권한을 갖게 되고,
+  and then they are required only if
   the platform implements the Java Enterprise Edition (Java EE) specs.
   All other standard resource factories, plus custom resource factories
   that you write yourself, are specific to Tomcat and cannot be assumed

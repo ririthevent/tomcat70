@@ -6,8 +6,8 @@
             code.attributeName, code.propertyName {background-color:transparent;}
         </style></head><body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76" vlink="#525D76"><table border="0" width="100%" cellspacing="0"><!--PAGE HEADER--><tr><td><!--PROJECT LOGO--><a href="http://tomcat.apache.org/"><img src="./images/tomcat.gif" align="right" alt="
       The Apache Tomcat Servlet/JSP Container
-    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, Apr 16 2013</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI 자원 활용법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%AA%A9%EC%B0%A8"><strong>목차</strong></a></font></td></tr><tr><td><blockquote>
-<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#web.xml_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">web.xml 환경설정</a></li><li><a href="#context.xml_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">context.xml 환경설정</a></li><li><a href="#%EA%B8%80%EB%A1%9C%EB%B2%8C_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">글로벌 환경설정</a></li><li><a href="#Using_resources">Using resources</a></li><li><a href="#Tomcat_Standard_Resource_Factories">Tomcat Standard Resource Factories</a><ol><li><a href="#Generic_JavaBean_Resources">Generic JavaBean Resources</a></li><li><a href="#UserDatabase_Resources">UserDatabase Resources</a></li><li><a href="#JavaMail_Sessions">JavaMail Sessions</a></li><li><a href="#JDBC_Data_Sources">JDBC Data Sources</a></li></ol></li><li><a href="#Adding_Custom_Resource_Factories">Adding Custom Resource Factories</a></li></ul>
+    " border="0"></a></td><td><h1><font face="arial,helvetica,sanserif">Apache Tomcat 7</font></h1><font face="arial,helvetica,sanserif">Version 7.0.28-dev, May 28 2013</font></td><td><!--APACHE LOGO--><a href="http://www.apache.org/"><img src="./images/asf-logo.gif" align="right" alt="Apache Logo" border="0"></a></td></tr></table><table border="0" width="100%" cellspacing="4"><!--HEADER SEPARATOR--><tr><td colspan="2"><hr noshade size="1"></td></tr><tr><!--LEFT SIDE NAVIGATION--><td width="20%" valign="top" nowrap class="noPrint"><p><strong>Links</strong></p><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li></ul><p><strong>User Guide</strong></p><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li></ul><p><strong>Reference</strong></p><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.2 Javadocs</a></li><li><a href="elapi/index.html">EL 2.2 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul><p><strong>Apache Tomcat Development</strong></p><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li></ul></td><!--RIGHT SIDE MAIN BODY--><td width="80%" valign="top" align="left" id="mainBody"><h1>JNDI 자원 활용법</h1><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%AA%A9%EC%B0%A8"><strong>목차</strong></a></font></td></tr><tr><td><blockquote>
+<ul><li><a href="#%EC%86%8C%EA%B0%9C">소개</a></li><li><a href="#web.xml_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">web.xml 환경설정</a></li><li><a href="#context.xml_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">context.xml 환경설정</a></li><li><a href="#%EA%B8%80%EB%A1%9C%EB%B2%8C_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">글로벌 환경설정</a></li><li><a href="#%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EA%B2%83">리소스를 사용하는 것</a></li><li><a href="#%ED%86%B0%EC%BA%A3_%ED%91%9C%EC%A4%80_%EB%A6%AC%EC%86%8C%EC%8A%A4%ED%8C%A9%ED%86%A0%EB%A6%AC%EB%93%A4">톰캣 표준 리소스팩토리들</a><ol><li><a href="#Generic_JavaBean_Resources">Generic JavaBean Resources</a></li><li><a href="#UserDatabase_Resources">UserDatabase Resources</a></li><li><a href="#JavaMail_Sessions">JavaMail Sessions</a></li><li><a href="#JDBC_Data_Sources">JDBC Data Sources</a></li></ol></li><li><a href="#Adding_Custom_Resource_Factories">Adding Custom Resource Factories</a></li></ul>
 </blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EC%86%8C%EA%B0%9C"><strong>소개</strong></a></font></td></tr><tr><td><blockquote>
 
 <p>톰캣은 JNDI(Java Naming and Directory Interface)에서 각각의 웹 애플리케이션의 실행을 위해, 
@@ -102,54 +102,50 @@ Context&gt;</code></a> 속성에는 <code>$CATALINA_BASE/conf/server.xml</code>�
 사용자는 각각의-웹-어플리케이션 컨텍스트(per-web-application)내에 <a href="config/context.html#Resource Links">&lt;리소스 링크&gt;</a>를
 포함하고 사용함으로서 웹 어플리케이션에 이러한 자원들을 노출할 수도 있다. </p>
 
-<p>If a resource has been defined using a
-<a href="config/context.html#Resource Links">&lt;ResourceLink&gt;</a>, it is not
-necessary for that resource to be defined in <code>/WEB-INF/web.xml</code>.
-However, it is recommended to keep the entry in <code>/WEB-INF/web.xml</code>
-to document the resource requirements for the web application.</p>
+<p>어떠한 자원이  <a href="config/context.html#Resource Links">&lt;리소스 링크&gt;</a>로
+사용하는 것이 정의되었다면, 그것이 필수적으로 <code>/WEB-INF/web.xml</code>내에 리소스가 정의되는 것은 아니다.
+그러나 <code>/WEB-INF/web.xml</code>안에 해당 웹어플리케이션을 위한 리소스의 필수조건을 기록하기 위해서 
+전체적으로 들어가 있는 것을 추천한다. </p>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Using resources"><!--()--></a><a name="Using_resources"><strong>Using resources</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC %EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94 %EA%B2%83"><!--()--></a><a name="%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EA%B2%83"><strong>리소스를 사용하는 것</strong></a></font></td></tr><tr><td><blockquote>
 
-<p>The <code>InitialContext</code> is configured as a web application is
-initially deployed, and is made available to web application components (for
-read-only access).  All configured entries and resources are placed in
-the <code>java:comp/env</code> portion of the JNDI namespace, so a typical
-access to a resource - in this case, to a JDBC <code>DataSource</code> -
-would look something like this:</p>
+<p><code>InitialContext(이니셜 컨텍스트)</code>는 웹 어플리케이션이 최초로 배치됨으로서 환경설정이 되고
+웹 어플리케이션 컴포넌트에 만들어진다.(오로지 읽기전용을 위해서)
+모든 설정된 영역과 리소스들은 JNDI명이 저장된 곳의 부분적인 공간<code>java:comp/env</code>내에 지정되고,
+
+또한 리소스에 일반적인 접근이 있다. 이런 경우는 JDBC의 <code>DataSource</code>와 같이 뭔가를 바라보는 경우이다.
+</p>
 
 <div align="left"><table cellspacing="4" cellpadding="0" border="0"><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#ffffff" height="1"><pre>
-// Obtain our environment naming context
+// 컨텍스트를 설정하여 적합한 환경을 구성한다.
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-// Look up our data source
+// 데이터소스를 바라본다.
 DataSource ds = (DataSource)
   envCtx.lookup("jdbc/EmployeeDB");
 
-// Allocate and use a connection from the pool
+// 할당하고 풀로부터 어떤 커넥션객체를 사용한다.
 Connection conn = ds.getConnection();
-... use this connection to access the database ...
+... 데이터베이스의 접속을 위해 이 커넥션객체를 사용한다...
 conn.close();
 </pre></td><td bgcolor="#023264" width="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr><tr><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td><td bgcolor="#023264" width="1" height="1"><img src="./images/void.gif" alt="" width="1" height="1" vspace="0" hspace="0" border="0"></td></tr></table></div>
 
-</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="Tomcat Standard Resource Factories"><!--()--></a><a name="Tomcat_Standard_Resource_Factories"><strong>Tomcat Standard Resource Factories</strong></a></font></td></tr><tr><td><blockquote>
+</blockquote></td></tr></table><table border="0" cellspacing="0" cellpadding="2"><tr><td bgcolor="#525D76"><font color="#ffffff" face="arial,helvetica.sanserif"><a name="%ED%86%B0%EC%BA%A3 %ED%91%9C%EC%A4%80 %EB%A6%AC%EC%86%8C%EC%8A%A4%ED%8C%A9%ED%86%A0%EB%A6%AC%EB%93%A4"><!--()--></a><a name="%ED%86%B0%EC%BA%A3_%ED%91%9C%EC%A4%80_%EB%A6%AC%EC%86%8C%EC%8A%A4%ED%8C%A9%ED%86%A0%EB%A6%AC%EB%93%A4"><strong>톰캣 표준 리소스팩토리들</strong></a></font></td></tr><tr><td><blockquote>
 
-  <p>Tomcat includes a series of standard resource factories that can
-  provide services to your web applications, but give you configuration
-  flexibility (via the
-  <a href="config/context.html"><code>&lt;Context&gt;</code></a> element)
-  without modifying the web application or the deployment descriptor. Each
-  subsection below details the configuration and usage of the standard resource
-  factories.</p>
+  <p>톰캣은 표준 리소스 팩토리에서 당신의 웹 어플리케이션 서비스를 제공할 수 있는 기능을 가지고 있으나,
+  배치 기술자나 웹 어플리케이션의 변경없이(
+  <a href="config/context.html"><code>&lt;컨텍스트&gt;</code></a> 속성을 통해서) 사용자 중심의 환경설정이 가능하다.
+ 표준 리소스 팩토리들의 사용접과 환경설정을 아래와 같이 각각의 세부항목을 보고 참고하라.</p>
 
-  <p>See <a href="#Adding Custom Resource Factories">Adding Custom
-  Resource Factories</a> for information about how to create, install,
-  configure, and use your own custom resource factory classes with
-  Tomcat.</p>
+  <p>여기 생성하는 방법에 대한 정보와 설치, 환경설정과 톰캣과 함께 
+  사용자의 맞춤형 리소스 팩토리 클래스를 사용하는 것에 대한
+  <a href="#Adding Custom Resource Factories">추가된 맞춤형 리소스 팩토리를 보라.</a>
+</p>
 
-  <p><em>NOTE</em> - Of the standard resource factories, only the
-  "JDBC Data Source" and "User Transaction" factories are mandated to
-  be available on other platforms, and then they are required only if
+  <p><em>주의사항</em> - 표준 리소스 팩토리들 중에서, 
+  오직 "JDBC 데이터소스"와 "사용자 처리" 팩토리들은  다른 플랫폼들에서 사용 할 수 있는 권한을 갖게 되고,
+  and then they are required only if
   the platform implements the Java Enterprise Edition (Java EE) specs.
   All other standard resource factories, plus custom resource factories
   that you write yourself, are specific to Tomcat and cannot be assumed

@@ -186,10 +186,8 @@ conn.close();
   오직 "JDBC 데이터소스"와 "사용자 처리" 팩토리들은  다른 플랫폼들에서 사용 할 수 있는 권한을 갖게 되고,
   "JDBC 데이터소스"와 "사용자 처리" 팩토리들은 해당 플랫폼이 자바 엔터프라이즈 에디션(Java EE) 
   조건을 실행할 수 있어야만 사용할 수 있게된다.
-  and then they are required only if
-  the platform implements the Java Enterprise Edition (Java EE) specs.
   
-  All other standard resource factories, plus custom resource factories
+  모든 그밖의 표준 리소스 팩도리들은, plus custom resource factories
   that you write yourself, are specific to Tomcat and cannot be assumed
   to be available on other containers.</p>
 

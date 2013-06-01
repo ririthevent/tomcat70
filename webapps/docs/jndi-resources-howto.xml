@@ -187,8 +187,8 @@ conn.close();
   "JDBC 데이터소스"와 "사용자 처리" 팩토리들은 해당 플랫폼이 자바 엔터프라이즈 에디션(Java EE) 
   조건을 실행할 수 있어야만 사용할 수 있게된다.
   
-  모든 그밖의 표준 리소스 팩도리들은, plus custom resource factories
-  that you write yourself, are specific to Tomcat and cannot be assumed
+  모든 그밖의 표준 리소스 팩도리들은, 거기에 더해서 사용자가 직접 작성한
+  커스텀 리소스 팩토리들은, are specific to Tomcat and cannot be assumed
   to be available on other containers.</p>
 
   <subsection name="Generic JavaBean Resources">

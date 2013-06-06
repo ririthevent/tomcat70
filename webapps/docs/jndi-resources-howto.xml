@@ -188,8 +188,7 @@ conn.close();
   조건을 실행할 수 있어야만 사용할 수 있게된다.
   
   모든 그밖의 표준 리소스 팩도리들은, 거기에 더해서 사용자가 직접 작성한
-  커스텀 리소스 팩토리들은, are specific to Tomcat and cannot be assumed
-  to be available on other containers.</p>
+  커스텀 리소스 팩토리들은, 특히 톰캣과 그밖에 다른 컨테이너들에서 작동할 수 없게 되어있다.</p>
 
   <subsection name="Generic JavaBean Resources">
 

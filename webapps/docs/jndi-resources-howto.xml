@@ -190,9 +190,9 @@ conn.close();
   모든 그밖의 표준 리소스 팩도리들은, 거기에 더해서 사용자가 직접 작성한
   커스텀 리소스 팩토리들은, 특히 톰캣과 그밖에 다른 컨테이너들에서 작동할 수 없게 되어있다.</p>
 
-  <subsection name="Generic JavaBean Resources">
+  <subsection name="일반적인 자바빈 리소스들">
 
-    <h3>0.  Introduction</h3>
+    <h3>0.  소개</h3>
 
     <p>This resource factory can be used to create objects of <em>any</em>
     Java class that conforms to standard JavaBeans naming conventions (i.e.

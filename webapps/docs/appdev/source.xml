@@ -23,8 +23,8 @@
   &project;
 
   <properties>
-    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
-    <title>Source Organization</title>
+    <author email="craigmcc@apache.org">크레이그 R. 맥클라나한</author>
+    <title>원본 구조</title>
   </properties>
 
 <body>
@@ -36,85 +36,45 @@
 <section name="Directory Structure">
 
     <blockquote><em>
-    <p>The description below uses the variable name $CATALINA_BASE to refer the
-    base directory against which most relative paths are resolved. If you have
-    not configured Tomcat for multiple instances by setting a CATALINA_BASE
-    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
-    the directory into which you have installed Tomcat.</p>
+    <p>다음 설명은 대부분의 상대 경로가 해결되고 그에 대한 기본 디렉토리를 참조하는 변수 이름을 $ CATALINA_BASE를 사용하고 있습니다.
+    당신은 CATALINA_BASE를 설정하여 여러 인스턴스에 Tomcat을 구성하지 않은 경우, 디렉토리의 다음 $ CATALINA_BASE는 $ CATALINA_HOME의 값으로 설정됩니다.
+    Tomcat을 설치 한 디렉터리입니다.</p>
     </em></blockquote>
 
-<p>A key recommendation of this manual is to separate the directory
-hierarchy containing your source code (described in this section) from
-the directory hierarchy containing your deployable application
-(described in the preceding section).  Maintaining this separation has
-the following advantages:</p>
+<p>이 설명서의 주요 권고 사항은 배포 응용 프로그램 (앞에서 설명한)를 포함하는 디렉토리 계층 구조에서 소스 코드를 (이 절에서 설명)를 포함하는 디렉토리 계층을 분리하는 것입니다.
+이 분리를 유지하는 것은 다음과 같은 장점이 있습니다.</p>
 <ul>
-<li>The contents of the source directories can be more easily administered,
-    moved, and backed up if the "executable" version of the application
-    is not intermixed.
+<li>소스 디렉토리의 내용을 보다 쉽게 관리 할 수 있는 이동, "실행 가능한" 응용 프로그램 버전이 혼합되지 않은 경우 백업할 수 있습니다.
     <br/><br/></li>
-<li>Source code control is easier to manage on directories that contain
-    only source files.
+<li>소스 코드 관리, 소스 파일이 있는 디렉토리의 관리가 용이합니다.
     <br/><br/></li>
-<li>The files that make up an installable distribution of your
-    application are much easier to select when the deployment
-    hierarchy is separate.</li>
+<li>응용 프로그램 설치 가능한 배포판을 구성하는 파일은 배포 계층이 다른 때 선택하는 것이 훨씬 쉽습니다.</li>
 </ul>
 
-<p>As we will see, the <code>ant</code> development tool makes the creation
-and processing of such directory hierarchies nearly painless.</p>
+<p>우리가 본대로, <code> ant </ code> 의 개발 도구는 이러한 디렉터리 계층 생성 및 처리가 거의 고통에 가깝습니다.</p>
 
-<p>The actual directory and file hierarchy used to contain the source code
-of an application can be pretty much anything you like.  However, the
-following organization has proven to be quite generally applicable, and is
-expected by the example <code>build.xml</code> configuration file that
-is discussed below.  All of these components exist under a top level
-<em>project source directory</em> for your application:</p>
+<p>응용 프로그램의 소스 코드를 저장하는 데 사용되는 실제 디렉터리 및 파일 계층이 좋지만은 않다는 것입니다.
+그러나 다음의 조직은 매우 일반적으로 적용 가능한 것으로 판명되어, 예를 들면 이 <code> build.xml </ code> 가 아래에 설명된 구성 파일이 됩니다.
+이러한 모든 구성 요소는 응용 프로그램의 최상위 <em> 프로젝트 소스 디렉토리 </em> 아래에 있습니다.:</p>
 <ul>
-<li><strong>docs/</strong> - Documentation for your application, in whatever
-    format your development team is using.<br/><br/></li>
-<li><strong>src/</strong> - Java source files that generate the servlets,
-    beans, and other Java classes that are unique to your application.
-    If your source code is organized in packages (<strong>highly</strong>
-    recommended), the package hierarchy should be reflected as a directory
-    structure underneath this directory.<br/><br/></li>
-<li><strong>web/</strong> - The static content of your web site (HTML pages,
-    JSP pages, JavaScript files, CSS stylesheet files, and images) that will
-    be accessible to application clients.  This directory will be the
-    <em>document root</em> of your web application, and any subdirectory
-    structure found here will be reflected in the request URIs required to
-    access those files.<br/><br/></li>
-<li><strong>web/WEB-INF/</strong> - The special configuration files required
-    for your application, including the web application deployment descriptor
-    (<code>web.xml</code>, defined in the
-    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet Specification</a>),
-    tag library descriptors for custom tag libraries
-    you have created, and other resource files you wish to include within
-    your web application.  Even though this directory appears to be a
-    subdirectory of your <em>document root</em>, the Servlet Specification
-    prohibits serving the contents of this directory (or any file it contains)
-    directly to a client request.  Therefore, this is a good place to store
-    configuration information that is sensitive (such as database connection
-    usernames and passwords), but is required for your application to
-    operate successfully.</li>
+<li><strong>docs/</strong> - 응용 프로그램 설명서는 어떤 형식으로 개발팀이 사용하고 있습니다.<br/><br/></li>
+<li><strong>src/</strong> - Java 소스 서블릿, Bean 및 응용 프로그램 별 다른 Java 클래스를 생성한 파일입니다.
+    당신의 소스 코드 패키지가 (<strong> highly </strong> 권장) 로 구성되어있는 경우, 패키지 계층이 디렉토리 아래에 디렉토리 구조에 반영되어야 합니다.<br/><br/></li>
+<li><strong>web/</strong> - Web 사이트의 정적 콘텐츠는 (HTML 페이지, JSP 페이지, Java 스크립트 파일, CSS 스타일 시트 파일, 이미지), 응용 프로그램 클라이언트에 액세스 할 수 있습니다.
+이 디렉토리는 <EM> 문서 루트 </em>는 Web 응용 프로그램 및 모든 하위 디렉토리 구조는 URI가 해당 파일에 액세스하는 데 필요한 요구에도 반영됩니다.<br/><br/></li>
+<li><strong>web/WEB-INF/</strong> - Web 응용 프로그램 배포 설명자 (같은 응용 프로그램에 필요한 특수 설정 파일 <code> web.xml </code> 는 <a href = "http://wiki.apache.org/tomcat/Specifications"> 서블릿 사양 </a>, 커스텀 태그 라이브러리 및 당신의 Web 응용 프로그램에 포함할 다른 리소스 파일의 태그 라이브러리 디스크립터입니다.
+이 디렉토리는 <EM> 문서 루트의 하위 디렉토리인 것으로 보임에도 불구하고 </em>는 서블릿 사양 클라이언트 요청에 직접이 디렉토리의 내용 (또는 여기에 포함된 모든 파일) 의 이동을 금지합니다.
+따라서 이것은 (데이터베이스 연결 아이디와 비밀번호 등)의 영향을 받기 쉽고, 구성 정보를 저장하기에 좋은 장소입니다. 또한, 성공적으로 실행되는 응용 프로그램에 필요합니다.</li>
 </ul>
 
-<p>During the development process, two additional directories will be
-created on a temporary basis:</p>
+<p>프로그램이 개발되고 있는 동안에 두 추가 디렉토리가 일시적으로 생성됩니다.:</p>
 <ul>
-<li><strong>build/</strong> - When you execute a default build
-    (<code>ant</code>), this directory will contain an exact image
-    of the files in the web application archive for this application.
-    Tomcat allows you to deploy an application in an unpacked
-    directory like this, either by copying it to the
-    <code>$CATALINA_BASE/webapps</code> directory, or by <em>installing</em>
-    it via the "Manager" web application.  The latter approach is very
-    useful during development, and will be illustrated below.
+<li><strong>build/</strong> - 기본을 실행하면 빌드 (<code> ant </ code>) 에는 이 디렉토리에 있는 응용 프로그램의 Web 애플리케이션 아카이브 파일의 정확한 이미지가 포함되어 있습니다.
+    Tomcat은 당신이 <code> $CATALINA_BASE/webapps </code> 디렉토리 또는 <em> 설치 </em> 는 그것을 "관리자"를 통해 웹 응용 프로그램으로 복사하거나 이러한 압축을 푼 디렉토리에 응용 프로그램을 배포 할 수 있습니다.
+    후자의 방식은 개발 시에 매우 유용하며, 그에 대한 설명을 하겠습니다.
     <br/><br/></li>
-<li><strong>dist/</strong> - When you execute the <code>ant dist</code>
-    target, this directory will be created.  It will create an exact image
-    of the binary distribution for your web application, including an license
-    information, documentation, and README files that you have prepared.</li>
+<li><strong>dist/</strong> - 당신의 <code> dist </code> 타겟을 실행하면 해당 디렉토리가 생성됩니다.
+당신이 준비한 라이센스 정보 문서 및 README 파일을 포함하여 Web 응용 프로그램의 바이너리 디스트리뷰션의 정확한 이미지를 만듭니다.</li>
 </ul>
 
 <p>Note that these two directories should <strong>NOT</strong> be archived in

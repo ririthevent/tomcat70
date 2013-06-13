@@ -24,7 +24,7 @@
 
     <properties>
         <author email="glenn@apache.org">그렌 L. 닐슨</author>
-        <title>CGI 어떻게하나</title>
+        <title>CGI 어떻게 하는가</title>
     </properties>
 
 <body>
@@ -38,18 +38,18 @@
 <p>CGI(Common Gateway Interface)는 종종 CGI 프로그램 혹은 CGI 스크립트라고하는 외부 콘텐츠 생성 프로그램과 상호 작용하는 Web 서버 방법을 정의합니다.
 </p>
 
-<p>당신이 HTTP 서버로 Tomcat을 사용하여 CGI의 지원을 필요로 할 때 Tomcat 안에 CGI 지원을 추가 할 수 있습니다.  당신은 Apache HTTP 등의 Web 서버를 실행하지 않으려면 일반적으로 이것은 개발 중에 이루어집니다.
+<p>여러분이 HTTP 서버로 Tomcat을 사용하여 CGI의 지원을 필요로 할 때 Tomcat 안에 CGI 지원을 추가 할 수 있습니다.  여러분은 Apache HTTP 등의 Web 서버를 실행하지 않으려면 일반적으로 이것은 개발 중에 이루어집니다.
 Tomcat의 CGI 지원은 Apache의 httpd의와 대체로 호환이 되어있지만, 몇 가지 제한이 있습니다. (예를 들어, 하나의 cgi-bin 디렉토리일 때).
 </p>
 
-<p>CGI 지원이 서블릿 클래스의 <code> org.apache.catalina.servlets.CGIServlet </code>를 사용하여 구현됩니다.  전형적으로,이 서블릿은 URL 패턴 "/ cgi-bin에 / *"로 매핑됩니다.</p>
+<p>CGI 지원이 서블릿 클래스의 <code> org.apache.catalina.servlets.CGIServlet </code>를 사용하여 구현됩니다. 전형적으로, 이 서블릿은 URL 패턴 "/ cgi-bin에 / *"로 매핑됩니다.</p>
 
 <p>기본적으로 CGI 지원은 Tomcat에서 사용할 수 있습니다.</p>
 </section>
 
 <section name="Installation">
 
-<p><strong>CAUTION</strong> - CGI 스크립트는 Tomcat JVM 외부 프로그램을 실행하는 데 사용됩니다. Java SecurityManager를 사용하는 경우, 이것은 당신의 보안 정책 설정에서 <code> catalina.policy. </code>를 우회합니다.</p>
+<p><strong>CAUTION</strong> - CGI 스크립트는 Tomcat JVM 외부 프로그램을 실행하는 데 사용됩니다. Java SecurityManager를 사용하는 경우, 이것은 여러분의 보안 정책 설정에서 <code> catalina.policy. </code>를 우회합니다.</p>
 
 <p><code> $CATALINA_BASE/conf/web.xml </code> 속에서 CGI 서블릿과 서블릿 매핑 설정 주위에서 XML 주석을 제거합니다.</p>
 
@@ -64,13 +64,13 @@ Tomcat의 CGI 지원은 Apache의 httpd의와 대체로 호환이 되어있지�
 <li><strong>cgiPathPrefix</strong> - CGI 검색 경로는 Web 어플리케이션의 루트 디렉토리 + File.separator + 접두사로 시작합니다.
 기본이 붙은 모양은 <code> WEB-INF/cgi </code>입니다.</li>
 <li><strong>debug</strong> - 이 서블릿이 기록된 메시지의 상세 수준의 디버깅. 기본값은 0.</li>
-<li><strong>executable</strong> - 실행 파일의 스크립트를 사용한다. 당신의 스크립트가 실행 파일 자체인 경우는 명시 적으로 빈 문자열이 되도록 이 매개 변수를 설정할 수 있습니다. (예를 들면듦, 실행파일과 같은 경우). 기본값은
+<li><strong>executable</strong> - 실행 파일의 스크립트를 사용한다. 여러분의 스크립트가 실행 파일 자체인 경우는 명시 적으로 빈 문자열이 되도록 이 매개 변수를 설정할 수 있습니다. (예를 들면, 실행파일과 같은 경우). 기본값은 0.
 <code>perl</code>.</li>
 <li><strong>executable-arg-1</strong>, <strong>executable-arg-2</strong>,
 and so on - 실행 파일의 추가 인수. 이것은 GCI 스크립트 이름 앞에 붙는다. 기본적으로 추가 인수는 없습니다.</li>
-<li><strong>parameterEncoding</strong> - 매개 변수 인코딩의 이름은 CGI 서블릿으로 사용한다. 기본값은
+<li><strong>parameterEncoding</strong> - 매개 변수 인코딩의 이름은 CGI 서블릿으로 사용한다. 기본값은 0.
 <code>System.getProperty("file.encoding","UTF-8")</code>.</li>
-<li><strong>passShellEnvironment</strong> - 쉘 환경 변수가 있는 경우, CGI 스크립트에 전달해야할까요? 기본값은
+<li><strong>passShellEnvironment</strong> - 쉘 환경 변수가 있는 경우, CGI 스크립트에 전달해야할까요? 기본값은 0.
 <code>false</code>.</li>
 <li><strong>stderrTimeout</strong> - CGI 프로세스를 종료하기 전에 완료하기 위해 표준 오류 출력 읽기 위해 대기하는 시간 (밀리 초)입니다. 기본값은 2000.</li>
 </ul>
